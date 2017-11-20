@@ -7,25 +7,10 @@
 #define GEAR_FORWARD 1
 #define GEAR_REVERSE -1
 
-#define CMD_STOP 0
-#define CMD_FORWARD_SLOW 1
-#define CMD_FORWARD_NORMAL 2
-#define CMD_FORWARD_FAST 3
-#define CMD_REVERSE_SLOW -1
-#define CMD_REVERSE_NORMAL -2
-#define CMD_REVERSE_FAST -3
+
 
 #define OP_TIME_MIN_DECELERATE_TO_STOP 1000
 #define OP_TIME_MIN_GEAR_CHANGE_TOTAL 2000
-
-
-#define OP_NO_OP 0
-#define OP_ACCELERATE_FORWARD 51
-#define OP_ACCELERATE_REVERSE 52
-#define OP_DECELERATE_FORWARD 101
-#define OP_DECELERATE_REVERSE 102
-#define OP_HALT_MOTION 200
-#define OP_CHANGE_DIRECTION 400
 
 #define STATUS_AVAILABLE_FOR_ORDERS 100
 #define STATUS_SUCCESS_COMMAND_RECEIVED 200
@@ -62,7 +47,7 @@ bool _availableForCommand;
 
 static int _operationStepsClock;
 static int _updateStepSize;
-static int _currentOperation;
+static Operation _currentOperation;
 
 static int STEPS_accelerateMinBetweenServoSteps;
 static int STEPS_decelerateMinBetweenServoSteps;
@@ -76,6 +61,26 @@ int _gearChange_STEP4_CLUTCH_COMPLETE;
 
 int _statusVector = 0x0;
 
+enum Operation {
+    NO_OP=0,
+    ACCELERATE_FORWARD=51,
+    ACCELERATE_REVERSE=52,
+    DECELERATE_FORWARD=101,
+    DECELERATE_REVERSE=102,
+    HALT_MOTION=200,
+    CHANGE_DIRECTION=400
+};
+
+enum Command {
+    STOP=0,
+    FORWARD_SLOW=1,
+    FORWARD_NORMAL=2,
+    FORWARD_FAST=3,
+    REVERSE_SLOW=-1,
+    REVERSE_NORMAL=-2,
+    REVERSE_FAST=-3
+};
+
 /* Begin PUBLIC method definitions */
 void SpeedControl::attach(Servo servo, int updateStepSize) {
     _servo = servo;
@@ -87,27 +92,27 @@ void SpeedControl::attach(Servo servo, int updateStepSize) {
 int SpeedControl::commandMove(int commandVector) {
     if (availableToReceiveCommand() && commandVector != _currentCommandVector) {
 
-        _targetCommandVector = constrain(commandVector, CMD_REVERSE_FAST, CMD_FORWARD_FAST);
+        _targetCommandVector = constrain(commandVector, Command::REVERSE_FAST, Command::FORWARD_FAST);
         _operationStepsClock = 0;
 
         // SET OPERATION
         if (commandRequiresDirectionChange(_targetCommandVector)) {
-            _currentOperation = OP_CHANGE_DIRECTION;
+            _currentOperation = Operation::CHANGE_DIRECTION;
         }
         else if (_targetCommandVector > _currentCommandVector && _currentCommandVector > 0) {
-            _currentOperation = OP_ACCELERATE_FORWARD;
+            _currentOperation = Operation::ACCELERATE_FORWARD;
         }
         else if (_targetCommandVector < _currentCommandVector && _targetCommandVector > 0) {
-            _currentOperation = OP_DECELERATE_FORWARD;
+            _currentOperation = Operation::DECELERATE_FORWARD;
         }
         else if (_targetCommandVector < _currentCommandVector && _currentCommandVector < 0) {
-            _currentOperation = OP_ACCELERATE_REVERSE;
+            _currentOperation = Operation::ACCELERATE_REVERSE;
         }
         else if (_targetCommandVector > _currentCommandVector && _targetCommandVector < 0) {
-            _currentOperation = OP_DECELERATE_REVERSE;
+            _currentOperation = Operation::DECELERATE_REVERSE;
         }
         else {
-            _currentOperation = OP_HALT_MOTION;
+            _currentOperation = Operation::HALT_MOTION;
         }
     }
 
@@ -115,16 +120,11 @@ int SpeedControl::commandMove(int commandVector) {
 }
 
 int SpeedControl::getCurrentControlStatus() {
-    if (_currentOperation == OP_CHANGE_DIRECTION) {
+    if (_currentOperation == Operation::CHANGE_DIRECTION) {
         return STATUS_UNAVAILABLE_EXECUTING_DIRECTION_CHANGE;
     }
 
-    if (_currentOperation == OP_DECELERATE || _currentOperation == OP_HALT_MOTION) {
-        return STATUS_UNAVAILABLE_COMPLYING_LAST;
-    }
-
     return STATUS_AVAILABLE_FOR_ORDERS;
-
 }
 
 int SpeedControl::getMillisUntilAvailableForCommand() {
@@ -135,13 +135,22 @@ bool SpeedControl::setDebug(bool debugModeOn) {
 
 }
 void SpeedControl::incrementStep() {
+    switch (_currentOperation) {
+        case Operation::CHANGE_DIRECTION:
+            changeGearDirection(_currentGear * -1);
+            break;
+        default:
+            break;
+    }
+
+    _operationStepsClock++;
 
 }
 /* End PUBLIC method definitions */
 
 /* Begin PROTECTED method definitions */
 bool SpeedControl::availableToReceiveCommand() {
-    if (_currentOperation == OP_NO_OP) {
+    if (_currentOperation == Operation::NO_OP) {
         return true;
     }
 
@@ -192,11 +201,11 @@ void SpeedControl::calculateOperationSteps() {
 }
 
 bool SpeedControl::commandRequiresDirectionChange(int commandVector) {
-    if (commandVector > 0 && _currentTargetVector <= 0) {
+    if (commandVector > 0 && _currentCommandVector <= 0) {
         return true;
     }
 
-    if (commandVector < 0 && _currentTargetVector >= 0) {
+    if (commandVector < 0 && _currentCommandVector >= 0) {
         return true;
     }
 
