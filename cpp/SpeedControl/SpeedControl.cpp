@@ -1,16 +1,20 @@
 //
 // Created by graham on 11/18/17.
 //
-
+#include <stdc++.h>
+#include "SpeedControlSpeed.h"
+#include "SpeedControlCommand.h"
+#include "InternalOperation.h"
 #include "SpeedControl.h"
+#include "StackArray.h"
 
 #define GEAR_FORWARD 1
 #define GEAR_REVERSE -1
 
-
-
-#define OP_TIME_MIN_DECELERATE_TO_STOP 1000
-#define OP_TIME_MIN_GEAR_CHANGE_TOTAL 2000
+#define OP_ACCELERATE_MIN_MILLIS_BETWEEN_STEPS 300
+#define OP_DECELERATE_MIN_MILLIS_BETWEEN_STEPS 300
+#define OP_DECELERATE_TO_STOP_MIN_MILLIS 300
+#define OP_GEARCHANGE_MIN_MILLIS_BETWEEN_STEPS 500
 
 #define STATUS_AVAILABLE_FOR_ORDERS 100
 #define STATUS_SUCCESS_COMMAND_RECEIVED 200
@@ -37,175 +41,148 @@
 #define SERVO_REVERSE_PREP 94
 
 
-Servo _servo;
-
-int _targetCommandVector;
-int _currentCommandVector;
-int _currentServoSignal;
-int _currentGear;
-bool _availableForCommand;
-
-static int _operationStepsClock;
-static int _updateStepSize;
-static Operation _currentOperation;
-
-static int STEPS_accelerateMinBetweenServoSteps;
-static int STEPS_decelerateMinBetweenServoSteps;
-static int STEPS_slowToStopMinBetweenServoSteps;
-static int STEPS_gearChangeMinBetweenSteps;
-
-int _gearChange_STEP1_STOP_COMPLETE;
-int _gearChange_STEP2_PREP_COMPLETE;
-int _gearChange_STEP3_SURGE_COMPLETE;
-int _gearChange_STEP4_CLUTCH_COMPLETE;
-
-int _statusVector = 0x0;
-
-enum Operation {
-    NO_OP=0,
-    ACCELERATE_FORWARD=51,
-    ACCELERATE_REVERSE=52,
-    DECELERATE_FORWARD=101,
-    DECELERATE_REVERSE=102,
-    HALT_MOTION=200,
-    CHANGE_DIRECTION=400
-};
-
-enum Command {
-    STOP=0,
-    FORWARD_SLOW=1,
-    FORWARD_NORMAL=2,
-    FORWARD_FAST=3,
-    REVERSE_SLOW=-1,
-    REVERSE_NORMAL=-2,
-    REVERSE_FAST=-3
-};
+static int _operation_STEPS_accelerateMinBetweenSteps;
+static int _operation_STEPS_decelerateMinBetweenSteps;
+static int _operation_STEPS_slowToStopMinBetweenSteps;
+static int _operation_STEPS_gearChangeMinBetweenSteps;
 
 /* Begin PUBLIC method definitions */
-void SpeedControl::attach(Servo servo, int updateStepSize) {
+void SpeedControl::attach(Servo& servo, int incrementMillisPerLoop) {
     _servo = servo;
-    _updateStepSize = updateStepSize;
-    _currentCommandVector = 0;
-
+    _incrementMillisPerLoop = incrementMillisPerLoop;
+    delete _operationsStack;
+    _operationsStack = new StackArray<InternalOperation>(); 
 }
 
-int SpeedControl::commandMove(int commandVector) {
-    if (availableToReceiveCommand() && commandVector != _currentCommandVector) {
+int SpeedControl::commandMove(SpeedControlCommand command) {
+    if (availableToReceiveCommand()) {
 
-        _targetCommandVector = constrain(commandVector, Command::REVERSE_FAST, Command::FORWARD_FAST);
-        _operationStepsClock = 0;
+        _targetCommand = command;
+        resetOperationClock();
 
         // SET OPERATION
-        if (commandRequiresDirectionChange(_targetCommandVector)) {
-            _currentOperation = Operation::CHANGE_DIRECTION;
+        if (commandRequiresDirectionChange(_targetCommand)) {
+            pushChangeDirectionOperations(_currentGear * -1);
         }
-        else if (_targetCommandVector > _currentCommandVector && _currentCommandVector > 0) {
-            _currentOperation = Operation::ACCELERATE_FORWARD;
+        
+        if (_targetCommand.speedControlSpeed > (SpeedControlSpeed)0) {
+            moveForward(_targetCommand.speedControlSpeed);
         }
-        else if (_targetCommandVector < _currentCommandVector && _targetCommandVector > 0) {
-            _currentOperation = Operation::DECELERATE_FORWARD;
-        }
-        else if (_targetCommandVector < _currentCommandVector && _currentCommandVector < 0) {
-            _currentOperation = Operation::ACCELERATE_REVERSE;
-        }
-        else if (_targetCommandVector > _currentCommandVector && _targetCommandVector < 0) {
-            _currentOperation = Operation::DECELERATE_REVERSE;
+        else if (_targetCommand.speedControlSpeed < (SpeedControlSpeed)0) {
+            moveBackward(_targetCommand.speedControlSpeed);
         }
         else {
-            _currentOperation = Operation::HALT_MOTION;
+            haltMotion();
         }
     }
 
-    return _currentOperation;
+    return 1;
 }
 
 int SpeedControl::getCurrentControlStatus() {
-    if (_currentOperation == Operation::CHANGE_DIRECTION) {
-        return STATUS_UNAVAILABLE_EXECUTING_DIRECTION_CHANGE;
-    }
-
-    return STATUS_AVAILABLE_FOR_ORDERS;
+    return 1;
 }
 
 int SpeedControl::getMillisUntilAvailableForCommand() {
-
+    return _operationStepsCountdown * _incrementMillisPerLoop;
 }
 
 bool SpeedControl::setDebug(bool debugModeOn) {
-
+    _debugModeOn = debugModeOn;
+    return _debugModeOn;
 }
-void SpeedControl::incrementStep() {
-    switch (_currentOperation) {
-        case Operation::CHANGE_DIRECTION:
-            changeGearDirection(_currentGear * -1);
-            break;
-        default:
-            break;
+
+int SpeedControl::incrementStep() {
+
+
+
+    if (_operationStepsCountdown > 0) {
+        _operationStepsCountdown--;
     }
-
-    _operationStepsClock++;
-
+    else {
+        
+    }
+    return getMillisUntilAvailableForCommand();
 }
 /* End PUBLIC method definitions */
 
 /* Begin PROTECTED method definitions */
 bool SpeedControl::availableToReceiveCommand() {
-    if (_currentOperation == Operation::NO_OP) {
-        return true;
-    }
-
-    return false;
+    return _operationStepsCountdown <= 0;
 }
+
 bool SpeedControl::currentlyInStoppedRange() {
-
+    return _current
 }
 
-void SpeedControl::changeGearDirection(int direction) {
-    if (_operationStepsClock == 0 || _operationStepsClock >= STEPS_gearChangeMinBetweenSteps) {
+void SpeedControl::pushChangeDirectionOperations(int direction) {
+    _operationsQueue
+
+    if (_operationStepsClock == 0 || _operationStepsClock >= _operation_STEPS_gearChangeMinBetweenSteps) {
         if (!_gearChange_STEP1_STOP_COMPLETE) {
-            return;
+            haltMotion();
+            _gearChange_STEP1_STOP_COMPLETE = true;
         }
-        if (!_gearChange_STEP2_PREP_COMPLETE) {
-
-            return;
+        else if (!_gearChange_STEP2_PREP_COMPLETE) {
+            if (direction == GEAR_FORWARD) {
+                _servo.write(SERVO_FORWARD_PREP);
+            }
+            else {
+                _servo.write(SERVO_REVERSE_PREP);
+            }
+            _gearChange_STEP2_PREP_COMPLETE = true;
         }
-        if (!_gearChange_STEP3_SURGE_COMPLETE) {
-
-            return;
+        else if (!_gearChange_STEP3_SURGE_COMPLETE) {
+            if (direction == GEAR_FORWARD) {
+                _servo.write(SERVO_FORWARD_SURGE);
+            }
+            else {
+                _servo.write(SERVO_REVERSE_SURGE);
+            }
+            _gearChange_STEP3_SURGE_COMPLETE = true;
         }
-        if (!_gearChange_STEP4_CLUTCH_COMPLETE) {
-
-            return;
+        else if (!_gearChange_STEP4_CLUTCH_COMPLETE) {
+            haltMotion();
+            _gearChange_STEP4_CLUTCH_COMPLETE = true;
         }
+        else {
+            _currentGear = direction * -1;
+        }
+        resetOperationClock();
+        return;
     }
 }
 
-void SpeedControl::moveForward(int speed) {
+void SpeedControl::moveForward(SpeedControlSpeed speed) {
 
 }
 
-void SpeedControl::accelerateForward(int speed) {
-
+void SpeedControl::moveBackward(SpeedControlSpeed speed) {
+    
 }
 
-void SpeedControl::decelerateForward(int speed) {
-
+void SpeedControl::executeOperation(InternalOperation& operationToExecute) {
+    _servo.write(operationToExecute.operationServoSignal);
+    resetOperationClock(stepsToCountDownFrom);
 }
 
-void SpeedControl::resetOperationClock() {
-
+void SpeedControl::resetOperationCountdown(int stepsToCountDownFrom) {
+    _operationStepsCountdown = stepsToCountDownFrom;
 }
 
 void SpeedControl::calculateOperationSteps() {
-
+    _operation_STEPS_accelerateMinBetweenSteps = OP_ACCELERATE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
+    _operation_STEPS_decelerateMinBetweenSteps = OP_DECELERATE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
+    _operation_STEPS_slowToStopMinBetweenSteps = OP_DECELERATE_TO_STOP_MIN_MILLIS / _incrementMillisPerLoop;
+    _operation_STEPS_gearChangeMinBetweenSteps = OP_GEARCHANGE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
 }
 
-bool SpeedControl::commandRequiresDirectionChange(int commandVector) {
-    if (commandVector > 0 && _currentCommandVector <= 0) {
+bool SpeedControl::commandRequiresDirectionChange(SpeedControlCommand& targetCommand) {
+    if (targetCommand.speedControlSpeed > 0 && _currentCommand.speedControlSpeed <= 0) {
         return true;
     }
 
-    if (commandVector < 0 && _currentCommandVector >= 0) {
+    if (targetCommand.speedControlSpeed < 0 && _currentCommand.speedControlSpeed >= 0) {
         return true;
     }
 

@@ -7,11 +7,17 @@
 
 #include <Arduino.h>
 #include <Servo.h>
+#include "SpeedControlOperation.h"
+#include "InternalOperation.h"
+#include "SpeedControlCommand.h"
+#include "SpeedControlSpeed.h"
+#include "StackArray.h"
 
 class SpeedControl {
 protected:
     void changeGearDirection(int direction);
-    bool commandRequiresDirectionChange(int commandVector);
+    bool commandRequiresDirectionChange(SpeedControlCommand& targetCommand);
+    void pushChangeDirectionOperations(int direction);
     bool availableToReceiveCommand();
     bool currentlyInStoppedRange();
     void moveForward(int speed);
@@ -22,19 +28,30 @@ protected:
     void decelerateForward(int speed);
     void accelerateBackward(int speed);
     void decelerateBackward(int speed);
-    void resetOperationClock();
+    void resetOperationCountdown(int stepsToCountDownFrom);
     void calculateOperationSteps();
 
 public:
-    void attach(Servo servo, int updateStepSize);
-
-    int commandMove(int directionPower);
+    void attach(Servo& servo, int updateStepSize);
+    
+    int commandMove(SpeedControlCommand command);
     int getCurrentControlStatus();
     int getMillisUntilAvailableForCommand();
     bool setDebug(bool debugModeOn);
-    void incrementStep();
+    int incrementStep();
 
+private:
+    StackArray<InternalOperation> _operationsStack;
+    Servo _servo;
+    SpeedControlCommand _targetCommand;
+    SpeedControlCommand _currentCommand;
+    int _currentServoSignal;
+    int _currentGear;
+    bool _availableForCommand;
+    bool _debugModeOn;
+    
+    int _operationStepsCountdown;
+    int _incrementMillisPerLoop;
 };
-
 
 #endif //SPEEDCONTROL_SPEEDCONTROL_H
