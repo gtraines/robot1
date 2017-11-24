@@ -1,7 +1,6 @@
 //
 // Created by graham on 11/18/17.
 //
-#include <stdc++.h>
 #include "SpeedControlSpeed.h"
 #include "SpeedControlCommand.h"
 #include "InternalOperation.h"
@@ -47,10 +46,10 @@ static int _operation_STEPS_slowToStopMinBetweenSteps;
 static int _operation_STEPS_gearChangeMinBetweenSteps;
 
 /* Begin PUBLIC method definitions */
-void SpeedControl::attach(Servo& servo, int incrementMillisPerLoop) {
+void SpeedControl::attach(Servo& servo, int millisPerTimeStep) {
     _servo = servo;
-    _incrementMillisPerLoop = incrementMillisPerLoop;
-    delete _operationsStack;
+    _millisPerTimeStep = millisPerTimeStep;
+    
     _operationsStack = new StackArray<InternalOperation>(); 
 }
 
@@ -66,13 +65,13 @@ int SpeedControl::commandMove(SpeedControlCommand command) {
         }
         
         if (_targetCommand.speedControlSpeed > (SpeedControlSpeed)0) {
-            moveForward(_targetCommand.speedControlSpeed);
+            pushMoveForwardOperations(_targetCommand.speedControlSpeed);
         }
         else if (_targetCommand.speedControlSpeed < (SpeedControlSpeed)0) {
-            moveBackward(_targetCommand.speedControlSpeed);
+            pushMoveBackwardOperations(_targetCommand.speedControlSpeed);
         }
         else {
-            haltMotion();
+            pushHaltMotionOperations();
         }
     }
 
@@ -116,7 +115,7 @@ bool SpeedControl::currentlyInStoppedRange() {
 }
 
 void SpeedControl::pushChangeDirectionOperations(int direction) {
-    _operationsQueue
+    _operationsQueue.push()
 
     if (_operationStepsClock == 0 || _operationStepsClock >= _operation_STEPS_gearChangeMinBetweenSteps) {
         if (!_gearChange_STEP1_STOP_COMPLETE) {
@@ -153,17 +152,49 @@ void SpeedControl::pushChangeDirectionOperations(int direction) {
     }
 }
 
-void SpeedControl::moveForward(SpeedControlSpeed speed) {
+void SpeedControl::pushHaltMotionOperations() {
+    if ((int)_currentCommand.currentCommandSpeed > 0) {
+
+    }
+    
+}
+
+int SpeedControl::getServoSignalForSpeedControlSpeed(SpeedControlSpeed speed) {
+    switch (speed) {
+        case SpeedControlSpeed::Stop:
+            return SERVO_HALT;
+        case SpeedControlSpeed::BackwardFast:
+            return SERVO_REVERSE_MAX;
+        case SpeedControlSpeed::BackwardNormal:
+            return SERVO_REVERSE_SURGE;
+        case SpeedControlSpeed::BackwardSlow:
+            return SERVO_REVERSE_NORMAL;
+        case SpeedControlSpeed::ForwardSlow:
+            return SERVO_FORWARD_NORMAL;
+        case SpeedControlSpeed::ForwardNormal:
+            return SERVO_FORWARD_SURGE;
+        case SpeedControlSpeed::ForwardFast:
+            return SERVO_FORWARD_MAX;
+        default:
+            return SERVO_HALT;
+    }
+}
+
+void SpeedControl::pushMoveForwardOperations(SpeedControlSpeed speed) {
 
 }
 
-void SpeedControl::moveBackward(SpeedControlSpeed speed) {
+void SpeedControl::pushMoveBackwardOperations(SpeedControlSpeed speed) {
     
+}
+
+void SpeedControl::decelerateBackward(SpeedControlSpeed fromSpeed, SpeedControlSpeed toSpeed) {
+    for (int spdIncr = _)
 }
 
 void SpeedControl::executeOperation(InternalOperation& operationToExecute) {
     _servo.write(operationToExecute.operationServoSignal);
-    resetOperationClock(stepsToCountDownFrom);
+    resetOperationClock(operationToExecute.stepsToCountDownFrom);
 }
 
 void SpeedControl::resetOperationCountdown(int stepsToCountDownFrom) {
@@ -171,10 +202,10 @@ void SpeedControl::resetOperationCountdown(int stepsToCountDownFrom) {
 }
 
 void SpeedControl::calculateOperationSteps() {
-    _operation_STEPS_accelerateMinBetweenSteps = OP_ACCELERATE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
-    _operation_STEPS_decelerateMinBetweenSteps = OP_DECELERATE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
-    _operation_STEPS_slowToStopMinBetweenSteps = OP_DECELERATE_TO_STOP_MIN_MILLIS / _incrementMillisPerLoop;
-    _operation_STEPS_gearChangeMinBetweenSteps = OP_GEARCHANGE_MIN_MILLIS_BETWEEN_STEPS / _incrementMillisPerLoop;
+    _operation_STEPS_accelerateMinBetweenSteps = OP_ACCELERATE_MIN_MILLIS_BETWEEN_STEPS / _millisPerTimeStep;
+    _operation_STEPS_decelerateMinBetweenSteps = OP_DECELERATE_MIN_MILLIS_BETWEEN_STEPS / _millisPerTimeStep;
+    _operation_STEPS_slowToStopMinBetweenSteps = OP_DECELERATE_TO_STOP_MIN_MILLIS / _millisPerTimeStep;
+    _operation_STEPS_gearChangeMinBetweenSteps = OP_GEARCHANGE_MIN_MILLIS_BETWEEN_STEPS / _millisPerTimeStep;
 }
 
 bool SpeedControl::commandRequiresDirectionChange(SpeedControlCommand& targetCommand) {
