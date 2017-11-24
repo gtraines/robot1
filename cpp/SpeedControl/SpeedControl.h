@@ -11,18 +11,19 @@
 #include "InternalOperation.h"
 #include "SpeedControlCommand.h"
 #include "SpeedControlSpeed.h"
-#include "StackArray.h"
 
 class SpeedControl {
 protected:
-    void changeGearDirection(int direction);
     bool commandRequiresDirectionChange(SpeedControlCommand& targetCommand);
-    void pushChangeDirectionOperations(int direction);
     bool availableToReceiveCommand();
     bool currentlyInStoppedRange();
-    void moveForward(int speed);
-    void moveBackward(int speed);
-    void haltMotion();
+    int getServoSignalForSpeedControlSpeed(SpeedControlSpeed speed);
+    
+    void pushChangeDirectionOperations(int direction);
+    void pushHaltMotionOperations();
+    void pushMoveForwardOperations(int speed);
+    void pushMoveBackwardOperations(int speed);
+    
 
     void accelerateForward(int speed);
     void decelerateForward(int speed);
@@ -32,13 +33,13 @@ protected:
     void calculateOperationSteps();
 
 public:
-    void attach(Servo& servo, int updateStepSize);
+    void attach(Servo& servo, int millisPerTimeStep);
     
     int commandMove(SpeedControlCommand command);
     int getCurrentControlStatus();
     int getMillisUntilAvailableForCommand();
     bool setDebug(bool debugModeOn);
-    int incrementStep();
+    int incrementTimeStep();
 
 private:
     StackArray<InternalOperation> _operationsStack;
@@ -51,7 +52,7 @@ private:
     bool _debugModeOn;
     
     int _operationStepsCountdown;
-    int _incrementMillisPerLoop;
+    int _millisPerTimeStep;
 };
 
 #endif //SPEEDCONTROL_SPEEDCONTROL_H
