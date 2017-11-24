@@ -1,6 +1,6 @@
 #ifndef SPEEDCONTROL_SPEEDCONTROLCOMMAND_H
 #define SPEEDCONTROL_SPEEDCONTROLCOMMAND_H
-#include <cast.h>
+
 #include "SpeedControlSpeed.h"
 
 class SpeedControlCommand {
