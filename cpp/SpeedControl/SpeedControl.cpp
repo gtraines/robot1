@@ -1,11 +1,13 @@
 //
 // Created by graham on 11/18/17.
 //
+#include <Arduino.h>
+#include <Servo.h>
+#include <QueueList.h>
 #include "SpeedControlSpeed.h"
 #include "SpeedControlCommand.h"
 #include "InternalOperation.h"
 #include "SpeedControl.h"
-#include "StackArray.h"
 
 #define GEAR_FORWARD 1
 #define GEAR_REVERSE -1
@@ -50,7 +52,7 @@ void SpeedControl::attach(Servo& servo, int millisPerTimeStep) {
     _servo = servo;
     _millisPerTimeStep = millisPerTimeStep;
     
-    _operationsStack = new StackArray<InternalOperation>(); 
+    _operationsQueue = new QueueList<InternalOperation>(); 
 }
 
 int SpeedControl::commandMove(SpeedControlCommand command) {
@@ -115,8 +117,7 @@ bool SpeedControl::currentlyInStoppedRange() {
 }
 
 void SpeedControl::pushChangeDirectionOperations(int direction) {
-    _operationsQueue.push()
-
+    
     if (_operationStepsClock == 0 || _operationStepsClock >= _operation_STEPS_gearChangeMinBetweenSteps) {
         if (!_gearChange_STEP1_STOP_COMPLETE) {
             haltMotion();
@@ -157,6 +158,15 @@ void SpeedControl::pushHaltMotionOperations() {
 
     }
     
+}
+
+void SpeedControl::pushDecelerateForward(SpeedControlSpeed fromSpeed, SpeedControlSpeed toSpeed) {
+    int fromSignal = getServoSignalForSpeedControlSpeed(fromSpeed);
+    int toSignal = getServoSignalForSpeedControlSpeed(toSpeed);
+    
+    for (int signalDecrement = fromSignal; signalDecrement > toSignal; signalDecrement--) {
+        _operationsQueue::push(new InternalOperation());
+    }
 }
 
 int SpeedControl::getServoSignalForSpeedControlSpeed(SpeedControlSpeed speed) {

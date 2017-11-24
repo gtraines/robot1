@@ -40,6 +40,7 @@
                 "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
                 "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
                 "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                "/home/graham/arduino-1.8.5/libraries/QueueList",
                 "${workspaceRoot}",
                 "/usr/include/x86_64-linux-gnu/sys",
                 "/usr/include/c++/5/ext"
@@ -62,6 +63,7 @@
                     "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
                     "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
                     "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                    "/home/graham/arduino-1.8.5/libraries/QueueList",
                     "${workspaceRoot}"
                 ],
                 "limitSymbolsToIncludedHeaders": false,

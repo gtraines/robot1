@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/graham/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/graham/clion2017/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/graham/clion/bin/cmake/bin/cmake -E remove -f
+RM = /home/graham/clion2017/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/graham/projects/robot1/cpp/SpeedControl
+CMAKE_SOURCE_DIR = /home/graham/_Source/robot1/cpp/SpeedControl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug
+CMAKE_BINARY_DIR = /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/uno_CORE.dir/depend.make
@@ -59,7 +59,7 @@ include CMakeFiles/uno_CORE.dir/flags.make
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp.i: cmake_force
@@ -83,7 +83,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp.i: cmake_force
@@ -107,7 +107,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.i: cmake_force
@@ -131,7 +131,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Hardwar
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.i: cmake_force
@@ -155,7 +155,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddre
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.i: cmake_force
@@ -177,33 +177,9 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.c
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj.provides.build: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj
 
 
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj"
-	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp
-
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp > CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i
-
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s
-
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.requires:
-
-.PHONY : CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.requires
-
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.provides: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.requires
-	$(MAKE) -f CMakeFiles/uno_CORE.dir/build.make CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.provides.build
-.PHONY : CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.provides
-
-CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.provides.build: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
-
-
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.i: cmake_force
@@ -227,7 +203,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.i: cmake_force
@@ -251,7 +227,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.i: cmake_force
@@ -275,7 +251,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp.i: cmake_force
@@ -299,7 +275,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WMath.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp.i: cmake_force
@@ -323,7 +299,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WString
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/main.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp.i: cmake_force
@@ -347,7 +323,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/main.cp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.obj: /usr/share/arduino/hardware/arduino/cores/arduino/new.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.obj -c /usr/share/arduino/hardware/arduino/cores/arduino/new.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp.i: cmake_force
@@ -371,7 +347,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c.i: cmake_force
@@ -395,7 +371,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/WInterr
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c.i: cmake_force
@@ -419,7 +395,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-lib
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c.i: cmake_force
@@ -443,7 +419,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/avr-lib
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/wiring.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/wiring.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c.i: cmake_force
@@ -467,7 +443,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring.
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c.i: cmake_force
@@ -491,7 +467,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c.i: cmake_force
@@ -515,7 +491,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c.i: cmake_force
@@ -539,7 +515,7 @@ CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj: CMakeFiles/uno_CORE.dir/flags.make
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj: /usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj"
 	/usr/bin/avr-gcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj   -c /usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c
 
 CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.i: cmake_force
@@ -568,7 +544,6 @@ uno_CORE_OBJECTS = \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj" \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj" \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj" \
-"CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj" \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj" \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj" \
 "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj" \
@@ -593,7 +568,6 @@ libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj
-libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj
@@ -611,7 +585,7 @@ libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c.obj
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/build.make
 libuno_CORE.a: CMakeFiles/uno_CORE.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX static library libuno_CORE.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX static library libuno_CORE.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/uno_CORE.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/uno_CORE.dir/link.txt --verbose=$(VERBOSE)
 
@@ -625,7 +599,6 @@ CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hard
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj.requires
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj.requires
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj.requires
-CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj.requires
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj.requires
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj.requires
 CMakeFiles/uno_CORE.dir/requires: CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj.requires
@@ -649,6 +622,6 @@ CMakeFiles/uno_CORE.dir/clean:
 .PHONY : CMakeFiles/uno_CORE.dir/clean
 
 CMakeFiles/uno_CORE.dir/depend:
-	cd /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/graham/projects/robot1/cpp/SpeedControl /home/graham/projects/robot1/cpp/SpeedControl /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/uno_CORE.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/graham/_Source/robot1/cpp/SpeedControl /home/graham/_Source/robot1/cpp/SpeedControl /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/uno_CORE.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uno_CORE.dir/depend
 

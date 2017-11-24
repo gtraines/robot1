@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/graham/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/graham/clion2017/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/graham/clion/bin/cmake/bin/cmake -E remove -f
+RM = /home/graham/clion2017/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/graham/projects/robot1/cpp/SpeedControl
+CMAKE_SOURCE_DIR = /home/graham/_Source/robot1/cpp/SpeedControl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug
+CMAKE_BINARY_DIR = /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/uno_Servo.dir/depend.make
@@ -59,7 +59,7 @@ include CMakeFiles/uno_Servo.dir/flags.make
 
 CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj: CMakeFiles/uno_Servo.dir/flags.make
 CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj: /usr/share/arduino/libraries/Servo/Servo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj"
 	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj -c /usr/share/arduino/libraries/Servo/Servo.cpp
 
 CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.i: cmake_force
@@ -91,7 +91,7 @@ uno_Servo_EXTERNAL_OBJECTS =
 libuno_Servo.a: CMakeFiles/uno_Servo.dir/usr/share/arduino/libraries/Servo/Servo.cpp.obj
 libuno_Servo.a: CMakeFiles/uno_Servo.dir/build.make
 libuno_Servo.a: CMakeFiles/uno_Servo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libuno_Servo.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libuno_Servo.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/uno_Servo.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/uno_Servo.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/uno_Servo.dir/clean:
 .PHONY : CMakeFiles/uno_Servo.dir/clean
 
 CMakeFiles/uno_Servo.dir/depend:
-	cd /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/graham/projects/robot1/cpp/SpeedControl /home/graham/projects/robot1/cpp/SpeedControl /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/uno_Servo.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/graham/_Source/robot1/cpp/SpeedControl /home/graham/_Source/robot1/cpp/SpeedControl /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/uno_Servo.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uno_Servo.dir/depend
 

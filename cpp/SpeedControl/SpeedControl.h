@@ -7,6 +7,7 @@
 
 #include <Arduino.h>
 #include <Servo.h>
+#include <QueueList.h>
 #include "SpeedControlOperation.h"
 #include "InternalOperation.h"
 #include "SpeedControlCommand.h"
@@ -23,7 +24,6 @@ protected:
     void pushHaltMotionOperations();
     void pushMoveForwardOperations(int speed);
     void pushMoveBackwardOperations(int speed);
-    
 
     void accelerateForward(int speed);
     void decelerateForward(int speed);
@@ -42,7 +42,7 @@ public:
     int incrementTimeStep();
 
 private:
-    StackArray<InternalOperation> _operationsStack;
+    QueueList<InternalOperation> _operationsQueue;
     Servo _servo;
     SpeedControlCommand _targetCommand;
     SpeedControlCommand _currentCommand;

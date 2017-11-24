@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp.obj"
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp.obj"
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.obj"
-  "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj"
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj"
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp.obj"
   "CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp.obj"

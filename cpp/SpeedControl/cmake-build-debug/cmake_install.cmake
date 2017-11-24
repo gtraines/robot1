@@ -1,4 +1,4 @@
-# Install script for directory: /home/graham/projects/robot1/cpp/SpeedControl
+# Install script for directory: /home/graham/_Source/robot1/cpp/SpeedControl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

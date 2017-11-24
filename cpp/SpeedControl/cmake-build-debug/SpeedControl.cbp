@@ -8,73 +8,73 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake\;CMake Files\cmake\Platform\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="upload">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 upload"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 upload"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpeedControl-upload">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl-upload"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl-upload"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpeedControl-size">
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl-size"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl-size"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uno_Servo">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/libuno_Servo.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/libuno_Servo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -83,20 +83,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_Servo"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_Servo"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uno_Servo/fast">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/libuno_Servo.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/libuno_Servo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -105,20 +105,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_Servo/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_Servo/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpeedControl">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl.elf" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -127,20 +127,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="SpeedControl/fast">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl.elf" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -149,20 +149,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 SpeedControl/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uno_CORE">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/libuno_CORE.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/libuno_CORE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -171,20 +171,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_CORE"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_CORE"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="uno_CORE/fast">
-				<Option output="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/libuno_CORE.a" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+				<Option output="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/libuno_CORE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug"/>
+					<Add directory="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug"/>
 					<Add directory="/usr/share/arduino/libraries/Servo"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/src"/>
 					<Add directory="/usr/share/arduino/libraries/Servo/utility"/>
@@ -193,20 +193,20 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_CORE/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 uno_CORE/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl_test_harness.ino.cpp">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl_test_harness.ino.cpp">
 			<Option target="SpeedControl"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl_test_harness.ino.cpp.rule">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/SpeedControl_test_harness.ino.cpp.rule">
 			<Option target="SpeedControl"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/test_harness.ino">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/test_harness.ino">
 			<Option target="SpeedControl"/>
 		</Unit>
 		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Arduino.h">
@@ -246,12 +246,6 @@
 			<Option target="uno_CORE"/>
 		</Unit>
 		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Server.h">
-			<Option target="uno_CORE"/>
-		</Unit>
-		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp">
-			<Option target="uno_CORE"/>
-		</Unit>
-		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Servo.h">
 			<Option target="uno_CORE"/>
 		</Unit>
 		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp">
@@ -341,19 +335,19 @@
 		<Unit filename="/usr/share/arduino/libraries/Servo/Servo.h">
 			<Option target="uno_Servo"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/CMakeLists.txt">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake/ArduinoToolchain.cmake">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake/ArduinoToolchain.cmake">
 			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
 			<Option virtualFolder="CMake Files\cmake\Platform\"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
 			<Option virtualFolder="CMake Files\cmake\Platform\"/>
 		</Unit>
-		<Unit filename="/home/graham/projects/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
+		<Unit filename="/home/graham/_Source/robot1/cpp/SpeedControl/cmake/Platform/Arduino.cmake">
 			<Option virtualFolder="CMake Files\cmake\Platform\"/>
 		</Unit>
 	</Project>

@@ -4,7 +4,15 @@ set(PROJECT_NAME SpeedControl)
 project(${PROJECT_NAME})
 
 include_directories("${PROJECT_BINARY_DIR}")
-
+set(SOURCE_FILES
+        SpeedControlCommand.h
+        SpeedControlOperation.h
+        SpeedControlSpeed.h
+        InternalOperation.h
+        SpeedControl.h
+        SpeedControl.cpp
+        StackArray.h
+        keywords.txt)
 set(${CMAKE_PROJECT_NAME}_SKETCH test_harness.ino)
 #### Uncomment below additional settings as needed.
 set(${CMAKE_PROJECT_NAME}_BOARD uno)

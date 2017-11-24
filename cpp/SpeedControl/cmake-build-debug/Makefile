@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/graham/clion/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/graham/clion2017/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/graham/clion/bin/cmake/bin/cmake -E remove -f
+RM = /home/graham/clion2017/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/graham/projects/robot1/cpp/SpeedControl
+CMAKE_SOURCE_DIR = /home/graham/_Source/robot1/cpp/SpeedControl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug
+CMAKE_BINARY_DIR = /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-deb
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/graham/clion/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/graham/clion2017/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -70,7 +70,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/graham/clion/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/graham/clion2017/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -349,33 +349,6 @@ usr/share/arduino/hardware/arduino/cores/arduino/Print.s: usr/share/arduino/hard
 usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.s:
 	$(MAKE) -f CMakeFiles/uno_CORE.dir/build.make CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.s
 .PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp.s
-
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.obj: usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
-
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.obj
-
-# target to build an object file
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj:
-	$(MAKE) -f CMakeFiles/uno_CORE.dir/build.make CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
-
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.i: usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i
-
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.i
-
-# target to preprocess a source file
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i:
-	$(MAKE) -f CMakeFiles/uno_CORE.dir/build.make CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.i
-
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.s: usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s
-
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.s
-
-# target to generate assembly for a file
-usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s:
-	$(MAKE) -f CMakeFiles/uno_CORE.dir/build.make CMakeFiles/uno_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s
-.PHONY : usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.s
 
 usr/share/arduino/hardware/arduino/cores/arduino/Stream.obj: usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp.obj
 
@@ -841,9 +814,6 @@ help:
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Print.obj"
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Print.i"
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Print.s"
-	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Servo.obj"
-	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Servo.i"
-	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Servo.s"
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Stream.obj"
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Stream.i"
 	@echo "... usr/share/arduino/hardware/arduino/cores/arduino/Stream.s"

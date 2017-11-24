@@ -1,7 +1,7 @@
-/home/graham/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/projects/robot1/cpp/SpeedControl
+/home/graham/clion2017/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/_Source/robot1/cpp/SpeedControl
 -- Generating SpeedControl
 -- Generating uno_Servo for library Servo
 -- Using /usr/bin/avr-objcopy for converting firmware image to hex
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug
+-- Build files have been written to: /home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug

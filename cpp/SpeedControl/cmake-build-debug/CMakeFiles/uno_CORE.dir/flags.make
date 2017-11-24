@@ -7,11 +7,11 @@ C_FLAGS = -g -Os -w -ffunction-sections -fdata-sections -MMD -g -Os -w -ffunctio
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug -I/usr/share/arduino/libraries/Servo -I/usr/share/arduino/libraries/Servo/src -I/usr/share/arduino/libraries/Servo/utility 
+C_INCLUDES = -I/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug -I/usr/share/arduino/libraries/Servo -I/usr/share/arduino/libraries/Servo/src -I/usr/share/arduino/libraries/Servo/utility 
 
 CXX_FLAGS = -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -DF_CPU=16000000L -DARDUINO=10005 -DARDUINO_ -DARDUINO_ARCH_AVR -mmcu=atmega2560 -I"/usr/share/arduino/hardware/arduino/cores/arduino" -I"/usr/share/arduino/libraries" -I"/usr/share/arduino/hardware/arduino/variants/standard"
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/graham/projects/robot1/cpp/SpeedControl/cmake-build-debug -I/usr/share/arduino/libraries/Servo -I/usr/share/arduino/libraries/Servo/src -I/usr/share/arduino/libraries/Servo/utility 
+CXX_INCLUDES = -I/home/graham/_Source/robot1/cpp/SpeedControl/cmake-build-debug -I/usr/share/arduino/libraries/Servo -I/usr/share/arduino/libraries/Servo/src -I/usr/share/arduino/libraries/Servo/utility 
 
