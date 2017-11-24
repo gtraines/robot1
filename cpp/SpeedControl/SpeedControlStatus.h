@@ -1,3 +1,6 @@
+#ifndef SPEEDCONTROL_SPEEDCONTROLSTATUS_H
+#define SPEEDCONTROL_SPEEDCONTROLSTATUS_H
+
 #include "SpeedControlCommand.h"
 #include "InternalOperation.h"
 
@@ -9,3 +12,5 @@ typedef struct {
     int currentServoSignal;
     int operationStepsClockValue;
 } SpeedControlStatus;
+
+#endif
