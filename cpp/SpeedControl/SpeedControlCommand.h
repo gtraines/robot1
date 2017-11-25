@@ -5,14 +5,11 @@
 
 class SpeedControlCommand {
 public:
+    SpeedControlCommand();
+    ~SpeedControlCommand();
     SpeedControlCommand(int speedControlSpeed, long commandIdentifier=0);
     unsigned long commandIdentifier;
     SpeedControlSpeed speedControlSpeed;
 };
-
-SpeedControlCommand::SpeedControlCommand(int speedControlSpeed, long commandIdentifier=0) {
-    commandIdentifier = commandIdentifier;
-    speedControlSpeed = static_cast<SpeedControlSpeed>(speedControlSpeed);
-}
 
  #endif // !SPEEDCONTROL_SPEEDCONTROLCOMMAND_H

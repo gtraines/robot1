@@ -9,6 +9,6 @@ enum SpeedControlOperation {
     ForwardAccelerate,
     ForwardDecelerate,
     ForwardSurge,
-}
+};
 
 #endif 
