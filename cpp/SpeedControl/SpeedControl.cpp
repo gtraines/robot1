@@ -33,6 +33,12 @@ void SpeedControl::attach(Servo& servo, int millisPerTimeStep) {
     _servo = servo;
     _millisPerTimeStep = millisPerTimeStep;
     calculateOperationSteps();
+    _currentCommand = SpeedControlCommand(0, 0);
+    _targetCommand = SpeedControlCommand(0, 0);
+    _operationsQueue = QueueList<InternalOperation*>();
+    _debugModeOn = false;
+    _currentGear = GEAR_FORWARD;
+    _operationStepsCountdown = 0;
 }
 
 int SpeedControl::commandMove(SpeedControlCommand command) {
