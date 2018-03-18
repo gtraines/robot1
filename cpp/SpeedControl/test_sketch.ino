@@ -19,7 +19,7 @@ Servo speedControlServo;
 SpeedControl tazer;
 
 void setup() {
-    Serial.begin(19200);
+    Serial.begin(115200);
     speedControlServo.attach(ESC_PIN_NUMBER);
     tazer.attach(speedControlServo, TIMESTEP_LENGTH_MILLIS);
 
@@ -39,7 +39,9 @@ void loop() {
 
     if (Serial.available() > 0) {
         int command = Serial.parseInt();
-        Serial.println("Received " + command);
+        delay(1);
+        Serial.print("Received ");
+        Serial.println(command);
         int result = -1;
         
         if (tazer.availableToReceiveCommand()) {
@@ -49,7 +51,8 @@ void loop() {
         else {
             result = tazer.getMillisUntilAvailableForCommand();
         }
-        Serial.println("Tazer controller returned " + result);
+        Serial.print("Tazer controller returned ");
+        Serial.println(result);
     }
 
     while (millis() - loopStartMillis < TIMESTEP_LENGTH_MILLIS) {

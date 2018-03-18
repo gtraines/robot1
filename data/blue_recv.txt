@@ -1,0 +1,117 @@
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:29046
+  Head: m6110  s458
+0:m466 s554	1:m1546 s474		 2:m502 s498	3:m1414 s606		 
+4:m542 s454	5:m546 s478		 6:m466 s530	7:m1442
+Extent=17086
+Mark  min:466	 max:1546
+Space min:454	 max:606
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:60542
+  Head: m5986  s586
+0:m410 s586	1:m1406 s590		 2:m438 s610	3:m1406 s590		 
+4:m434 s586	5:m386 s614		 6:m386 s610	7:m1434
+Extent=17058
+Mark  min:386	 max:1434
+Space min:586	 max:614
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:2962
+  Head: m6046  s522
+0:m442 s582	1:m1470 s550		 2:m394 s606	3:m1466 s554		 
+4:m466 s530	5:m474 s522		 6:m418 s606	7:m1494
+Extent=17142
+Mark  min:394	 max:1494
+Space min:522	 max:606
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:52658
+  Head: m6138  s542
+0:m518 s498	1:m1594 s458		 2:m550 s490	3:m1566 s462		 
+4:m474 s566	5:m542 s470		 6:m522 s518	7:m1566
+Extent=17474
+Mark  min:474	 max:1594
+Space min:458	 max:566
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:42546
+  Head: m6146  s534
+0:m474 s538	1:m1462 s594		 2:m506 s506	3:m1486 s570		 
+4:m502 s510	5:m478 s562		 6:m506 s510	7:m1434
+Extent=17318
+Mark  min:474	 max:1486
+Space min:506	 max:594
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:58534
+  Head: m6086  s562
+0:m534 s486	1:m1550 s498		 2:m530 s510	3:m1546 s486		 
+4:m502 s530	5:m502 s514		 6:m530 s510	7:m1546
+Extent=17422
+Mark  min:502	 max:1550
+Space min:486	 max:530
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:57426
+  Head: m6110  s566
+0:m506 s534	1:m1494 s558		 2:m450 s562	3:m1522 s506		 
+4:m422 s618	5:m502 s510		 6:m478 s562	7:m1518
+Extent=17418
+Mark  min:422	 max:1522
+Space min:506	 max:618
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:53530
+  Head: m6086  s594
+0:m482 s530	1:m1546 s530		 2:m454 s562	3:m1518 s510		 
+4:m446 s594	5:m506 s506		 6:m506 s534	7:m1518
+Extent=17422
+Mark  min:446	 max:1546
+Space min:506	 max:594
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:48714
+  Head: m6038  s614
+0:m506 s506	1:m1546 s534		 2:m482 s530	3:m1522 s506		 
+4:m478 s562	5:m478 s534		 6:m482 s530	7:m1546
+Extent=17394
+Mark  min:478	 max:1546
+Space min:506	 max:562
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:44806
+  Head: m6122  s558
+0:m474 s538	1:m1438 s614		 2:m506 s510	3:m1482 s566		 
+4:m510 s506	5:m478 s562		 6:m478 s534	7:m1438
+Extent=17314
+Mark  min:474	 max:1482
+Space min:506	 max:614
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:82
+  Head: m6110  s566
+0:m482 s558	1:m1494 s530		 2:m478 s562	3:m1494 s534		 
+4:m422 s642	5:m458 s530		 6:m482 s558	7:m1494
+Extent=17394
+Mark  min:422	 max:1494
+Space min:530	 max:642
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:44870
+  Head: m6130  s542
+0:m506 s534	1:m1494 s530		 2:m478 s562	3:m1494 s534		 
+4:m422 s642	5:m458 s530		 6:m482 s554	7:m1498
+Extent=17390
+Mark  min:422	 max:1498
+Space min:530	 max:642
+
+Decoded Unknown(0): Value:0 Adrs:0 (0 bits) 
+Raw samples(18): Gap:26094
+  Head: m6122  s530
+0:m498 s542	1:m1494 s562		 2:m474 s538	3:m1438 s614		 
+4:m482 s530	5:m482 s558		 6:m446 s570	7:m1490
+Extent=17370
+Mark  min:446	 max:1494
+Space min:530	 max:614
+

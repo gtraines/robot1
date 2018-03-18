@@ -1,3 +1,6 @@
 {
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:mega",
+    "sketch": "InfraredLearner/InfraredLearner.ino",
+    "port": "/dev/ttyUSB0",
+    "configuration": "cpu=atmega2560"
 }

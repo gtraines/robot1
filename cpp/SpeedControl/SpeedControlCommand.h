@@ -6,8 +6,9 @@
 class SpeedControlCommand {
 public:
     SpeedControlCommand();
-    ~SpeedControlCommand();
-    SpeedControlCommand(int speedControlSpeed, long commandIdentifier=0);
+    ~SpeedControlCommand() = default;
+    explicit SpeedControlCommand(int speedControlSpeed);
+    SpeedControlCommand(int speedControlSpeed, unsigned long commandIdentifier);
     unsigned long commandIdentifier;
     SpeedControlSpeed speedControlSpeed;
 };
