@@ -1,0 +1,309 @@
+The target system is: Arduino -  - 
+The host system is: Linux - 4.4.0-116-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/avr-gcc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/avr-g++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/3.8.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3f7b3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3f7b3.dir/build.make CMakeFiles/cmTC_3f7b3.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3f7b3.dir/testCCompiler.c.obj
+/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -o CMakeFiles/cmTC_3f7b3.dir/testCCompiler.c.obj   -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_3f7b3
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f7b3.dir/link.txt --verbose=1
+/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_3f7b3.dir/testCCompiler.c.obj  -o cmTC_3f7b3 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_74dfd/fast"
+/usr/bin/make -f CMakeFiles/cmTC_74dfd.dir/build.make CMakeFiles/cmTC_74dfd.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj
+/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -o CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj   -c /home/graham/clion2017/bin/cmake/share/cmake-3.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_74dfd
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74dfd.dir/link.txt --verbose=1
+/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections -v CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj  -o cmTC_74dfd 
+Using built-in specs.
+Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2
+COLLECT_GCC=/usr/bin/avr-gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper
+Target: avr
+Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat '
+Thread model: single
+gcc version 4.9.2 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/
+LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/
+COLLECT_GCC_OPTIONS='-g' '-Os' '-w' '-ffunction-sections' '-fdata-sections' '-MMD' '-w' '-Os' '-v' '-o' 'cmTC_74dfd' '-specs=device-specs/specs-avr2'
+ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccO1d20W.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_74dfd -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(avr-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_74dfd/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_74dfd.dir/build.make CMakeFiles/cmTC_74dfd.dir/build]
+  ignore line: [make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -o CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj   -c /home/graham/clion2017/bin/cmake/share/cmake-3.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_74dfd]
+  ignore line: [/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_74dfd.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections -v CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj  -o cmTC_74dfd ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2]
+  ignore line: [COLLECT_GCC=/usr/bin/avr-gcc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper]
+  ignore line: [Target: avr]
+  ignore line: [Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ']
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 4.9.2 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-g' '-Os' '-w' '-ffunction-sections' '-fdata-sections' '-MMD' '-w' '-Os' '-v' '-o' 'cmTC_74dfd' '-specs=device-specs/specs-avr2']
+  link line: [ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccO1d20W.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_74dfd -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj --start-group -lgcc -lm -lc --end-group]
+    arg [/usr/lib/gcc/avr/4.9.2/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/avr/4.9.2/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccO1d20W.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_74dfd] ==> ignore
+    arg [-L/usr/lib/gcc/avr/4.9.2] ==> dir [/usr/lib/gcc/avr/4.9.2]
+    arg [-L/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib]
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_74dfd.dir/CMakeCCompilerABI.c.obj] ==> ignore
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [--end-group] ==> ignore
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2] ==> [/usr/lib/gcc/avr/4.9.2]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> [/usr/lib/avr/lib]
+  implicit libs: [m;c]
+  implicit dirs: [/usr/lib/gcc/avr/4.9.2;/usr/lib/avr/lib]
+  implicit fwks: []
+
+
+
+
+Detecting C [-std=c11] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_151df/fast"
+/usr/bin/make -f CMakeFiles/cmTC_151df.dir/build.make CMakeFiles/cmTC_151df.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_151df.dir/feature_tests.c.obj
+/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -std=c11 -o CMakeFiles/cmTC_151df.dir/feature_tests.c.obj   -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_151df
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_151df.dir/link.txt --verbose=1
+/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_151df.dir/feature_tests.c.obj  -o cmTC_151df 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c99] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2261e/fast"
+/usr/bin/make -f CMakeFiles/cmTC_2261e.dir/build.make CMakeFiles/cmTC_2261e.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2261e.dir/feature_tests.c.obj
+/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -std=c99 -o CMakeFiles/cmTC_2261e.dir/feature_tests.c.obj   -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_2261e
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2261e.dir/link.txt --verbose=1
+/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_2261e.dir/feature_tests.c.obj  -o cmTC_2261e 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting C [-std=c90] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d2a0a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d2a0a.dir/build.make CMakeFiles/cmTC_d2a0a.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d2a0a.dir/feature_tests.c.obj
+/usr/bin/avr-gcc   -g -Os -w -ffunction-sections -fdata-sections -MMD    -std=c90 -o CMakeFiles/cmTC_d2a0a.dir/feature_tests.c.obj   -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.c
+Linking C executable cmTC_d2a0a
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d2a0a.dir/link.txt --verbose=1
+/usr/bin/avr-gcc -g -Os -w -ffunction-sections -fdata-sections -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_d2a0a.dir/feature_tests.c.obj  -o cmTC_d2a0a 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_efb58/fast"
+/usr/bin/make -f CMakeFiles/cmTC_efb58.dir/build.make CMakeFiles/cmTC_efb58.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_efb58.dir/testCXXCompiler.cxx.obj
+/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -o CMakeFiles/cmTC_efb58.dir/testCXXCompiler.cxx.obj -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_efb58
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_efb58.dir/link.txt --verbose=1
+/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_efb58.dir/testCXXCompiler.cxx.obj  -o cmTC_efb58 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9628a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_9628a.dir/build.make CMakeFiles/cmTC_9628a.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -o CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj -c /home/graham/clion2017/bin/cmake/share/cmake-3.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_9628a
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9628a.dir/link.txt --verbose=1
+/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections -v CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_9628a 
+Using built-in specs.
+Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2
+COLLECT_GCC=/usr/bin/avr-g++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper
+Target: avr
+Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat '
+Thread model: single
+gcc version 4.9.2 (GCC) 
+COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/
+LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/
+COLLECT_GCC_OPTIONS='-g' '-Os' '-w' '-fno-exceptions' '-ffunction-sections' '-fdata-sections' '-fno-threadsafe-statics' '-MMD' '-w' '-Os' '-v' '-o' 'cmTC_9628a' '-specs=device-specs/specs-avr2'
+ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwWgRm7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_9628a -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(avr-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_9628a/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_9628a.dir/build.make CMakeFiles/cmTC_9628a.dir/build]
+  ignore line: [make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -o CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj -c /home/graham/clion2017/bin/cmake/share/cmake-3.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_9628a]
+  ignore line: [/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9628a.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections -v CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj  -o cmTC_9628a ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Reading specs from /usr/lib/gcc/avr/4.9.2/device-specs/specs-avr2]
+  ignore line: [COLLECT_GCC=/usr/bin/avr-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/avr/4.9.2/lto-wrapper]
+  ignore line: [Target: avr]
+  ignore line: [Configured with: ../src/configure -v --enable-languages=c,c++ --prefix=/usr/lib --infodir=/usr/share/info --mandir=/usr/share/man --bindir=/usr/bin --libexecdir=/usr/lib --libdir=/usr/lib --enable-shared --with-system-zlib --enable-long-long --enable-nls --without-included-gettext --disable-libssp --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=avr CFLAGS='-g -O2 -fstack-protector-strong -Wformat ' CPPFLAGS=-D_FORTIFY_SOURCE=2 CXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ' FCFLAGS='-g -O2 -fstack-protector-strong' FFLAGS='-g -O2 -fstack-protector-strong' GCJFLAGS='-g -O2 -fstack-protector-strong' LDFLAGS='-Wl,-Bsymbolic-functions -Wl,-z,relro' OBJCFLAGS='-g -O2 -fstack-protector-strong -Wformat ' OBJCXXFLAGS='-g -O2 -fstack-protector-strong -Wformat ']
+  ignore line: [Thread model: single]
+  ignore line: [gcc version 4.9.2 (GCC) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/:/usr/lib/gcc/avr/4.9.2/../../../avr/bin/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/avr/4.9.2/:/usr/lib/gcc/avr/4.9.2/../../../avr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-g' '-Os' '-w' '-fno-exceptions' '-ffunction-sections' '-fdata-sections' '-fno-threadsafe-statics' '-MMD' '-w' '-Os' '-v' '-o' 'cmTC_9628a' '-specs=device-specs/specs-avr2']
+  link line: [ /usr/lib/gcc/avr/4.9.2/collect2 -plugin /usr/lib/gcc/avr/4.9.2/liblto_plugin.so -plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper -plugin-opt=-fresolution=/tmp/ccwWgRm7.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lm -plugin-opt=-pass-through=-lc -o cmTC_9628a -L/usr/lib/gcc/avr/4.9.2 -L/usr/lib/gcc/avr/4.9.2/../../../avr/lib --gc-sections CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj -lgcc -lm --start-group -lgcc -lm -lc --end-group]
+    arg [/usr/lib/gcc/avr/4.9.2/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/usr/lib/gcc/avr/4.9.2/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/usr/lib/gcc/avr/4.9.2/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccwWgRm7.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lm] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_9628a] ==> ignore
+    arg [-L/usr/lib/gcc/avr/4.9.2] ==> dir [/usr/lib/gcc/avr/4.9.2]
+    arg [-L/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib]
+    arg [--gc-sections] ==> ignore
+    arg [CMakeFiles/cmTC_9628a.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [--start-group] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lm] ==> lib [m]
+    arg [-lc] ==> lib [c]
+    arg [--end-group] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2] ==> [/usr/lib/gcc/avr/4.9.2]
+  collapse library dir [/usr/lib/gcc/avr/4.9.2/../../../avr/lib] ==> [/usr/lib/avr/lib]
+  implicit libs: [m;m;c]
+  implicit dirs: [/usr/lib/gcc/avr/4.9.2;/usr/lib/avr/lib]
+  implicit fwks: []
+
+
+
+
+Detecting CXX [-std=c++14] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a4734/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a4734.dir/build.make CMakeFiles/cmTC_a4734.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a4734.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -std=c++14 -o CMakeFiles/cmTC_a4734.dir/feature_tests.cxx.obj -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_a4734
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a4734.dir/link.txt --verbose=1
+/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_a4734.dir/feature_tests.cxx.obj  -o cmTC_a4734 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++11] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4b5ea/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4b5ea.dir/build.make CMakeFiles/cmTC_4b5ea.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4b5ea.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -std=c++11 -o CMakeFiles/cmTC_4b5ea.dir/feature_tests.cxx.obj -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_4b5ea
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b5ea.dir/link.txt --verbose=1
+/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_4b5ea.dir/feature_tests.cxx.obj  -o cmTC_4b5ea 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+
+Detecting CXX [-std=c++98] compiler features compiled with the following output:
+Change Dir: /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e6587/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e6587.dir/build.make CMakeFiles/cmTC_e6587.dir/build
+make[1]: Entering directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e6587.dir/feature_tests.cxx.obj
+/usr/bin/avr-g++    -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD    -std=c++98 -o CMakeFiles/cmTC_e6587.dir/feature_tests.cxx.obj -c /home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e6587
+/home/graham/clion2017/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6587.dir/link.txt --verbose=1
+/usr/bin/avr-g++  -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-threadsafe-statics -MMD   -w -Os -Wl,--gc-sections  CMakeFiles/cmTC_e6587.dir/feature_tests.cxx.obj  -o cmTC_e6587 
+make[1]: Leaving directory '/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+

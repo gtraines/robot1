@@ -1,7 +1,0 @@
-{
-    "board": "arduino:avr:mega",
-    "sketch": "test_sketch.ino",
-    "debugger": "gdb",
-    "port": "/dev/ttyUSB0",
-    "configuration": "cpu=atmega2560"
-}

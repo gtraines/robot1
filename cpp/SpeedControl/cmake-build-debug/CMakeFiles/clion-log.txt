@@ -1,0 +1,27 @@
+/home/graham/clion2017/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/Source/robot1/cpp/SpeedControl
+-- The C compiler identification is GNU 4.9.2
+-- The CXX compiler identification is GNU 4.9.2
+-- Arduino SDK version 1.0.5: /usr/share/arduino
+-- Check for working C compiler: /usr/bin/avr-gcc
+-- Check for working C compiler: /usr/bin/avr-gcc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/avr-g++
+-- Check for working CXX compiler: /usr/bin/avr-g++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Generating SpeedControl
+CMake Error at cmake/Platform/Arduino.cmake:1829 (message):
+  Sketch does not exist:
+  /home/graham/Source/robot1/cpp/SpeedControl/test_harness.ino
+Call Stack (most recent call first):
+  cmake/Platform/Arduino.cmake:489 (setup_arduino_sketch)
+  CMakeLists.txt:28 (generate_arduino_firmware)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/graham/Source/robot1/cpp/SpeedControl/cmake-build-debug/CMakeFiles/CMakeOutput.log".
