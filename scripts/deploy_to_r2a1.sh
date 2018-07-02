@@ -1,1 +1,1 @@
-arduino --board arduino:avr:mega --port /dev/tty/USB0
+arduino --board arduino:avr:mega --port /dev/tty/USB0 $1

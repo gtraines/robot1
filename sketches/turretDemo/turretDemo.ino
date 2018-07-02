@@ -22,6 +22,7 @@
 #define MOVE_LED_RED 51
 #define MOVE_LED_BLUE 53
 
+#define ELEVATION_DELTA 25
 #define CANNON_LED 52
 
 int _elevation = 0;
@@ -31,7 +32,7 @@ void elevateTo(int targetElevation) {
     
     int elev = getCurrentElevation();
     
-    if (canMoveToElevation(targetElevation) && targetElevation != elev) {
+    if (canMoveToElevation(targetElevation) && abs(targetElevation - elev) > ELEVATION_DELTA) {
       if (targetElevation > elev) {
         increaseElevation(targetElevation);
       } else {
@@ -43,36 +44,52 @@ void elevateTo(int targetElevation) {
 }
 
 void increaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, 75);
+  analogWrite(MOTOR_ENABLE, 90);
   turnOnLed(MOVE_LED_GRN);
-  while (targetElevation > getCurrentElevation()) {
-    digitalWrite(MOTOR_POS, HIGH);
-    digitalWrite(MOTOR_NEG, LOW);
-    delay(15);
+  digitalWrite(MOTOR_POS, HIGH);
+  digitalWrite(MOTOR_NEG, LOW);
+  int elev = getCurrentElevation();
+  
+  while (targetElevation > elev && abs(targetElevation - elev) > ELEVATION_DELTA) {
+    delay(5);
+    elev = getCurrentElevation();
   }
   
   elevationStop();
   turnOffLed(MOVE_LED_GRN);
+  elev = getCurrentElevation();
+  
+  if (elev > targetElevation && abs(targetElevation - elev) > ELEVATION_DELTA) {
+    elevateTo(targetElevation);
+  }
 }
 
 void decreaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, 75);
+  analogWrite(MOTOR_ENABLE, 90);
   
   turnOnLed(MOVE_LED_BLUE);
   turnOnLed(MOVE_LED_RED);
+  digitalWrite(MOTOR_POS, LOW);
+  digitalWrite(MOTOR_NEG, HIGH);
+  int elev = getCurrentElevation();
   
-  while (targetElevation < getCurrentElevation()) {
-    digitalWrite(MOTOR_POS, LOW);
-    digitalWrite(MOTOR_NEG, HIGH);
-    delay(15);
+  while (targetElevation < elev && abs(targetElevation - elev) > ELEVATION_DELTA) {
+    delay(5);
+    elev = getCurrentElevation();
   }
+  
   elevationStop();
   turnOffLed(MOVE_LED_BLUE);
   turnOffLed(MOVE_LED_RED);
+  elev = getCurrentElevation();
+  
+  if (elev < targetElevation && abs(targetElevation - elev) > ELEVATION_DELTA) {
+    elevateTo(targetElevation);
+  }
 }
 
 void elevationStop() {
-    analogWrite(MOTOR_ENABLE, 0);
+    
     digitalWrite(MOTOR_POS, LOW);
     digitalWrite(MOTOR_NEG, LOW);
 }
@@ -85,7 +102,6 @@ int getCurrentElevation() {
   int currentElevation = analogRead(MOTOR_POSITION);
   
   if (currentElevation != _elevation) {
-    printInt(currentElevation);
     _elevation = currentElevation;
   }
   
