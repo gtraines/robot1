@@ -1,10 +1,12 @@
 
 #include <Arduino.h>
 
-#define MOTOR_POS 22
-#define MOTOR_NEG 23
+#define MOTOR_POS 23
+#define MOTOR_NEG 22
 #define MOTOR_ENABLE 8
 #define MOTOR_POSITION A0
+#define ELEVATION_MAX 715
+#define ELEVATION_MIN 280
 
 #define IR_TRIGGER 2
 #define SERVO 3
@@ -24,8 +26,75 @@
 
 int _elevation = 0;
 
-void elevate(int where) {
+void elevateTo(int targetElevation) {
+    elevationStop();
+    
+    int elev = getCurrentElevation();
+    
+    if (canMoveToElevation(targetElevation) && targetElevation != elev) {
+      if (targetElevation > elev) {
+        increaseElevation(targetElevation);
+      } else {
+        decreaseElevation(targetElevation);
+      }
+    } else {
+      setArdStatusError();
+    }
+}
+
+void increaseElevation(int targetElevation) {
+  analogWrite(MOTOR_ENABLE, 75);
+  turnOnLed(MOVE_LED_GRN);
+  while (targetElevation > getCurrentElevation()) {
+    digitalWrite(MOTOR_POS, HIGH);
+    digitalWrite(MOTOR_NEG, LOW);
+    delay(15);
+  }
   
+  elevationStop();
+  turnOffLed(MOVE_LED_GRN);
+}
+
+void decreaseElevation(int targetElevation) {
+  analogWrite(MOTOR_ENABLE, 75);
+  
+  turnOnLed(MOVE_LED_BLUE);
+  turnOnLed(MOVE_LED_RED);
+  
+  while (targetElevation < getCurrentElevation()) {
+    digitalWrite(MOTOR_POS, LOW);
+    digitalWrite(MOTOR_NEG, HIGH);
+    delay(15);
+  }
+  elevationStop();
+  turnOffLed(MOVE_LED_BLUE);
+  turnOffLed(MOVE_LED_RED);
+}
+
+void elevationStop() {
+    analogWrite(MOTOR_ENABLE, 0);
+    digitalWrite(MOTOR_POS, LOW);
+    digitalWrite(MOTOR_NEG, LOW);
+}
+
+boolean canMoveToElevation(int targetElevation) {
+  return targetElevation >= ELEVATION_MIN && targetElevation <= ELEVATION_MAX;
+}
+
+int getCurrentElevation() {
+  int currentElevation = analogRead(MOTOR_POSITION);
+  
+  if (currentElevation != _elevation) {
+    printInt(currentElevation);
+    _elevation = currentElevation;
+  }
+  
+  return _elevation;
+}
+
+void printInt(int intToPrint) {
+  indicateTx();
+  Serial.println(intToPrint);
 }
 
 void setup() {
@@ -78,6 +147,10 @@ boolean systemsCheck() {
   momentaryLedOn(MOVE_LED_BLUE);
   
   momentaryLedOn(CANNON_LED);
+
+  elevateTo(ELEVATION_MIN);
+  elevateTo(ELEVATION_MAX);
+  elevateTo(500);
   return true;
   
 }
@@ -100,8 +173,11 @@ void setArdStatusError() {
 }
 
 void indicateRx() {
-  
-  
+  momentaryLedOn(ACTY_LED_3);
+}
+
+void indicateTx() {
+  momentaryLedOn(ACTY_LED_1);
 }
 
 void turnOnLed(int pinNumber) {
@@ -113,11 +189,7 @@ void turnOffLed(int pinNumber) {
 }
 
 void loop() {
-  int currentElevation = analogRead(MOTOR_POSITION);
-  if (currentElevation != _elevation) {
-    momentaryLedOn(ACTY_LED_1);
-    Serial.println(_elevation);
-    _elevation = currentElevation;
-  }
-  delay(100);
+  
+  
+
 }
