@@ -1,98 +1,123 @@
-//www.elegoo.com
-//2016.09.12
 
-/*define logic control output pin*/
-#define in1 9
-#define in2 8
-#define in3 7
-#define in4 6
-/*define channel enable output pins*/
-#define ENA 10
-#define ENB 5
+#include <Arduino.h>
 
-/*define left function*/
-void moveBackward()
-{
-  digitalWrite(ENB,HIGH);
-  digitalWrite(in3,HIGH);
-  digitalWrite(in4,LOW);
-  Serial.println("Back");
-}
-/*define right function*/
-void moveForward()
-{
-  digitalWrite(ENB,HIGH);
-  digitalWrite(in3,LOW);
-  digitalWrite(in4,HIGH);
-  Serial.println("Forward");
-}
+#define MOTOR_POS 22
+#define MOTOR_NEG 23
+#define MOTOR_ENABLE 8
+#define MOTOR_POSITION A0
 
-void turnLeft() {
-  digitalWrite(ENA,HIGH);
-  digitalWrite(in1,HIGH);
-  digitalWrite(in2,LOW);
-  Serial.println("Left");
+#define IR_TRIGGER 2
+#define SERVO 3
+
+#define ARD_STATUS_GRN 24
+#define ARD_STATUS_RED 25
+
+#define ACTY_LED_1 27
+#define ACTY_LED_2 29
+#define ACTY_LED_3 31
+
+#define MOVE_LED_GRN 50
+#define MOVE_LED_RED 51
+#define MOVE_LED_BLUE 53
+
+#define CANNON_LED 52
+
+int _elevation = 0;
+
+void elevate(int where) {
+  
 }
 
-void turnRight() 
-{
-  digitalWrite(ENA,HIGH);
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,HIGH);
-  Serial.println("Right");
-}
-
-
-void steerStraight() 
-{
-  digitalWrite(ENA,LOW);
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,LOW);
-  Serial.println("Straight");
-}
-
-void fullStop()
-{
-  digitalWrite(ENA,LOW);
-  digitalWrite(ENB,LOW);
-  digitalWrite(in1,LOW);
-  digitalWrite(in2,LOW);
-  digitalWrite(in3,LOW);
-  digitalWrite(in4,LOW);
-  Serial.println("Full stop");
-}
-/*put your setup code here, to run once*/
 void setup() {
- Serial.begin(115200); //Open the serial port and set the baud rate to 9600
-/*Set the defined pins to the output*/
-  pinMode(in1,OUTPUT);
-  pinMode(in2,OUTPUT);
-  pinMode(in3,OUTPUT);
-  pinMode(in4,OUTPUT);
-  pinMode(ENA,OUTPUT);
-  pinMode(ENB,OUTPUT);
+  Serial.begin(115200);
+  pinMode(MOTOR_ENABLE, OUTPUT);
+  pinMode(MOTOR_POS, OUTPUT);
+  pinMode(MOTOR_NEG, OUTPUT);
+  
+  pinMode(ARD_STATUS_GRN, OUTPUT);
+  pinMode(ARD_STATUS_RED, OUTPUT);
+  
+  pinMode(ACTY_LED_1, OUTPUT);
+  pinMode(ACTY_LED_2, OUTPUT);
+  pinMode(ACTY_LED_3, OUTPUT);
+
+  pinMode(MOVE_LED_GRN, OUTPUT);
+  pinMode(MOVE_LED_RED, OUTPUT);
+  pinMode(MOVE_LED_BLUE, OUTPUT);
+
+  pinMode(CANNON_LED, OUTPUT);
+  
+  if (systemsCheck()) {
+    setArdStatusGood();
+  } else {
+    setArdStatusError();
+  }
+
 }
 
-/*put your main code here, to run repeatedly*/
-void loop() {
-  fullStop();
-  delay(1000);
-  turnLeft();
-  delay(2000);
-  steerStraight();
-  delay(1000);
-  turnRight();
-  delay(2000);
-  steerStraight();
+boolean systemsCheck() {
+  turnOffLed(ARD_STATUS_GRN);
+  turnOffLed(ARD_STATUS_RED);
+  
+  turnOffLed(ACTY_LED_1);
+  turnOffLed(ACTY_LED_2);
+  turnOffLed(ACTY_LED_3);
+  
+  turnOffLed(MOVE_LED_GRN);
+  turnOffLed(MOVE_LED_RED);
+  turnOffLed(MOVE_LED_BLUE);
+  
+  turnOffLed(CANNON_LED);
+  
+  momentaryLedOn(ACTY_LED_1);
+  momentaryLedOn(ACTY_LED_2);
+  momentaryLedOn(ACTY_LED_3);
+  
+  momentaryLedOn(MOVE_LED_GRN);
+  momentaryLedOn(MOVE_LED_RED);
+  momentaryLedOn(MOVE_LED_BLUE);
+  
+  momentaryLedOn(CANNON_LED);
+  return true;
+  
+}
+
+void momentaryLedOn(int pinNumber) {
+  turnOnLed(pinNumber);
   delay(500);
-//  fullStop();
-//  delay(500);
-//  moveBackward();
-//  delay(500);
-//  turnLeft();
-//  delay(500);
-//  steerStraight();
-//  delay(500);
-//  turnRight();
-//  delay(500);
+  turnOffLed(pinNumber);
+}
+
+
+void setArdStatusGood() {
+  turnOffLed(ARD_STATUS_RED);
+  turnOnLed(ARD_STATUS_GRN);
+}
+
+void setArdStatusError() {
+  turnOffLed(ARD_STATUS_GRN);
+  turnOnLed(ARD_STATUS_RED);
+}
+
+void indicateRx() {
+  
+  
+}
+
+void turnOnLed(int pinNumber) {
+  digitalWrite(pinNumber, LOW);
+}
+
+void turnOffLed(int pinNumber) {
+  digitalWrite(pinNumber, HIGH);
+}
+
+void loop() {
+  int currentElevation = analogRead(MOTOR_POSITION);
+  if (currentElevation != _elevation) {
+    momentaryLedOn(ACTY_LED_1);
+    Serial.println(_elevation);
+    _elevation = currentElevation;
+  }
+  delay(100);
 }
