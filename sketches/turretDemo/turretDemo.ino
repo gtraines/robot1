@@ -22,8 +22,11 @@
 #define MOVE_LED_RED 51
 #define MOVE_LED_BLUE 53
 
-#define ELEVATION_DELTA 25
 #define CANNON_LED 52
+
+#define ELEVATION_DELTA 25
+#define ELEV_POS_SPEED 100
+#define ELEV_NEG_SPEED 200
 
 int _elevation = 0;
 
@@ -44,7 +47,7 @@ void elevateTo(int targetElevation) {
 }
 
 void increaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, 90);
+  analogWrite(MOTOR_ENABLE, ELEV_POS_SPEED);
   turnOnLed(MOVE_LED_GRN);
   digitalWrite(MOTOR_POS, HIGH);
   digitalWrite(MOTOR_NEG, LOW);
@@ -65,7 +68,7 @@ void increaseElevation(int targetElevation) {
 }
 
 void decreaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, 90);
+  analogWrite(MOTOR_ENABLE, ELEV_NEG_SPEED);
   
   turnOnLed(MOVE_LED_BLUE);
   turnOnLed(MOVE_LED_RED);
