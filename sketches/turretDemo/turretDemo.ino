@@ -1,13 +1,6 @@
 
 #include <Arduino.h>
 
-#define MOTOR_POS 23
-#define MOTOR_NEG 22
-#define MOTOR_ENABLE 8
-#define MOTOR_POSITION A0
-#define ELEVATION_MAX 715
-#define ELEVATION_MIN 280
-
 #define IR_TRIGGER 2
 #define SERVO 3
 
@@ -24,11 +17,31 @@
 
 #define CANNON_LED 52
 
-#define ELEVATION_DELTA 25
-#define ELEV_POS_SPEED 100
-#define ELEV_NEG_SPEED 200
+#define ELEVATION_MAX 740
+#define ELEVATION_MIN 325
+#define ELEVATION_DELTA 15
 
-int _elevation = 0;
+#define MOTOR_MIN_SPEED 50
+#define MOTOR_MED_SPEED 100
+#define MOTOR_MAX_SPEED 150
+#define MOTOR_JERK_SPEED 255
+#define ELEV_JERK_LENGTH 10
+#define MOTOR_UPDATE_INTERVAL 60
+
+#define MOTOR_POS 23
+#define MOTOR_NEG 22
+#define MOTOR_ENABLE 8
+#define MOTOR_POSITION A0
+
+int _lastElevation = 0;
+
+bool elevationProgress(int currentElevation) {
+  if (abs(currentElevation - _lastElevation) < ELEVATION_DELTA) {
+    return false;
+  }
+
+  return true;
+}
 
 void elevateTo(int targetElevation) {
     elevationStop();
@@ -46,38 +59,75 @@ void elevateTo(int targetElevation) {
     }
 }
 
+int getElevationTargetDeltaInSlices(int targetElevation) {
+  int deltaAnalog = abs(targetElevation - getCurrentElevation());
+
+  return deltaAnalog/ELEVATION_DELTA;
+}
+
+int getMotorSpeed(int targetElevation, int lastElevation) {
+  int deltaSlices = getElevationTargetDeltaInSlices(targetElevation);
+  if (deltaSlices > 25 || (abs(getCurrentElevation() - lastElevation) < ELEVATION_DELTA )) {
+    return MOTOR_JERK_SPEED;
+  } else if (deltaSlices > 15) {
+    return MOTOR_MAX_SPEED;
+  } else if (deltaSlices > 5) {
+    return MOTOR_MED_SPEED;
+  } else {
+    return MOTOR_MIN_SPEED;
+  }
+  
+}
+
 void increaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, ELEV_POS_SPEED);
+  analogWrite(MOTOR_ENABLE, MOTOR_JERK_SPEED);
+  int currentMotorSpeed = MOTOR_JERK_SPEED;
   turnOnLed(MOVE_LED_GRN);
   digitalWrite(MOTOR_POS, HIGH);
   digitalWrite(MOTOR_NEG, LOW);
   int elev = getCurrentElevation();
   
-  while (targetElevation > elev && abs(targetElevation - elev) > ELEVATION_DELTA) {
-    delay(5);
-    elev = getCurrentElevation();
+  int motorSpeedUpdated = currentMotorSpeed;
+  while (targetElevation > elev && getElevationTargetDeltaInSlices(targetElevation) > 1) {
+    delay(MOTOR_UPDATE_INTERVAL);
+    
+    motorSpeedUpdated = getMotorSpeed(targetElevation, elev);
+    if (motorSpeedUpdated != currentMotorSpeed) {
+      analogWrite(MOTOR_ENABLE, motorSpeedUpdated);
+      currentMotorSpeed = motorSpeedUpdated;
+    }
+    
+    elev = getCurrentElevation();    
   }
   
   elevationStop();
   turnOffLed(MOVE_LED_GRN);
   elev = getCurrentElevation();
   
-  if (elev > targetElevation && abs(targetElevation - elev) > ELEVATION_DELTA) {
+  if (elev > targetElevation && getElevationTargetDeltaInSlices(targetElevation) > 1) {
     elevateTo(targetElevation);
   }
 }
 
 void decreaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, ELEV_NEG_SPEED);
-  
+  analogWrite(MOTOR_ENABLE, MOTOR_JERK_SPEED);
+  int currentMotorSpeed = MOTOR_JERK_SPEED;
+
   turnOnLed(MOVE_LED_BLUE);
   turnOnLed(MOVE_LED_RED);
   digitalWrite(MOTOR_POS, LOW);
   digitalWrite(MOTOR_NEG, HIGH);
   int elev = getCurrentElevation();
   
-  while (targetElevation < elev && abs(targetElevation - elev) > ELEVATION_DELTA) {
-    delay(5);
+  int motorSpeedUpdated = currentMotorSpeed;
+  while (targetElevation < elev && getElevationTargetDeltaInSlices(targetElevation) > 1) {
+    delay(MOTOR_UPDATE_INTERVAL);
+    
+    motorSpeedUpdated = getMotorSpeed(targetElevation, elev);
+    if (motorSpeedUpdated != currentMotorSpeed) {
+      analogWrite(MOTOR_ENABLE, motorSpeedUpdated);
+      currentMotorSpeed = motorSpeedUpdated;
+    };
     elev = getCurrentElevation();
   }
   
@@ -86,7 +136,7 @@ void decreaseElevation(int targetElevation) {
   turnOffLed(MOVE_LED_RED);
   elev = getCurrentElevation();
   
-  if (elev < targetElevation && abs(targetElevation - elev) > ELEVATION_DELTA) {
+  if (elev < targetElevation && getElevationTargetDeltaInSlices(targetElevation) > 1) {
     elevateTo(targetElevation);
   }
 }
@@ -102,13 +152,7 @@ boolean canMoveToElevation(int targetElevation) {
 }
 
 int getCurrentElevation() {
-  int currentElevation = analogRead(MOTOR_POSITION);
-  
-  if (currentElevation != _elevation) {
-    _elevation = currentElevation;
-  }
-  
-  return _elevation;
+  return analogRead(MOTOR_POSITION);
 }
 
 void printInt(int intToPrint) {
@@ -166,10 +210,24 @@ boolean systemsCheck() {
   momentaryLedOn(MOVE_LED_BLUE);
   
   momentaryLedOn(CANNON_LED);
+  momentaryLedOn(CANNON_LED);
+  strobeLed(CANNON_LED, 10);
 
   elevateTo(ELEVATION_MIN);
   elevateTo(ELEVATION_MAX);
   elevateTo(500);
+  elevateTo(600);
+  delay(500);
+  strobeLed(CANNON_LED, 10);
+  elevateTo(320);
+  elevateTo(700);
+  elevateTo(500);
+  elevateTo(320);
+  elevateTo(600);
+  delay(500);
+  strobeLed(CANNON_LED, 10);
+  elevateTo(350);
+  elevateTo(600);
   return true;
   
 }
@@ -180,6 +238,15 @@ void momentaryLedOn(int pinNumber) {
   turnOffLed(pinNumber);
 }
 
+void strobeLed(int pinNumber, int numberTimes) {
+  int iter = 0;
+  for (iter = 0; iter < numberTimes; iter++) {
+    turnOnLed(pinNumber);
+    delay(50);
+    turnOffLed(pinNumber);
+    delay(50);
+  }
+}
 
 void setArdStatusGood() {
   turnOffLed(ARD_STATUS_RED);
