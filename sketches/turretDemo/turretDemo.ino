@@ -1,6 +1,7 @@
 
 #include <Arduino.h>
 #include <Indicator.h>
+#include <PotMotor.h>
 
 #define IR_TRIGGER 2
 #define SERVO 3
@@ -34,6 +35,7 @@
 #define MOTOR_ENABLE 8
 #define MOTOR_POSITION A0
 
+PotMotor* _elevationMotor = NULL;
 
 
 void setMotorIncreaseElevation() {
@@ -45,64 +47,8 @@ void setMotorDecreaseElevation() {
   Indicator::turnOnLed(MOVE_LED_RED);
 }
 
-void changeElevation(int targetElevation, int elevationDirection) {
-
-}
-
-
-void increaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, MOTOR_JERK_SPEED);
-  setMotorIncreaseElevation();
-  
-  int currentMotorSpeed = MOTOR_JERK_SPEED;
-  int motorSpeedUpdated = currentMotorSpeed;
-  while (targetElevation > elev && getElevationTargetDeltaInSlices(targetElevation) > 1) {
-    delay(MOTOR_UPDATE_INTERVAL);
-    
-    motorSpeedUpdated = getMotorSpeed(targetElevation, elev);
-    if (motorSpeedUpdated != currentMotorSpeed) {
-      analogWrite(MOTOR_ENABLE, motorSpeedUpdated);
-      currentMotorSpeed = motorSpeedUpdated;
-    }
-    
-    elev = getCurrentElevation();    
-  }
-  
-  elevationStop();
-  elev = getCurrentElevation();
-  
-  if (elev > targetElevation && getElevationTargetDeltaInSlices(targetElevation) > 1) {
-    elevateTo(targetElevation);
-  }
-}
-
-void decreaseElevation(int targetElevation) {
-  analogWrite(MOTOR_ENABLE, MOTOR_JERK_SPEED);
-  int currentMotorSpeed = MOTOR_JERK_SPEED;
-  int elev = getCurrentElevation();
-  
-  int motorSpeedUpdated = currentMotorSpeed;
-  while (targetElevation < elev && getElevationTargetDeltaInSlices(targetElevation) > 1) {
-    delay(MOTOR_UPDATE_INTERVAL);
-    
-    motorSpeedUpdated = getMotorSpeed(targetElevation, elev);
-    if (motorSpeedUpdated != currentMotorSpeed) {
-      analogWrite(MOTOR_ENABLE, motorSpeedUpdated);
-      currentMotorSpeed = motorSpeedUpdated;
-    };
-    elev = getCurrentElevation();
-  }
-  
-  elevationStop();
-  elev = getCurrentElevation();
-  
-  if (elev < targetElevation && getElevationTargetDeltaInSlices(targetElevation) > 1) {
-    elevateTo(targetElevation);
-  }
-}
-
 void elevationStop() {
-Indicator::turnOffLed(MOVE_LED_BLUE);
+    Indicator::turnOffLed(MOVE_LED_BLUE);
     Indicator::turnOffLed(MOVE_LED_RED);
     Indicator::turnOffLed(MOVE_LED_GRN);
 }
@@ -130,6 +76,10 @@ void setup() {
   pinMode(MOVE_LED_BLUE, OUTPUT);
 
   pinMode(CANNON_LED, OUTPUT);
+  _elevationMotor = new PotMotor((int)MOTOR_ENABLE, 
+    (int)MOTOR_POS, (int)MOTOR_NEG, (int)MOTOR_POSITION, 
+    (int)ELEVATION_MIN, (int)ELEVATION_MAX, (int)ELEVATION_DELTA, 
+    (int)MOTOR_MIN_SPEED, (int)MOTOR_MAX_SPEED, (int)MOTOR_MED_SPEED, (int)MOTOR_JERK_SPEED);
   
   if (systemsCheck()) {
     setArdStatusGood();
@@ -140,6 +90,7 @@ void setup() {
 }
 
 boolean systemsCheck() {
+
   Indicator::turnOffLed(ARD_STATUS_GRN);
   Indicator::turnOffLed(ARD_STATUS_RED);
   
@@ -165,21 +116,21 @@ boolean systemsCheck() {
   Indicator::momentaryLedOn(CANNON_LED);
   Indicator::strobeLed(CANNON_LED, 10);
 
-  elevateTo(ELEVATION_MIN);
-  elevateTo(ELEVATION_MAX);
-  elevateTo(500);
-  elevateTo(600);
+  _elevationMotor->moveTo(ELEVATION_MIN);
+  _elevationMotor->moveTo(ELEVATION_MAX);
+  _elevationMotor->moveTo(500);
+  _elevationMotor->moveTo(600);
   delay(500);
   Indicator::strobeLed(CANNON_LED, 10);
-  elevateTo(320);
-  elevateTo(700);
-  elevateTo(500);
-  elevateTo(320);
-  elevateTo(600);
+  _elevationMotor->moveTo(320);
+  _elevationMotor->moveTo(700);
+  _elevationMotor->moveTo(500);
+  _elevationMotor->moveTo(320);
+  _elevationMotor->moveTo(600);
   delay(500);
   Indicator::strobeLed(CANNON_LED, 10);
-  elevateTo(350);
-  elevateTo(600);
+  _elevationMotor->moveTo(350);
+  _elevationMotor->moveTo(600);
   return true;
   
 }

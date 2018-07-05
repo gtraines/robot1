@@ -6,15 +6,38 @@ int PotMotor::moveTo(int targetPosition)
 {
     motorStop();
     
-    int elev = getCurrentPosition();
+    int currentPosition = getCurrentPosition();
     int currentDirection;
 
     if (canMoveToPosition(targetPosition)) {
-      if (targetPosition > elev) {
-        currentDirection = (int)MotorDirection::INCREASE;
-      } else {
-        currentDirection = (int)MotorDirection::DECREASE;
-      }
+        if (targetPosition > currentPosition) {
+            currentDirection = (int)MotorDirection::INCREASE;
+        } else {
+            currentDirection = (int)MotorDirection::DECREASE;
+        }
+        analogWrite(_enablePin, _motorJerkSpeed);
+        setMotorDirection(currentDirection);
+  
+        int currentMotorSpeed = _motorJerkSpeed;
+        int motorSpeedUpdated = currentMotorSpeed;
+        
+        while (shouldContinueMoving(currentDirection, targetPosition, currentPosition) 
+            && getPositionTargetDeltaInSlices(targetPosition) > 1) {
+            delay(_readingDelay);
+    
+            motorSpeedUpdated = getMotorSpeed(targetPosition, currentPosition);
+            if (motorSpeedUpdated != currentMotorSpeed) {
+                analogWrite(_enablePin, motorSpeedUpdated);
+                currentMotorSpeed = motorSpeedUpdated;
+            }
+    
+            currentPosition = getCurrentPosition();    
+        }
+  
+        motorStop();
+        if (getPositionTargetDeltaInSlices(targetPosition) > 1) {
+            moveTo(targetPosition);
+        }
         return 0;
 
     } else {
@@ -38,16 +61,27 @@ void PotMotor::setMotorDirection(int motorDirection) {
         digitalWrite(_decreaseHighPin, HIGH);
     }
 }
-boolean shouldIncreasePosition(int targetPosition, int currentPosition) {
-  bool shouldIncrease = targetPosition > currentPosition;
 
-  return shouldIncrease;
+void PotMotor::setReadingDelay(int delayMilliseconds) {
+    _readingDelay = delayMilliseconds;
 }
 
-boolean shouldDecreasePosition(int targetPosition, int currentPosition) {
-  bool shouldDecrease = targetPosition < currentPosition;
+boolean PotMotor::shouldContinueMoving(int motorDirection, int targetPosition, int currentPosition) {
+    if (motorDirection == (int)MotorDirection::INCREASE) {
+        return shouldIncreasePosition(targetPosition, currentPosition);
+    }
+    if (motorDirection == (int)MotorDirection::DECREASE) {
+        return shouldDecreasePosition(targetPosition, currentPosition);
+    }
+    return false;
+}
 
-  return shouldDecrease;
+boolean PotMotor::shouldIncreasePosition(int targetPosition, int currentPosition) {
+  return targetPosition > currentPosition;
+}
+
+boolean PotMotor::shouldDecreasePosition(int targetPosition, int currentPosition) {
+  return targetPosition < currentPosition;
 }
 
 void PotMotor::indicateError()
@@ -65,13 +99,13 @@ void PotMotor::indicateDecrease()
 
 }
 
-void PotMotor::indicateStop() 
-{
-
+int PotMotor::getCurrentPosition() {
+    return (int)analogRead(_potReadingPin);
 }
 
 bool PotMotor::canMoveToPosition(int targetPosition) {
-    return targetPosition >= _minPositionReading && targetPosition <= _maxPositionReading;    
+    return targetPosition >= _minPositionReading && targetPosition <= _maxPositionReading 
+        && (getPositionTargetDeltaInSlices(targetPosition) > 1);    
 }
 
 int PotMotor::getPositionTargetDeltaInSlices(int targetPosition)  {
