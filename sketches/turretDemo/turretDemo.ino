@@ -76,11 +76,13 @@ void setup() {
   pinMode(MOVE_LED_BLUE, OUTPUT);
 
   pinMode(CANNON_LED, OUTPUT);
+
   _elevationMotor = new PotMotor((int)MOTOR_ENABLE, 
     (int)MOTOR_POS, (int)MOTOR_NEG, (int)MOTOR_POSITION, 
     (int)ELEVATION_MIN, (int)ELEVATION_MAX, (int)ELEVATION_DELTA, 
     (int)MOTOR_MIN_SPEED, (int)MOTOR_MAX_SPEED, (int)MOTOR_MED_SPEED, (int)MOTOR_JERK_SPEED);
-  
+  _elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
+
   if (systemsCheck()) {
     setArdStatusGood();
   } else {
