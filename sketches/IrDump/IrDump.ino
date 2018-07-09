@@ -10,34 +10,35 @@
 #include <Arduino.h>
 #include <IRremote.h>
 
+#define DEBUG true
 #define HIT_PIN 26
 #define DIR_1_REAR_PIN 28
 #define DIR_2_RIGHT_PIN 30
 #define DIR_3_LEFT_PIN 32
 #define DIR_4_FRONT_PIN 34
-#define DIR_5_FLOATING_PIN 15
-#define DIR_6_FLOATING_PIN 17
 
 #define RED_HIT 33EBDD7B 34EBDF0E D104AF4A
 #define BLUE_HIT A3F34992
 #define PURPLE_HIT1 33EBDD7A
-String sxrDirection = "";
-boolean sxrValueAvailable = false;
-// IRrecv _hitSxr(HIT_PIN);
-// IRrecv _dir1Sxr(DIR_1_REAR_PIN);
-// IRrecv _dir2Sxr(DIR_2_RIGHT_PIN);
-// IRrecv _dir3Sxr(DIR_3_LEFT_PIN);
-// IRrecv _dir4Sxr(DIR_4_FRONT_PIN);
-// IRrecv _dir5Sxr(DIR_5_FLOATING_PIN);
-IRrecv _dir6Sxr(DIR_6_FLOATING_PIN);
 
-// decode_results _hitResults;
+boolean _sxrResultAvail = false;
+boolean _hitSxrResultAvail = false;
+boolean _dir1SxrResultAvail = false;
+boolean _dir2SxrResultAvail = false;
+boolean _dir3SxrResultAvail = false;
+boolean _dir4SxrResultAvail = false;
+
+IRrecv _hitSxr(HIT_PIN);
+IRrecv _dir1Sxr(DIR_1_REAR_PIN);
+IRrecv _dir2Sxr(DIR_2_RIGHT_PIN);
+IRrecv _dir3Sxr(DIR_3_LEFT_PIN);
+IRrecv _dir4Sxr(DIR_4_FRONT_PIN);
+
+decode_results _hitResults;
 decode_results _dir1Results;
-// decode_results _dir2Results;
-// decode_results _dir3Results;
-// decode_results _dir4Results;
-decode_results _dir5Results;
-decode_results _dir6Results;
+decode_results _dir2Results;
+decode_results _dir3Results;
+decode_results _dir4Results;
 
 void setup()
 {
@@ -45,23 +46,21 @@ void setup()
     digitalWrite(31, HIGH);
 
     Serial.begin(115200);
-    // pinMode(HIT_PIN, INPUT_PULLUP);        digitalWrite(31, LOW);
 
-    //pinMode(DIR_1_REAR_PIN, INPUT_PULLUP);
-    // pinMode(DIR_2_RIGHT_PIN, INPUT_PULLUP);
-    // pinMode(DIR_3_LEFT_PIN, INPUT_PULLUP);
-    // pinMode(DIR_4_FRONT_PIN, INPUT_PULLUP);
+    pinMode(HIT_PIN, INPUT_PULLUP);        
+    pinMode(DIR_1_REAR_PIN, INPUT_PULLUP);
+    pinMode(DIR_2_RIGHT_PIN, INPUT_PULLUP);
+    pinMode(DIR_3_LEFT_PIN, INPUT_PULLUP);
+    pinMode(DIR_4_FRONT_PIN, INPUT_PULLUP);
     //pinMode(DIR_5_FLOATING_PIN, INPUT_PULLUP);
-    pinMode(DIR_6_FLOATING_PIN, INPUT_PULLUP);
+    //pinMode(DIR_6_FLOATING_PIN, INPUT_PULLUP);
     
     // Start the receivers
-    // _hitSxr.enableIRIn();
-    //_dir1Sxr.enableIRIn();
-    // _dir2Sxr.enableIRIn();
-    // _dir3Sxr.enableIRIn();
-    // _dir4Sxr.enableIRIn();
-    //_dir5Sxr.enableIRIn();
-    _dir6Sxr.enableIRIn();
+    _hitSxr.enableIRIn();
+    _dir1Sxr.enableIRIn();
+    _dir2Sxr.enableIRIn();
+    _dir3Sxr.enableIRIn();
+    _dir4Sxr.enableIRIn();
 }
 
 // Dumps out the decode_results structure.
@@ -81,52 +80,64 @@ void dump(String sensorName, decode_results *results) {
 
 
 void loop() {
-//   if (_hitSxr.decode(&_hitResults)) {
-//         digitalWrite(31, LOW);
-//         Serial.println(_hitResults.value, HEX);
-//         dump("Hit Sensor", &_hitResults);
-//         _hitSxr.resume(); // Receive the next value
-//   }
+  if (_hitSxr.decode(&_hitResults)) {
+        digitalWrite(31, LOW);
+        _sxrResultAvail = true;
+        _hitSxrResultAvail = true;
+  }
 
-//   if (_dir1Sxr.decode(&_dir1Results)) {
-//         sxrDirection = "DIR1";
-//         sxrValueAvailable = true;
-//   }
-//   if (_dir2Sxr.decode(&_dir2Results)) {
-//         digitalWrite(31, LOW);
-//         Serial.println(_dir2Results.value, HEX);
-//         dump("DIR_2_RIGHT_PIN", &_dir2Results);
-//         _dir2Sxr.resume(); // Receive the next value
-//   }
-//   if (_dir3Sxr.decode(&_dir3Results)) {
-//         digitalWrite(31, LOW);
-//         Serial.println(_dir3Results.value, HEX);
-//         dump("DIR_3_LEFT_PIN", &_dir3Results);
-//         _dir3Sxr.resume(); // Receive the next value
-//   }
-//   if (_dir4Sxr.decode(&_dir4Results)) {
-//         digitalWrite(31, LOW);
-//         Serial.println(_dir4Results.value, HEX);
-//         dump("DIR_4_FRONT_PIN", &_dir4Results);
-//         _dir4Sxr.resume(); // Receive the next value
-//   }
-    // if (_dir5Sxr.decode(&_dir1Results)) {
-    //     sxrDirection = "DIR5";
-    //     sxrValueAvailable = true;
-    // }
-    if (_dir6Sxr.decode(&_dir6Results)) {
-        sxrDirection = "DIR6";
-        sxrValueAvailable = true;
-    }
-    if (sxrValueAvailable == true) {
-        //Serial.println(_dir1Results.value, HEX);    
-        dump(sxrDirection, &_dir6Results);
-        sxrValueAvailable = false;
-        //_dir1Sxr.resume(); // Receive the next value
-        //_dir5Sxr.resume(); // Receive the next value
-        _dir6Sxr.resume(); // Receive the next value
+  if (_dir1Sxr.decode(&_dir1Results)) {
+        digitalWrite(31, LOW);
+        _sxrResultAvail = true;
+        _dir1SxrResultAvail = true;
+
+  }
+  if (_dir2Sxr.decode(&_dir2Results)) {
+        digitalWrite(31, LOW);
+        _sxrResultAvail = true;
+        _dir2SxrResultAvail = true;
+  }
+  if (_dir3Sxr.decode(&_dir3Results)) {
+        digitalWrite(31, LOW);
+        _sxrResultAvail = true;
+        _dir3SxrResultAvail = true;
+  }
+  if (_dir4Sxr.decode(&_dir4Results)) {
+        digitalWrite(31, LOW);
+        _sxrResultAvail = true;
+        _dir4SxrResultAvail = true;
+  }
+
+    if (_sxrResultAvail == true) {
+        
+        if (_hitSxrResultAvail) {
+            dump("Hit Sensor", &_hitResults);
+            _hitSxrResultAvail = false;
+            _hitSxr.resume();
+        }
+        if (_dir1SxrResultAvail) {
+            dump("DIR REAR", &_dir1Results);
+            _dir1SxrResultAvail = false;
+            _dir1Sxr.resume();
+        }
+        if (_dir2SxrResultAvail) {
+            dump("DIR LEFT", &_dir2Results);
+            _dir2SxrResultAvail = false;
+            _dir2Sxr.resume();
+        }
+        if (_dir3SxrResultAvail) {
+            dump("DIR RIGHT", &_dir3Results);
+            _dir3SxrResultAvail = false;
+            _dir3Sxr.resume();
+        }
+        if (_dir4SxrResultAvail) {
+            dump("DIR FRONT", &_dir4Results);
+            _dir4SxrResultAvail = false;
+            _dir4Sxr.resume();
+        }
+        _sxrResultAvail = false;
     }
 
     digitalWrite(31, HIGH);
-    delay(5);
+    delay(1);
 }
