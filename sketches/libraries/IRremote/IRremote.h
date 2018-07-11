@@ -37,11 +37,11 @@
 // Results returned from the decoder
 class decode_results {
 public:
-  int decode_type; // NEC, SONY, RC5, UNKNOWN
-  unsigned long value; // Decoded value
-  int bits; // Number of bits in decoded value
-  volatile unsigned int *rawbuf; // Raw intervals in .5 us ticks
-  int rawlen; // Number of records in rawbuf.
+    int decode_type; // NEC, SONY, RC5, UNKNOWN
+    unsigned long value; // Decoded value
+    int bits; // Number of bits in decoded value
+    volatile unsigned int *rawbuf; // Raw intervals in .5 us ticks
+    int rawlen; // Number of records in rawbuf.
 };
 
 // Values for decode_type
@@ -55,25 +55,28 @@ public:
 #define REPEAT 0xffffffff
 
 // main class for receiving IR
-class IRrecv
-{
-public:
-  IRrecv(int recvpin);
-  ~IRrecv(); // Neco: add destructor to remove instance of irparams from global list
-  void blink13(int blinkflag);
-  int decode(decode_results *results);
-  void enableIRIn();
-  void resume();
-private:
-  irparams_t irparams; // Neco: adding private instance member
-  // These are called by decode
-  int getRClevel(decode_results *results, int *offset, int *used, int t1);
-  long decodeNEC(decode_results *results);
-  long decodeSony(decode_results *results);
-  long decodeRC5(decode_results *results);
-  long decodeRC6(decode_results *results);
-} 
-;
+//class IRrecv {
+//public:
+//    IRrecv(int recvpin);
+//
+//    ~IRrecv(); // Neco: add destructor to remove instance of irparams from global list
+//    void blink13(int blinkflag);
+//
+//    int decode(decode_results *results);
+//
+//    void enableIRIn();
+//
+//    void resume();
+//
+//private:
+//    irparams_t irparams; // Neco: adding private instance member
+//    // These are called by decode
+//    int getRClevel(decode_results *results, int *offset, int *used, int t1);
+//
+//    long decodeSony(decode_results *results);
+//
+//    long decodeHash(decode_results *results);
+//};
 
 // Only used for testing; can remove virtual for shorter code
 #ifdef TEST
@@ -82,20 +85,17 @@ private:
 #define VIRTUAL
 #endif
 
-class IRsend
-{
+class IRsend {
 public:
-  IRsend() {}
-  void sendNEC(unsigned long data, int nbits);
-  void sendSony(unsigned long data, int nbits);
-  void sendRaw(unsigned int buf[], int len, int hz);
-  void sendRC5(unsigned long data, int nbits);
-  void sendRC6(unsigned long data, int nbits);
-  // private:
-  void enableIROut(int khz);
-  VIRTUAL void mark(int usec);
-  VIRTUAL void space(int usec);
-}
-;
+    IRsend() {}
+    void sendRaw(unsigned int buf[], int len, int hz);
+
+    // private:
+    void enableIROut(int khz);
+
+    VIRTUAL void mark(int usec);
+
+    VIRTUAL void space(int usec);
+};
 
 #endif

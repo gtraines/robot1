@@ -9,10 +9,18 @@
  * Also influenced by http://zovirl.com/2008/11/12/building-a-universal-remote-with-an-arduino/
  */
 
+#include <Arduino.h>
+#include "boarddefs.h"
+
 #ifndef IRremoteInt_h
 #define IRremoteInt_h
 
-#include <Arduino.h>
+#define USECPERTICK 50  // microseconds per clock interrupt tick
+#define RAWBUF 76 // Length of raw duration buffer
+
+// Marks tend to be 100us too long, and spaces 100us too short
+// when received due to sensor lag.
+#define MARK_EXCESS 100
 
 #define CLKFUDGE 5      // fudge factor for clock interrupt overhead
 #define CLK 256      // max value for clock (timer 2)
@@ -92,6 +100,10 @@ typedef struct {
   uint8_t rawlen;         // counter of entries in rawbuf
 } 
 irparams_t;
+
+// Neco: no this global variable
+// Defined in IRremote.cpp
+//extern volatile irparams_t irparams;
 
 // IR detector output is active low
 #define MARK  0

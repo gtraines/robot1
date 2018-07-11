@@ -8,7 +8,7 @@
  * LG added by Darryl Smith (based on the JVC protocol)
  */
 #include <Arduino.h>
-#include <IRremote.h>
+#include <IrReceiver.h>
 
 #define DEBUG true
 #define HIT_PIN 26
@@ -28,11 +28,11 @@ boolean _dir2SxrResultAvail = false;
 boolean _dir3SxrResultAvail = false;
 boolean _dir4SxrResultAvail = false;
 
-IRrecv _hitSxr(HIT_PIN);
-IRrecv _dir1Sxr(DIR_1_REAR_PIN);
-IRrecv _dir2Sxr(DIR_2_RIGHT_PIN);
-IRrecv _dir3Sxr(DIR_3_LEFT_PIN);
-IRrecv _dir4Sxr(DIR_4_FRONT_PIN);
+IrReceiver _hitSxr(HIT_PIN);
+IrReceiver _dir1Sxr(DIR_1_REAR_PIN);
+IrReceiver _dir2Sxr(DIR_2_RIGHT_PIN);
+IrReceiver _dir3Sxr(DIR_3_LEFT_PIN);
+IrReceiver _dir4Sxr(DIR_4_FRONT_PIN);
 
 decode_results _hitResults;
 decode_results _dir1Results;
