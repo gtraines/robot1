@@ -24,6 +24,7 @@ IRrecvPCI myReceiver(IR_SENSOR_HIT);//pin number for the receiver
 // 	1522, 1000};
 
 // RED RED RED !!!
+// #define RAW_DATA_LEN 18
 // uint16_t rawData[RAW_DATA_LEN]={
 // 	6038, 502, 522, 478, 1498, 514, 522, 482, 
 // 	1538, 474, 518, 506, 430, 566, 1486, 530, 
@@ -38,6 +39,7 @@ IRrecvPCI myReceiver(IR_SENSOR_HIT);//pin number for the receiver
 // 	530, 1000};
 
 // // PURPLE PURPLE PURPLE!
+// #define RAW_DATA_LEN 18
 // uint16_t rawData[RAW_DATA_LEN]={
 // 	5982, 562, 518, 486, 1530, 482, 518, 490, 
 // 	1530, 482, 482, 538, 486, 538, 1426, 566, 
