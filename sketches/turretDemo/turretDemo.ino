@@ -3,43 +3,11 @@
 #include <Indicator.h>
 #include <PotMotor.h>
 
-#define IR_TRIGGER 2
-#define SERVO 3
+#include <ElevationConfig.h>
+#include <IndicatorConfig.h>
+#include <IrConfig.h>
+#include <TraverseConfig.h>
 
-#define ARD_STATUS_GRN 24
-#define ARD_STATUS_RED 25
-
-#define IR_SENSOR_HIT 26
-#define IR_SENSOR_DIRECTION_1 28
-#define IR_SENSOR_DIRECTION_2 30
-#define IR_SENSOR_DIRECTION_3 32
-#define IR_SENSOR_DIRECTION_4 34
-
-#define ACTY_LED_1 27
-#define ACTY_LED_2 29
-#define ACTY_LED_3 31
-
-#define MOVE_LED_GRN 50
-#define MOVE_LED_RED 51
-#define MOVE_LED_BLUE 53
-
-#define CANNON_LED 52
-
-#define ELEVATION_MAX 740
-#define ELEVATION_MIN 325
-#define ELEVATION_DELTA 15
-
-#define MOTOR_MIN_SPEED 50
-#define MOTOR_MED_SPEED 100
-#define MOTOR_MAX_SPEED 150
-#define MOTOR_JERK_SPEED 255
-#define ELEV_JERK_LENGTH 10
-#define MOTOR_UPDATE_INTERVAL 60
-
-#define MOTOR_POS 23
-#define MOTOR_NEG 22
-#define MOTOR_ENABLE 8
-#define MOTOR_POSITION A0
 
 PotMotor* _elevationMotor = NULL;
 
