@@ -24,6 +24,7 @@
 #define MARK_EXCESS 100
 
 #include "IRremoteInt.h"
+#include "decode_results.h"
 // =================
 
 // The following are compile-time library options.
@@ -34,15 +35,6 @@
 //#define DEBUG
 // #define TEST
 
-// Results returned from the decoder
-class decode_results {
-public:
-    int decode_type; // NEC, SONY, RC5, UNKNOWN
-    unsigned long value; // Decoded value
-    int bits; // Number of bits in decoded value
-    volatile unsigned int *rawbuf; // Raw intervals in .5 us ticks
-    int rawlen; // Number of records in rawbuf.
-};
 
 // Values for decode_type
 #define NEC 1

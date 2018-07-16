@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Project Name="turret" InternalType="Library">
+  <VirtualDirectory Name="libraries">
+    <VirtualDirectory Name="IRLibProtocols">
+      <VirtualDirectory Name="unsupported">
+        <File Name="libraries/IRLibProtocols/unsupported/IRLib_P90_Tutorial.h"/>
+        <File Name="libraries/IRLibProtocols/unsupported/IRLib_P90_Unsupported.h"/>
+      </VirtualDirectory>
+      <File Name="libraries/IRLibProtocols/IRLibSendBase.cpp"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P05_Panasonic_Old.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P04_RC6.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P06_JVC.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibHardware.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P99_Additional.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibProtocols.cpp"/>
+      <File Name="libraries/IRLibProtocols/IRLib_HashRaw.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibCombo.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibSAMD21.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibProtocols.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P02_Sony.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibSAMD21.cpp"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P03_RC5.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P12_CYKM.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P10_DirecTV.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P08_Samsung36.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibHardware.cpp"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P01_NEC.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P11_RCMM.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P07_NECx.h"/>
+      <File Name="libraries/IRLibProtocols/IRLib_P09_GICable.h"/>
+      <File Name="libraries/IRLibProtocols/IRLibSendBase.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Firmata">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="StandardFirmataEthernet">
+          <File Name="libraries/Firmata/examples/StandardFirmataEthernet/ethernetConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="StandardFirmataBLE">
+          <File Name="libraries/Firmata/examples/StandardFirmataBLE/bleConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="StandardFirmataWiFi">
+          <File Name="libraries/Firmata/examples/StandardFirmataWiFi/wifiConfig.h"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="utility">
+        <File Name="libraries/Firmata/utility/firmataDebug.h"/>
+        <File Name="libraries/Firmata/utility/BLEStream.cpp"/>
+        <File Name="libraries/Firmata/utility/WiFiClientStream.h"/>
+        <File Name="libraries/Firmata/utility/SerialFirmata.h"/>
+        <File Name="libraries/Firmata/utility/EthernetServerStream.h"/>
+        <File Name="libraries/Firmata/utility/EthernetClientStream.cpp"/>
+        <File Name="libraries/Firmata/utility/BluefruitLE_SPI_Stream.h"/>
+        <File Name="libraries/Firmata/utility/SerialFirmata.cpp"/>
+        <File Name="libraries/Firmata/utility/EthernetServerStream.cpp"/>
+        <File Name="libraries/Firmata/utility/EthernetClientStream.h"/>
+        <File Name="libraries/Firmata/utility/BluefruitLE_SPI_Stream.cpp"/>
+        <File Name="libraries/Firmata/utility/BLEStream.h"/>
+        <File Name="libraries/Firmata/utility/FirmataFeature.h"/>
+        <File Name="libraries/Firmata/utility/WiFiStream.h"/>
+        <File Name="libraries/Firmata/utility/WiFiStream.cpp"/>
+        <File Name="libraries/Firmata/utility/WiFiServerStream.h"/>
+      </VirtualDirectory>
+      <File Name="libraries/Firmata/FirmataMarshaller.cpp"/>
+      <File Name="libraries/Firmata/FirmataParser.h"/>
+      <File Name="libraries/Firmata/FirmataParser.cpp"/>
+      <File Name="libraries/Firmata/FirmataMarshaller.h"/>
+      <File Name="libraries/Firmata/Boards.h"/>
+      <File Name="libraries/Firmata/Firmata.h"/>
+      <File Name="libraries/Firmata/FirmataDefines.h"/>
+      <File Name="libraries/Firmata/Firmata.cpp"/>
+      <File Name="libraries/Firmata/FirmataConstants.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="StackArray">
+      <File Name="libraries/StackArray/StackArray.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="CppList">
+      <File Name="libraries/CppList/CppList.cpp"/>
+      <File Name="libraries/CppList/CppList.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="HC-SR04">
+      <File Name="libraries/HC-SR04/SR04.cpp"/>
+      <File Name="libraries/HC-SR04/SR04.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="IrSensorCluster">
+      <File Name="libraries/IrSensorCluster/IrSensorCluster.h"/>
+      <File Name="libraries/IrSensorCluster/IrSensorCluster.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="TurretConfig">
+      <File Name="libraries/TurretConfig/IrConfig.h"/>
+      <File Name="libraries/TurretConfig/TraverseConfig.h"/>
+      <File Name="libraries/TurretConfig/ElevationConfig.h"/>
+      <File Name="libraries/TurretConfig/IndicatorConfig.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Arduino_FreeRTOS">
+      <File Name="libraries/Arduino_FreeRTOS/timers.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/heap_3.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/queue.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/queue.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/task.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/FreeRTOSVariant.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/tasks.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/event_groups.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/mpu_wrappers.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/port.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/croutine.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/event_groups.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/portmacro.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/variantHooks.cpp"/>
+      <File Name="libraries/Arduino_FreeRTOS/timers.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/Arduino_FreeRTOS.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/FreeRTOSConfig.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/semphr.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/projdefs.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/list.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/stream_buffer.c"/>
+      <File Name="libraries/Arduino_FreeRTOS/stream_buffer.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/list.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/croutine.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/portable.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/message_buffer.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/stack_macros.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Comm">
+      <File Name="libraries/Comm/CommWriter.h"/>
+      <File Name="libraries/Comm/CommMonitor.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="QueueList">
+      <File Name="libraries/QueueList/QueueList.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="DS3231">
+      <File Name="libraries/DS3231/DS3231.h"/>
+      <File Name="libraries/DS3231/DS3231.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="Indicator">
+      <File Name="libraries/Indicator/Indicator.cpp"/>
+      <File Name="libraries/Indicator/Indicator.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="PotMotor">
+      <File Name="libraries/PotMotor/PotMotor.h"/>
+      <File Name="libraries/PotMotor/PotMotor.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="IRremote">
+      <File Name="libraries/IRremote/IRremoteInt.h"/>
+      <File Name="libraries/IRremote/IRremote.cpp"/>
+      <File Name="libraries/IRremote/IrReceiver.h"/>
+      <File Name="libraries/IRremote/IrReceiver.cpp"/>
+      <File Name="libraries/IRremote/IRremote.h"/>
+      <File Name="libraries/IRremote/boarddefs.h"/>
+      <File Name="libraries/IRremote/decode_results.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="TurretControllers">
+      <File Name="libraries/TurretControllers/ElevationController.h"/>
+      <File Name="libraries/TurretControllers/IrCannonController.h"/>
+      <File Name="libraries/TurretControllers/TurretController.h"/>
+      <File Name="libraries/TurretControllers/IrSensorMonitor.h"/>
+      <File Name="libraries/TurretControllers/CommandMonitor.h"/>
+      <File Name="libraries/TurretControllers/TraverseController.h"/>
+    </VirtualDirectory>
+  </VirtualDirectory>
+  <Description/>
+  <Dependencies/>
+  <Settings Type="Static Library">
+    <GlobalSettings>
+      <Compiler Options="" C_Options="" Assembler="">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="">
+        <LibraryPath Value="."/>
+      </Linker>
+      <ResourceCompiler Options=""/>
+    </GlobalSettings>
+    <Configuration Name="Debug" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="-g" C_Options="-g" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/lib$(ProjectName).a" IntermediateDirectory="./Debug" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="yes">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+    <Configuration Name="Release" CompilerType="Cross GCC ( avr )" DebuggerType="GNU gdb debugger" Type="Static Library" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+      <Compiler Options="" C_Options="" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
+        <IncludePath Value="."/>
+      </Compiler>
+      <Linker Options="" Required="yes"/>
+      <ResourceCompiler Options="" Required="no"/>
+      <General OutputFile="$(IntermediateDirectory)/lib$(ProjectName).a" IntermediateDirectory="./Release" Command="" CommandArguments="" UseSeparateDebugArgs="no" DebugArguments="" WorkingDirectory="$(IntermediateDirectory)" PauseExecWhenProcTerminates="yes" IsGUIProgram="no" IsEnabled="yes"/>
+      <Environment EnvVarSetName="&lt;Use Defaults&gt;" DbgSetName="&lt;Use Defaults&gt;">
+        <![CDATA[]]>
+      </Environment>
+      <Debugger IsRemote="no" RemoteHostName="" RemoteHostPort="" DebuggerPath="" IsExtended="yes">
+        <DebuggerSearchPaths/>
+        <PostConnectCommands/>
+        <StartupCommands/>
+      </Debugger>
+      <PreBuild/>
+      <PostBuild/>
+      <CustomBuild Enabled="no">
+        <RebuildCommand/>
+        <CleanCommand/>
+        <BuildCommand/>
+        <PreprocessFileCommand/>
+        <SingleFileCommand/>
+        <MakefileGenerationCommand/>
+        <ThirdPartyToolName/>
+        <WorkingDirectory/>
+      </CustomBuild>
+      <AdditionalRules>
+        <CustomPostBuild/>
+        <CustomPreBuild/>
+      </AdditionalRules>
+      <Completion EnableCpp11="no" EnableCpp14="no">
+        <ClangCmpFlagsC/>
+        <ClangCmpFlags/>
+        <ClangPP/>
+        <SearchPaths/>
+      </Completion>
+    </Configuration>
+  </Settings>
+  <VirtualDirectory Name="src"/>
+  <VirtualDirectory Name="include"/>
+  <VirtualDirectory Name="GoldilocksAnalogueTestSuite">
+    <File Name="GoldilocksAnalogueTestSuite/GA_Header.h"/>
+  </VirtualDirectory>
+</CodeLite_Project>

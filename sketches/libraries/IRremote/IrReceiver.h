@@ -2,8 +2,8 @@
 #include "IRremoteInt.h"
 #include "IRremote.h"
 
-#ifndef IrReceiver_h
-#define IrReceiver_h
+#ifndef IR_RECEIVER__H
+#define IR_RECEIVER__H
 
 class IrReceiver {
 public:
@@ -21,4 +21,4 @@ private:
     int getRClevel(decode_results *results, int *offset, int *used, int t1);
 };
 
-#endif
+#endif // IR_RECEIVER__H
