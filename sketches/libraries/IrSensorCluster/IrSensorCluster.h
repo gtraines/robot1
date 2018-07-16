@@ -11,11 +11,17 @@ typedef struct {
     IrReceiver* HitSensor;
 } directional_sensor_t;
 
+typedef struct {
+    String SensorName;
+    long ReadingValue;
+} sensor_reading_t;
+
 class IrSensorCluster {
 public:
     IrSensorCluster();
     ~IrSensorCluster();
     bool checkNextSensor();
+    sensor_reading_t* getSensorReading();
 private:
     /* data members */
     int _currentSensorIndex;
