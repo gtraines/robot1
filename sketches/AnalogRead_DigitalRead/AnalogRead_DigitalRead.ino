@@ -1,3 +1,5 @@
+#include <Arduino.h>
+#include <HardwareSerial.h>
 #include <Arduino_FreeRTOS.h>
 #include <semphr.h>  // add the FreeRTOS functions for Semaphores (or Flags).
 

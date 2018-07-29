@@ -1,5 +1,0 @@
-[{
-  "file": "/home/robot1/Source/robot1/sketches/tests/main.cpp",
-  "directory": "/home/robot1/Source/robot1/sketches/tests",
-  "command": "/usr/bin/avr-g++ -c /home/robot1/Source/robot1/sketches/tests/main.cpp -o /home/robot1/Source/robot1/sketches/tests/main.cpp.o  -g -I. -I/usr/include/unittest++ -I."
- }]
