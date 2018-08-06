@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CodeLite_Project Name="turret" InternalType="Library">
+<CodeLite_Project Name="arduinoLibraries" InternalType="Library">
   <VirtualDirectory Name="libraries">
     <VirtualDirectory Name="IRLibProtocols">
       <VirtualDirectory Name="unsupported">
@@ -31,15 +31,53 @@
       <File Name="libraries/IRLibProtocols/IRLibSendBase.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Firmata">
+      <VirtualDirectory Name="test">
+        <VirtualDirectory Name="firmata_test">
+          <File Name="libraries/Firmata/test/firmata_test/firmata_test.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <VirtualDirectory Name="examples">
         <VirtualDirectory Name="StandardFirmataEthernet">
           <File Name="libraries/Firmata/examples/StandardFirmataEthernet/ethernetConfig.h"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataEthernet/StandardFirmataEthernet.ino"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataBLE">
           <File Name="libraries/Firmata/examples/StandardFirmataBLE/bleConfig.h"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataBLE/StandardFirmataBLE.ino"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataWiFi">
           <File Name="libraries/Firmata/examples/StandardFirmataWiFi/wifiConfig.h"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataWiFi/StandardFirmataWiFi.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="StandardFirmataPlus">
+          <File Name="libraries/Firmata/examples/StandardFirmataPlus/StandardFirmataPlus.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="AnalogFirmata">
+          <File Name="libraries/Firmata/examples/AnalogFirmata/AnalogFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="StandardFirmata">
+          <File Name="libraries/Firmata/examples/StandardFirmata/StandardFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SimpleDigitalFirmata">
+          <File Name="libraries/Firmata/examples/SimpleDigitalFirmata/SimpleDigitalFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="OldStandardFirmata">
+          <File Name="libraries/Firmata/examples/OldStandardFirmata/OldStandardFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="AllInputsFirmata">
+          <File Name="libraries/Firmata/examples/AllInputsFirmata/AllInputsFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="EchoString">
+          <File Name="libraries/Firmata/examples/EchoString/EchoString.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="ServoFirmata">
+          <File Name="libraries/Firmata/examples/ServoFirmata/ServoFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SimpleAnalogFirmata">
+          <File Name="libraries/Firmata/examples/SimpleAnalogFirmata/SimpleAnalogFirmata.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="StandardFirmataChipKIT">
+          <File Name="libraries/Firmata/examples/StandardFirmataChipKIT/StandardFirmataChipKIT.ino"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="utility">
@@ -71,6 +109,14 @@
       <File Name="libraries/Firmata/FirmataConstants.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="StackArray">
+      <VirtualDirectory Name="Examples">
+        <VirtualDirectory Name="SwapVariables">
+          <File Name="libraries/StackArray/Examples/SwapVariables/SwapVariables.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="ReverseString">
+          <File Name="libraries/StackArray/Examples/ReverseString/ReverseString.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <File Name="libraries/StackArray/StackArray.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="CppList">
@@ -78,6 +124,11 @@
       <File Name="libraries/CppList/CppList.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="HC-SR04">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="SR04_Example">
+          <File Name="libraries/HC-SR04/examples/SR04_Example/SR04_Example.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <File Name="libraries/HC-SR04/SR04.cpp"/>
       <File Name="libraries/HC-SR04/SR04.h"/>
     </VirtualDirectory>
@@ -92,6 +143,14 @@
       <File Name="libraries/TurretConfig/IndicatorConfig.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Arduino_FreeRTOS">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="AnalogRead_DigitalRead">
+          <File Name="libraries/Arduino_FreeRTOS/examples/AnalogRead_DigitalRead/AnalogRead_DigitalRead.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Blink_AnalogRead">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Blink_AnalogRead/Blink_AnalogRead.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <File Name="libraries/Arduino_FreeRTOS/timers.c"/>
       <File Name="libraries/Arduino_FreeRTOS/heap_3.c"/>
       <File Name="libraries/Arduino_FreeRTOS/queue.c"/>
@@ -125,9 +184,19 @@
       <File Name="libraries/Comm/CommMonitor.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="QueueList">
+      <VirtualDirectory Name="Examples">
+        <VirtualDirectory Name="ManageStrings">
+          <File Name="libraries/QueueList/Examples/ManageStrings/ManageStrings.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <File Name="libraries/QueueList/QueueList.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="DS3231">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="ALog_DS3231_set_echo">
+          <File Name="libraries/DS3231/examples/ALog_DS3231_set_echo/ALog_DS3231_set_echo.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
       <File Name="libraries/DS3231/DS3231.h"/>
       <File Name="libraries/DS3231/DS3231.cpp"/>
     </VirtualDirectory>
@@ -246,9 +315,6 @@
       </Completion>
     </Configuration>
   </Settings>
-  <VirtualDirectory Name="src"/>
-  <VirtualDirectory Name="include"/>
-  <VirtualDirectory Name="GoldilocksAnalogueTestSuite">
-    <File Name="GoldilocksAnalogueTestSuite/GA_Header.h"/>
-  </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>
