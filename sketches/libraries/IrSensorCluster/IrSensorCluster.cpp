@@ -4,6 +4,7 @@
 
 IrSensorCluster::IrSensorCluster() {
     this->_currentSensorIndex = 0;
+    
     this->_sensorArray[0] = NULL;
 }
 
