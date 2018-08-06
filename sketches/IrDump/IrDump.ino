@@ -8,14 +8,10 @@
  * LG added by Darryl Smith (based on the JVC protocol)
  */
 #include <Arduino.h>
+#include <TurretPins.h>
 #include <IrReceiver.h>
 
 #define DEBUG true
-#define HIT_PIN 26
-#define DIR_1_REAR_PIN 28
-#define DIR_2_RIGHT_PIN 30
-#define DIR_3_LEFT_PIN 32
-#define DIR_4_FRONT_PIN 34
 
 #define RED_HIT 33EBDD7B 34EBDF0E D104AF4A
 #define BLUE_HIT A3F34992
@@ -23,16 +19,16 @@
 
 boolean _sxrResultAvail = false;
 boolean _hitSxrResultAvail = false;
-boolean _dir1SxrResultAvail = false;
-boolean _dir2SxrResultAvail = false;
-boolean _dir3SxrResultAvail = false;
-boolean _dir4SxrResultAvail = false;
+boolean _dir1FrontSxrResultAvail = false;
+boolean _dir2FrontSxrResultAvail = false;
+boolean _dir3FrontSxrResultAvail = false;
+boolean _dir4FrontSxrResultAvail = false;
 
-IrReceiver _hitSxr(HIT_PIN);
-IrReceiver _dir1Sxr(DIR_1_REAR_PIN);
-IrReceiver _dir2Sxr(DIR_2_RIGHT_PIN);
-IrReceiver _dir3Sxr(DIR_3_LEFT_PIN);
-IrReceiver _dir4Sxr(DIR_4_FRONT_PIN);
+IrReceiver _hitSxr(IR_SXR_HIT);
+IrReceiver _dir1RearSxr(IR_SXR_DIRECTION_REAR);
+IrReceiver _dir2RightSxr(IR_SXR_DIRECTION_RIGHT);
+IrReceiver _dir3LeftSxr(IR_SXR_DIRECTION_LEFT);
+IrReceiver _dir4FrontSxr(IR_SXR_DIRECTION_FRONT);
 
 decode_results _hitResults;
 decode_results _dir1Results;

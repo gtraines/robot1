@@ -1,7 +1,10 @@
 /*
  * Example to demonstrate thread definition, semaphores, and thread sleep.
  */
+#include <Arduino.h>
+#include <Arduino_FreeRTOS.h>
 #include <FreeRTOS_AVR.h>
+#include <semphr.h>
 
 // The LED is attached to pin 13 on Arduino.
 const uint8_t LED_PIN = 13;

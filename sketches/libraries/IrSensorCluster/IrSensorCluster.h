@@ -5,16 +5,16 @@
 #include <CppList/CppList.h>
 #include <IrReceiver.h>
 
-typedef struct {
+struct directional_sensor_t {
     int PinNumber;
     String Name;
     IrReceiver* HitSensor;
-} directional_sensor_t;
+};
 
-typedef struct {
+struct sensor_reading_t {
     String SensorName;
     long ReadingValue;
-} sensor_reading_t;
+};
 
 class IrSensorCluster {
 public:
@@ -25,7 +25,8 @@ public:
 private:
     /* data members */
     int _currentSensorIndex;
-    
-}
+    directional_sensor_t* _sensorArray[5];
+
+};
 
 #endif // IR_SENSOR_CLUSTER__H

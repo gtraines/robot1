@@ -48,8 +48,9 @@
                 "/home/graham/arduino-1.8.5/libraries/Servo/src",
                 "${workspaceRoot}",
                 "/usr/include/linux",
-                "${workspaceFolder}/sketches/libraries/Arduino_FreeRTOS",
-                "${workspaceFolder}/sketches/libraries/**"
+                "${workspaceFolder}/sketches/libraries/**",
+                "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**"
+
             ],
             "defines": [
                 "USBCON"
@@ -70,8 +71,8 @@
                     "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
                     "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
                     "${workspaceRoot}",
-                    "${workspaceFolder}/sketches/libraries/Arduino_FreeRTOS",
-                    "${workspaceFolder}/sketches/libraries/**"
+                    "${workspaceFolder}/sketches/libraries/**",
+                    "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**"
                 ],
                 "limitSymbolsToIncludedHeaders": false,
                 "databaseFilename": ""

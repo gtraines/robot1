@@ -52,6 +52,7 @@
 //#include "task.h"
 #include <Arduino.h>
 #include <HardwareSerial.h>
+#include <Arduino_FreeRTOS.h>
 #include <FreeRTOS_AVR.h>
 
 /* Demo includes. */

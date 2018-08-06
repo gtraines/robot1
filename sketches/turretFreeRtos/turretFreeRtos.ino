@@ -1,6 +1,9 @@
 #include <Arduino.h>
 #include <HardwareSerial.h>
 #include <FreeRTOS_AVR.h>
+#include <FreeRTOSConfig.h>
+#include <FreeRTOS.h>
+#include <task.h>
 #include <semphr.h>  // add the FreeRTOS functions for Semaphores (or Flags).
 
 // Declare a mutex Semaphore Handle which we will use to manage the Serial Port.
@@ -8,25 +11,27 @@
 SemaphoreHandle_t xSerialSemaphore;
 const uint16_t intervalTicks = 10;
 // define two Tasks for DigitalRead & AnalogRead
-void TaskDigitalRead( void *pvParameters );
+void TaskAnalogReadPot( void *pvParameters );
 void TaskAnalogRead( void *pvParameters );
 
 typedef struct
 {
   int currentPos;
   int targetPos;
-  int moving;
-  int speed;
+  uint16_t moving;
+  uint16_t speed;
 } elevation_state_t;
 
 typedef struct
 {
   int currentPos;
   int targetPos;
-  int moving;
-  int speed;
+  uint16_t moving;
+  uint16_t speed;
 } traverse_state_t;
 
+volatile elevation_state_t ElevationState;
+volatile traverse_state_t TraverseState;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -42,8 +47,8 @@ void setup() {
 
   // Now set up two Tasks to run independently.
   xTaskCreate(
-    TaskDigitalRead
-    ,  (const portCHAR *)"DigitalRead"  // A name just for humans
+    TaskAnalogReadPot
+    ,  (const portCHAR *)"AnalogReadPot"  // A name just for humans
     ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
     ,  NULL
     ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
@@ -69,7 +74,7 @@ void loop()
 /*---------------------- Tasks ---------------------*/
 /*--------------------------------------------------*/
 
-void TaskDigitalRead( void *pvParameters __attribute__((unused)) )  // This is a Task.
+void TaskAnalogReadPot( void *pvParameters __attribute__((unused)) )  // This is a Task.
 {
   /*
     DigitalReadSerial

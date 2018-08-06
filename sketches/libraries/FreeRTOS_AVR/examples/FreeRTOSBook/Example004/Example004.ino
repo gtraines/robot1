@@ -48,8 +48,10 @@
 */
 
 /* FreeRTOS.org includes. */
-#include "FreeRTOS_AVR.h"
-//#include "task.h"
+#include <Arduino.h>
+#include <Arduino_FreeRTOS.h>
+#include <FreeRTOS_AVR.h>
+#include <task.h>
 
 /* Demo includes. */
 #include "basic_io_avr.h"
