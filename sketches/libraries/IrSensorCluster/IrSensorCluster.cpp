@@ -19,7 +19,9 @@ bool IrSensorCluster::checkNextSensor() {
         this->_currentSensorIndex++;
     }
 
+    directional_sensor_t* currentSensor = this->_sensorArray[_currentSensorIndex];
 
+    return (currentSensor->irSensor->decode(&currentSensor->sensorResults));
 }
 
 IrSensorCluster::~IrSensorCluster() {
@@ -28,13 +30,13 @@ IrSensorCluster::~IrSensorCluster() {
 directional_sensor_t* IrSensorCluster::_createSensorEntry(int pinNumber, String sensorName) {
     
     pinMode(pinNumber, INPUT_PULLUP);
-    
+
     directional_sensor_t* createdSensor = new directional_sensor_t();
     
-    createdSensor->PinNumber = pinNumber;
-    createdSensor->Name = sensorName;
-    createdSensor->HitSensor = new IrReceiver(pinNumber);
-    createdSensor->HitSensor->enableIRIn();
+    createdSensor->pinNumber = pinNumber;
+    createdSensor->sensorName = sensorName;
+    createdSensor->irSensor = new IrReceiver(pinNumber);
+    createdSensor->irSensor->enableIRIn();
 
     return createdSensor;
 }
