@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Workspace Name="sketches" Database="">
-  <Project Name="ardSketches" Path="ardSketches.project" Active="No"/>
+  <Project Name="ardSketches" Path="ardSketches.project" Active="Yes"/>
   <Project Name="turret" Path="turret.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">

@@ -1,4 +1,5 @@
-#include <Arduino.h>
+#include <Arduino.h> 
+#include <IrReceiver.h>
 #include <IrSensorCluster.h>
 #include <TurretPins.h>
 
@@ -19,9 +20,9 @@ bool IrSensorCluster::checkNextSensor() {
         this->_currentSensorIndex++;
     }
 
-    directional_sensor_t* currentSensor = this->_sensorArray[_currentSensorIndex];
+    directional_sensor_t* currentSensor = this->_sensorArray[this->_currentSensorIndex];
 
-    return (currentSensor->irSensor->decode(&currentSensor->sensorResults));
+    return (currentSensor->irSensor->decode(&(*currentSensor->sensorResults)));
 }
 
 IrSensorCluster::~IrSensorCluster() {
@@ -37,8 +38,16 @@ directional_sensor_t* IrSensorCluster::_createSensorEntry(int pinNumber, String 
     createdSensor->sensorName = sensorName;
     createdSensor->irSensor = new IrReceiver(pinNumber);
     createdSensor->irSensor->enableIRIn();
+    createdSensor->sensorResults = new decode_results();
 
     return createdSensor;
 }
 
-
+sensor_reading_t* IrSensorCluster::getSensorReading() {
+    sensor_reading_t* createdReading = new sensor_reading_t();
+    directional_sensor_t* currentSensor = this->_sensorArray[this->_currentSensorIndex];
+    createdReading->readingValue = currentSensor->sensorResults->value;
+    createdReading->sensorName = currentSensor->sensorName;
+    
+    return createdReading;
+}
