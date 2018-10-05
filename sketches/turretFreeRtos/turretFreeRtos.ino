@@ -1,137 +1,181 @@
-#include <Arduino.h>
-#include <HardwareSerial.h>
-#include <FreeRTOS_AVR.h>
-#include <FreeRTOSConfig.h>
-#include <FreeRTOS.h>
-#include <task.h>
-#include <semphr.h>  // add the FreeRTOS functions for Semaphores (or Flags).
 
-// Declare a mutex Semaphore Handle which we will use to manage the Serial Port.
-// It will be used to ensure only only one Task is accessing this resource at any time.
+#include <Arduino.h>
+#include <Indicator.h>
+#include <PotMotor.h>
+
+#include <TurretPins.h>
+#include <ElevationConfig.h>
+#include <IndicatorConfig.h>
+#include <IrConfig.h>
+#include <TraverseConfig.h>
+
+#include <HardwareSerial.h>
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
+
 SemaphoreHandle_t xSerialSemaphore;
 const uint16_t intervalTicks = 10;
-// define two Tasks for DigitalRead & AnalogRead
-void TaskAnalogReadPot( void *pvParameters );
-void TaskAnalogRead( void *pvParameters );
 
-typedef struct
-{
-  int currentPos;
-  int targetPos;
-  uint16_t moving;
-  uint16_t speed;
-} elevation_state_t;
+void TaskElevationTest( void *pvParameters );
+void TaskIndicatorTest( void *pvParameters );
 
-typedef struct
-{
-  int currentPos;
-  int targetPos;
-  uint16_t moving;
-  uint16_t speed;
-} traverse_state_t;
+PotMotor* _elevationMotor = NULL;
 
-volatile elevation_state_t ElevationState;
-volatile traverse_state_t TraverseState;
+void printInt(int intToPrint) {
+  indicateTx();
+  Serial.println(intToPrint);
+}
 
-// the setup function runs once when you press reset or power the board
 void setup() {
-
   Serial.begin(115200);
 
-  if ( xSerialSemaphore == NULL )  // Check to confirm that the Serial Semaphore has not already been created.
-  {
-    xSerialSemaphore = xSemaphoreCreateMutex();  // Create a mutex semaphore we will use to manage the Serial Port
-    if ( ( xSerialSemaphore ) != NULL )
-      xSemaphoreGive( ( xSerialSemaphore ) );  // Make the Serial Port available for use, by "Giving" the Semaphore.
+  setPins();
+
+  _elevationMotor = new PotMotor((int)ELEVATION_MOTOR_ENABLE, 
+    (int)ELEVATION_MOTOR_POS, (int)ELEVATION_MOTOR_NEG, (int)ELEVATION_MOTOR_POSITION, 
+    (int)ELEVATION_MIN, (int)ELEVATION_MAX, (int)ELEVATION_RESOLUTION, 
+    (int)MOTOR_MIN_SPEED, (int)MOTOR_MAX_SPEED, (int)MOTOR_MED_SPEED, (int)MOTOR_JERK_SPEED);
+  
+  _elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
+
+  if (turnOffAllIndicators()) {
+    setArdStatusGood();
+  } else {
+    setArdStatusError();
   }
 
-  // Now set up two Tasks to run independently.
+  createAndStartTasks();
+}
+
+void createAndStartTasks() {
+    // Now set up two tasks to run independently.
   xTaskCreate(
-    TaskAnalogReadPot
-    ,  (const portCHAR *)"AnalogReadPot"  // A name just for humans
+    TaskElevationTest
+    ,  (const portCHAR *)"ElevationTest"   // A name just for humans
     ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
     ,  NULL
     ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
     ,  NULL );
 
   xTaskCreate(
-    TaskAnalogRead
-    ,  (const portCHAR *) "AnalogRead"
+    TaskIndicatorTest
+    ,  (const portCHAR *) "IndicatorTest"
     ,  128  // Stack size
     ,  NULL
     ,  1  // Priority
     ,  NULL );
 
-  // Now the Task scheduler, which takes over control of scheduling individual Tasks, is automatically started.
 }
 
-void loop()
-{
-  // Empty. Things are done in Tasks.
+void setPins() {
+  pinMode(ELEVATION_MOTOR_ENABLE, OUTPUT);
+  pinMode(ELEVATION_MOTOR_POS, OUTPUT);
+  pinMode(ELEVATION_MOTOR_NEG, OUTPUT);
+  
+  pinMode(ARD_STATUS_GRN, OUTPUT);
+  pinMode(ARD_STATUS_RED, OUTPUT);
+  
+  pinMode(ACTY_LED_1, OUTPUT);
+  pinMode(ACTY_LED_2, OUTPUT);
+  pinMode(ACTY_LED_3, OUTPUT);
+
+  pinMode(MOVE_LED_GRN, OUTPUT);
+  pinMode(MOVE_LED_RED, OUTPUT);
+  pinMode(MOVE_LED_BLUE, OUTPUT);
+
+  pinMode(CANNON_LED, OUTPUT);
 }
 
-/*--------------------------------------------------*/
-/*---------------------- Tasks ---------------------*/
-/*--------------------------------------------------*/
+boolean turnOffAllIndicators() {
+  Indicator::turnOffLed(ARD_STATUS_GRN);
+  Indicator::turnOffLed(ARD_STATUS_RED);
+  
+  Indicator::turnOffLed(ACTY_LED_1);
+  Indicator::turnOffLed(ACTY_LED_2);
+  Indicator::turnOffLed(ACTY_LED_3);
+  
+  Indicator::turnOffLed(MOVE_LED_GRN);
+  Indicator::turnOffLed(MOVE_LED_RED);
+  Indicator::turnOffLed(MOVE_LED_BLUE);
+  
+  Indicator::turnOffLed(CANNON_LED);
 
-void TaskAnalogReadPot( void *pvParameters __attribute__((unused)) )  // This is a Task.
-{
-  /*
-    DigitalReadSerial
-    Reads a digital input on pin 2, prints the result to the serial monitor
+  return true;
+  
+}
 
-    This example code is in the public domain.
-  */
+void setArdStatusGood() {
+  Indicator::turnOffLed(ARD_STATUS_RED);
+  Indicator::turnOnLed(ARD_STATUS_GRN);
+}
 
-  // digital pin 2 has a pushbutton attached to it. Give it a name:
-  uint8_t pushButton = 2;
+void setArdStatusError() {
+  Indicator::turnOffLed(ARD_STATUS_GRN);
+  Indicator::turnOnLed(ARD_STATUS_RED);
+}
 
-  // make the pushbutton's pin an input:
-  pinMode(pushButton, INPUT);
+void indicateRx() {
+  Indicator::momentaryLedOn(ACTY_LED_3);
+}
 
-  for (;;) // A Task shall never return or exit.
-  {
-    // read the input pin:
-    int buttonState = digitalRead(pushButton);
+void indicateTx() {
+  Indicator::momentaryLedOn(ACTY_LED_1);
+}
 
-    // See if we can obtain or "Take" the Serial Semaphore.
-    // If the semaphore is not available, wait 5 ticks of the Scheduler to see if it becomes free.
-    if ( xSemaphoreTake( xSerialSemaphore, ( TickType_t ) 5 ) == pdTRUE )
-    {
-      // We were able to obtain or "Take" the semaphore and can now access the shared resource.
-      // We want to have the Serial Port for us alone, as it takes some time to print,
-      // so we don't want it getting stolen during the middle of a conversion.
-      // print out the state of the button:
-      Serial.println(buttonState);
+/*
+ * Thread 1, turn the LED off when signalled by thread 2.
+ */
+// Declare the thread function for thread 1.
+void TaskElevationTest( void *pvParameters ) {
+  for (int iter=0; iter<10; iter++) {
+    _elevationMotor->moveTo(ELEVATION_MIN);
+    _elevationMotor->moveTo(ELEVATION_MAX);
+    _elevationMotor->moveTo(500);
+    _elevationMotor->moveTo(600);
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    
+    Indicator::strobeLed(CANNON_LED, 10);
+    
+    _elevationMotor->moveTo(320);
+    _elevationMotor->moveTo(700);
+    _elevationMotor->moveTo(500);
+    _elevationMotor->moveTo(320);
+    _elevationMotor->moveTo(600);
 
-      xSemaphoreGive( xSerialSemaphore ); // Now free or "Give" the Serial Port for others.
-    }
+    vTaskDelay(500/portTICK_PERIOD_MS);
+    Indicator::strobeLed(CANNON_LED, 10);
+    _elevationMotor->moveTo(350);
+    _elevationMotor->moveTo(600);
 
-    vTaskDelay(1);  // one tick delay (15ms) in between reads for stability
   }
 }
 
-void TaskAnalogRead( void *pvParameters __attribute__((unused)) )  // This is a Task.
-{
+/*
+ * Thread 2, turn the LED on and signal thread 1 to turn the LED off.
+ */
+// Declare the thread function for TaskIndicatorTest
+void TaskIndicatorTest( void* pvParameters ) {
 
-  for (;;)
+  for (int iter=0; iter<10; iter++) // A Task shall never return or exit.
   {
-    // read the input on analog pin 0:
-    int sensorValue = analogRead(A0);
+    Indicator::momentaryLedOn(ACTY_LED_1);
+    Indicator::momentaryLedOn(ACTY_LED_2);
+    Indicator::momentaryLedOn(ACTY_LED_3);
+  
+    Indicator::momentaryLedOn(MOVE_LED_GRN);
+    Indicator::momentaryLedOn(MOVE_LED_RED);
+    Indicator::momentaryLedOn(MOVE_LED_BLUE);
 
-    // See if we can obtain or "Take" the Serial Semaphore.
-    // If the semaphore is not available, wait 5 ticks of the Scheduler to see if it becomes free.
-    if ( xSemaphoreTake( xSerialSemaphore, ( TickType_t ) 5 ) == pdTRUE )
-    {
-      // We were able to obtain or "Take" the semaphore and can now access the shared resource.
-      // We want to have the Serial Port for us alone, as it takes some time to print,
-      // so we don't want it getting stolen during the middle of a conversion.
-      // print out the value you read:
-      Serial.println(sensorValue);
-
-      xSemaphoreGive( xSerialSemaphore ); // Now free or "Give" the Serial Port for others.
-    }
-
-    vTaskDelay(1);  // one tick delay (15ms) in between reads for stability
+    Indicator::momentaryLedOn(CANNON_LED);
+    Indicator::momentaryLedOn(CANNON_LED);
+    Indicator::strobeLed(CANNON_LED, 10);
+    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
+    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
   }
+}
+
+void loop() {
+
 }

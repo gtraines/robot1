@@ -1,10 +1,13 @@
-#include <Indicator.h>
 #include <Arduino.h>
+#include <Indicator.h>
+#include <IndicatorConfig.h>
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
 
 void Indicator::momentaryLedOn(int pinNumber)
 {
   turnOnLed(pinNumber);
-  delay(500);
+  vTaskDelay(MOMENTARY_LED_DELAY / portTICK_PERIOD_MS );
   turnOffLed(pinNumber);
 }
 
@@ -13,9 +16,9 @@ void Indicator::strobeLed(int pinNumber, int numberTimes)
   int iter = 0;
   for (iter = 0; iter < numberTimes; iter++) {
     turnOnLed(pinNumber);
-    delay(50);
+    vTaskDelay(STROBE_LED_DELAY / portTICK_PERIOD_MS);
     turnOffLed(pinNumber);
-    delay(50);
+    vTaskDelay(STROBE_LED_DELAY / portTICK_PERIOD_MS);
   }
 }
 

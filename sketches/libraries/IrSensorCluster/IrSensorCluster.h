@@ -2,20 +2,7 @@
 #define IR_SENSOR_CLUSTER__H
 
 #include <Arduino.h>
-#include <CppList/CppList.h>
-#include <IrReceiver.h>
-
-struct directional_sensor_t {
-    int pinNumber;
-    String sensorName;
-    IrReceiver* irSensor;
-    decode_results sensorResults;
-};
-
-struct sensor_reading_t {
-    String sensorName;
-    long readingValue;
-};
+#include <IrClusterStructs.h>
 
 class IrSensorCluster {
 public:
