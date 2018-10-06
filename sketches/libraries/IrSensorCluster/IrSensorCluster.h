@@ -2,6 +2,7 @@
 #define IR_SENSOR_CLUSTER__H
 
 #include <Arduino.h>
+#include <CppList/CppList.h>
 #include <IrReceiver.h>
 
 struct directional_sensor_t {

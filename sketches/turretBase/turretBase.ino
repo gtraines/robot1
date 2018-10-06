@@ -9,6 +9,12 @@
 #include <IrConfig.h>
 #include <TraverseConfig.h>
 
+#include <HardwareSerial.h>
+#include <FreeRTOS_AVR.h>
+#include <FreeRTOSConfig.h>
+#include <FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
 
 PotMotor* _elevationMotor = NULL;
 

@@ -48,10 +48,15 @@
 */
 
 /* FreeRTOS.org includes. */
-#include "FreeRTOS_AVR.h"
-//#include "task.h"
-//#include "semphr.h"
+#include <Arduino.h>
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
 //#include "portasm.h"
+#include <TurretPins.h>
+#include <IndicatorConfig.h>
+#include <ElevationConfig.h>
+#include <TraverseConfig.h>
 
 /* Demo includes. */
 #include "basic_io_avr.h"
@@ -171,12 +176,12 @@ static void vPeriodicTask( void *pvParameters )
 
 static void  vExampleInterruptHandler( void )
 {
-static signed portBASE_TYPE xHigherPriorityTaskWoken;
+  static BaseType_t xHigherPriorityTaskWoken;
 
   xHigherPriorityTaskWoken = pdFALSE;
 
   /* 'Give' the semaphore to unblock the task. */
-  xSemaphoreGiveFromISR( xBinarySemaphore, (signed portBASE_TYPE*)&xHigherPriorityTaskWoken );
+  xSemaphoreGiveFromISR( xBinarySemaphore, (BaseType_t*)&xHigherPriorityTaskWoken );
 
   if( xHigherPriorityTaskWoken == pdTRUE )
   {
