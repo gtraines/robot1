@@ -1,6 +1,21 @@
 #ifndef ROBOT1_POTMOTOR_H
 #define ROBOT1_POTMOTOR_H
 
+struct PotMotorConfig {
+    int MotorEnablePin;
+    int IncreaseHighPin;
+    int DecreaseHighPin;
+    int PotentiometerReadingPin;
+    int MinPotReadingLimit;
+    int MaxPotReadingLimit;
+    int ReadingGranularity;
+    int MinSpeed;
+    int MaxSpeed;
+    int MediumSpeed;
+    int JerkSpeed;
+    int ReadingDelay;
+};
+
 enum class MotorDirection {
   INCREASE,
   DECREASE
@@ -22,7 +37,8 @@ class PotMotor {
         int _motorJerkSpeed;
         int _readingDelay = 60;
 
-    public:
+public:
+        explicit PotMotor(const PotMotorConfig& motorInstanceConfig);
         PotMotor(int enablePin, 
             int increaseHighPin, 
             int decreaseHighPin,

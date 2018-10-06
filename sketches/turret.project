@@ -141,6 +141,7 @@
       <File Name="libraries/TurretConfig/TraverseConfig.h"/>
       <File Name="libraries/TurretConfig/ElevationConfig.h"/>
       <File Name="libraries/TurretConfig/IndicatorConfig.h"/>
+      <File Name="libraries/TurretConfig/TurretPins.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Arduino_FreeRTOS">
       <VirtualDirectory Name="examples">

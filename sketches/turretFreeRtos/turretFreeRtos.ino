@@ -1,4 +1,4 @@
-
+ 
 #include <Arduino.h>
 #include <Indicator.h>
 #include <PotMotor.h>
@@ -9,18 +9,19 @@
 #include <IrConfig.h>
 #include <TraverseConfig.h>
 
+#include <ElevationController.h>
+#include <IrCannonController.h>
+
 #include <HardwareSerial.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
-#include <semphr.h>
-
-SemaphoreHandle_t xSerialSemaphore;
-const uint16_t intervalTicks = 10;
 
 void TaskElevationTest( void *pvParameters );
 void TaskIndicatorTest( void *pvParameters );
+void TaskCannonTest( void *pvParameters );
 
-PotMotor* _elevationMotor = NULL;
+ElevationController* elevationController = new ElevationController();
+IrCannonController* cannonController = new IrCannonController();
 
 void printInt(int intToPrint) {
   indicateTx();
@@ -31,13 +32,6 @@ void setup() {
   Serial.begin(115200);
 
   setPins();
-
-  _elevationMotor = new PotMotor((int)ELEVATION_MOTOR_ENABLE, 
-    (int)ELEVATION_MOTOR_POS, (int)ELEVATION_MOTOR_NEG, (int)ELEVATION_MOTOR_POSITION, 
-    (int)ELEVATION_MIN, (int)ELEVATION_MAX, (int)ELEVATION_RESOLUTION, 
-    (int)MOTOR_MIN_SPEED, (int)MOTOR_MAX_SPEED, (int)MOTOR_MED_SPEED, (int)MOTOR_JERK_SPEED);
-  
-  _elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
 
   if (turnOffAllIndicators()) {
     setArdStatusGood();
@@ -55,12 +49,20 @@ void createAndStartTasks() {
     ,  (const portCHAR *)"ElevationTest"   // A name just for humans
     ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
     ,  NULL
-    ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  3  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  NULL );
+    
+  xTaskCreate(
+    TaskCannonTest
+    ,  (const portCHAR *) "IndicatorTest"
+    ,  128  // Stack size
+    ,  NULL
+    ,  1  // Priority
     ,  NULL );
 
   xTaskCreate(
     TaskIndicatorTest
-    ,  (const portCHAR *) "IndicatorTest"
+    ,  (const portCHAR *) "CannonTest"
     ,  128  // Stack size
     ,  NULL
     ,  1  // Priority
@@ -128,36 +130,23 @@ void indicateTx() {
  */
 // Declare the thread function for thread 1.
 void TaskElevationTest( void *pvParameters ) {
-  for (int iter=0; iter<10; iter++) {
-    _elevationMotor->moveTo(ELEVATION_MIN);
-    _elevationMotor->moveTo(ELEVATION_MAX);
-    _elevationMotor->moveTo(500);
-    _elevationMotor->moveTo(600);
-    vTaskDelay(500/portTICK_PERIOD_MS);
-    
-    Indicator::strobeLed(CANNON_LED, 10);
-    
-    _elevationMotor->moveTo(320);
-    _elevationMotor->moveTo(700);
-    _elevationMotor->moveTo(500);
-    _elevationMotor->moveTo(320);
-    _elevationMotor->moveTo(600);
-
-    vTaskDelay(500/portTICK_PERIOD_MS);
-    Indicator::strobeLed(CANNON_LED, 10);
-    _elevationMotor->moveTo(350);
-    _elevationMotor->moveTo(600);
-
-  }
+    for (;;) {
+        elevationController->demoFunctionCheck();
+    }
 }
 
+void TaskCannonTest( void *pvParameters ) {
+    for (;;) {
+        cannonController->demoFunctionCheck();
+    }
+}
 /*
  * Thread 2, turn the LED on and signal thread 1 to turn the LED off.
  */
 // Declare the thread function for TaskIndicatorTest
 void TaskIndicatorTest( void* pvParameters ) {
 
-  for (int iter=0; iter<10; iter++) // A Task shall never return or exit.
+  for (;;) // A Task shall never return or exit.
   {
     Indicator::momentaryLedOn(ACTY_LED_1);
     Indicator::momentaryLedOn(ACTY_LED_2);
@@ -167,12 +156,28 @@ void TaskIndicatorTest( void* pvParameters ) {
     Indicator::momentaryLedOn(MOVE_LED_RED);
     Indicator::momentaryLedOn(MOVE_LED_BLUE);
 
-    Indicator::momentaryLedOn(CANNON_LED);
-    Indicator::momentaryLedOn(CANNON_LED);
-    Indicator::strobeLed(CANNON_LED, 10);
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
-    digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
+    
+    Indicator::alertBlink(ACTY_LED_1);
+    Indicator::alertBlink(ACTY_LED_2);
+    Indicator::alertBlink(ACTY_LED_3);
+  
+    Indicator::alertStrobeFast(MOVE_LED_GRN);
+    Indicator::alertStrobeFast(MOVE_LED_RED);
+    Indicator::alertStrobeFast(MOVE_LED_BLUE);
+    
     vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
+    
+    Indicator::alertBlinkFast(ACTY_LED_1);
+    Indicator::alertBlinkFast(ACTY_LED_2);
+    Indicator::alertBlinkFast(ACTY_LED_3);
+  
+    Indicator::alertStrobeSlow(MOVE_LED_GRN);
+    Indicator::alertStrobeSlow(MOVE_LED_RED);
+    Indicator::alertStrobeSlow(MOVE_LED_BLUE);
+    
+    vTaskDelay( 1000 / portTICK_PERIOD_MS ); // wait for one second
+    
   }
 }
 

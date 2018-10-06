@@ -128,3 +128,16 @@ int PotMotor::getMotorSpeed(int targetPosition, int lastPosition) {
         return _motorMinSpeed;
     }
 }
+PotMotor::PotMotor(const PotMotorConfig& motorInstanceConfig) {
+    this->_enablePin = motorInstanceConfig.MotorEnablePin;
+    this->_increaseHighPin = motorInstanceConfig.IncreaseHighPin;
+    this->_decreaseHighPin = motorInstanceConfig.DecreaseHighPin;
+    this->_potReadingPin = motorInstanceConfig.PotentiometerReadingPin;
+    this->_minPositionReading = motorInstanceConfig.MinPotReadingLimit;
+    this->_maxPositionReading = motorInstanceConfig.MaxPotReadingLimit;
+    this->_readingGranularityDelta = motorInstanceConfig.ReadingGranularity;
+    this->_motorMinSpeed = motorInstanceConfig.MinSpeed;
+    this->_motorMaxSpeed = motorInstanceConfig.MaxSpeed;
+    this->_motorMedSpeed = motorInstanceConfig.MediumSpeed;
+    this->_motorJerkSpeed = motorInstanceConfig.JerkSpeed;
+}
