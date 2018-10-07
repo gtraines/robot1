@@ -1,0 +1,2 @@
+/usr/bin/ar qc libArduino_FreeRTOS.a  CMakeFiles/Arduino_FreeRTOS.dir/croutine.c.o CMakeFiles/Arduino_FreeRTOS.dir/event_groups.c.o CMakeFiles/Arduino_FreeRTOS.dir/heap_3.c.o CMakeFiles/Arduino_FreeRTOS.dir/list.c.o CMakeFiles/Arduino_FreeRTOS.dir/port.c.o CMakeFiles/Arduino_FreeRTOS.dir/queue.c.o CMakeFiles/Arduino_FreeRTOS.dir/stream_buffer.c.o CMakeFiles/Arduino_FreeRTOS.dir/tasks.c.o CMakeFiles/Arduino_FreeRTOS.dir/timers.c.o
+/usr/bin/ranlib libArduino_FreeRTOS.a
