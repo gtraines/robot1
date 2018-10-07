@@ -1,22 +1,21 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/ArduinoToolchain.cmake)
-set(PROJECT_NAME turretFreeRtos)
-project(${PROJECT_NAME})
 
-include_directories(../libraries/Arduino_FreeRTOS)
-include_directories(../libraries/TurretConfig)
-include_directories(../libraries/Indicator)
-include_directories(../libraries/CppList)
-include_directories(../libraries/PotMotor)
-include_directories(../libraries/TurretControllers)
+include_directories(../libraries/Arduino_FreeRTOS/)
+include_directories(../libraries/TurretConfig/)
+include_directories(../libraries/Indicator/)
+include_directories(../libraries/CppList/)
+include_directories(../libraries/PotMotor/)
+include_directories(../libraries/TurretControllers/)
 
-set(${CMAKE_PROJECT_NAME}_SKETCH turretFreeRtos.ino)
+file(GLOB turret_config_ ../libraries/TurretConfig/*.h)
+file(GLOB turret_controllers_ ../libraries/TurretControllers/*.h)
 
-#### Uncomment below additional settings as needed.
-set(${CMAKE_PROJECT_NAME}_BOARD mega)
-set(${CMAKE_PROJECT_NAME}_PORT /dev/ttyACM0)
-set(mega.build.mcu atmega2560)
-set(mega.upload.protocol wiring)
-set(mega.upload.speed 115200)
+add_executable(turretFreeRtos turretFreeRtos.ino ${turret_config_} ${turret_controllers_})
 
-generate_arduino_firmware(${CMAKE_PROJECT_NAME})
+target_link_libraries(turretFreeRtos LINK_PUBLIC Arduino_FreeRTOS)
+target_link_libraries(turretFreeRtos LINK_PUBLIC TurretConfig)
+target_link_libraries(turretFreeRtos LINK_PUBLIC Indicator)
+target_link_libraries(turretFreeRtos LINK_PUBLIC CppList)
+target_link_libraries(turretFreeRtos LINK_PUBLIC PotMotor)
+target_link_libraries(turretFreeRtos LINK_PUBLIC TurretControllers)
+

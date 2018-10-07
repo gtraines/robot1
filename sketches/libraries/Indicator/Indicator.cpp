@@ -1,6 +1,6 @@
 #include "Indicator.h"
+#include "IndicatorConfig.h"
 #include <Arduino.h>
-#include <IndicatorConfig.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 
