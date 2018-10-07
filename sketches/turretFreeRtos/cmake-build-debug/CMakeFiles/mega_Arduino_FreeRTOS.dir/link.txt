@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libmega_Arduino_FreeRTOS.a  CMakeFiles/mega_Arduino_FreeRTOS.dir/home/graham/Source/robot1/sketches/libraries/PotMotor/PotMotor.cpp.obj
+/usr/bin/avr-ranlib libmega_Arduino_FreeRTOS.a

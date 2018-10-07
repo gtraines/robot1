@@ -2,8 +2,6 @@
 #ifndef ROBOT1_INDICATOR_H
 #define ROBOT1_INDICATOR_H
 
-
-class strobeLedSlow;
 class Indicator {
 public:
     static void turnOnLed(int pinNumber);
@@ -23,7 +21,5 @@ public:
     static void strobeSlow(int pinNumber, int numberTimes);
     static void strobeMedium(int pinNumber, int numberTimes);
     static void strobeFast(int pinNumber, int numberTimes);
-    
-        
 };
 #endif // ROBOT1_INDICATOR_H

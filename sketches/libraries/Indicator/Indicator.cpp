@@ -1,9 +1,8 @@
+#include "Indicator.h"
 #include <Arduino.h>
-#include <Indicator.h>
 #include <IndicatorConfig.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
-
 
 void Indicator::turnOnLed(int pinNumber) {
   digitalWrite(pinNumber, LOW);

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="turretFreeRtos"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Platform\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="upload">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 upload"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mega_CORE">
+				<Option output="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/libmega_CORE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 mega_CORE"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mega_CORE/fast">
+				<Option output="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/libmega_CORE.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 mega_CORE/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="turretFreeRtos-upload">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 turretFreeRtos-upload"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="turretFreeRtos">
+				<Option output="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/turretFreeRtos.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 turretFreeRtos"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="turretFreeRtos/fast">
+				<Option output="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/turretFreeRtos.elf" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir=""/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/include-fixed"/>
+					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 turretFreeRtos/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="turretFreeRtos-size">
+				<Option working_dir="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 turretFreeRtos-size"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/turretFreeRtos_turretFreeRtos.ino.cpp">
+			<Option target="turretFreeRtos"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug/turretFreeRtos_turretFreeRtos.ino.cpp.rule">
+			<Option target="turretFreeRtos"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/turretFreeRtos.ino">
+			<Option target="turretFreeRtos"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Arduino.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/CDC.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Client.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/HID.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/HardwareSerial.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/IPAddress.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Platform.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Print.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Print.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Printable.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Server.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Stream.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Stream.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Tone.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/USBAPI.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/USBCore.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/USBDesc.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Udp.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/WCharacter.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/WInterrupts.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/WMath.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/WString.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/WString.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/malloc.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/realloc.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/sectionname.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/avr-libc/stdlib_private.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/binary.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/main.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/new.cpp">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/new.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring_analog.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring_digital.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring_private.h">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring_pulse.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/wiring_shift.c">
+			<Option target="mega_CORE"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/ArduinoToolchain.cmake">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/Platform/Arduino.cmake">
+			<Option virtualFolder="CMake Files\Platform\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

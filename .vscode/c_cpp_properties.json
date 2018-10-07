@@ -49,8 +49,8 @@
                 "${workspaceRoot}",
                 "/usr/include/linux",
                 "${workspaceFolder}/sketches/libraries/**",
-                "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**"
-
+                "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**",
+                "${workspaceFolder}/sketches/libraries/TurretControllers"
             ],
             "defines": [
                 "USBCON"
