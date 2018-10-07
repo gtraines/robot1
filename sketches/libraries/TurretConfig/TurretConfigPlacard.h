@@ -1,0 +1,14 @@
+//
+// Created by graham on 10/6/18.
+//
+
+#ifndef TURRETCONTROLLERS_TURRETCONFIGPLACARD_H
+#define TURRETCONTROLLERS_TURRETCONFIGPLACARD_H
+
+
+class TurretConfigPlacard {
+
+};
+
+
+#endif //TURRETCONTROLLERS_TURRETCONFIGPLACARD_H
