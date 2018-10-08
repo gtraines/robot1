@@ -18,12 +18,12 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/home/graham/arduino-1.8.5/libraries/Servo/src"
   "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino"
   "../libraries/TurretConfig"
   "../libraries/Indicator"
   "../libraries/PotMotor"
   "../libraries/TurretControllers"
-  "../libraries/**"
   "../libraries/Arduino_FreeRTOS"
   "../libraries/Arduino_FreeRTOS/src"
   "../libraries/Arduino_FreeRTOS/utility"
@@ -91,12 +91,12 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/graham/arduino-1.8.5/libraries/Servo/src"
   "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino"
   "../libraries/TurretConfig"
   "../libraries/Indicator"
   "../libraries/PotMotor"
   "../libraries/TurretControllers"
-  "../libraries/**"
   "../libraries/Arduino_FreeRTOS"
   "../libraries/Arduino_FreeRTOS/src"
   "../libraries/Arduino_FreeRTOS/utility"

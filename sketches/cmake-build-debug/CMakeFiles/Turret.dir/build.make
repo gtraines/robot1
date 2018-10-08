@@ -57,42 +57,42 @@ include CMakeFiles/Turret.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Turret.dir/flags.make
 
-Turret_turretFreeRtos.ino.cpp: ../turretFreeRtos/turretFreeRtos.ino
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Regnerating turretFreeRtos.ino Sketch"
+Turret_turretDebug.ino.cpp: ../turretDebug/turretDebug.ino
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Regnerating turretDebug.ino Sketch"
 	/home/graham/clion2018/bin/cmake/bin/cmake /home/graham/Source/robot1/sketches
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj: CMakeFiles/Turret.dir/flags.make
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj: Turret_turretFreeRtos.ino.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj"
-	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj -c /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj: CMakeFiles/Turret.dir/flags.make
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj: Turret_turretDebug.ino.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj"
+	/usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj -c /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.i"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp > CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.i
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.i"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp > CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.i
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.s"
-	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp -o CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.s
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.s"
+	/usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp -o CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.s
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.requires:
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.requires:
 
-.PHONY : CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.requires
+.PHONY : CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.requires
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.provides: CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.requires
-	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.provides.build
-.PHONY : CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.provides
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.provides: CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.requires
+	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.provides.build
+.PHONY : CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.provides
 
-CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.provides.build: CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj
+CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.provides.build: CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj
 
 
 # Object files for target Turret
 Turret_OBJECTS = \
-"CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj"
+"CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj"
 
 # External object files for target Turret
 Turret_EXTERNAL_OBJECTS =
 
-Turret.elf: CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj
+Turret.elf: CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj
 Turret.elf: CMakeFiles/Turret.dir/build.make
 Turret.elf: libmega_Arduino_FreeRTOS.a
 Turret.elf: libmega_Arduino.a
@@ -126,7 +126,7 @@ CMakeFiles/Turret.dir/build: Turret.elf
 
 .PHONY : CMakeFiles/Turret.dir/build
 
-CMakeFiles/Turret.dir/requires: CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj.requires
+CMakeFiles/Turret.dir/requires: CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj.requires
 
 .PHONY : CMakeFiles/Turret.dir/requires
 
@@ -134,7 +134,7 @@ CMakeFiles/Turret.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/Turret.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/Turret.dir/clean
 
-CMakeFiles/Turret.dir/depend: Turret_turretFreeRtos.ino.cpp
+CMakeFiles/Turret.dir/depend: Turret_turretDebug.ino.cpp
 	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/graham/Source/robot1/sketches /home/graham/Source/robot1/sketches /home/graham/Source/robot1/sketches/cmake-build-debug /home/graham/Source/robot1/sketches/cmake-build-debug /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles/Turret.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Turret.dir/depend
 

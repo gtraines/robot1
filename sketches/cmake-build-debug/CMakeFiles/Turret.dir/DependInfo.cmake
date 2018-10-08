@@ -4,18 +4,18 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj"
+  "/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/graham/arduino-1.8.5/libraries/Servo/src"
   "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino"
   "../libraries/TurretConfig"
   "../libraries/Indicator"
   "../libraries/PotMotor"
   "../libraries/TurretControllers"
-  "../libraries/**"
   "../libraries/Arduino_FreeRTOS"
   "../libraries/Arduino_FreeRTOS/src"
   "../libraries/Arduino_FreeRTOS/utility"

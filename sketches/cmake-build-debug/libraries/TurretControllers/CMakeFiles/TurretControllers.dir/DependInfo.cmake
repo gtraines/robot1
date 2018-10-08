@@ -4,18 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/graham/Source/robot1/sketches/libraries/TurretControllers/TraverseController.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj"
   "/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretController.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/home/graham/arduino-1.8.5/libraries/Servo/src"
   "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino"
   "../libraries/TurretConfig"
   "../libraries/Indicator"
   "../libraries/PotMotor"
   "../libraries/TurretControllers"
-  "../libraries/**"
   "../libraries/TurretControllers/../Arduino_FreeRTOS"
   "../libraries/TurretControllers/../TurretConfig"
   "../libraries/TurretControllers/../PotMotor"

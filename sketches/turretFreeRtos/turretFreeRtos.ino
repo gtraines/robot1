@@ -11,6 +11,7 @@
 
 #include <ElevationController.h>
 #include <IrCannonController.h>
+#include <TraverseController.h>
 
 #include <HardwareSerial.h>
 #include <Arduino_FreeRTOS.h>
@@ -23,16 +24,18 @@ boolean turnOffAllIndicators();
 void setArdStatusGood();
 void createAndStartTasks();
 
-void TaskElevationTest( void *pvParameters );
-TaskHandle_t xTaskHandleElevationTest = NULL; 
+//void TaskElevationTest( void *pvParameters );
+//TaskHandle_t xTaskHandleElevationTest = NULL;
 void TaskIndicatorTest( void *pvParameters );
 TaskHandle_t xTaskHandleIndicatorTest = NULL;
 void TaskCannonTest( void *pvParameters );
 TaskHandle_t xTaskHandleCannonTest = NULL;
+void TaskTraverseTest( void *pvParameters );
+TaskHandle_t xTaskHandleTraverseTest = NULL;
 
-ElevationController* elevationController = new ElevationController();
+//ElevationController* elevationController = new ElevationController();
 IrCannonController* cannonController = new IrCannonController();
-
+TraverseController traverseController;
 
 void printInt(int intToPrint) {
   indicateTx();
@@ -40,8 +43,8 @@ void printInt(int intToPrint) {
 }
 
 void setup() {
-  Serial.begin(115200);
-
+  //Serial.begin(115200);
+  
   setPins();
 
   if (turnOffAllIndicators()) {
@@ -49,20 +52,23 @@ void setup() {
   } else {
     setArdStatusError();
   }
-
+  indicateTx();
+    traverseController = TraverseController();
+    
   createAndStartTasks();
 }
 
 void createAndStartTasks() {
-    // Now set up two tasks to run independently.
-  xTaskCreate(
-    TaskElevationTest
-    ,  (const portCHAR *)"ElevationTest"   // A name just for humans
-    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
-    ,  NULL
-    ,  3  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
-    ,  &xTaskHandleElevationTest );
-    
+//    // Now set up two tasks to run independently.
+//  xTaskCreate(
+//    TaskElevationTest
+//    ,  (const portCHAR *)"ElevationTest"   // A name just for humans
+//    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
+//    ,  NULL
+//    ,  3  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+//    ,  &xTaskHandleElevationTest );
+
+
   xTaskCreate(
     TaskCannonTest
     ,  (const portCHAR *) "IndicatorTest"
@@ -79,6 +85,14 @@ void createAndStartTasks() {
     ,  1  // Priority
     ,  &xTaskHandleIndicatorTest );
 
+    xTaskCreate(
+            TaskTraverseTest
+            ,  (const portCHAR *)"TraverseTest"   // A name just for humans
+            ,  512  // This stack size can be checked & adjusted by reading the Stack Highwater
+            ,  NULL
+            ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+            ,  &xTaskHandleTraverseTest );
+    
 }
 
 void setPins() {
@@ -129,11 +143,15 @@ void setArdStatusError() {
 }
 
 void indicateRx() {
-  Indicator::momentaryLedOn(ACTY_LED_3);
+  Indicator::turnOnLed(ACTY_LED_3);
+  delay(300);
+  Indicator::turnOffLed(ACTY_LED_3);
 }
 
 void indicateTx() {
-  Indicator::momentaryLedOn(ACTY_LED_1);
+  Indicator::turnOnLed(ACTY_LED_1);
+    delay(300);
+    Indicator::turnOffLed(ACTY_LED_1);
 }
 
 /*
@@ -152,6 +170,13 @@ void TaskCannonTest( void *pvParameters ) {
         cannonController->demoFunctionCheck();
     }
     vTaskDelete(NULL);
+}
+
+void TaskTraverseTest( void *pvParameters ) {
+    for (int idx = 0; idx < 2; idx++) {
+        traverseController.functionCheckDemo();
+    }
+    vTaskDelete(xTaskHandleTraverseTest);
 }
 /*
  * Thread 2, turn the LED on and signal thread 1 to turn the LED off.

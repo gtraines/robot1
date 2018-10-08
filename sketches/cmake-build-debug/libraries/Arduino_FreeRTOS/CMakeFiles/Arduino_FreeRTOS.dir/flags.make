@@ -6,5 +6,5 @@ C_FLAGS = -g -Os -w -ffunction-sections -fdata-sections -MMD -g -Os -w -ffunctio
 
 C_DEFINES = 
 
-C_INCLUDES = -I/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino -I/home/graham/Source/robot1/sketches/libraries/TurretConfig -I/home/graham/Source/robot1/sketches/libraries/Indicator -I/home/graham/Source/robot1/sketches/libraries/PotMotor -I/home/graham/Source/robot1/sketches/libraries/TurretControllers -I"/home/graham/Source/robot1/sketches/libraries/**" -I/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS -I/home/graham/Source/robot1/sketches 
+C_INCLUDES = -I/home/graham/arduino-1.8.5/libraries/Servo/src -I/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino -I/home/graham/Source/robot1/sketches/libraries/TurretConfig -I/home/graham/Source/robot1/sketches/libraries/Indicator -I/home/graham/Source/robot1/sketches/libraries/PotMotor -I/home/graham/Source/robot1/sketches/libraries/TurretControllers -I/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS -I/home/graham/Source/robot1/sketches 
 

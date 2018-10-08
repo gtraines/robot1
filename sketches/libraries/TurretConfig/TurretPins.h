@@ -22,8 +22,8 @@
 #define ARD_STATUS_RED 25
 
 #define ACTY_LED_1 27
-#define ACTY_LED_2 29
-#define ACTY_LED_3 31
+#define ACTY_LED_2 31
+#define ACTY_LED_3 29
 
 #define MOVE_LED_GRN 50
 #define MOVE_LED_RED 51

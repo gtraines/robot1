@@ -125,6 +125,33 @@ TurretControllers/fast:
 	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build
 .PHONY : TurretControllers/fast
 
+TraverseController.obj: TraverseController.cpp.obj
+
+.PHONY : TraverseController.obj
+
+# target to build an object file
+TraverseController.cpp.obj:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj
+.PHONY : TraverseController.cpp.obj
+
+TraverseController.i: TraverseController.cpp.i
+
+.PHONY : TraverseController.i
+
+# target to preprocess a source file
+TraverseController.cpp.i:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.i
+.PHONY : TraverseController.cpp.i
+
+TraverseController.s: TraverseController.cpp.s
+
+.PHONY : TraverseController.s
+
+# target to generate assembly for a file
+TraverseController.cpp.s:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.s
+.PHONY : TraverseController.cpp.s
+
 TurretController.obj: TurretController.cpp.obj
 
 .PHONY : TurretController.obj
@@ -161,6 +188,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... TurretControllers"
+	@echo "... TraverseController.obj"
+	@echo "... TraverseController.i"
+	@echo "... TraverseController.s"
 	@echo "... TurretController.obj"
 	@echo "... TurretController.i"
 	@echo "... TurretController.s"

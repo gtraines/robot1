@@ -6,5 +6,5 @@ CXX_FLAGS = -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -fno-t
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino -I/home/graham/Source/robot1/sketches/libraries/TurretConfig -I/home/graham/Source/robot1/sketches/libraries/Indicator -I/home/graham/Source/robot1/sketches/libraries/PotMotor -I/home/graham/Source/robot1/sketches/libraries/TurretControllers -I"/home/graham/Source/robot1/sketches/libraries/**" -I/home/graham/Source/robot1/sketches/libraries/PotMotor/../Arduino_FreeRTOS -I/home/graham/Source/robot1/sketches/libraries/PotMotor/../CppList -I/home/graham/Source/robot1/sketches -I/home/graham/Source/robot1/sketches/libraries/CppList 
+CXX_INCLUDES = -I/home/graham/arduino-1.8.5/libraries/Servo/src -I/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino -I/home/graham/Source/robot1/sketches/libraries/TurretConfig -I/home/graham/Source/robot1/sketches/libraries/Indicator -I/home/graham/Source/robot1/sketches/libraries/PotMotor -I/home/graham/Source/robot1/sketches/libraries/TurretControllers -I/home/graham/Source/robot1/sketches/libraries/PotMotor/../Arduino_FreeRTOS -I/home/graham/Source/robot1/sketches/libraries/PotMotor/../CppList -I/home/graham/Source/robot1/sketches -I/home/graham/Source/robot1/sketches/libraries/CppList 
 

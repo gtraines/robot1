@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /home/graham/Source/robot1/sketches/cmake-build-debug
 CMakeFiles/mega_list.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_list.dir/build.make CMakeFiles/mega_list.dir/depend
 	$(MAKE) -f CMakeFiles/mega_list.dir/build.make CMakeFiles/mega_list.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=51,52,53,54 "Built target mega_list"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=51,52,53,54,55 "Built target mega_list"
 .PHONY : CMakeFiles/mega_list.dir/all
 
 # Include target in all.
@@ -113,7 +113,7 @@ all: CMakeFiles/mega_event_groups.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_event_groups.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_event_groups.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_event_groups.dir/rule
@@ -150,7 +150,7 @@ all: CMakeFiles/mega_croutine.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_croutine.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_croutine.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_croutine.dir/rule
@@ -187,7 +187,7 @@ all: CMakeFiles/mega_stream_buffer.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_stream_buffer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_stream_buffer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_stream_buffer.dir/rule
@@ -224,7 +224,7 @@ all: CMakeFiles/mega_timers.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_timers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_timers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_timers.dir/rule
@@ -251,7 +251,7 @@ clean: CMakeFiles/mega_timers.dir/clean
 CMakeFiles/mega_CORE.dir/all:
 	$(MAKE) -f CMakeFiles/mega_CORE.dir/build.make CMakeFiles/mega_CORE.dir/depend
 	$(MAKE) -f CMakeFiles/mega_CORE.dir/build.make CMakeFiles/mega_CORE.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=21,22,23,24,25,26,27,28,29,30 "Built target mega_CORE"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=22,23,24,25,26,27,28,29,30 "Built target mega_CORE"
 .PHONY : CMakeFiles/mega_CORE.dir/all
 
 # Include target in all.
@@ -261,7 +261,7 @@ all: CMakeFiles/mega_CORE.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_CORE.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 9
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_CORE.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_CORE.dir/rule
@@ -298,7 +298,7 @@ all: CMakeFiles/mega_queue.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_queue.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_queue.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_queue.dir/rule
@@ -325,7 +325,7 @@ clean: CMakeFiles/mega_queue.dir/clean
 CMakeFiles/mega_Arduino.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_Arduino.dir/build.make CMakeFiles/mega_Arduino.dir/depend
 	$(MAKE) -f CMakeFiles/mega_Arduino.dir/build.make CMakeFiles/mega_Arduino.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=11,12,13,14,15 "Built target mega_Arduino"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=12,13,14,15,16 "Built target mega_Arduino"
 .PHONY : CMakeFiles/mega_Arduino.dir/all
 
 # Include target in all.
@@ -335,7 +335,7 @@ all: CMakeFiles/mega_Arduino.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_Arduino.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_Arduino.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_Arduino.dir/rule
@@ -362,7 +362,7 @@ clean: CMakeFiles/mega_Arduino.dir/clean
 CMakeFiles/mega_Arduino_FreeRTOS.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_Arduino_FreeRTOS.dir/build.make CMakeFiles/mega_Arduino_FreeRTOS.dir/depend
 	$(MAKE) -f CMakeFiles/mega_Arduino_FreeRTOS.dir/build.make CMakeFiles/mega_Arduino_FreeRTOS.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=16,17,18,19,20 "Built target mega_Arduino_FreeRTOS"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=17,18,19,20,21 "Built target mega_Arduino_FreeRTOS"
 .PHONY : CMakeFiles/mega_Arduino_FreeRTOS.dir/all
 
 # Include target in all.
@@ -372,7 +372,7 @@ all: CMakeFiles/mega_Arduino_FreeRTOS.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_Arduino_FreeRTOS.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_Arduino_FreeRTOS.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_Arduino_FreeRTOS.dir/rule
@@ -409,7 +409,7 @@ all: CMakeFiles/mega_task.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_task.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_task.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_task.dir/rule
@@ -446,7 +446,7 @@ all: CMakeFiles/mega_stack_macros.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_stack_macros.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_stack_macros.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_stack_macros.dir/rule
@@ -478,7 +478,7 @@ CMakeFiles/Turret-upload.dir/all: CMakeFiles/Turret.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Turret-upload.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 90
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 89
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Turret-upload.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Turret-upload.dir/rule
@@ -515,7 +515,7 @@ all: CMakeFiles/mega_FreeRTOSConfig.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_FreeRTOSConfig.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_FreeRTOSConfig.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_FreeRTOSConfig.dir/rule
@@ -552,7 +552,7 @@ all: CMakeFiles/mega_projdefs.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_projdefs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_projdefs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_projdefs.dir/rule
@@ -579,7 +579,7 @@ clean: CMakeFiles/mega_projdefs.dir/clean
 CMakeFiles/mega_portmacro.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_portmacro.dir/build.make CMakeFiles/mega_portmacro.dir/depend
 	$(MAKE) -f CMakeFiles/mega_portmacro.dir/build.make CMakeFiles/mega_portmacro.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=65,66,67,68,69 "Built target mega_portmacro"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=66,67,68,69 "Built target mega_portmacro"
 .PHONY : CMakeFiles/mega_portmacro.dir/all
 
 # Include target in all.
@@ -589,7 +589,7 @@ all: CMakeFiles/mega_portmacro.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_portmacro.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_portmacro.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_portmacro.dir/rule
@@ -616,7 +616,7 @@ clean: CMakeFiles/mega_portmacro.dir/clean
 CMakeFiles/mega_portable.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_portable.dir/build.make CMakeFiles/mega_portable.dir/depend
 	$(MAKE) -f CMakeFiles/mega_portable.dir/build.make CMakeFiles/mega_portable.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=60,61,62,63,64 "Built target mega_portable"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=61,62,63,64,65 "Built target mega_portable"
 .PHONY : CMakeFiles/mega_portable.dir/all
 
 # Include target in all.
@@ -626,7 +626,7 @@ all: CMakeFiles/mega_portable.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_portable.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_portable.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_portable.dir/rule
@@ -650,21 +650,21 @@ clean: CMakeFiles/mega_portable.dir/clean
 # Target rules for target CMakeFiles/Turret.dir
 
 # All Build rule for target.
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_croutine.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_stack_macros.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_stream_buffer.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino_FreeRTOS.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_queue.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_FreeRTOSConfig.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_timers.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_CORE.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_portable.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_task.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_projdefs.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_event_groups.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_stream_buffer.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_list.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino_FreeRTOS.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_event_groups.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_task.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_stack_macros.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_queue.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_croutine.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_FreeRTOSConfig.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_projdefs.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_portmacro.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_portable.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_mpu_wrappers.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_FreeRTOSVariant.dir/all
 	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/depend
@@ -679,7 +679,7 @@ all: CMakeFiles/Turret.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Turret.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 90
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 89
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Turret.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Turret.dir/rule
@@ -706,7 +706,7 @@ clean: CMakeFiles/Turret.dir/clean
 CMakeFiles/mega_mpu_wrappers.dir/all: CMakeFiles/mega_CORE.dir/all
 	$(MAKE) -f CMakeFiles/mega_mpu_wrappers.dir/build.make CMakeFiles/mega_mpu_wrappers.dir/depend
 	$(MAKE) -f CMakeFiles/mega_mpu_wrappers.dir/build.make CMakeFiles/mega_mpu_wrappers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=55,56,57,58,59 "Built target mega_mpu_wrappers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=56,57,58,59,60 "Built target mega_mpu_wrappers"
 .PHONY : CMakeFiles/mega_mpu_wrappers.dir/all
 
 # Include target in all.
@@ -716,7 +716,7 @@ all: CMakeFiles/mega_mpu_wrappers.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_mpu_wrappers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_mpu_wrappers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_mpu_wrappers.dir/rule
@@ -753,7 +753,7 @@ all: CMakeFiles/mega_FreeRTOSVariant.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/mega_FreeRTOSVariant.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/mega_FreeRTOSVariant.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/mega_FreeRTOSVariant.dir/rule
@@ -780,12 +780,12 @@ clean: CMakeFiles/mega_FreeRTOSVariant.dir/clean
 CMakeFiles/Turret-size.dir/all: CMakeFiles/Turret.dir/all
 	$(MAKE) -f CMakeFiles/Turret-size.dir/build.make CMakeFiles/Turret-size.dir/depend
 	$(MAKE) -f CMakeFiles/Turret-size.dir/build.make CMakeFiles/Turret-size.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=9 "Built target Turret-size"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num= "Built target Turret-size"
 .PHONY : CMakeFiles/Turret-size.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Turret-size.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 91
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 89
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Turret-size.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Turret-size.dir/rule
@@ -817,7 +817,7 @@ CMakeFiles/upload.dir/all: CMakeFiles/Turret-upload.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/upload.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 90
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 89
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/upload.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/upload.dir/rule
@@ -972,7 +972,7 @@ libraries/TurretConfig/preinstall:
 libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all:
 	$(MAKE) -f libraries/TurretConfig/CMakeFiles/TurretConfig.dir/build.make libraries/TurretConfig/CMakeFiles/TurretConfig.dir/depend
 	$(MAKE) -f libraries/TurretConfig/CMakeFiles/TurretConfig.dir/build.make libraries/TurretConfig/CMakeFiles/TurretConfig.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num= "Built target TurretConfig"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=9 "Built target TurretConfig"
 .PHONY : libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
 
 # Include target in all.
@@ -982,7 +982,7 @@ all: libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
 
 # Build rule for subdir invocation for target.
 libraries/TurretConfig/CMakeFiles/TurretConfig.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : libraries/TurretConfig/CMakeFiles/TurretConfig.dir/rule
@@ -1141,7 +1141,7 @@ libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all: libraries/Indi
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all: libraries/PotMotor/CMakeFiles/PotMotor.dir/all
 	$(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/depend
 	$(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=10 "Built target TurretControllers"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=10,11 "Built target TurretControllers"
 .PHONY : libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
 
 # Include target in all.
@@ -1151,7 +1151,7 @@ all: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
 
 # Build rule for subdir invocation for target.
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 10
 	$(MAKE) -f CMakeFiles/Makefile2 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
 .PHONY : libraries/TurretControllers/CMakeFiles/TurretControllers.dir/rule
@@ -1172,62 +1172,62 @@ clean: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory turretFreeRtos
+# Directory level rules for directory turretDebug
 
 # Convenience name for "all" pass in the directory.
-turretFreeRtos/all: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
+turretDebug/all: turretDebug/CMakeFiles/turretDebug.dir/all
 
-.PHONY : turretFreeRtos/all
+.PHONY : turretDebug/all
 
 # Convenience name for "clean" pass in the directory.
-turretFreeRtos/clean: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
+turretDebug/clean: turretDebug/CMakeFiles/turretDebug.dir/clean
 
-.PHONY : turretFreeRtos/clean
+.PHONY : turretDebug/clean
 
 # Convenience name for "preinstall" pass in the directory.
-turretFreeRtos/preinstall:
+turretDebug/preinstall:
 
-.PHONY : turretFreeRtos/preinstall
+.PHONY : turretDebug/preinstall
 
 #=============================================================================
-# Target rules for target turretFreeRtos/CMakeFiles/turretFreeRtos.dir
+# Target rules for target turretDebug/CMakeFiles/turretDebug.dir
 
 # All Build rule for target.
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/Arduino_FreeRTOS/CMakeFiles/Arduino_FreeRTOS.dir/all
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/CppList/CMakeFiles/CppList.dir/all
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/Indicator/CMakeFiles/Indicator.dir/all
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/PotMotor/CMakeFiles/PotMotor.dir/all
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
-	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/depend
-	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=100 "Built target turretFreeRtos"
-.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/Arduino_FreeRTOS/CMakeFiles/Arduino_FreeRTOS.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/CppList/CMakeFiles/CppList.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/Indicator/CMakeFiles/Indicator.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/PotMotor/CMakeFiles/PotMotor.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/all: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
+	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/depend
+	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=100 "Built target turretDebug"
+.PHONY : turretDebug/CMakeFiles/turretDebug.dir/all
 
 # Include target in all.
-all: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
+all: turretDebug/CMakeFiles/turretDebug.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 9
-	$(MAKE) -f CMakeFiles/Makefile2 turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
+turretDebug/CMakeFiles/turretDebug.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 turretDebug/CMakeFiles/turretDebug.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
-.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule
+.PHONY : turretDebug/CMakeFiles/turretDebug.dir/rule
 
 # Convenience name for target.
-turretFreeRtos: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule
+turretDebug: turretDebug/CMakeFiles/turretDebug.dir/rule
 
-.PHONY : turretFreeRtos
-
-# clean rule for target.
-turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean:
-	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
-.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
+.PHONY : turretDebug
 
 # clean rule for target.
-clean: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
+turretDebug/CMakeFiles/turretDebug.dir/clean:
+	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/clean
+.PHONY : turretDebug/CMakeFiles/turretDebug.dir/clean
+
+# clean rule for target.
+clean: turretDebug/CMakeFiles/turretDebug.dir/clean
 
 .PHONY : clean
 
