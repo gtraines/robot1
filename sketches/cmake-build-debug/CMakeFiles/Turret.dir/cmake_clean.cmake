@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "Turret_turretDebug.ino.cpp"
-  "CMakeFiles/Turret.dir/Turret_turretDebug.ino.cpp.obj"
+  "Turret_turretFreeRtos.ino.cpp"
+  "CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj"
   "Turret.pdb"
   "Turret.elf"
 )

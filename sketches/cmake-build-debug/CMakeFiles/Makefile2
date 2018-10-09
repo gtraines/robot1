@@ -650,19 +650,19 @@ clean: CMakeFiles/mega_portable.dir/clean
 # Target rules for target CMakeFiles/Turret.dir
 
 # All Build rule for target.
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_timers.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_CORE.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_stream_buffer.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_list.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_stream_buffer.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino_FreeRTOS.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_event_groups.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_task.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_stack_macros.dir/all
-CMakeFiles/Turret.dir/all: CMakeFiles/mega_queue.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_croutine.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_FreeRTOSConfig.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_event_groups.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_stack_macros.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_Arduino_FreeRTOS.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_queue.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_projdefs.dir/all
+CMakeFiles/Turret.dir/all: CMakeFiles/mega_timers.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_portmacro.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_portable.dir/all
 CMakeFiles/Turret.dir/all: CMakeFiles/mega_mpu_wrappers.dir/all
@@ -1172,62 +1172,62 @@ clean: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Directory level rules for directory turretDebug
+# Directory level rules for directory turretFreeRtos
 
 # Convenience name for "all" pass in the directory.
-turretDebug/all: turretDebug/CMakeFiles/turretDebug.dir/all
+turretFreeRtos/all: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
 
-.PHONY : turretDebug/all
+.PHONY : turretFreeRtos/all
 
 # Convenience name for "clean" pass in the directory.
-turretDebug/clean: turretDebug/CMakeFiles/turretDebug.dir/clean
+turretFreeRtos/clean: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
 
-.PHONY : turretDebug/clean
+.PHONY : turretFreeRtos/clean
 
 # Convenience name for "preinstall" pass in the directory.
-turretDebug/preinstall:
+turretFreeRtos/preinstall:
 
-.PHONY : turretDebug/preinstall
+.PHONY : turretFreeRtos/preinstall
 
 #=============================================================================
-# Target rules for target turretDebug/CMakeFiles/turretDebug.dir
+# Target rules for target turretFreeRtos/CMakeFiles/turretFreeRtos.dir
 
 # All Build rule for target.
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/Arduino_FreeRTOS/CMakeFiles/Arduino_FreeRTOS.dir/all
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/CppList/CMakeFiles/CppList.dir/all
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/Indicator/CMakeFiles/Indicator.dir/all
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/PotMotor/CMakeFiles/PotMotor.dir/all
-turretDebug/CMakeFiles/turretDebug.dir/all: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
-	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/depend
-	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=100 "Built target turretDebug"
-.PHONY : turretDebug/CMakeFiles/turretDebug.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/Arduino_FreeRTOS/CMakeFiles/Arduino_FreeRTOS.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/CppList/CMakeFiles/CppList.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/TurretConfig/CMakeFiles/TurretConfig.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/Indicator/CMakeFiles/Indicator.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/PotMotor/CMakeFiles/PotMotor.dir/all
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/all
+	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/depend
+	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=100 "Built target turretFreeRtos"
+.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
 
 # Include target in all.
-all: turretDebug/CMakeFiles/turretDebug.dir/all
+all: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-turretDebug/CMakeFiles/turretDebug.dir/rule: cmake_check_build_system
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 11
-	$(MAKE) -f CMakeFiles/Makefile2 turretDebug/CMakeFiles/turretDebug.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 turretFreeRtos/CMakeFiles/turretFreeRtos.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles 0
-.PHONY : turretDebug/CMakeFiles/turretDebug.dir/rule
+.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule
 
 # Convenience name for target.
-turretDebug: turretDebug/CMakeFiles/turretDebug.dir/rule
+turretFreeRtos: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/rule
 
-.PHONY : turretDebug
-
-# clean rule for target.
-turretDebug/CMakeFiles/turretDebug.dir/clean:
-	$(MAKE) -f turretDebug/CMakeFiles/turretDebug.dir/build.make turretDebug/CMakeFiles/turretDebug.dir/clean
-.PHONY : turretDebug/CMakeFiles/turretDebug.dir/clean
+.PHONY : turretFreeRtos
 
 # clean rule for target.
-clean: turretDebug/CMakeFiles/turretDebug.dir/clean
+turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean:
+	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
+.PHONY : turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
+
+# clean rule for target.
+clean: turretFreeRtos/CMakeFiles/turretFreeRtos.dir/clean
 
 .PHONY : clean
 

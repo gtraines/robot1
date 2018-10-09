@@ -35,40 +35,21 @@ public:
     ~ElevationController() {
 
      }
-     void demoFunctionCheck() {
+     bool functionCheckDemo() {
          vTaskDelay(100/portTICK_PERIOD_MS);
         this->_elevationMotor->moveTo(ELEVATION_MIN);
         this->_elevationMotor->moveTo(ELEVATION_MAX);
         this->_elevationMotor->moveTo(ELEVATION_MIN);
         this->_elevationMotor->moveTo(ELEVATION_MAX);
-        this->_elevationMotor->moveTo(500);
         this->_elevationMotor->moveTo(600);
-        vTaskDelay(500/portTICK_PERIOD_MS);
-
-        this->_elevationMotor->moveTo(320);
-        this->_elevationMotor->moveTo(700);
-        this->_elevationMotor->moveTo(500);
-        this->_elevationMotor->moveTo(320);
-        this->_elevationMotor->moveTo(600);
-
-        vTaskDelay(500/portTICK_PERIOD_MS);
-        this->_elevationMotor->moveTo(350);
-        this->_elevationMotor->moveTo(600);
-        this->_elevationMotor->moveTo(500);
-        this->_elevationMotor->moveTo(600);
-        vTaskDelay(500/portTICK_PERIOD_MS);
-    
-        this->_elevationMotor->moveTo(320);
-        this->_elevationMotor->moveTo(700);
-        this->_elevationMotor->moveTo(500);
-        this->_elevationMotor->moveTo(320);
-        this->_elevationMotor->moveTo(600);
-
-        vTaskDelay(500/portTICK_PERIOD_MS);
-        this->_elevationMotor->moveTo(350);
-        this->_elevationMotor->moveTo(600);
-        vTaskDelay(100/portTICK_PERIOD_MS);
+        return true;
      }
+     bool setConditionNeutral();
 };
+
+bool ElevationController::setConditionNeutral() {
+    this->_elevationMotor->moveTo(600);
+    return true;
+}
 
 #endif // TURRET_CONTROLLERS__ELEVATION_CONTROLLER__H

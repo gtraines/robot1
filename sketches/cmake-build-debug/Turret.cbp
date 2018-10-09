@@ -5,7 +5,7 @@
 		<Option title="Turret"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\libraries\;CMake Files\libraries\Arduino_FreeRTOS\;CMake Files\libraries\CppList\;CMake Files\libraries\TurretConfig\;CMake Files\libraries\Indicator\;CMake Files\libraries\PotMotor\;CMake Files\libraries\TurretControllers\;CMake Files\Platform\;CMake Files\turretDebug\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libraries\;CMake Files\libraries\Arduino_FreeRTOS\;CMake Files\libraries\CppList\;CMake Files\libraries\TurretConfig\;CMake Files\libraries\Indicator\;CMake Files\libraries\PotMotor\;CMake Files\libraries\TurretControllers\;CMake Files\Platform\;CMake Files\turretFreeRtos\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug"/>
@@ -2985,9 +2985,9 @@
 					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="turretDebug">
-				<Option output="/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/turretDebug" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug"/>
+			<Target title="turretFreeRtos">
+				<Option output="/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/turretFreeRtos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -2998,12 +2998,12 @@
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/Indicator"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/PotMotor"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/TurretControllers"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/Arduino_FreeRTOS"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/TurretConfig"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/Indicator"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/CppList"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/PotMotor"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/TurretControllers"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS"/>
 					<Add directory="/home/graham/Source/robot1/sketches"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/CppList"/>
@@ -3012,15 +3012,15 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 turretDebug"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 turretFreeRtos"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="turretDebug/fast">
-				<Option output="/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/turretDebug" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug"/>
+			<Target title="turretFreeRtos/fast">
+				<Option output="/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/turretFreeRtos" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -3031,12 +3031,12 @@
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/Indicator"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/PotMotor"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/TurretControllers"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/Arduino_FreeRTOS"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/TurretConfig"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/Indicator"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/CppList"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/PotMotor"/>
-					<Add directory="/home/graham/Source/robot1/sketches/turretDebug/../libraries/TurretControllers"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Arduino_FreeRTOS"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretConfig"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/Indicator"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/CppList"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/PotMotor"/>
+					<Add directory="/home/graham/Source/robot1/sketches/turretFreeRtos/../libraries/TurretControllers"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS"/>
 					<Add directory="/home/graham/Source/robot1/sketches"/>
 					<Add directory="/home/graham/Source/robot1/sketches/libraries/CppList"/>
@@ -3045,17 +3045,17 @@
 					<Add directory="/usr/lib/gcc/avr/4.9.2/../../../avr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 turretDebug/fast"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 turretFreeRtos/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp">
+		<Unit filename="/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp">
 			<Option target="Turret"/>
 		</Unit>
-		<Unit filename="/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretDebug.ino.cpp.rule">
+		<Unit filename="/home/graham/Source/robot1/sketches/cmake-build-debug/Turret_turretFreeRtos.ino.cpp.rule">
 			<Option target="Turret"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/Arduino_FreeRTOS.h">
@@ -3593,49 +3593,60 @@
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/ElevationConfig.h">
 			<Option target="TurretConfig"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/IrConfig.h">
 			<Option target="TurretConfig"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/TraverseConfig.h">
 			<Option target="TurretConfig"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/TurretConfigPlacard.cpp">
 			<Option target="TurretConfig"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/TurretConfigPlacard.h">
 			<Option target="TurretConfig"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretConfig/TurretPins.h">
 			<Option target="TurretConfig"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/CommandMonitor.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/ElevationController.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/IrCannonController.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/IrSensorMonitor.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/TraverseController.cpp">
 			<Option target="TurretControllers"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/TraverseController.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretController.cpp">
 			<Option target="TurretControllers"/>
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretController.h">
 			<Option target="TurretControllers"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
-		<Unit filename="/home/graham/Source/robot1/sketches/turretDebug/turretDebug.ino">
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/turretFreeRtos.ino">
 			<Option target="Turret"/>
-			<Option target="turretDebug"/>
+			<Option target="turretFreeRtos"/>
 		</Unit>
 		<Unit filename="/usr/share/arduino/hardware/arduino/cores/arduino/Arduino.h">
 			<Option target="mega_CORE"/>
@@ -3784,8 +3795,8 @@
 		<Unit filename="/home/graham/Source/robot1/sketches/Platform/Arduino.cmake">
 			<Option virtualFolder="CMake Files\Platform\"/>
 		</Unit>
-		<Unit filename="/home/graham/Source/robot1/sketches/turretDebug/CMakeLists.txt">
-			<Option virtualFolder="CMake Files\turretDebug\"/>
+		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\turretFreeRtos\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

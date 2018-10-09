@@ -40,7 +40,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/Indicator/cmake_install.cmake")
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/PotMotor/cmake_install.cmake")
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/cmake_install.cmake")
-  include("/home/graham/Source/robot1/sketches/cmake-build-debug/turretDebug/cmake_install.cmake")
+  include("/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/cmake_install.cmake")
 
 endif()
 

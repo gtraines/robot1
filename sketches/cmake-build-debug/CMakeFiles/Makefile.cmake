@@ -19,7 +19,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../libraries/PotMotor/CMakeLists.txt"
   "../libraries/TurretConfig/CMakeLists.txt"
   "../libraries/TurretControllers/CMakeLists.txt"
-  "../turretDebug/CMakeLists.txt"
+  "../turretFreeRtos/CMakeLists.txt"
   "/home/graham/clion2018/bin/cmake/share/cmake-3.10/Modules/CMakeCInformation.cmake"
   "/home/graham/clion2018/bin/cmake/share/cmake-3.10/Modules/CMakeCXXInformation.cmake"
   "/home/graham/clion2018/bin/cmake/share/cmake-3.10/Modules/CMakeCommonLanguageInclude.cmake"
@@ -53,7 +53,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "libraries/Indicator/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libraries/PotMotor/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libraries/TurretControllers/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "turretDebug/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "turretFreeRtos/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -85,5 +85,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "libraries/Indicator/CMakeFiles/Indicator.dir/DependInfo.cmake"
   "libraries/PotMotor/CMakeFiles/PotMotor.dir/DependInfo.cmake"
   "libraries/TurretControllers/CMakeFiles/TurretControllers.dir/DependInfo.cmake"
-  "turretDebug/CMakeFiles/turretDebug.dir/DependInfo.cmake"
+  "turretFreeRtos/CMakeFiles/turretFreeRtos.dir/DependInfo.cmake"
   )

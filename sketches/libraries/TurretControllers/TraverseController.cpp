@@ -76,7 +76,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
     return false;
 }
 
-bool TraverseController::setNeutralCondition() {
+bool TraverseController::setConditionNeutral(){
     this->traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
     delay(30);
     return true;

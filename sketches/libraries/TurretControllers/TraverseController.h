@@ -22,7 +22,7 @@ public:
     ~TraverseController();
     bool canMoveTo(int targetPosition);
     bool moveTo(int targetPosition, int delayMillis);
-    bool setNeutralCondition();
+    bool setConditionNeutral();
     void functionCheckDemo();
     int currentServoPosition;
     int servoMaxPosition;

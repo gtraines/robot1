@@ -83,7 +83,7 @@ void loop() {
 
 void TaskElevationTest( void *pvParameters ) {
     for (int idx = 0; idx < 2; idx++) {
-        elevationController->demoFunctionCheck();
+        elevationController->functionCheckDemo();
     }
     vTaskDelete(NULL);
 }
