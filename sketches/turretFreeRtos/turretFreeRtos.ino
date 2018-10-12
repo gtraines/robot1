@@ -7,42 +7,27 @@
 #include <ElevationController.h>
 #include <TurretController.h>
 
-boolean turnOffAllIndicators();
-void setArdStatusGood();
-void setArdStatusError();
 
 void TaskIndicatorTest(void* pvParameters);
 void TaskCannonTest(void* pvParameters);
 void TaskTraverseTest(void* pvParameters);
 void TaskElevationTest(void* pvParameters);
 
-
 TaskHandle_t xTaskHandleIndicatorTest = NULL;
 TaskHandle_t xTaskHandleCannonTest = NULL;
 TaskHandle_t xTaskHandleElevationTest = NULL;
 TaskHandle_t xTaskHandleTraverseTest = NULL;
 
-TurretController* turretController = new TurretController();
 Servo* traverseServo;
+TurretController* turretController;
 ElevationController* elevationController = new ElevationController();
 TraverseController* traverseController;
 
 void setup() {
-    turretController->setPins();
 
-    if (turnOffAllIndicators()) {
-        setArdStatusGood();
-    } else {
-        setArdStatusError();
-    }
-
-    /* Would prefer to do this some other way, but something about the Servo obj
-     * gets weird when I instantiate it inside of the TraverseController
-     * Probably the same issue I had with the SpeedController
-     */
     traverseServo = new Servo();
     traverseServo->attach(TRAVERSE_SERVO);
-    traverseController = new TraverseController(traverseServo);
+    turretController = new TurretController(traverseServo);
 
     xTaskCreate(
             TaskIndicatorTest
@@ -50,7 +35,7 @@ void setup() {
             ,  128  // Stack size
             ,  NULL
             ,  1  // Priority
-            ,  &xTaskHandleIndicatorTest );
+            ,  &xTaskHandleIndicatorTest);
 
     xTaskCreate(
             TaskTraverseTest
@@ -89,7 +74,6 @@ void TaskElevationTest( void *pvParameters ) {
     vTaskDelete(NULL);
 }
 
-
 void TaskTraverseTest( void *pvParameters ) {
 
     for (int idx = 0; idx < 2; idx++) {
@@ -107,52 +91,6 @@ void TaskCannonTest( void *pvParameters ) {
         vTaskDelay(500/portTICK_PERIOD_MS);
     }
     vTaskDelete(xTaskHandleCannonTest);
-}
-
-void setArdStatusGood() {
-    Indicator::turnOffLed(ARD_STATUS_RED);
-    Indicator::turnOnLed(ARD_STATUS_GRN);
-}
-
-void setArdStatusError() {
-    Indicator::turnOffLed(ARD_STATUS_GRN);
-    Indicator::turnOnLed(ARD_STATUS_RED);
-}
-
-void setPins() {
-    pinMode(ELEVATION_MOTOR_ENABLE, OUTPUT);
-    pinMode(ELEVATION_MOTOR_POS, OUTPUT);
-    pinMode(ELEVATION_MOTOR_NEG, OUTPUT);
-
-    pinMode(ARD_STATUS_GRN, OUTPUT);
-    pinMode(ARD_STATUS_RED, OUTPUT);
-
-    pinMode(ACTY_LED_1, OUTPUT);
-    pinMode(ACTY_LED_2, OUTPUT);
-    pinMode(ACTY_LED_3, OUTPUT);
-
-    pinMode(MOVE_LED_GRN, OUTPUT);
-    pinMode(MOVE_LED_RED, OUTPUT);
-    pinMode(MOVE_LED_BLUE, OUTPUT);
-
-    pinMode(CANNON_LED, OUTPUT);
-}
-
-boolean turnOffAllIndicators() {
-    Indicator::turnOffLed(ARD_STATUS_GRN);
-    Indicator::turnOffLed(ARD_STATUS_RED);
-
-    Indicator::turnOffLed(ACTY_LED_1);
-    Indicator::turnOffLed(ACTY_LED_2);
-    Indicator::turnOffLed(ACTY_LED_3);
-
-    Indicator::turnOffLed(MOVE_LED_GRN);
-    Indicator::turnOffLed(MOVE_LED_RED);
-    Indicator::turnOffLed(MOVE_LED_BLUE);
-
-    Indicator::turnOffLed(CANNON_LED);
-
-    return true;
 }
 
 // Declare the thread function for TaskIndicatorTest

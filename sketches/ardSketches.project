@@ -4,6 +4,9 @@
     <VirtualDirectory Name="rawSend">
       <File Name="generated_examples/rawSend/rawSend.ino"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="servo">
+      <File Name="generated_examples/servo/servo.ino"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
@@ -126,14 +129,50 @@
   <VirtualDirectory Name="speedcontrol">
     <File Name="speedcontrol/speedcontrol.ino"/>
   </VirtualDirectory>
-  <VirtualDirectory Name="tests">
-    <File Name="tests/main.cpp"/>
-  </VirtualDirectory>
   <VirtualDirectory Name="turretDemo">
     <File Name="turretDemo/turretDemo.ino"/>
   </VirtualDirectory>
   <VirtualDirectory Name="turretFreeRtos">
+    <VirtualDirectory Name="cmake-build-debug">
+      <VirtualDirectory Name="CMakeFiles">
+        <VirtualDirectory Name="3.10.3">
+          <VirtualDirectory Name="CompilerIdC">
+            <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/3.10.3/CompilerIdC/CMakeCCompilerId.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="CompilerIdCXX">
+            <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/3.10.3/CompilerIdCXX/CMakeCXXCompilerId.cpp"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mega_PotMotor.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/mega_PotMotor.dir/link.txt"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mega_Arduino_FreeRTOS.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/mega_Arduino_FreeRTOS.dir/link.txt"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mega_Indicator.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/mega_Indicator.dir/link.txt"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mega_task.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/mega_task.dir/link.txt"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="mega_CORE.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/mega_CORE.dir/link.txt"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="turretFreeRtos.dir">
+          <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/turretFreeRtos.dir/link.txt"/>
+        </VirtualDirectory>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/CMakeRuleHashes.txt"/>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/clion-environment.txt"/>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/feature_tests.cxx"/>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/feature_tests.c"/>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/TargetDirectories.txt"/>
+        <File Name="turretFreeRtos/cmake-build-debug/CMakeFiles/clion-log.txt"/>
+      </VirtualDirectory>
+      <File Name="turretFreeRtos/cmake-build-debug/turretFreeRtos_turretFreeRtos.ino.cpp"/>
+      <File Name="turretFreeRtos/cmake-build-debug/CMakeCache.txt"/>
+    </VirtualDirectory>
     <File Name="turretFreeRtos/turretFreeRtos.ino"/>
+    <File Name="turretFreeRtos/CMakeLists.txt"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
@@ -141,5 +180,15 @@
     <File Name="bug-cam/bug-cam.ino"/>
     <File Name="bug-cam/InputValues.h"/>
     <File Name="bug-cam/InputValues.cpp"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="sketches">
+    <File Name="CMakeLists.txt"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="turretBase">
+    <File Name="turretBase/turretBase.ino"/>
+  </VirtualDirectory>
+  <VirtualDirectory Name="turretDebug">
+    <File Name="turretDebug/turretDebug.ino"/>
+    <File Name="turretDebug/CMakeLists.txt"/>
   </VirtualDirectory>
 </CodeLite_Project>

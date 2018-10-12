@@ -14,10 +14,10 @@
 class ElevationController
 {
 private:
-    PotMotor* _elevationMotor;
+    static PotMotor* _elevationMotor;
 public:
-    ElevationController(/* args */) {
-        this->_elevationMotor = new PotMotor(
+    static void initialize(/* args */) {
+        ElevationController::_elevationMotor = new PotMotor(
             (int)ELEVATION_MOTOR_ENABLE, 
             (int)ELEVATION_MOTOR_POS, 
             (int)ELEVATION_MOTOR_NEG, 
@@ -29,26 +29,23 @@ public:
             (int)MOTOR_MAX_SPEED, 
             (int)MOTOR_MED_SPEED, 
             (int)MOTOR_JERK_SPEED);
-        this->_elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
+        ElevationController::_elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
 
      }
-    ~ElevationController() {
-
-     }
-     bool functionCheckDemo() {
+     static bool functionCheckDemo() {
          vTaskDelay(100/portTICK_PERIOD_MS);
-        this->_elevationMotor->moveTo(ELEVATION_MIN);
-        this->_elevationMotor->moveTo(ELEVATION_MAX);
-        this->_elevationMotor->moveTo(ELEVATION_MIN);
-        this->_elevationMotor->moveTo(ELEVATION_MAX);
-        this->_elevationMotor->moveTo(600);
+        ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+        ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+        ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+        ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+        ElevationController::_elevationMotor->moveTo(600);
         return true;
      }
-     bool setConditionNeutral();
+     static bool setConditionNeutral();
 };
 
 bool ElevationController::setConditionNeutral() {
-    this->_elevationMotor->moveTo(600);
+    ElevationController::_elevationMotor->moveTo(600);
     return true;
 }
 

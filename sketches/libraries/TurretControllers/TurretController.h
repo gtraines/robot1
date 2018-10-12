@@ -10,31 +10,24 @@
 
 class TurretController
 {
-  private:
-    ElevationController* _elevationController;
-    TraverseController* _traverseController;
   public:
-    explicit TurretController(Servo* traverseServo) {
+    static void initialize(Servo* traverseServo) {
 
-        this->setPins();
+        TurretController::setPins();
 
-        _traverseController = new TraverseController(traverseServo);
-        _elevationController = new ElevationController();
+        TraverseController::initialize(traverseServo);
+        ElevationController::initialize();
 
-        turnOffAllIndicators();
+        TurretController::turnOffAllIndicators();
     }
-    ~TurretController() {
-        delete _elevationController;
-        delete _traverseController;
-    }
-    void setStatusGood();
-    void setStatusError();
-    bool setPins();
-    bool turnOffAllIndicators();
-    bool setConditionNeutral();
-    bool setControlMode(int mode);
-    bool functionCheckDemo();
-    bool indicatorFunctionCheck();
+    static void setStatusGood();
+    static void setStatusError();
+    static bool setPins();
+    static bool turnOffAllIndicators();
+    static bool setConditionNeutral();
+    static bool setControlMode(int mode);
+    static bool functionCheckDemo();
+    static bool indicatorFunctionCheck();
     static void cannonFunctionCheck(void* pvParameters);
     static void elevationFunctionCheck(void* pvParameters);
     static void indicatorFunctionCheck(void* pvParameters);
