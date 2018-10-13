@@ -41,7 +41,10 @@ bool TurretController::setConditionNeutral() {
 }
 
 bool TurretController::functionCheckDemo() {
-    return false;
+    
+
+
+    return true;
 }
 
 bool TurretController::setControlMode(int mode) {

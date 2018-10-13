@@ -1,4 +1,4 @@
-/home/graham/clion2018/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/Source/robot1/sketches
+/home/graham/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/Source/robot1/sketches
 -- Generating Turret
 -- Generating mega_Arduino_FreeRTOS for library Arduino_FreeRTOS
 -- Generating mega_Arduino for library Arduino

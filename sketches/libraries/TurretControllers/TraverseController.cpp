@@ -3,22 +3,21 @@
 //
 #include "TraverseController.h"
 #include <Arduino.h>
+#include <Servo.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 #include <Indicator.h>
 #include <TurretPins.h>
 #include <TraverseConfig.h>
-#include <Servo.h>
 
 
-void TraverseController::initialize(Servo *traverseServo) {
+TraverseController::TraverseController(Servo* traverseServo) {
 
-    TraverseController::servoMaxPosition = TRAVERSE_LIMIT_MAX;
-    TraverseController::servoMinPosition = TRAVERSE_LIMIT_MIN;
-    TraverseController::servoStraightPosition = TRAVERSE_LIMIT_STRAIGHT;
+    this->_traverseServo = traverseServo;
+    this->servoMaxPosition = TRAVERSE_LIMIT_MAX;
+    this->servoMinPosition = TRAVERSE_LIMIT_MIN;
+    this->servoStraightPosition = TRAVERSE_LIMIT_STRAIGHT;
     Indicator::turnOnLed(ACTY_LED_1);
-    TraverseController::traverseServo = traverseServo;
-
     Indicator::turnOnLed(ACTY_LED_3);
 
     delay(15);
@@ -61,7 +60,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
         targetPosition = TraverseController::servoMaxPosition;
     }
 
-    TraverseController::traverseServo->write(targetPosition);
+    this->_traverseServo->write(targetPosition);
 
     Indicator::turnOnLed(MOVE_LED_GRN);
     vTaskDelay(delayMillis/portTICK_PERIOD_MS);
@@ -70,7 +69,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 }
 
 bool TraverseController::setConditionNeutral(){
-    TraverseController::traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
+    this->_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
     delay(30);
     return true;
 }
