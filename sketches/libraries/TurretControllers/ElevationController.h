@@ -13,11 +13,11 @@
 
 class ElevationController
 {
-private:
-    static PotMotor* _elevationMotor;
+protected:
+    PotMotor* _elevationMotor;
 public:
-    static void initialize(/* args */) {
-        ElevationController::_elevationMotor = new PotMotor(
+    ElevationController(/* args */) {
+        this->_elevationMotor = new PotMotor(
             (int)ELEVATION_MOTOR_ENABLE, 
             (int)ELEVATION_MOTOR_POS, 
             (int)ELEVATION_MOTOR_NEG, 
@@ -29,24 +29,27 @@ public:
             (int)MOTOR_MAX_SPEED, 
             (int)MOTOR_MED_SPEED, 
             (int)MOTOR_JERK_SPEED);
-        ElevationController::_elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
-
+        this->_elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
      }
-     static bool functionCheckDemo() {
-         vTaskDelay(100/portTICK_PERIOD_MS);
-        ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
-        ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
-        ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
-        ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
-        ElevationController::_elevationMotor->moveTo(600);
+     ~ElevationController(){
+         delete this->_elevationMotor;
+         this->_elevationMotor = nullptr;
+     }
+     void functionCheckDemo(void* pvParameters) {
+        this->setConditionNeutral();
+        vTaskDelay(100/portTICK_PERIOD_MS);
+        this->_elevationMotor->moveTo(ELEVATION_MIN);
+        this->_elevationMotor->moveTo(ELEVATION_MAX);
+        this->_elevationMotor->moveTo(ELEVATION_MIN);
+        this->_elevationMotor->moveTo(ELEVATION_MAX);
+        this->setConditionNeutral();
+        
+        vTaskDelete(NULL);
+     }
+    bool setConditionNeutral() {
+        this->_elevationMotor->moveTo(ELEVATION_NEUTRAL);
         return true;
      }
-     static bool setConditionNeutral();
 };
-
-bool ElevationController::setConditionNeutral() {
-    ElevationController::_elevationMotor->moveTo(600);
-    return true;
-}
 
 #endif // TURRET_CONTROLLERS__ELEVATION_CONTROLLER__H

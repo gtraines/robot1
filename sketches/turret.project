@@ -220,11 +220,14 @@
     </VirtualDirectory>
     <VirtualDirectory Name="TurretControllers">
       <File Name="libraries/TurretControllers/ElevationController.h"/>
-      <File Name="libraries/TurretControllers/IrCannonController.h"/>
       <File Name="libraries/TurretControllers/TurretController.h"/>
       <File Name="libraries/TurretControllers/IrSensorMonitor.h"/>
       <File Name="libraries/TurretControllers/CommandMonitor.h"/>
       <File Name="libraries/TurretControllers/TraverseController.h"/>
+      <File Name="libraries/TurretControllers/TraverseController.cpp"/>
+      <File Name="libraries/TurretControllers/TurretController.cpp"/>
+      <File Name="libraries/TurretControllers/CannonController.h"/>
+      <File Name="libraries/TurretControllers/CMakeLists.txt"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Description/>

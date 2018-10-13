@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libTurretConfig.a  CMakeFiles/TurretConfig.dir/TurretConfigPlacard.cpp.obj
-/usr/bin/avr-ranlib libTurretConfig.a

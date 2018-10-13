@@ -5,12 +5,14 @@
 #include <TurretPins.h>
 
 #include <Arduino.h>
+#include <Arduino_FreeRTOS.h>
 #include <Servo.h>
 
 #include <Indicator.h>
-#include <IrCannonController.h>
+#include <CannonController.h>
 #include <ElevationController.h>
 #include <TraverseController.h>
+
 
 bool TurretController::setPins() {
     pinMode(ELEVATION_MOTOR_ENABLE, OUTPUT);
@@ -34,16 +36,43 @@ bool TurretController::setPins() {
 }
 
 bool TurretController::setConditionNeutral() {
-    this->_elevationController->setConditionNeutral();
-    this->_traverseController->setConditionNeutral();
-
     return true;
 }
 
-bool TurretController::functionCheckDemo() {
-    
+void TurretController::functionCheckDemo(void* pvParameters) {
+    xTaskCreate(
+        TraverseController::functionCheckDemo,
+        (const portCHAR *) "TraverseTest",
+        512,  // Stack size
+        NULL,
+        1,  // Priority
+        &TurretController::_traverseTaskHandle);
 
+    xTaskCreate(
+        TurretController::indicatorFunctionCheck,
+        (const portCHAR *) "IndicatorTest",
+        128,  // Stack size
+        NULL,
+        1, // Priority
+        &TurretController::_indicatorTaskHandle);
 
+    xTaskCreate(
+        ElevationController::functionCheckDemo,
+        (const portCHAR *) "ElevationTest",
+        512,  // Stack size
+        NULL,
+        1,  // Priority
+        &TurretController::_elevationTaskHandle);
+
+    xTaskCreate(
+        CannonController::functionCheckDemo,
+        (const portCHAR *) "CannonTest",
+        128,  // Stack size
+        NULL,
+        1,  // Priority
+        &TurretController::_cannonTaskHandle);
+
+    vTaskDelete(NULL);
     return true;
 }
 
@@ -68,7 +97,7 @@ bool TurretController::turnOffAllIndicators() {
     return true;
 }
 
-bool TurretController::indicatorFunctionCheck() {
+void TurretController::indicatorFunctionCheck(void* pvParameters) {
 
     Indicator::alertBlinkFast(ACTY_LED_1);
     Indicator::alertBlinkFast(ACTY_LED_2);
@@ -78,6 +107,7 @@ bool TurretController::indicatorFunctionCheck() {
     Indicator::alertStrobeSlow(MOVE_LED_RED);
     Indicator::alertStrobeSlow(MOVE_LED_BLUE);
 
+    vTaskDelete(NULL);
     return true;
 }
 

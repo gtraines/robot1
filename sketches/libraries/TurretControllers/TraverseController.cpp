@@ -14,31 +14,32 @@
 TraverseController::TraverseController(Servo* traverseServo) {
 
     this->_traverseServo = traverseServo;
-    this->servoMaxPosition = TRAVERSE_LIMIT_MAX;
-    this->servoMinPosition = TRAVERSE_LIMIT_MIN;
-    this->servoStraightPosition = TRAVERSE_LIMIT_STRAIGHT;
+    this->_traverseServo->attach(TRAVERSE_SERVO);
+
     Indicator::turnOnLed(ACTY_LED_1);
     Indicator::turnOnLed(ACTY_LED_3);
 
     delay(15);
 
-    TraverseController::setConditionNeutral();
+    this->setConditionNeutral();
     Indicator::turnOnLed(ACTY_LED_2);
 }
 
-void TraverseController::functionCheckDemo() {
+void TraverseController::functionCheckDemo(void* pvParameters) {
     int travPos = 0;
-    for (travPos = TraverseController::servoStraightPosition; travPos < TraverseController::servoMaxPosition; travPos++) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
+    for (travPos = TRAVERSE_LIMIT_STRAIGHT; travPos < TRAVERSE_LIMIT_MAX; travPos++) {
+        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
 
-    for (travPos = TraverseController::servoMaxPosition; travPos > TraverseController::servoMinPosition; travPos--) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
+    for (travPos = TRAVERSE_LIMIT_MAX; travPos > TRAVERSE_LIMIT_MIN; travPos--) {
+        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
 
-    for (travPos = TraverseController::servoMinPosition; travPos < TraverseController::servoStraightPosition; travPos++) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
+    for (travPos = TRAVERSE_LIMIT_MIN; travPos < TRAVERSE_LIMIT_STRAIGHT; travPos++) {
+        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
+    
+    vTaskDelete(NULL);
 }
 
 bool TraverseController::canMoveTo(int targetPosition) {
@@ -50,14 +51,14 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
     Indicator::turnOffLed(MOVE_LED_BLUE);
     Indicator::turnOffLed(MOVE_LED_GRN);
 
-    if (targetPosition < TraverseController::servoMinPosition) {
+    if (targetPosition < TRAVERSE_LIMIT_MIN) {
         Indicator::turnOnLed(ARD_STATUS_RED);
-        targetPosition = TraverseController::servoMinPosition;
+        targetPosition = TRAVERSE_LIMIT_MIN;
     }
 
-    if (targetPosition > TraverseController::servoMaxPosition) {
+    if (targetPosition > TRAVERSE_LIMIT_MAX) {
         Indicator::turnOnLed(MOVE_LED_BLUE);
-        targetPosition = TraverseController::servoMaxPosition;
+        targetPosition = TRAVERSE_LIMIT_MAX;
     }
 
     this->_traverseServo->write(targetPosition);
@@ -65,11 +66,11 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
     Indicator::turnOnLed(MOVE_LED_GRN);
     vTaskDelay(delayMillis/portTICK_PERIOD_MS);
 
-    return false;
+    return true;
 }
 
 bool TraverseController::setConditionNeutral(){
-    this->_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
+    this->traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
     delay(30);
     return true;
 }

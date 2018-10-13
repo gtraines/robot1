@@ -1,8 +1,8 @@
 .PHONY: clean All
 
 All:
-	@echo "----------Building project:[ ardSketches - Debug ]----------"
-	@"$(MAKE)" -f  "ardSketches.mk"
+	@echo "----------Building project:[ arduinoLibraries - Debug ]----------"
+	@"$(MAKE)" -f  "arduinoLibraries.mk"
 clean:
-	@echo "----------Cleaning project:[ ardSketches - Debug ]----------"
-	@"$(MAKE)" -f  "ardSketches.mk" clean
+	@echo "----------Cleaning project:[ arduinoLibraries - Debug ]----------"
+	@"$(MAKE)" -f  "arduinoLibraries.mk" clean

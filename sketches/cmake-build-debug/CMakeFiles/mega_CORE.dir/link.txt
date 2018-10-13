@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libmega_CORE.a  CMakeFiles/mega_CORE.dir/usr/share/arduino/hardware/arduino/cores/arduino/Servo.cpp.obj
-/usr/bin/avr-ranlib libmega_CORE.a

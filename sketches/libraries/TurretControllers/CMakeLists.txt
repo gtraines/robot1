@@ -9,7 +9,7 @@ include_directories(../Indicator)
 file(GLOB headers_ "*.h")
 file(GLOB sources_ "*.cpp")
 
-add_library(TurretControllers ${headers_} ${sources_} TraverseController.cpp TraverseController.h)
+add_library(TurretControllers ${headers_} ${sources_})
 
 target_include_directories(TurretControllers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(TurretControllers LINK_PUBLIC Arduino_FreeRTOS)

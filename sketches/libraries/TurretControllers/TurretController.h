@@ -4,24 +4,33 @@
 #include <Servo.h>
 #include <Indicator.h>
 #include <TurretPins.h>
-#include <IrCannonController.h>
+#include <CannonController.h>
 #include <ElevationController.h>
 #include <TraverseController.h>
 
 class TurretController
 {
-private:
-    TraverseController* _traverseController;
-    ElevationController* _elevationController;
+protected:
+    TaskHandle_t _traverseTaskHandle;
+    TaskHandle_t _elevationTaskHandle;
+    TaskHandle_t _indicatorTaskHandle;
+    TaskHandle_t _cannonTaskHandle;
+    TraverseController* _traverseCtrl;
+    ElevationController* _elevationCtrl;
   public:
     TurretController(Servo* traverseServo) {
 
         this->setPins();
 
-        this->_traverseController = new TraverseController(traverseServo);
-        this->_elevationController = new ElevationController();
+        this->_traverseCtrl = new TraverseController(traverseServo);
+        this->_elevationCtrl = new ElevationController();
 
-        this->turnOffAllIndicators();
+        TurretController::turnOffAllIndicators();
+        
+        TurretController::_cannonTaskHandle = NULL;
+        TurretController::_elevationTaskHandle = NULL;
+        TurretController::_indicatorTaskHandle = NULL;
+        TurretController::_traverseTaskHandle = NULL;
     }
     ~TurretController() { }
     void setStatusGood();
@@ -30,12 +39,8 @@ private:
     bool turnOffAllIndicators();
     bool setConditionNeutral();
     bool setControlMode(int mode);
-    bool functionCheckDemo();
-    bool indicatorFunctionCheck();
-    void cannonFunctionCheck(void* pvParameters);
-    void elevationFunctionCheck(void* pvParameters);
+    void functionCheckDemo(void* pvParameters);
     void indicatorFunctionCheck(void* pvParameters);
-    void traverseFunctionCheck(void* pvParameters);
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H

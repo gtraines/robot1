@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libmega_task.a  CMakeFiles/mega_task.dir/home/graham/Source/robot1/sketches/libraries/PotMotor/PotMotor.cpp.obj
-/usr/bin/avr-ranlib libmega_task.a
