@@ -2,7 +2,6 @@ set(CMAKE_C_COMPILER "/usr/bin/avr-gcc")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "4.9.2")
-set(CMAKE_C_COMPILER_VERSION_INTERNAL "")
 set(CMAKE_C_COMPILER_WRAPPER "")
 set(CMAKE_C_STANDARD_COMPUTED_DEFAULT "90")
 set(CMAKE_C_COMPILE_FEATURES "c_std_90;c_std_99;c_std_11")
@@ -14,12 +13,8 @@ set(CMAKE_C_PLATFORM_ID "")
 set(CMAKE_C_SIMULATE_ID "")
 set(CMAKE_C_SIMULATE_VERSION "")
 
-
-
 set(CMAKE_AR "/usr/bin/avr-ar")
-set(CMAKE_C_COMPILER_AR "/usr/bin/avr-gcc-ar")
 set(CMAKE_RANLIB "/usr/bin/avr-ranlib")
-set(CMAKE_C_COMPILER_RANLIB "/usr/bin/avr-gcc-ranlib")
 set(CMAKE_LINKER "/usr/bin/avr-ld")
 set(CMAKE_COMPILER_IS_GNUCC 1)
 set(CMAKE_C_COMPILER_LOADED 1)
@@ -68,6 +63,6 @@ endif()
 
 
 
-set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "gcc;m;c")
+set(CMAKE_C_IMPLICIT_LINK_LIBRARIES "m;c")
 set(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/avr/4.9.2;/usr/lib/avr/lib")
 set(CMAKE_C_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

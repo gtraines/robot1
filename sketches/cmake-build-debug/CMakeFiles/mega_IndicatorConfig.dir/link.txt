@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libmega_IndicatorConfig.a  CMakeFiles/mega_IndicatorConfig.dir/libraries/Indicator/Indicator.cpp.obj
-/usr/bin/avr-ranlib libmega_IndicatorConfig.a

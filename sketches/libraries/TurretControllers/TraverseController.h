@@ -16,17 +16,22 @@ struct traverse_state_t {
 };
 
 class TraverseController {
+private:
+	Servo* _traverseServo;
 public:
-	static void initialize(Servo* traverseServo);
-    static bool canMoveTo(int targetPosition);
-    static bool moveTo(int targetPosition, int delayMillis);
-    static bool setConditionNeutral();
-    static void functionCheckDemo();
-    static int currentServoPosition;
-    static int servoMaxPosition;
-    static int servoStraightPosition;
-    static int servoMinPosition;
-    static Servo* traverseServo;
+	TraverseController(Servo* traverseServo);
+	~TraverseController() {
+		delete _traverseServo;
+	}
+    bool canMoveTo(int targetPosition);
+    bool moveTo(int targetPosition, int delayMillis);
+    bool setConditionNeutral();
+    void functionCheckDemo();
+    int currentServoPosition;
+    int servoMaxPosition;
+    int servoStraightPosition;
+    int servoMinPosition;
+    static bool indicatorFunctionCheck();
 };
 
 
