@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.ino": "cpp",
+        "*.ipp": "cpp",
+        "mutex": "cpp"
+    }
+}

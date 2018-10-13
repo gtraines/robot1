@@ -45,7 +45,9 @@
                 "${workspaceRoot}",
                 "/usr/include/linux"
             ],
-            "defines": [],
+            "defines": [
+                "USBCON"
+            ],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [

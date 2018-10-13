@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                "/home/graham/arduino-1.8.5/libraries",
+                "/home/graham/arduino-1.8.5/libraries/LedControl",
+                "/usr/lib/avr/include",
+                "/usr/lib/avr/include/avr"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                    "/home/graham/arduino-1.8.5/libraries",
+                    "/home/graham/arduino-1.8.5/libraries/LedControl",
+                    "/usr/lib/avr/include",
+                    "/usr/lib/avr/include/avr"
+                ]
+            },
+            "intelliSenseMode": "clang-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 3
+}

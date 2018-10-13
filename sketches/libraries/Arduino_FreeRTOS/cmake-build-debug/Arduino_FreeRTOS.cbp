@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Arduino_FreeRTOS"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Arduino_FreeRTOS">
+				<Option output="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/libArduino_FreeRTOS.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 Arduino_FreeRTOS"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Arduino_FreeRTOS/fast">
+				<Option output="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/libArduino_FreeRTOS.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 Arduino_FreeRTOS/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/Arduino_FreeRTOS.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/FreeRTOSConfig.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/FreeRTOSVariant.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/croutine.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/croutine.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/event_groups.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/event_groups.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/heap_3.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/list.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/list.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/message_buffer.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/mpu_wrappers.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/port.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/portable.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/portmacro.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/projdefs.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/queue.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/queue.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/semphr.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/stack_macros.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/stream_buffer.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/stream_buffer.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/task.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/tasks.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/timers.c">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/timers.h">
+			<Option target="Arduino_FreeRTOS"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/libraries/Arduino_FreeRTOS/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

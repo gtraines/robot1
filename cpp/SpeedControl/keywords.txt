@@ -1,0 +1,21 @@
+#######################################
+# Syntax Coloring Map For SpeedControl
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SpeedControl	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+attach  KEYWORD2
+availableToReceiveCommand   KEYWORD2
+commandMove KEYWORD2
+getCurrentControlStatus KEYWORD2
+getMillisUntilAvailableForCommand   KEYWORD2
+setDebug    KEYWORD2
+incrementTimeStep   KEYWORD2

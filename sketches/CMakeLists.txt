@@ -1,0 +1,40 @@
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/ArduinoToolchain.cmake)
+set(PROJECT_NAME Turret)
+project(${PROJECT_NAME})
+
+include_directories(~/arduino-1.8.5/libraries/Servo/src)
+include_directories(~/arduino-1.8.5/hardware/arduino/avr/cores/arduino)
+
+include_directories(libraries/TurretConfig)
+include_directories(libraries/Indicator)
+include_directories(libraries/PotMotor)
+include_directories(libraries/TurretControllers)
+
+add_subdirectory(libraries/Arduino_FreeRTOS)
+add_subdirectory(libraries/CppList)
+add_subdirectory(libraries/TurretConfig)
+add_subdirectory(libraries/Indicator)
+add_subdirectory(libraries/PotMotor)
+add_subdirectory(libraries/TurretControllers)
+add_subdirectory(turretFreeRtos)
+#add_subdirectory(turretDebug)
+
+#set(${CMAKE_PROJECT_NAME}_SKETCH turretDebug/turretDebug.ino)
+set(${CMAKE_PROJECT_NAME}_SKETCH turretFreeRtos/turretFreeRtos.ino)
+
+target_include_directories(Arduino_FreeRTOS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(CppList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(TurretConfig PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(Indicator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(PotMotor PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(TurretControllers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+#### Uncomment below additional settings as needed.
+set(${CMAKE_PROJECT_NAME}_BOARD mega)
+set(${CMAKE_PROJECT_NAME}_PORT /dev/ttyACM0)
+set(mega.build.mcu atmega2560)
+set(mega.upload.protocol wiring)
+set(mega.upload.speed 115200)
+generate_arduino_firmware(${CMAKE_PROJECT_NAME})

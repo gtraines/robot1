@@ -1,9 +1,9 @@
-set(CMAKE_HOST_SYSTEM "Linux-4.4.0-97-generic")
+set(CMAKE_HOST_SYSTEM "Linux-4.4.0-116-generic")
 set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "4.4.0-97-generic")
+set(CMAKE_HOST_SYSTEM_VERSION "4.4.0-116-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
-include("/home/graham/projects/robot1/cpp/SpeedControl/cmake/ArduinoToolchain.cmake")
+include("/home/graham/Source/robot1/cpp/SpeedControl/cmake/ArduinoToolchain.cmake")
 
 set(CMAKE_SYSTEM "Arduino")
 set(CMAKE_SYSTEM_NAME "Arduino")

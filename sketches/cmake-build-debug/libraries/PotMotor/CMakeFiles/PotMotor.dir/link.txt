@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libPotMotor.a  CMakeFiles/PotMotor.dir/PotMotor.cpp.obj
+/usr/bin/avr-ranlib libPotMotor.a

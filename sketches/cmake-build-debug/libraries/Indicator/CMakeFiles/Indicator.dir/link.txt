@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libIndicator.a  CMakeFiles/Indicator.dir/Indicator.cpp.obj
+/usr/bin/avr-ranlib libIndicator.a

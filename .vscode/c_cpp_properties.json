@@ -1,0 +1,109 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "/usr/include",
+                "/usr/local/include",
+                "/usr/share/arduino/hardware/arduino/cores/arduino",
+                "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                "${workspaceRoot}"
+            ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include",
+                    "/usr/share/arduino/hardware/arduino/cores/arduino",
+                    "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "/usr/include/newlib/c++/4.9.3",
+                "/usr/include/c++/5",
+                "/usr/include/x86_64-linux-gnu/c++/5",
+                "/usr/local/include",
+                "/usr/include/newlib",
+                "/usr/include",
+                "/usr/include/x86_64-linux-gnu",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/standard",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
+                "/home/graham/arduino-1.8.5/hardware/tools/avr/lib/gcc/avr/4.9.2/include",
+                "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                "${workspaceRoot}",
+                "/usr/include/linux",
+                "${workspaceFolder}/sketches/libraries/**",
+                "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**",
+                "${workspaceFolder}/sketches/libraries/TurretControllers"
+            ],
+            "defines": [
+                "USBCON"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "/usr/include/newlib/c++/4.9.3",
+                    "/usr/include/c++/5",
+                    "/usr/include/x86_64-linux-gnu/c++/5",
+                    "/usr/local/include",
+                    "/usr/include/newlib",
+                    "/usr/include",
+                    "/usr/include/x86_64-linux-gnu",
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/standard",
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/lib/gcc/avr/4.9.2/include",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                    "${workspaceRoot}",
+                    "${workspaceFolder}/sketches/libraries/**",
+                    "${workspaceFolder}/sketches/libraries/FreeRTOS_AVR/**"
+                ],
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": ""
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
+                "${workspaceRoot}"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
+            "browse": {
+                "path": [
+                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,6 @@
+/home/graham/clion2018/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/graham/Source/robot1/sketches/turretFreeRtos
+-- Generating turretFreeRtos
+-- Using /usr/bin/avr-objcopy for converting firmware image to hex
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/graham/Source/robot1/sketches/turretFreeRtos/cmake-build-debug

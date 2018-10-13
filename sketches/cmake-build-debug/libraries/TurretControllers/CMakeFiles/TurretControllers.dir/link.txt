@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libTurretControllers.a  CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj CMakeFiles/TurretControllers.dir/TurretController.cpp.obj
+/usr/bin/avr-ranlib libTurretControllers.a
