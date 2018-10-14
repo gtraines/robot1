@@ -13,6 +13,10 @@
 #include <ElevationController.h>
 #include <TraverseController.h>
 
+TaskHandle_t TurretController::_traverseTaskHandle = NULL;
+TaskHandle_t TurretController::_elevationTaskHandle = NULL;
+TaskHandle_t TurretController::_indicatorTaskHandle = NULL;
+TaskHandle_t TurretController::_cannonTaskHandle = NULL;
 
 bool TurretController::setPins() {
     pinMode(ELEVATION_MOTOR_ENABLE, OUTPUT);
@@ -40,15 +44,15 @@ bool TurretController::setConditionNeutral() {
 }
 
 void TurretController::functionCheckDemo(void* pvParameters) {
-    xTaskCreate(
+    BaseType_t trvStatus = xTaskCreate(
         TraverseController::functionCheckDemo,
         (const portCHAR *) "TraverseTest",
-        512,  // Stack size
+        128,  // Stack size
         NULL,
-        1,  // Priority
+        2,  // Priority
         &TurretController::_traverseTaskHandle);
-
-    xTaskCreate(
+        
+    BaseType_t indicatorStatus = xTaskCreate(
         TurretController::indicatorFunctionCheck,
         (const portCHAR *) "IndicatorTest",
         128,  // Stack size
@@ -56,24 +60,27 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         1, // Priority
         &TurretController::_indicatorTaskHandle);
 
-    xTaskCreate(
+    BaseType_t elevationStatus = xTaskCreate(
         ElevationController::functionCheckDemo,
         (const portCHAR *) "ElevationTest",
-        512,  // Stack size
-        NULL,
-        1,  // Priority
-        &TurretController::_elevationTaskHandle);
-
-    xTaskCreate(
-        CannonController::functionCheckDemo,
-        (const portCHAR *) "CannonTest",
         128,  // Stack size
         NULL,
-        1,  // Priority
-        &TurretController::_cannonTaskHandle);
+        2,  // Priority
+        &TurretController::_elevationTaskHandle);
 
-    vTaskDelete(NULL);
-    return true;
+//    xTaskCreate(
+//        this->_cannonCtrl->functionCheckDemo,
+//        (const portCHAR *) "CannonTest",
+//        128,  // Stack size
+//        NULL,
+//        1,  // Priority
+//        &this->_cannonTaskHandle);
+    if (trvStatus != pdPASS || indicatorStatus != pdPASS || elevationStatus != pdPASS) {
+        TurretController::setStatusError();
+    } else {
+        TurretController::setStatusGood();
+    }
+
 }
 
 bool TurretController::setControlMode(int mode) {
@@ -117,6 +124,8 @@ void TurretController::setStatusGood() {
 }
 
 void TurretController::setStatusError() {
+    TurretController::turnOffAllIndicators();
+    
     Indicator::turnOffLed(ARD_STATUS_GRN);
-    Indicator::turnOnLed(ARD_STATUS_RED);
+    Indicator::strobeMedium(ARD_STATUS_RED, 100);
 }

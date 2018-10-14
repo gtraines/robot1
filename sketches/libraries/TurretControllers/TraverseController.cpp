@@ -10,33 +10,37 @@
 #include <TurretPins.h>
 #include <TraverseConfig.h>
 
+Servo* TraverseController::_traverseServo = NULL;
 
-TraverseController::TraverseController(Servo* traverseServo) {
 
-    this->_traverseServo = traverseServo;
-    this->_traverseServo->attach(TRAVERSE_SERVO);
+void TraverseController::initialize(Servo* traverseServo) {
 
-    Indicator::turnOnLed(ACTY_LED_1);
-    Indicator::turnOnLed(ACTY_LED_3);
+    TraverseController::_traverseServo = traverseServo;
+
+    Indicator::turnOffLed(ACTY_LED_1);
+    Indicator::turnOffLed(ACTY_LED_3);
 
     delay(15);
 
-    this->setConditionNeutral();
-    Indicator::turnOnLed(ACTY_LED_2);
+    if (TraverseController::setConditionNeutral()) {
+        Indicator::turnOnLed(ACTY_LED_2);
+        delay(200);
+    }
+    
 }
 
 void TraverseController::functionCheckDemo(void* pvParameters) {
     int travPos = 0;
     for (travPos = TRAVERSE_LIMIT_STRAIGHT; travPos < TRAVERSE_LIMIT_MAX; travPos++) {
-        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
+        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
 
     for (travPos = TRAVERSE_LIMIT_MAX; travPos > TRAVERSE_LIMIT_MIN; travPos--) {
-        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
+        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
 
     for (travPos = TRAVERSE_LIMIT_MIN; travPos < TRAVERSE_LIMIT_STRAIGHT; travPos++) {
-        this->moveTo(travPos, TRAVERSE_MOVE_DELAY);
+        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
     
     vTaskDelete(NULL);
@@ -61,7 +65,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
         targetPosition = TRAVERSE_LIMIT_MAX;
     }
 
-    this->_traverseServo->write(targetPosition);
+    TraverseController::_traverseServo->write(targetPosition);
 
     Indicator::turnOnLed(MOVE_LED_GRN);
     vTaskDelay(delayMillis/portTICK_PERIOD_MS);
@@ -70,7 +74,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 }
 
 bool TraverseController::setConditionNeutral(){
-    this->traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
+    TraverseController::_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
     delay(30);
     return true;
 }

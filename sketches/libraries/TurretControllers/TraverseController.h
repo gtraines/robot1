@@ -16,18 +16,17 @@ struct traverse_state_t {
 };
 
 class TraverseController {
-protected:
-    Servo* _traverseServo;`
-    int currentServoPosition;	
 public:
-    TraverseController(Servo* traverseServo);
+    static void initialize(Servo* traverseServo);
 	~TraverseController() {
-		delete this->_traverseServo;
+		delete _traverseServo;
 	}
-    bool canMoveTo(int targetPosition);
-    bool moveTo(int targetPosition, int delayMillis);
-    bool setConditionNeutral();
-    void functionCheckDemo(void* pvParameters);
+    static bool canMoveTo(int targetPosition);
+    static bool moveTo(int targetPosition, int delayMillis);
+    static bool setConditionNeutral();
+    static void functionCheckDemo(void* pvParameters);
+    static Servo* _traverseServo;
+    
 };
 
 

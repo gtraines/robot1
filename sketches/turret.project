@@ -228,6 +228,7 @@
       <File Name="libraries/TurretControllers/TurretController.cpp"/>
       <File Name="libraries/TurretControllers/CannonController.h"/>
       <File Name="libraries/TurretControllers/CMakeLists.txt"/>
+      <File Name="libraries/TurretControllers/ElevationController.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Description/>

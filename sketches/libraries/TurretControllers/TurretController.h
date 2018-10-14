@@ -10,37 +10,27 @@
 
 class TurretController
 {
-protected:
-    TaskHandle_t _traverseTaskHandle;
-    TaskHandle_t _elevationTaskHandle;
-    TaskHandle_t _indicatorTaskHandle;
-    TaskHandle_t _cannonTaskHandle;
-    TraverseController* _traverseCtrl;
-    ElevationController* _elevationCtrl;
   public:
-    TurretController(Servo* traverseServo) {
+    static void initialize(Servo* traverseServo) {
 
-        this->setPins();
-
-        this->_traverseCtrl = new TraverseController(traverseServo);
-        this->_elevationCtrl = new ElevationController();
+        TurretController::setPins();
+        TraverseController::initialize(traverseServo);
 
         TurretController::turnOffAllIndicators();
-        
-        TurretController::_cannonTaskHandle = NULL;
-        TurretController::_elevationTaskHandle = NULL;
-        TurretController::_indicatorTaskHandle = NULL;
-        TurretController::_traverseTaskHandle = NULL;
     }
     ~TurretController() { }
-    void setStatusGood();
-    void setStatusError();
-    bool setPins();
-    bool turnOffAllIndicators();
-    bool setConditionNeutral();
-    bool setControlMode(int mode);
-    void functionCheckDemo(void* pvParameters);
-    void indicatorFunctionCheck(void* pvParameters);
+    static void setStatusGood();
+    static void setStatusError();
+    static bool setPins();
+    static bool turnOffAllIndicators();
+    static bool setConditionNeutral();
+    static bool setControlMode(int mode);
+    static void functionCheckDemo(void* pvParameters);
+    static void indicatorFunctionCheck(void* pvParameters);
+    static TaskHandle_t _traverseTaskHandle;
+    static TaskHandle_t _elevationTaskHandle;
+    static TaskHandle_t _indicatorTaskHandle;
+    static TaskHandle_t _cannonTaskHandle;
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H

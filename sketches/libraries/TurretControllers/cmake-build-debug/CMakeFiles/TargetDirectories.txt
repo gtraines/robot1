@@ -1,3 +1,0 @@
-/home/graham/Source/robot1/sketches/libraries/TurretControllers/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/graham/Source/robot1/sketches/libraries/TurretControllers/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/graham/Source/robot1/sketches/libraries/TurretControllers/cmake-build-debug/CMakeFiles/TurretControllers.dir
