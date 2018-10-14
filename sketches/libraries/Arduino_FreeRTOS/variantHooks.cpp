@@ -38,6 +38,11 @@
 #include "task.h"
 #include "timers.h"
 
+/* I ADDED THESE FOR THE TURRET, DON'T FORGET!!!! */
+#define PORT_ARD_STATUS_GRN PA2
+#define PORT_ARD_STATUS_RED PA3
+/* I ADDED THESE FOR THE TURRET, DON'T FORGET!!!! */
+
 extern void setup(void);
 extern void loop(void);
 
@@ -100,6 +105,7 @@ void vApplicationMallocFailedHook( void )
 #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__) // Arduino Mega with 2560
 	DDRB  |= _BV(DDB7);
 	PORTB |= _BV(PORTB7);       // Main (red PB7) LED on. Main LED on.
+	PORTA |= _BV(PORTA3);  // Turret status red
 
 #elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega1284PA__) // Seeed Goldilocks with 1284p
 	DDRB  |= _BV(DDB7);
@@ -121,7 +127,7 @@ void vApplicationMallocFailedHook( void )
 
 #if defined(__AVR_ATmega640__) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega1281__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)  // Mega with 2560
 		PINB  |= _BV(PINB7);       // Main (red PB7) LED toggle. Main LED fast blink.
-
+		PINA  |= _BV(PINA3);       // Turret red status toggle
 #elif defined(__AVR_ATmega644P__) || defined(__AVR_ATmega644PA__) || defined(__AVR_ATmega1284P__) || defined(__AVR_ATmega1284PA__) // Seeed Goldilocks with 1284p
 		PINB  |= _BV(PINB7);       // Main (red PB7) LED toggle. Main LED fast blink.
 

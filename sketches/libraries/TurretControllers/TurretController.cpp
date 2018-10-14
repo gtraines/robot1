@@ -52,7 +52,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
     BaseType_t trvStatus = xTaskCreate(
         TraverseController::functionCheckDemo,
         (const portCHAR *) "TraverseTest",
-        256,  // Stack size
+        128,  // Stack size
         NULL,
         2,  // Priority
         &TraverseController::traverseTaskHandle);
@@ -60,7 +60,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
     BaseType_t indicatorStatus = xTaskCreate(
         TurretController::indicatorFunctionCheck,
         (const portCHAR *) "IndicatorTest",
-        256,  // Stack size
+        128,  // Stack size
         NULL,
         1, // Priority
         &TurretController::indicatorTaskHandle);
@@ -68,7 +68,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
     BaseType_t elevationStatus = xTaskCreate(
         ElevationController::functionCheckDemo,
         (const portCHAR *) "ElevationTest",
-        256,  // Stack size
+        128,  // Stack size
         NULL,
         2,  // Priority
         &ElevationController::elevationTaskHandle);
@@ -76,7 +76,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
     BaseType_t cannonStatus = xTaskCreate(
         CannonController::functionCheckDemo,
         (const portCHAR *) "CannonTest",
-        2048,  // Stack size
+        128,  // Stack size
         NULL,
         1,  // Priority
         &CannonController::cannonTaskHandle);

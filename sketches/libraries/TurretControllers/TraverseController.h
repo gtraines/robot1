@@ -17,6 +17,8 @@ struct traverse_state_t {
 };
 
 class TraverseController {
+protected:
+    static void clearIndicators();
 public:
     static void initialize(Servo* traverseServo);
 	~TraverseController() {

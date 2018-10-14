@@ -47,31 +47,34 @@ bool TraverseController::canMoveTo(int targetPosition) {
 }
 
 bool TraverseController::moveTo(int targetPosition, int delayMillis) {
-    Indicator::turnOffLed(ARD_STATUS_RED);
-    Indicator::turnOffLed(MOVE_LED_BLUE);
-    Indicator::turnOffLed(MOVE_LED_GRN);
 
     if (targetPosition < TRAVERSE_LIMIT_MIN) {
-        Indicator::turnOnLed(ARD_STATUS_RED);
+        Indicator::turnOnLed(MOVE_LED_RED);
         targetPosition = TRAVERSE_LIMIT_MIN;
     }
 
     if (targetPosition > TRAVERSE_LIMIT_MAX) {
-        Indicator::turnOnLed(MOVE_LED_BLUE);
+        Indicator::turnOnLed(MOVE_LED_RED);
         targetPosition = TRAVERSE_LIMIT_MAX;
     }
-
+    
+    Indicator::turnOnLed(MOVE_LED_BLUE);
     TraverseController::_traverseServo->write(targetPosition);
-
-    //Indicator::momentaryLedOn(MOVE_LED_GRN);
     vTaskDelay(delayMillis/portTICK_PERIOD_MS);
 
+    TraverseController::clearIndicators();
     return true;
 }
 
 bool TraverseController::setConditionNeutral(){
     TraverseController::_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
+    TraverseController::clearIndicators();
     delay(30);
+    
     return true;
 }
-
+void TraverseController::clearIndicators() {
+    
+    Indicator::turnOffLed(MOVE_LED_RED);
+    Indicator::turnOffLed(MOVE_LED_BLUE);
+}

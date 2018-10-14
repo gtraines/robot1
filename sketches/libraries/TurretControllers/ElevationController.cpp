@@ -29,13 +29,13 @@ bool ElevationController::initialize() {
 void ElevationController::functionCheckDemo(void* pvParameters) {
     ElevationController::setConditionNeutral();
     vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+    ElevationController::moveTo(ELEVATION_MIN);
     vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+    ElevationController::moveTo(ELEVATION_MAX);
     vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+    ElevationController::moveTo(ELEVATION_MIN);
     vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+    ElevationController::moveTo(ELEVATION_MAX);
     vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::setConditionNeutral();
 
@@ -44,7 +44,32 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
 
 bool ElevationController::setConditionNeutral() {
 
-    ElevationController::_elevationMotor->moveTo(ELEVATION_NEUTRAL);
-    return true;
+    bool wasGoodCommand = ElevationController::moveTo(ELEVATION_NEUTRAL);
+    return wasGoodCommand;
+}
+void ElevationController::clearIndicators() {
+    Indicator::turnOffLed(MOVE_LED_RED);
+    Indicator::turnOffLed(MOVE_LED_GRN);
 }
 
+bool ElevationController::moveTo(int readingValue) {
+    bool isGoodCommand = true;
+    Indicator::turnOnLed(MOVE_LED_GRN);
+    
+    if (readingValue > ELEVATION_MAX) {
+        isGoodCommand = false;
+        Indicator::turnOnLed(MOVE_LED_RED);
+        readingValue = ELEVATION_MAX;
+    }
+    
+    if (readingValue < ELEVATION_MIN) {
+        isGoodCommand = false;
+        Indicator::turnOnLed(MOVE_LED_RED);
+        readingValue = ELEVATION_MIN;
+    }
+    
+    ElevationController::_elevationMotor->moveTo(readingValue);
+    ElevationController::clearIndicators();
+    
+    return isGoodCommand;
+}

@@ -14,6 +14,7 @@
 class ElevationController
 {
 protected:
+    static void clearIndicators();
     static PotMotor* _elevationMotor;
 public:
     ElevationController(/* args */) {
@@ -21,6 +22,7 @@ public:
     ~ElevationController() {
     }
     static bool initialize();
+    static bool moveTo(int readingValue);
     static void functionCheckDemo(void* pvParameters);
     static bool setConditionNeutral();
     static TaskHandle_t elevationTaskHandle;
