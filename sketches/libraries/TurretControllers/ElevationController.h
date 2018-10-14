@@ -23,6 +23,7 @@ public:
     static bool initialize();
     static void functionCheckDemo(void* pvParameters);
     static bool setConditionNeutral();
+    static TaskHandle_t elevationTaskHandle;
 };
 
 #endif // TURRET_CONTROLLERS__ELEVATION_CONTROLLER__H

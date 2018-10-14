@@ -5,7 +5,8 @@
 #ifndef TURRET_TRAVERSECONTROLLER_H
 #define TURRET_TRAVERSECONTROLLER_H
 
-
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
 #include <Servo.h>
 
 struct traverse_state_t {
@@ -25,6 +26,7 @@ public:
     static bool moveTo(int targetPosition, int delayMillis);
     static bool setConditionNeutral();
     static void functionCheckDemo(void* pvParameters);
+    static TaskHandle_t traverseTaskHandle;
     static Servo* _traverseServo;
     
 };

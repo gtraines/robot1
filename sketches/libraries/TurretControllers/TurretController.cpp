@@ -6,6 +6,7 @@
 
 #include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
+#include <task.h>
 #include <Servo.h>
 
 #include <Indicator.h>
@@ -13,15 +14,11 @@
 #include <ElevationController.h>
 #include <TraverseController.h>
 
-TaskHandle_t TurretController::_traverseTaskHandle = NULL;
-TaskHandle_t TurretController::_elevationTaskHandle = NULL;
-TaskHandle_t TurretController::_indicatorTaskHandle = NULL;
+
+TaskHandle_t TurretController::indicatorTaskHandle = NULL;
 
 void TurretController::initialize(Servo* traverseServo) {
     TurretController::setPins();
-
-    CannonController::initialize();
-    TraverseController::initialize(traverseServo);
 
     TurretController::turnOffAllIndicators();
 }
@@ -55,39 +52,43 @@ void TurretController::functionCheckDemo(void* pvParameters) {
     BaseType_t trvStatus = xTaskCreate(
         TraverseController::functionCheckDemo,
         (const portCHAR *) "TraverseTest",
-        128,  // Stack size
+        256,  // Stack size
         NULL,
         2,  // Priority
-        &TurretController::_traverseTaskHandle);
+        &TraverseController::traverseTaskHandle);
         
     BaseType_t indicatorStatus = xTaskCreate(
         TurretController::indicatorFunctionCheck,
         (const portCHAR *) "IndicatorTest",
-        128,  // Stack size
+        256,  // Stack size
         NULL,
         1, // Priority
-        &TurretController::_indicatorTaskHandle);
+        &TurretController::indicatorTaskHandle);
 
     BaseType_t elevationStatus = xTaskCreate(
         ElevationController::functionCheckDemo,
         (const portCHAR *) "ElevationTest",
-        128,  // Stack size
+        256,  // Stack size
         NULL,
         2,  // Priority
-        &TurretController::_elevationTaskHandle);
+        &ElevationController::elevationTaskHandle);
 
     BaseType_t cannonStatus = xTaskCreate(
         CannonController::functionCheckDemo,
         (const portCHAR *) "CannonTest",
-        128,  // Stack size
+        2048,  // Stack size
         NULL,
-        2,  // Priority
+        1,  // Priority
         &CannonController::cannonTaskHandle);
         
-    if (trvStatus != pdPASS 
+    if (
+        trvStatus != pdPASS 
         || indicatorStatus != pdPASS 
         || elevationStatus != pdPASS
-        || cannonStatus != pdPASS) {
+        ||
+        cannonStatus != pdPASS
+        )
+    {
         TurretController::setStatusError();
     } else {
         TurretController::setStatusGood();
@@ -126,8 +127,7 @@ void TurretController::indicatorFunctionCheck(void* pvParameters) {
     Indicator::alertStrobeSlow(MOVE_LED_RED);
     Indicator::alertStrobeSlow(MOVE_LED_BLUE);
 
-    vTaskDelete(NULL);
-    return true;
+    vTaskDelete(TurretController::indicatorTaskHandle);
 }
 
 void TurretController::setStatusGood() {
@@ -136,8 +136,7 @@ void TurretController::setStatusGood() {
 }
 
 void TurretController::setStatusError() {
-    TurretController::turnOffAllIndicators();
-    
+
     Indicator::turnOffLed(ARD_STATUS_GRN);
-    Indicator::strobeMedium(ARD_STATUS_RED, 100);
+    Indicator::turnOnLed(ARD_STATUS_RED);
 }

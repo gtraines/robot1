@@ -14,9 +14,9 @@ void CannonController::functionCheckDemo(void* pvParameters) {
 
     for (int idx = 0; idx < 6; idx++) {
         Indicator::alertStrobeFast(CANNON_LED);
-        vTaskDelay(500/portTICK_PERIOD_MS);
+        vTaskDelay(600/portTICK_PERIOD_MS);
     }
-    vTaskDelete(&cannonTaskHandle);
+    vTaskDelete(CannonController::cannonTaskHandle);
 }
 
 bool CannonController::initialize() {

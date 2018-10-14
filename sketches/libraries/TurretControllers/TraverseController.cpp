@@ -11,7 +11,7 @@
 #include <TraverseConfig.h>
 
 Servo* TraverseController::_traverseServo = NULL;
-
+TaskHandle_t TraverseController::traverseTaskHandle;
 
 void TraverseController::initialize(Servo* traverseServo) {
 
@@ -39,7 +39,7 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
         TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
     
-    vTaskDelete(NULL);
+    vTaskDelete(TraverseController::traverseTaskHandle);
 }
 
 bool TraverseController::canMoveTo(int targetPosition) {

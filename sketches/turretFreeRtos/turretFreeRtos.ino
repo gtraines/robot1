@@ -18,10 +18,12 @@ TaskHandle_t turretControllerTaskHandle = NULL;
 
 void setup() {
     traverseServo->attach(TRAVERSE_SERVO);
-    
-    
-    TurretController::initialize(traverseServo);
+    TraverseController::initialize(traverseServo);
     ElevationController::initialize();
+    CannonController::initialize();
+
+    TurretController::initialize(traverseServo);
+    
     
     TurretController::functionCheckDemo(NULL);
 }

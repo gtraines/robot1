@@ -8,6 +8,7 @@
 #include <TurretPins.h>
 
 PotMotor* ElevationController::_elevationMotor = nullptr;
+TaskHandle_t ElevationController::elevationTaskHandle = NULL;
 
 bool ElevationController::initialize() {
     ElevationController::_elevationMotor = new PotMotor(
@@ -27,14 +28,18 @@ bool ElevationController::initialize() {
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
     ElevationController::setConditionNeutral();
-    vTaskDelay(100/portTICK_PERIOD_MS);
+    vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+    vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+    vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::_elevationMotor->moveTo(ELEVATION_MIN);
+    vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::_elevationMotor->moveTo(ELEVATION_MAX);
+    vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::setConditionNeutral();
 
-    vTaskDelete(NULL);
+    vTaskDelete(ElevationController::elevationTaskHandle);
 }
 
 bool ElevationController::setConditionNeutral() {

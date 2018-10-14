@@ -1,6 +1,8 @@
 #ifndef ROBOT1__TURRET_CONTROLLER__H
 #define ROBOT1__TURRET_CONTROLLER__H
 
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
 #include <Servo.h>
 #include <Indicator.h>
 #include <TurretPins.h>
@@ -21,9 +23,7 @@ class TurretController
     static bool setControlMode(int mode);
     static void functionCheckDemo(void* pvParameters);
     static void indicatorFunctionCheck(void* pvParameters);
-    static TaskHandle_t _traverseTaskHandle;
-    static TaskHandle_t _elevationTaskHandle;
-    static TaskHandle_t _indicatorTaskHandle;
+    static TaskHandle_t indicatorTaskHandle;
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H
