@@ -16,7 +16,15 @@
 TaskHandle_t TurretController::_traverseTaskHandle = NULL;
 TaskHandle_t TurretController::_elevationTaskHandle = NULL;
 TaskHandle_t TurretController::_indicatorTaskHandle = NULL;
-TaskHandle_t TurretController::_cannonTaskHandle = NULL;
+
+void TurretController::initialize(Servo* traverseServo) {
+    TurretController::setPins();
+
+    CannonController::initialize();
+    TraverseController::initialize(traverseServo);
+
+    TurretController::turnOffAllIndicators();
+}
 
 bool TurretController::setPins() {
     pinMode(ELEVATION_MOTOR_ENABLE, OUTPUT);
@@ -68,14 +76,18 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         2,  // Priority
         &TurretController::_elevationTaskHandle);
 
-//    xTaskCreate(
-//        this->_cannonCtrl->functionCheckDemo,
-//        (const portCHAR *) "CannonTest",
-//        128,  // Stack size
-//        NULL,
-//        1,  // Priority
-//        &this->_cannonTaskHandle);
-    if (trvStatus != pdPASS || indicatorStatus != pdPASS || elevationStatus != pdPASS) {
+    BaseType_t cannonStatus = xTaskCreate(
+        CannonController::functionCheckDemo,
+        (const portCHAR *) "CannonTest",
+        128,  // Stack size
+        NULL,
+        2,  // Priority
+        &CannonController::cannonTaskHandle);
+        
+    if (trvStatus != pdPASS 
+        || indicatorStatus != pdPASS 
+        || elevationStatus != pdPASS
+        || cannonStatus != pdPASS) {
         TurretController::setStatusError();
     } else {
         TurretController::setStatusGood();

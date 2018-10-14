@@ -17,16 +17,12 @@ void TraverseController::initialize(Servo* traverseServo) {
 
     TraverseController::_traverseServo = traverseServo;
 
-    Indicator::turnOffLed(ACTY_LED_1);
-    Indicator::turnOffLed(ACTY_LED_3);
-
     delay(15);
 
     if (TraverseController::setConditionNeutral()) {
         Indicator::turnOnLed(ACTY_LED_2);
         delay(200);
     }
-    
 }
 
 void TraverseController::functionCheckDemo(void* pvParameters) {
@@ -67,7 +63,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 
     TraverseController::_traverseServo->write(targetPosition);
 
-    Indicator::turnOnLed(MOVE_LED_GRN);
+    //Indicator::momentaryLedOn(MOVE_LED_GRN);
     vTaskDelay(delayMillis/portTICK_PERIOD_MS);
 
     return true;

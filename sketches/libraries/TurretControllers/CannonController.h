@@ -1,5 +1,5 @@
-#ifndef ROBOT1__TURRET_CONTROLLERS__IR_CANNON_CONTROLLER__H
-#define ROBOT1__TURRET_CONTROLLERS__IR_CANNON_CONTROLLER__H
+#ifndef ROBOT1__TURRET_CONTROLLERS__CANNON_CONTROLLER__H
+#define ROBOT1__TURRET_CONTROLLERS__CANNON_CONTROLLER__H
 
 #include <Arduino.h>
 #include <IndicatorConfig.h>
@@ -17,16 +17,9 @@ public:
     ~CannonController() {
         
     }
-    void functionCheckDemo(void* pvParameters) {
-        
-        for (int idx = 0; idx < 2; idx++) {
-            Indicator::alertStrobeSlow(CANNON_LED);
-            vTaskDelay(500/portTICK_PERIOD_MS);
-            Indicator::alertStrobeFast(CANNON_LED);
-            vTaskDelay(500/portTICK_PERIOD_MS);
-        }
-        vTaskDelete(NULL);
-    }
+    static bool initialize();
+    static void functionCheckDemo(void* pvParameters);
+    static TaskHandle_t cannonTaskHandle;
 };
 
 #endif //ROBOT1__TURRET_CONTROLLERS__IR_CANNON_CONTROLLER__H

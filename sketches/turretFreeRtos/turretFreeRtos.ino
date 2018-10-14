@@ -3,6 +3,7 @@
 #include <task.h>
 #include <TurretPins.h>
 #include <Indicator.h>
+#include <CannonController.h>
 #include <TraverseController.h>
 #include <ElevationController.h>
 #include <TurretController.h>
@@ -11,14 +12,15 @@ Servo* traverseServo = new Servo();
 TurretController* turretCtrl = new TurretController();
 TraverseController* traverseCtrl = new TraverseController();
 ElevationController* elevCtrl = new ElevationController();
+CannonController* cannonController = new CannonController();
 
 TaskHandle_t turretControllerTaskHandle = NULL;
 
 void setup() {
     traverseServo->attach(TRAVERSE_SERVO);
     
+    
     TurretController::initialize(traverseServo);
-    TraverseController::initialize(traverseServo);
     ElevationController::initialize();
     
     TurretController::functionCheckDemo(NULL);
@@ -27,17 +29,3 @@ void setup() {
 void loop() {
 
 }
-
-BaseType_t vFunctionCheckDemo() {
-    if (xTaskCreate(
-        TraverseController::functionCheckDemo,
-        (const portCHAR *) "TraverseFunctionCheck",
-        128, //Stack size
-        NULL,
-        3,  // Priority
-        &turretControllerTaskHandle) != pdPASS) {
-            TurretController::setStatusError();
-        }
-}
-  
-

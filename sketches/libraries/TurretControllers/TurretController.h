@@ -11,13 +11,7 @@
 class TurretController
 {
   public:
-    static void initialize(Servo* traverseServo) {
-
-        TurretController::setPins();
-        TraverseController::initialize(traverseServo);
-
-        TurretController::turnOffAllIndicators();
-    }
+    static void initialize(Servo* traverseServo);
     ~TurretController() { }
     static void setStatusGood();
     static void setStatusError();
@@ -30,7 +24,6 @@ class TurretController
     static TaskHandle_t _traverseTaskHandle;
     static TaskHandle_t _elevationTaskHandle;
     static TaskHandle_t _indicatorTaskHandle;
-    static TaskHandle_t _cannonTaskHandle;
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H

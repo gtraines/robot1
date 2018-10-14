@@ -174,8 +174,6 @@
     <File Name="turretFreeRtos/turretFreeRtos.ino"/>
     <File Name="turretFreeRtos/CMakeLists.txt"/>
   </VirtualDirectory>
-  <Dependencies Name="Debug"/>
-  <Dependencies Name="Release"/>
   <VirtualDirectory Name="bug-cam">
     <File Name="bug-cam/bug-cam.ino"/>
     <File Name="bug-cam/InputValues.h"/>
@@ -191,4 +189,6 @@
     <File Name="turretDebug/turretDebug.ino"/>
     <File Name="turretDebug/CMakeLists.txt"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>
