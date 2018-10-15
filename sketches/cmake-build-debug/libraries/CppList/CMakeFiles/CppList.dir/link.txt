@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libCppList.a  CMakeFiles/CppList.dir/CppList.cpp.obj
+/usr/bin/avr-ranlib libCppList.a

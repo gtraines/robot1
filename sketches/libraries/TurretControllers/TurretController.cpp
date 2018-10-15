@@ -19,8 +19,11 @@ TaskHandle_t TurretController::indicatorTaskHandle = NULL;
 
 void TurretController::initialize(Servo* traverseServo) {
     TurretController::setPins();
-
     TurretController::turnOffAllIndicators();
+
+    TraverseController::initialize(traverseServo);
+    ElevationController::initialize();
+    CannonController::initialize();
 }
 
 bool TurretController::setPins() {

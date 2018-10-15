@@ -10,6 +10,8 @@ include_directories(~/arduino-1.8.5/hardware/arduino/avr/cores/arduino)
 include_directories(libraries/TurretConfig)
 include_directories(libraries/Indicator)
 include_directories(libraries/PotMotor)
+include_directories(libraries/IrTxRx)
+include_directories(libraries/IrSensorCluster)
 include_directories(libraries/TurretControllers)
 
 add_subdirectory(libraries/Arduino_FreeRTOS)
@@ -17,7 +19,10 @@ add_subdirectory(libraries/CppList)
 add_subdirectory(libraries/TurretConfig)
 add_subdirectory(libraries/Indicator)
 add_subdirectory(libraries/PotMotor)
+add_subdirectory(libraries/IrTxRx)
+add_subdirectory(libraries/IrSensorCluster)
 add_subdirectory(libraries/TurretControllers)
+
 add_subdirectory(turretFreeRtos)
 #add_subdirectory(turretDebug)
 
@@ -29,6 +34,8 @@ target_include_directories(CppList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(TurretConfig PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Indicator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(PotMotor PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(IrTxRx PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(IrSensorCluster PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(TurretControllers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #### Uncomment below additional settings as needed.

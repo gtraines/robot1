@@ -1,0 +1,2 @@
+/usr/bin/avr-ar qc libIrSensorCluster.a  CMakeFiles/IrSensorCluster.dir/IrSensorCluster.cpp.obj
+/usr/bin/avr-ranlib libIrSensorCluster.a
