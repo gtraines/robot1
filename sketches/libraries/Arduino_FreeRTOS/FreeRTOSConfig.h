@@ -66,6 +66,7 @@
 
 #define configSUPPORT_DYNAMIC_ALLOCATION    1
 #define configSUPPORT_STATIC_ALLOCATION     0
+#define configUSE_TASK_NOTIFICATIONS        1
 
 /* Timer definitions. */
 #define configUSE_TIMERS                    1

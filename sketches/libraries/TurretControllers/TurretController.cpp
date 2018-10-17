@@ -93,8 +93,6 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         )
     {
         TurretController::setStatusError();
-    } else {
-        TurretController::setStatusGood();
     }
 
 }
