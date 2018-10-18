@@ -5,7 +5,7 @@
 		<Option title="Arduino_FreeRTOS"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\libraries\;CMake Files\libraries\Arduino_FreeRTOS\;CMake Files\libraries\CppList\;CMake Files\libraries\TurretConfig\;CMake Files\libraries\Indicator\;CMake Files\libraries\PotMotor\;CMake Files\libraries\IrTxRx\;CMake Files\libraries\IrSensorCluster\;CMake Files\libraries\TurretControllers\;CMake Files\Platform\;CMake Files\turretFreeRtos\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\libraries\;CMake Files\libraries\Arduino_FreeRTOS\;CMake Files\libraries\CppList\;CMake Files\libraries\TurretConfig\;CMake Files\libraries\Indicator\;CMake Files\libraries\PotMotor\;CMake Files\libraries\IrTxRx\;CMake Files\libraries\IrSensorCluster\;CMake Files\libraries\TurretControllers\;CMake Files\Platform\;CMake Files\turretFreeRtos\;CMake Files\rtosTest\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/Arduino_FreeRTOS"/>
@@ -187,6 +187,9 @@
 		</Unit>
 		<Unit filename="/home/graham/Source/robot1/sketches/turretFreeRtos/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\turretFreeRtos\"/>
+		</Unit>
+		<Unit filename="/home/graham/Source/robot1/sketches/rtosTest/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\rtosTest\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>

@@ -25,9 +25,11 @@ add_subdirectory(libraries/TurretControllers)
 
 add_subdirectory(turretFreeRtos)
 #add_subdirectory(turretDebug)
+add_subdirectory(rtosTest)
 
 #set(${CMAKE_PROJECT_NAME}_SKETCH turretDebug/turretDebug.ino)
-set(${CMAKE_PROJECT_NAME}_SKETCH turretFreeRtos/turretFreeRtos.ino)
+#set(${CMAKE_PROJECT_NAME}_SKETCH turretFreeRtos/turretFreeRtos.ino)
+set(${CMAKE_PROJECT_NAME}_SKETCH rtosTest/rtosTest.ino)
 
 target_include_directories(Arduino_FreeRTOS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(CppList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

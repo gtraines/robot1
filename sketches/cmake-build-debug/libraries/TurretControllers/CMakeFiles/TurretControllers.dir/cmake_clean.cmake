@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/TurretControllers.dir/ElevationController.cpp.obj"
   "CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj"
   "CMakeFiles/TurretControllers.dir/TurretController.cpp.obj"
+  "CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj"
   "libTurretControllers.pdb"
   "libTurretControllers.a"
 )

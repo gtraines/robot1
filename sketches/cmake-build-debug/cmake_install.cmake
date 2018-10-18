@@ -43,6 +43,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/IrSensorCluster/cmake_install.cmake")
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/cmake_install.cmake")
   include("/home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/cmake_install.cmake")
+  include("/home/graham/Source/robot1/sketches/cmake-build-debug/rtosTest/cmake_install.cmake")
 
 endif()
 

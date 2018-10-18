@@ -48,3 +48,6 @@
 /home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/CMakeFiles/rebuild_cache.dir
 /home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/CMakeFiles/edit_cache.dir
 /home/graham/Source/robot1/sketches/cmake-build-debug/turretFreeRtos/CMakeFiles/turretFreeRtos.dir
+/home/graham/Source/robot1/sketches/cmake-build-debug/rtosTest/CMakeFiles/rebuild_cache.dir
+/home/graham/Source/robot1/sketches/cmake-build-debug/rtosTest/CMakeFiles/edit_cache.dir
+/home/graham/Source/robot1/sketches/cmake-build-debug/rtosTest/CMakeFiles/rtosTest.dir

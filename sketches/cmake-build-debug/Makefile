@@ -500,32 +500,45 @@ turretFreeRtos/fast:
 	$(MAKE) -f turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build.make turretFreeRtos/CMakeFiles/turretFreeRtos.dir/build
 .PHONY : turretFreeRtos/fast
 
-Turret_turretFreeRtos.ino.obj: Turret_turretFreeRtos.ino.cpp.obj
+#=============================================================================
+# Target rules for targets named rtosTest
 
-.PHONY : Turret_turretFreeRtos.ino.obj
+# Build rule for target.
+rtosTest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rtosTest
+.PHONY : rtosTest
+
+# fast build rule for target.
+rtosTest/fast:
+	$(MAKE) -f rtosTest/CMakeFiles/rtosTest.dir/build.make rtosTest/CMakeFiles/rtosTest.dir/build
+.PHONY : rtosTest/fast
+
+Turret_rtosTest.ino.obj: Turret_rtosTest.ino.cpp.obj
+
+.PHONY : Turret_rtosTest.ino.obj
 
 # target to build an object file
-Turret_turretFreeRtos.ino.cpp.obj:
-	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.obj
-.PHONY : Turret_turretFreeRtos.ino.cpp.obj
+Turret_rtosTest.ino.cpp.obj:
+	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_rtosTest.ino.cpp.obj
+.PHONY : Turret_rtosTest.ino.cpp.obj
 
-Turret_turretFreeRtos.ino.i: Turret_turretFreeRtos.ino.cpp.i
+Turret_rtosTest.ino.i: Turret_rtosTest.ino.cpp.i
 
-.PHONY : Turret_turretFreeRtos.ino.i
+.PHONY : Turret_rtosTest.ino.i
 
 # target to preprocess a source file
-Turret_turretFreeRtos.ino.cpp.i:
-	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.i
-.PHONY : Turret_turretFreeRtos.ino.cpp.i
+Turret_rtosTest.ino.cpp.i:
+	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_rtosTest.ino.cpp.i
+.PHONY : Turret_rtosTest.ino.cpp.i
 
-Turret_turretFreeRtos.ino.s: Turret_turretFreeRtos.ino.cpp.s
+Turret_rtosTest.ino.s: Turret_rtosTest.ino.cpp.s
 
-.PHONY : Turret_turretFreeRtos.ino.s
+.PHONY : Turret_rtosTest.ino.s
 
 # target to generate assembly for a file
-Turret_turretFreeRtos.ino.cpp.s:
-	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_turretFreeRtos.ino.cpp.s
-.PHONY : Turret_turretFreeRtos.ino.cpp.s
+Turret_rtosTest.ino.cpp.s:
+	$(MAKE) -f CMakeFiles/Turret.dir/build.make CMakeFiles/Turret.dir/Turret_rtosTest.ino.cpp.s
+.PHONY : Turret_rtosTest.ino.cpp.s
 
 libraries/Arduino_FreeRTOS/croutine.obj: libraries/Arduino_FreeRTOS/croutine.c.obj
 
@@ -1825,9 +1838,10 @@ help:
 	@echo "... IrSensorCluster"
 	@echo "... TurretControllers"
 	@echo "... turretFreeRtos"
-	@echo "... Turret_turretFreeRtos.ino.obj"
-	@echo "... Turret_turretFreeRtos.ino.i"
-	@echo "... Turret_turretFreeRtos.ino.s"
+	@echo "... rtosTest"
+	@echo "... Turret_rtosTest.ino.obj"
+	@echo "... Turret_rtosTest.ino.i"
+	@echo "... Turret_rtosTest.ino.s"
 	@echo "... libraries/Arduino_FreeRTOS/croutine.obj"
 	@echo "... libraries/Arduino_FreeRTOS/croutine.i"
 	@echo "... libraries/Arduino_FreeRTOS/croutine.s"

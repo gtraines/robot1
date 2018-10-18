@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/graham/Source/robot1/sketches/libraries/TurretControllers/ElevationController.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/ElevationController.cpp.obj"
   "/home/graham/Source/robot1/sketches/libraries/TurretControllers/TraverseController.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj"
   "/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretController.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj"
+  "/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.cpp" "/home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -21,6 +21,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../libraries/PotMotor/CMakeLists.txt"
   "../libraries/TurretConfig/CMakeLists.txt"
   "../libraries/TurretControllers/CMakeLists.txt"
+  "../rtosTest/CMakeLists.txt"
   "../turretFreeRtos/CMakeLists.txt"
   "/home/graham/clion2018/bin/cmake/share/cmake-3.10/Modules/CMakeCInformation.cmake"
   "/home/graham/clion2018/bin/cmake/share/cmake-3.10/Modules/CMakeCXXInformation.cmake"
@@ -58,6 +59,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "libraries/IrSensorCluster/CMakeFiles/CMakeDirectoryInformation.cmake"
   "libraries/TurretControllers/CMakeFiles/CMakeDirectoryInformation.cmake"
   "turretFreeRtos/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "rtosTest/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -92,4 +94,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "libraries/IrSensorCluster/CMakeFiles/IrSensorCluster.dir/DependInfo.cmake"
   "libraries/TurretControllers/CMakeFiles/TurretControllers.dir/DependInfo.cmake"
   "turretFreeRtos/CMakeFiles/turretFreeRtos.dir/DependInfo.cmake"
+  "rtosTest/CMakeFiles/rtosTest.dir/DependInfo.cmake"
   )

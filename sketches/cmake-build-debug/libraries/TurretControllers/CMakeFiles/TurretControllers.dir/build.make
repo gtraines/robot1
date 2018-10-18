@@ -153,12 +153,37 @@ libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cp
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj.provides.build: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj
 
 
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/flags.make
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj: ../libraries/TurretControllers/TurretTasks.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj"
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers && /usr/bin/avr-g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj -c /home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.cpp
+
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/TurretControllers.dir/TurretTasks.cpp.i"
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers && /usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.cpp > CMakeFiles/TurretControllers.dir/TurretTasks.cpp.i
+
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/TurretControllers.dir/TurretTasks.cpp.s"
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers && /usr/bin/avr-g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.cpp -o CMakeFiles/TurretControllers.dir/TurretTasks.cpp.s
+
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.requires:
+
+.PHONY : libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.requires
+
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.provides: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.requires
+	$(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.provides.build
+.PHONY : libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.provides
+
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.provides.build: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj
+
+
 # Object files for target TurretControllers
 TurretControllers_OBJECTS = \
 "CMakeFiles/TurretControllers.dir/CannonController.cpp.obj" \
 "CMakeFiles/TurretControllers.dir/ElevationController.cpp.obj" \
 "CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj" \
-"CMakeFiles/TurretControllers.dir/TurretController.cpp.obj"
+"CMakeFiles/TurretControllers.dir/TurretController.cpp.obj" \
+"CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj"
 
 # External object files for target TurretControllers
 TurretControllers_EXTERNAL_OBJECTS =
@@ -167,9 +192,10 @@ libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/
 libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/ElevationController.cpp.obj
 libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj
 libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj
+libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj
 libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make
 libraries/TurretControllers/libTurretControllers.a: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libTurretControllers.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/graham/Source/robot1/sketches/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libTurretControllers.a"
 	cd /home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers && $(CMAKE_COMMAND) -P CMakeFiles/TurretControllers.dir/cmake_clean_target.cmake
 	cd /home/graham/Source/robot1/sketches/cmake-build-debug/libraries/TurretControllers && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TurretControllers.dir/link.txt --verbose=$(VERBOSE)
 
@@ -182,6 +208,7 @@ libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires: libraries
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/ElevationController.cpp.obj.requires
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TraverseController.cpp.obj.requires
 libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.obj.requires
+libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires: libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj.requires
 
 .PHONY : libraries/TurretControllers/CMakeFiles/TurretControllers.dir/requires
 

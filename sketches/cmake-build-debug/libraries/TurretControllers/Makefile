@@ -233,6 +233,33 @@ TurretController.cpp.s:
 	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretController.cpp.s
 .PHONY : TurretController.cpp.s
 
+TurretTasks.obj: TurretTasks.cpp.obj
+
+.PHONY : TurretTasks.obj
+
+# target to build an object file
+TurretTasks.cpp.obj:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.obj
+.PHONY : TurretTasks.cpp.obj
+
+TurretTasks.i: TurretTasks.cpp.i
+
+.PHONY : TurretTasks.i
+
+# target to preprocess a source file
+TurretTasks.cpp.i:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.i
+.PHONY : TurretTasks.cpp.i
+
+TurretTasks.s: TurretTasks.cpp.s
+
+.PHONY : TurretTasks.s
+
+# target to generate assembly for a file
+TurretTasks.cpp.s:
+	cd /home/graham/Source/robot1/sketches/cmake-build-debug && $(MAKE) -f libraries/TurretControllers/CMakeFiles/TurretControllers.dir/build.make libraries/TurretControllers/CMakeFiles/TurretControllers.dir/TurretTasks.cpp.s
+.PHONY : TurretTasks.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -254,6 +281,9 @@ help:
 	@echo "... TurretController.obj"
 	@echo "... TurretController.i"
 	@echo "... TurretController.s"
+	@echo "... TurretTasks.obj"
+	@echo "... TurretTasks.i"
+	@echo "... TurretTasks.s"
 .PHONY : help
 
 
