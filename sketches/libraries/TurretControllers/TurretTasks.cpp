@@ -18,20 +18,25 @@ TaskHandle_t TurretTasks::executiveHandle = NULL;
 TaskHandle_t TurretTasks::dutyCycleMonitorHandle = NULL;
 
 void TurretTasks::executive(void* pvParameters) {
-    while (true) {
+
+    while (!TurretState::allFunctionChecksCompleted) {
         Indicator::alertStrobeSlow(ACTY_LED_3);
-        vTaskDelay(Taskr::getMillis(1000));
+        Taskr::delayMs(1000);
+    }
+    while (true) {
+        Taskr::delayMs(1000);
+        
     }
 }
 
 void TurretTasks::functionCheckMonitor(void* pvParameters) {
-    BaseType_t notifyExecutiveSuccess = pdFALSE;
+    BaseType_t notifyDutyCycleSuccess = pdFALSE;
     BaseType_t clearCountOnExit = pdTRUE;
     
     uint32_t receivedValue = 0;
     uint32_t completedFunctionChecks = 0;
     
-    while (notifyExecutiveSuccess != pdTRUE) {
+    while (notifyDutyCycleSuccess != pdTRUE) {
         
         receivedValue = ulTaskNotifyTake(clearCountOnExit, TurretTasks::functionCheckMonitorDelay);
 
@@ -42,11 +47,17 @@ void TurretTasks::functionCheckMonitor(void* pvParameters) {
         if (completedFunctionChecks == 4) {
             // Notify Executive to start DutyCycle
             TurretState::allFunctionChecksCompleted = true;
-            BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::dutyCycleMonitorHandle);
+            notifyDutyCycleSuccess = xTaskNotifyGive(TurretTasks::dutyCycleMonitorHandle);
         }
     }
     
-    vTaskDelete(TurretTasks::functionCheckMonitorHandle);
+    if (notifyDutyCycleSuccess == pdTRUE) {
+        vTaskDelete(TurretTasks::functionCheckMonitorHandle);
+    }
+    else {
+        Indicator::turnOnLed(ARD_STATUS_RED);
+    }
+    
 }
 
 void TurretTasks::dutyCycleMonitor(void* pvParameters) {
@@ -57,12 +68,10 @@ void TurretTasks::dutyCycleMonitor(void* pvParameters) {
     }
     
     while (true) {
-        // continue
-        Indicator::alertStrobeFast(ACTY_LED_1);
-        vTaskDelay(Taskr::getMillis(1000));
+
         Indicator::turnOnLed(ARD_STATUS_GRN);
-        vTaskDelay(Taskr::getMillis(800));
+        Taskr::delayMs(800);
         Indicator::turnOffLed(ARD_STATUS_GRN);
-        delay(300);
+        Taskr::delayMs(300);
     }
 }

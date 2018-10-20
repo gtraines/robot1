@@ -126,8 +126,6 @@ void TurretController::functionCheckDemo(void* pvParameters) {
 
 }
 
-
-
 bool TurretController::turnOffAllIndicators() {
     Indicator::turnOffLed(ARD_STATUS_GRN);
     Indicator::turnOffLed(ARD_STATUS_RED);
@@ -150,13 +148,16 @@ void TurretController::indicatorFunctionCheck(void* pvParameters) {
     Indicator::alertBlinkFast(ACTY_LED_1);
     Indicator::alertBlinkFast(ACTY_LED_2);
     Indicator::alertBlinkFast(ACTY_LED_3);
-
-    Indicator::alertStrobeSlow(MOVE_LED_GRN);
     Indicator::alertStrobeSlow(MOVE_LED_RED);
-    Indicator::alertStrobeSlow(MOVE_LED_BLUE);
     
-    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    vTaskDelete(TurretController::indicatorTaskHandle);
+    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    
+    if (notifyMonitorSuccess == pdTRUE) {
+        vTaskDelete(TurretController::indicatorTaskHandle);
+    }
+    else {
+        TurretController::setStatusError();
+    }
 }
 
 void TurretController::setStatusGood() {

@@ -40,8 +40,15 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
         TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
     
-    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    vTaskDelete(TraverseController::traverseTaskHandle);
+    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    
+    if (notifyMonitorSuccess == pdTRUE) {
+        vTaskDelete(TraverseController::traverseTaskHandle);
+    }
+    else {
+        Indicator::turnOnLed(ARD_STATUS_RED);
+    }
+    
 }
 
 bool TraverseController::canMoveTo(int targetPosition) {

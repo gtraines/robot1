@@ -39,8 +39,15 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
     ElevationController::moveTo(ELEVATION_MAX);
     vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::setConditionNeutral();
-    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    vTaskDelete(ElevationController::elevationTaskHandle);
+    
+    
+    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    if (notifyMonitorSuccess == pdTRUE) {
+        vTaskDelete(ElevationController::elevationTaskHandle);
+    }
+    else {
+        Indicator::turnOnLed(ARD_STATUS_RED);
+    }
 }
 
 bool ElevationController::setConditionNeutral() {
