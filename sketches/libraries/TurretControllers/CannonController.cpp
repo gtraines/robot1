@@ -4,6 +4,7 @@
 #include <IrConfig.h>
 #include <Indicator.h>
 #include <TurretPins.h>
+#include <TurretTasks.h>
 
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
@@ -16,6 +17,7 @@ void CannonController::functionCheckDemo(void* pvParameters) {
         Indicator::alertStrobeFast(CANNON_LED);
         vTaskDelay(600/portTICK_PERIOD_MS);
     }
+    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     vTaskDelete(CannonController::cannonTaskHandle);
 }
 

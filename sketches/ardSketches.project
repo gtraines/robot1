@@ -189,6 +189,10 @@
     <File Name="turretDebug/turretDebug.ino"/>
     <File Name="turretDebug/CMakeLists.txt"/>
   </VirtualDirectory>
+  <VirtualDirectory Name="rtosTest">
+    <File Name="rtosTest/CMakeLists.txt"/>
+    <File Name="rtosTest/rtosTest.ino"/>
+  </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>
 </CodeLite_Project>

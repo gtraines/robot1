@@ -6,6 +6,7 @@
 #include <Indicator.h>
 #include <PotMotor.h>
 #include <TurretPins.h>
+#include <TurretTasks.h>
 
 PotMotor* ElevationController::_elevationMotor = nullptr;
 TaskHandle_t ElevationController::elevationTaskHandle = NULL;
@@ -38,7 +39,7 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
     ElevationController::moveTo(ELEVATION_MAX);
     vTaskDelay(150/portTICK_PERIOD_MS);
     ElevationController::setConditionNeutral();
-
+    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     vTaskDelete(ElevationController::elevationTaskHandle);
 }
 

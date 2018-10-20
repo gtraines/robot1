@@ -9,6 +9,7 @@
 #include <Indicator.h>
 #include <TurretPins.h>
 #include <TraverseConfig.h>
+#include <TurretTasks.h>
 
 Servo* TraverseController::_traverseServo = NULL;
 TaskHandle_t TraverseController::traverseTaskHandle;
@@ -39,6 +40,7 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
         TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
     }
     
+    BaseType_t notifyExecutiveSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     vTaskDelete(TraverseController::traverseTaskHandle);
 }
 

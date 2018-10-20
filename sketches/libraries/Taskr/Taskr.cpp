@@ -1,10 +1,12 @@
 #include "Taskr.h"
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
 
-Taskr::Taskr()
-{
+
+TickType_t Taskr::getMillis(int millisToConvert) {
+    return millisToConvert/portTICK_PERIOD_MS;
 }
 
-Taskr::~Taskr()
-{
+void Taskr::delayMs(int millisToConvert) {
+    vTaskDelay(Taskr::getMillis(millisToConvert));
 }
-

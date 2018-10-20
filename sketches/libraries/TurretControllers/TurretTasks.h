@@ -10,8 +10,16 @@
 
 class TurretTasks {
 public:
-    static TaskHandle_t DemoMonitorTask;
-
+    static TickType_t functionCheckMonitorDelay;
+    static TickType_t dutyCycleMonitorDelay;
+    static TaskHandle_t functionCheckMonitorHandle;
+    static TaskHandle_t executiveHandle;
+    static TaskHandle_t dutyCycleMonitorHandle;
+    static void executive(void* pvParameters);
+    static void functionCheckMonitor(void* pvParameters);
+    static void dutyCycleMonitor(void* pvParameters);
+    static void notifyFunctionCheckComplete();
+    static void notifyAllFunctionChecksComplete();
 };
 
 
