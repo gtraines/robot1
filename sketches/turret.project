@@ -230,11 +230,17 @@
       <File Name="libraries/TurretControllers/CMakeLists.txt"/>
       <File Name="libraries/TurretControllers/ElevationController.cpp"/>
       <File Name="libraries/TurretControllers/CannonController.cpp"/>
+      <File Name="libraries/TurretControllers/TurretTasks.cpp"/>
+      <File Name="libraries/TurretControllers/TurretTasks.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Taskr">
       <File Name="libraries/Taskr/CMakeLists.txt"/>
       <File Name="libraries/Taskr/Taskr.h"/>
       <File Name="libraries/Taskr/Taskr.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="TurretState">
+      <File Name="libraries/TurretState/TurretState.h"/>
+      <File Name="libraries/TurretState/TurretState.cpp"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Description/>

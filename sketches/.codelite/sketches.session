@@ -4,30 +4,23 @@
   <wxString Value="/home/robot1/Source/robot1/sketches/sketches.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/TraverseController.cpp" Name="FileName"/>
-      <int Value="45" Name="FirstVisibleLine"/>
-      <int Value="62" Name="CurrentLine"/>
+      <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.cpp" Name="FileName"/>
+      <int Value="39" Name="FirstVisibleLine"/>
+      <int Value="35" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
-      <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/TraverseController.h" Name="FileName"/>
+      <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/TurretTasks.h" Name="FileName"/>
       <int Value="3" Name="FirstVisibleLine"/>
-      <int Value="15" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/ElevationController.cpp" Name="FileName"/>
-      <int Value="33" Name="FirstVisibleLine"/>
-      <int Value="47" Name="CurrentLine"/>
+      <int Value="8" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/robot1/Source/robot1/sketches/libraries/TurretControllers/ElevationController.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="24" Name="CurrentLine"/>
+      <int Value="30" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

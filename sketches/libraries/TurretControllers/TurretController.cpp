@@ -9,6 +9,7 @@
 #include <task.h>
 #include <Servo.h>
 
+#include <TurretTasks.h>
 #include <Indicator.h>
 #include <CannonController.h>
 #include <ElevationController.h>
@@ -24,6 +25,22 @@ void TurretController::initialize(Servo* traverseServo) {
     TraverseController::initialize(traverseServo);
     ElevationController::initialize();
     CannonController::initialize();
+    
+    BaseType_t execCreated = xTaskCreate(
+        TurretTasks::executive,
+        (const portCHAR *) "Executive",
+        128,  // Stack size
+        NULL,
+        2,  // Priority
+        &TurretTasks::executiveHandle);
+        
+    BaseType_t dutyCycleCreated = xTaskCreate(
+        TurretTasks::dutyCycleMonitor,
+        (const portCHAR *) "DutyCycleMonitor",
+        128,  // Stack size
+        NULL,
+        1, // Priority
+        &TurretTasks::dutyCycleMonitorHandle);
 }
 
 bool TurretController::setPins() {
@@ -45,6 +62,10 @@ bool TurretController::setPins() {
     pinMode(CANNON_LED, OUTPUT);
 
     return true;
+}
+
+bool TurretController::setControlMode(int mode) {
+    return false;
 }
 
 bool TurretController::setConditionNeutral() {
@@ -83,22 +104,26 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         NULL,
         1,  // Priority
         &CannonController::cannonTaskHandle);
-        
+         
+    BaseType_t functionCheckMonitorStatus = xTaskCreate(
+        TurretTasks::functionCheckMonitor,
+        (const portCHAR *) "FunctionCheckMonitor",
+        256,  // Stack size
+        NULL,
+        2,  // Priority
+        &TurretTasks::functionCheckMonitorHandle);
+
     if (
         trvStatus != pdPASS 
         || indicatorStatus != pdPASS 
         || elevationStatus != pdPASS
-        ||
-        cannonStatus != pdPASS
+        || cannonStatus != pdPASS
+        || functionCheckMonitorStatus != pdPASS
         )
     {
         TurretController::setStatusError();
     }
 
-}
-
-bool TurretController::setControlMode(int mode) {
-    return false;
 }
 
 bool TurretController::turnOffAllIndicators() {
@@ -123,12 +148,16 @@ void TurretController::indicatorFunctionCheck(void* pvParameters) {
     Indicator::alertBlinkFast(ACTY_LED_1);
     Indicator::alertBlinkFast(ACTY_LED_2);
     Indicator::alertBlinkFast(ACTY_LED_3);
-
-    Indicator::alertStrobeSlow(MOVE_LED_GRN);
     Indicator::alertStrobeSlow(MOVE_LED_RED);
-    Indicator::alertStrobeSlow(MOVE_LED_BLUE);
-
-    vTaskDelete(TurretController::indicatorTaskHandle);
+    
+    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    
+    if (notifyMonitorSuccess == pdTRUE) {
+        vTaskDelete(TurretController::indicatorTaskHandle);
+    }
+    else {
+        TurretController::setStatusError();
+    }
 }
 
 void TurretController::setStatusGood() {

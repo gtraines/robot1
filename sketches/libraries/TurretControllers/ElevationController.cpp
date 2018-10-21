@@ -2,10 +2,13 @@
 #include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
+#include <Taskr.h>
 #include <ElevationConfig.h>
 #include <Indicator.h>
 #include <PotMotor.h>
 #include <TurretPins.h>
+#include <TurretState.h>
+#include <TurretTasks.h>
 
 PotMotor* ElevationController::_elevationMotor = nullptr;
 TaskHandle_t ElevationController::elevationTaskHandle = NULL;
@@ -27,28 +30,38 @@ bool ElevationController::initialize() {
 }
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
+    TurretState::tgtElevationIntRads = FUNCTION_CHECK_TGT_INTRADS;
     ElevationController::setConditionNeutral();
-    vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::moveTo(ELEVATION_MIN);
-    vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::moveTo(ELEVATION_MAX);
-    vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::moveTo(ELEVATION_MIN);
-    vTaskDelay(150/portTICK_PERIOD_MS);
-    ElevationController::moveTo(ELEVATION_MAX);
-    vTaskDelay(150/portTICK_PERIOD_MS);
+    Taskr::delayMs(800);
+    ElevationController::moveToIntRads(ELEVATION_MIN_INTRADS);
+    Taskr::delayMs(500);
+    ElevationController::moveToIntRads(ELEVATION_MAX_INTRADS);
+    Taskr::delayMs(500);
+    ElevationController::moveToIntRads(ELEVATION_MIN_INTRADS);
+    Taskr::delayMs(500);
+    ElevationController::moveToIntRads(ELEVATION_MAX_INTRADS);
+    Taskr::delayMs(500);
     ElevationController::setConditionNeutral();
-
-    vTaskDelete(ElevationController::elevationTaskHandle);
+    Taskr::delayMs(1000);
+    ElevationController::moveToIntRads(TurretState::tgtElevationIntRads);
+    TurretState::tgtElevationIntRads = 0;
+    Taskr::delayMs(500);
+    
+    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    if (notifyMonitorSuccess == pdTRUE) {
+        vTaskDelete(ElevationController::elevationTaskHandle);
+    }
+    else {
+        Indicator::turnOnLed(ARD_STATUS_RED);
+    }
 }
 
 bool ElevationController::setConditionNeutral() {
 
-    bool wasGoodCommand = ElevationController::moveTo(ELEVATION_NEUTRAL);
+    bool wasGoodCommand = ElevationController::moveToIntRads(ELEVATION_NEUTRAL_INTRADS);
     return wasGoodCommand;
 }
 void ElevationController::clearIndicators() {
-    Indicator::turnOffLed(MOVE_LED_RED);
     Indicator::turnOffLed(MOVE_LED_GRN);
 }
 
@@ -72,4 +85,15 @@ bool ElevationController::moveTo(int readingValue) {
     ElevationController::clearIndicators();
     
     return isGoodCommand;
+}
+
+
+void ElevationController::dutyCycle(void* pvParameters) {
+    
+}
+
+bool ElevationController::moveToIntRads(int intRads) {
+    int potRdg = map(intRads, ELEVATION_MIN_INTRADS, ELEVATION_MAX_INTRADS, ELEVATION_MIN, ELEVATION_MAX);
+    
+    return ElevationController::moveTo(potRdg);
 }

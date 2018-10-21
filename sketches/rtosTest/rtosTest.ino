@@ -118,8 +118,5 @@ void setup() {
 }
 
 void loop() {
-    Indicator::turnOnLed(ARD_STATUS_GRN);
-    delay(800);
-    Indicator::turnOffLed(ARD_STATUS_GRN);
-    delay(300);
+
 }

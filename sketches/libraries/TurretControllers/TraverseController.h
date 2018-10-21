@@ -19,6 +19,7 @@ struct traverse_state_t {
 class TraverseController {
 protected:
     static void clearIndicators();
+    static int getNextMoveToIntRads(int currentTargetIntRads);
 public:
     static void initialize(Servo* traverseServo);
 	~TraverseController() {
@@ -26,10 +27,13 @@ public:
 	}
     static bool canMoveTo(int targetPosition);
     static bool moveTo(int targetPosition, int delayMillis);
+    static bool moveToIntRads(int intRads, int delayMillis);
     static bool setConditionNeutral();
     static void functionCheckDemo(void* pvParameters);
+    static void dutyCycle(void* pvParameters);
     static TaskHandle_t traverseTaskHandle;
     static Servo* _traverseServo;
+    static int currentPositionIntRads;
     
 };
 
