@@ -23,7 +23,9 @@ public:
     }
     static bool initialize();
     static bool moveTo(int readingValue);
+    static bool moveToIntRads(int intRads);
     static void functionCheckDemo(void* pvParameters);
+    static void dutyCycle(void* pvParameters);
     static bool setConditionNeutral();
     static TaskHandle_t elevationTaskHandle;
 };
