@@ -1,2 +1,0 @@
-/usr/bin/ar qc libIndicator.a  CMakeFiles/Indicator.dir/Indicator.cpp.o
-/usr/bin/ranlib libIndicator.a

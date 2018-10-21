@@ -3,6 +3,17 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# CmakeFiles
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+
 # C extensions
 *.so
 
