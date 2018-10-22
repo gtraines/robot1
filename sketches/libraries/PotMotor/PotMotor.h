@@ -1,6 +1,8 @@
 #ifndef ROBOT1_POTMOTOR_H
 #define ROBOT1_POTMOTOR_H
 
+#include <Arduino.h>
+
 struct PotMotorConfig {
     int MotorEnablePin;
     int IncreaseHighPin;

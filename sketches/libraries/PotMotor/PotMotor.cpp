@@ -1,8 +1,11 @@
-#include <Arduino.h>
+
 #include "PotMotor.h"
-#include <Indicator.h>
+#include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
+#include <Taskr.h>
+#include <Indicator.h>
+
 
 int PotMotor::moveTo(int targetPosition)
 {
@@ -25,7 +28,7 @@ int PotMotor::moveTo(int targetPosition)
         
         while (shouldContinueMoving(currentDirection, targetPosition, currentPosition) 
             && getPositionTargetDeltaInSlices(targetPosition) > 1) {
-            vTaskDelay(_readingDelay/portTICK_PERIOD_MS);
+            Taskr::delayMs(_readingDelay);
     
             motorSpeedUpdated = getMotorSpeed(targetPosition, currentPosition);
             if (motorSpeedUpdated != currentMotorSpeed) {

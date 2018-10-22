@@ -10,56 +10,30 @@
 #include <Indicator.h>
 #include <TurretPins.h>
 #include <TraverseConfig.h>
+#include <TraverseState.h>
 #include <TurretState.h>
 #include <TurretTasks.h>
 
-Servo* TraverseController::_traverseServo = NULL;
+Servo* TraverseController::_traverseServo = nullptr;
 TaskHandle_t TraverseController::traverseTaskHandle;
 int TraverseController::currentPositionIntRads(0);
 
 void TraverseController::initialize(Servo* traverseServo) {
 
     TraverseController::_traverseServo = traverseServo;
-    TraverseController::_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
+    TraverseController::setConditionNeutral();
+
     delay(300);
-    TraverseController::currentPositionIntRads = TRAVERSE_LIMIT_STRAIGHT_INTRADS;
 }
 
 void TraverseController::functionCheckDemo(void* pvParameters) {
-    int travPos = 0;
-    for (travPos = TRAVERSE_LIMIT_STRAIGHT; travPos < TRAVERSE_LIMIT_MAX; travPos++) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
-    }
+    TurretState::traverseState = new traverse_state_t();
+    TurretState::traverseState->speed = TraverseSpeed::SLOW;
 
-    for (travPos = TRAVERSE_LIMIT_MAX; travPos > TRAVERSE_LIMIT_MIN; travPos--) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
-    }
+    TraverseController::functionCheckSpeedDemo();
+    TraverseController::functionCheckSpeedDemo();
+    TraverseController::functionCheckSpeedDemo();
 
-    for (travPos = TRAVERSE_LIMIT_MIN; travPos < TRAVERSE_LIMIT_STRAIGHT; travPos++) {
-        TraverseController::moveTo(travPos, TRAVERSE_MOVE_DELAY);
-    }
-    
-    int travPosIntRads = 0;
-    
-    for (travPosIntRads = TRAVERSE_LIMIT_STRAIGHT_INTRADS; 
-        travPosIntRads > TRAVERSE_LIMIT_MIN_INTRADS;
-        travPosIntRads -= 6) {
-            TraverseController::moveToIntRads(travPosIntRads, 45);
-        }
-        
-    for (travPosIntRads = travPosIntRads; 
-        travPosIntRads < TRAVERSE_LIMIT_MAX_INTRADS;
-        travPosIntRads += 6) {
-            TraverseController::moveToIntRads(travPosIntRads, 45);
-        }
-        
-            
-    for (travPosIntRads = travPosIntRads; 
-        travPosIntRads > TRAVERSE_LIMIT_STRAIGHT_INTRADS;
-        travPosIntRads -= 6) {
-            TraverseController::moveToIntRads(travPosIntRads, 45);
-        }
-        
     BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     
     if (notifyMonitorSuccess == pdTRUE) {
@@ -72,7 +46,8 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
 }
 
 bool TraverseController::moveToIntRads(int intRads, int delayMillis) {
-    TurretState::tgtTraverseIntRads = intRads;
+    TraverseController::updateTurretState(intRads);
+
     int servoDegs = map(intRads, 
         TRAVERSE_LIMIT_MIN_INTRADS, 
         TRAVERSE_LIMIT_MAX_INTRADS, 
@@ -82,39 +57,41 @@ bool TraverseController::moveToIntRads(int intRads, int delayMillis) {
     return TraverseController::moveTo(servoDegs, delayMillis);
 }
 
+bool TraverseController::moveToIntRads(int intRads) {
+    return TraverseController::moveToIntRads(intRads, 0);
+}
+
 void TraverseController::dutyCycle(void* pvParameters) {
     int receivedValue = 0;
-    int currentTargetIntRads = TraverseController::currentPositionIntRads;
-    int stepSize = 6;
+    int currentTargetIntRads = TurretState::traverseState->targetPositionIntRads;
     int nextStep = 0;
     for (;;) {
-        receivedValue = ulTaskNotifyTake(pdTRUE, Taskr::getMillis(TRAVERSE_MOVE_DELAY));
+        receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
         
         if (receivedValue != 0) {
-            currentTargetIntRads = TurretState::tgtTraverseIntRads;
+            currentTargetIntRads = TurretState::traverseState->targetPositionIntRads;
             receivedValue = 0;
         }
         
-        if (currentTargetIntRads != TraverseController::currentPositionIntRads 
-            && abs((TraverseController::currentPositionIntRads - currentPositionIntRads)) > stepSize) {
-                nextStep = TraverseController::getNextMoveToIntRads(currentTargetIntRads);
+        if (currentTargetIntRads != TraverseController::currentPositionIntRads) {
+            nextStep = TraverseController::getNextMoveToIntRads(currentTargetIntRads, getStepSize());
                 
-            TraverseController::moveToIntRads(nextStep, 0);
+            TraverseController::moveToIntRads(nextStep);
         }
     }
 }
 
-int TraverseController::getNextMoveToIntRads(int currentTargetIntRads) {
-    int stepSize = 6;
+int TraverseController::getNextMoveToIntRads(int currentTargetIntRads, int stepSize) {
+    int nextStepIntRads;
     if (currentTargetIntRads > TraverseController::currentPositionIntRads) {
-        return TraverseController::currentPositionIntRads + stepSize;
+        nextStepIntRads = TraverseController::currentPositionIntRads + stepSize;
     }
     else {
-        return TraverseController::currentPositionIntRads - stepSize;
+        nextStepIntRads = TraverseController::currentPositionIntRads - stepSize;
     }
-    
-}
 
+    return nextStepIntRads;
+}
 
 bool TraverseController::canMoveTo(int targetIntRads) {
     return (targetIntRads >= TRAVERSE_LIMIT_MIN_INTRADS && targetIntRads <= TRAVERSE_LIMIT_MAX_INTRADS);
@@ -155,4 +132,88 @@ bool TraverseController::setConditionNeutral(){
 void TraverseController::clearIndicators() {
     Indicator::turnOffLed(MOVE_LED_BLUE);
 }
+
+bool TraverseController::functionCheckSpeedDemo() {
+
+    int delayMillis = getCurrentDelayMillis();
+    int stepSize = getStepSize();
+    int travPosIntRads;
+
+    for (travPosIntRads = TRAVERSE_LIMIT_STRAIGHT_INTRADS;
+         travPosIntRads < TRAVERSE_LIMIT_MAX_INTRADS;
+         travPosIntRads += stepSize) {
+        TraverseController::moveToIntRads(travPosIntRads, delayMillis);
+    }
+
+    for (;
+        travPosIntRads > TRAVERSE_LIMIT_MIN_INTRADS;
+        travPosIntRads -= stepSize) {
+        TraverseController::moveToIntRads(travPosIntRads, delayMillis);
+    }
+
+    for (;
+        travPosIntRads < TRAVERSE_LIMIT_STRAIGHT_INTRADS;
+        travPosIntRads += stepSize) {
+        TraverseController::moveToIntRads(travPosIntRads, delayMillis);
+    }
+
+    TurretState::traverseState->targetPositionIntRads = FUNCTION_CHECK_TGT_INTRADS_1;
+    for (;
+        travPosIntRads > getTargetIntRads();
+        travPosIntRads -= stepSize) {
+        TraverseController::moveToIntRads(travPosIntRads, delayMillis);
+    }
+
+    TurretState::traverseState->targetPositionIntRads = FUNCTION_CHECK_TGT_INTRADS_2;
+    for (;
+        travPosIntRads > getTargetIntRads();
+        travPosIntRads += stepSize) {
+        TraverseController::moveToIntRads(travPosIntRads, delayMillis);
+    }
+
+    return true;
+}
+
+void TraverseController::updateTurretState(int currentIntRads) {
+    TurretState::traverseState->currentPositionIntRads = currentIntRads;
+}
+
+int TraverseController::getCurrentIntRads() {
+    return TurretState::traverseState->currentPositionIntRads;
+}
+
+int TraverseController::getTargetIntRads() {
+    return TurretState::traverseState->targetPositionIntRads;
+}
+
+TickType_t TraverseController::getTakeDelay() {
+    return Taskr::getMillis(getCurrentDelayMillis());
+}
+
+int TraverseController::getCurrentDelayMillis() {
+    int delayMillis;
+    switch (TurretState::traverseState->speed) {
+        case TraverseSpeed::MED:
+            delayMillis = TRAVERSE_MOVE_DELAY;
+        case TraverseSpeed::FAST:
+            delayMillis = TRAVERSE_MOVE_DELAY_FAST;
+        case TraverseSpeed::SLOW:
+            delayMillis = TRAVERSE_MOVE_DELAY_SLOW;
+    }
+    return delayMillis;
+}
+
+int TraverseController::getStepSize() {
+    int stepSize;
+    switch (TurretState::traverseState->speed) {
+        case TraverseSpeed::MED:
+            stepSize = INTRADS_STEP_SIZE;
+        case TraverseSpeed::FAST:
+            stepSize = INTRADS_STEP_SIZE_FAST;
+        case TraverseSpeed::SLOW:
+            stepSize = INTRADS_STEP_SIZE_SLOW;
+    }
+    return stepSize;
+}
+
 
