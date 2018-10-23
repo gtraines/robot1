@@ -12,8 +12,9 @@
 class TraverseController {
 protected:
     static void clearIndicators();
-    static int getNextMoveToIntRads(int currentTargetIntRads, int stepSize);
+    static int getNextMoveToIntRads(int targetIntRads, int stepSize);
     static bool functionCheckSpeedDemo();
+    static bool functionCheckMoveToTarget();
     static void updateTurretState(int currentIntRads);
     static TickType_t getTakeDelay();
     static int getCurrentDelayMillis();
@@ -34,7 +35,6 @@ public:
     static int getTargetIntRads();
     static TaskHandle_t traverseTaskHandle;
     static Servo* _traverseServo;
-    static int currentPositionIntRads;
     
 };
 
