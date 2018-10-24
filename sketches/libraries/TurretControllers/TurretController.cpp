@@ -148,7 +148,6 @@ void TurretController::indicatorFunctionCheck(void* pvParameters) {
     Indicator::alertBlinkFast(ACTY_LED_1);
     Indicator::alertBlinkFast(ACTY_LED_2);
     Indicator::alertBlinkFast(ACTY_LED_3);
-    Indicator::alertStrobeSlow(MOVE_LED_RED);
     
     BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     

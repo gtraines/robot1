@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libIrTxRx.a  CMakeFiles/IrTxRx.dir/IRremote.cpp.obj CMakeFiles/IrTxRx.dir/IrReceiver.cpp.obj
-/usr/bin/avr-ranlib libIrTxRx.a

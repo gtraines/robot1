@@ -1,2 +1,0 @@
-/usr/bin/ar qc libTurretConfig.a  CMakeFiles/TurretConfig.dir/TurretConfigPlacard.cpp.o CMakeFiles/TurretConfig.dir/home/graham/Source/robot1/sketches/libraries/TurretControllers/TurretController.cpp.o
-/usr/bin/ranlib libTurretConfig.a

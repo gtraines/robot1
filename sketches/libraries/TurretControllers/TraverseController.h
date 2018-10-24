@@ -9,17 +9,16 @@
 #include <task.h>
 #include <Servo.h>
 
-struct traverse_state_t {
-    bool isMoving;
-    int delayMillis;
-    int targetPosition;
-    int currentPosition;
-};
-
 class TraverseController {
 protected:
     static void clearIndicators();
-    static int getNextMoveToIntRads(int currentTargetIntRads);
+    static int getNextMoveToIntRads(int targetIntRads, int stepSize);
+    static bool functionCheckSpeedDemo();
+    static bool functionCheckMoveToTarget();
+    static void updateTurretState(int currentIntRads);
+    static TickType_t getTakeDelay();
+    static int getCurrentDelayMillis();
+    static int getStepSize();
 public:
     static void initialize(Servo* traverseServo);
 	~TraverseController() {
@@ -28,12 +27,14 @@ public:
     static bool canMoveTo(int targetPosition);
     static bool moveTo(int targetPosition, int delayMillis);
     static bool moveToIntRads(int intRads, int delayMillis);
+    static bool moveToIntRads(int intRads);
     static bool setConditionNeutral();
     static void functionCheckDemo(void* pvParameters);
     static void dutyCycle(void* pvParameters);
+    static int getCurrentIntRads();
+    static int getTargetIntRads();
     static TaskHandle_t traverseTaskHandle;
     static Servo* _traverseServo;
-    static int currentPositionIntRads;
     
 };
 

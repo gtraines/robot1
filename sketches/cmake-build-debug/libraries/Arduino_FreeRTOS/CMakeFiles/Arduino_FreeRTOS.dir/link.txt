@@ -1,2 +1,0 @@
-/usr/bin/avr-ar qc libArduino_FreeRTOS.a  CMakeFiles/Arduino_FreeRTOS.dir/croutine.c.obj CMakeFiles/Arduino_FreeRTOS.dir/event_groups.c.obj CMakeFiles/Arduino_FreeRTOS.dir/heap_3.c.obj CMakeFiles/Arduino_FreeRTOS.dir/list.c.obj CMakeFiles/Arduino_FreeRTOS.dir/port.c.obj CMakeFiles/Arduino_FreeRTOS.dir/queue.c.obj CMakeFiles/Arduino_FreeRTOS.dir/stream_buffer.c.obj CMakeFiles/Arduino_FreeRTOS.dir/tasks.c.obj CMakeFiles/Arduino_FreeRTOS.dir/timers.c.obj
-/usr/bin/avr-ranlib libArduino_FreeRTOS.a
