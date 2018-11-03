@@ -17,6 +17,10 @@ class TurretController
     ~TurretController() { }
     static void setStatusGood();
     static void setStatusError();
+    static bool setTraverseTargetIntRads(int tgtIntRads);
+    static bool setElevationTargetIntRads(int tgtIntRads);
+    static bool incrementTraverse(int direction, int intRads, int speed);
+    static bool incrementElevation(int direction, int intRads, int speed);
     static bool setPins();
     static bool turnOffAllIndicators();
     static bool setConditionNeutral();
