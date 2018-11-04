@@ -241,6 +241,8 @@
     <VirtualDirectory Name="TurretState">
       <File Name="libraries/TurretState/TurretState.h"/>
       <File Name="libraries/TurretState/TurretState.cpp"/>
+      <File Name="libraries/TurretState/TraverseState.h"/>
+      <File Name="libraries/TurretState/CommandMessages.h"/>
     </VirtualDirectory>
   </VirtualDirectory>
   <Description/>
