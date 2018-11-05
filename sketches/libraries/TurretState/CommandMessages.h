@@ -15,7 +15,18 @@ enum class CommandStatus {
     CANCELED
 };
 
+enum class CommandResult {
+    COMPLETED;
+    CANCELED_BY_MCU;
+    CANCELED_BY_REQUEST;
+    ERROR;
+};
 
+typedef struct COMMAND_RESULT {
+    long commandId;
+    CommandResult commandResult;
+    String description;
+} CommandResultMsg_t;
 
 class AckMessage {
 public:

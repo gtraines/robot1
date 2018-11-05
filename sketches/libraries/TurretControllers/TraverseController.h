@@ -35,7 +35,6 @@ public:
     static int getTargetIntRads();
     static TaskHandle_t traverseTaskHandle;
     static Servo* _traverseServo;
-    
 };
 
 
