@@ -47,7 +47,6 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
     else {
         Indicator::turnOnLed(ARD_STATUS_RED);
     }
-    
 }
 
 bool TraverseController::moveToIntRads(int intRads, int delayMillis) {

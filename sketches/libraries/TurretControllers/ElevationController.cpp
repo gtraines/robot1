@@ -97,3 +97,43 @@ bool ElevationController::moveToIntRads(int intRads) {
     
     return ElevationController::moveTo(potRdg);
 }
+
+int ElevationController::getNextMoveToIntRads(int targetIntRads, int stepSize) {
+}
+
+bool ElevationController::functionCheckSpeedDemo() {
+}
+
+bool ElevationController::functionCheckMoveToTarget() {
+}
+
+void ElevationController::updateTurretState(int currentIntRads) {
+}
+
+TickType_t ElevationController::getTakeDelay()
+{
+}
+
+int ElevationController::getCurrentDelayMillis()
+{
+}
+
+int ElevationController::getStepSize()
+{
+}
+
+bool ElevationController::canMoveTo(int targetIntRads) {
+    return (targetIntRads >= ELEVATION_MIN_INTRADS && targetIntRads <= ELEVATION_MAX_INTRADS);
+}
+
+bool ElevationController::moveToIntRads(int intRads, int delayMillis)
+{
+}
+
+int ElevationController::getCurrentIntRads()
+{
+}
+
+int ElevationController::getTargetIntRads()
+{
+}
