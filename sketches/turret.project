@@ -246,6 +246,11 @@
       <File Name="TraverseCommand.h"/>
       <File Name="libraries/TurretState/ElevationCommands.h"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="PotMotorRtos">
+      <File Name="libraries/PotMotorRtos/PotMotorRtos.h"/>
+      <File Name="libraries/PotMotorRtos/CMakeLists.txt"/>
+      <File Name="libraries/PotMotorRtos/PotMotorRtos.cpp"/>
+    </VirtualDirectory>
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
