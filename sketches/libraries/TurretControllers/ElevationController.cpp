@@ -13,6 +13,7 @@
 PotMotor* ElevationController::_elevationMotor = nullptr;
 TaskHandle_t ElevationController::elevationTaskHandle = NULL;
 
+// Run function check?
 bool ElevationController::initialize() {
     ElevationController::_elevationMotor = new PotMotor(
             (int)ELEVATION_MOTOR_ENABLE,
