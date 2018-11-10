@@ -10,6 +10,7 @@
 #include <Indicator.h>
 #include <TurretPins.h>
 #include <TraverseConfig.h>
+#include <TraverseCommand.h>
 #include <TraverseState.h>
 #include <TurretState.h>
 #include <TurretTasks.h>
@@ -21,7 +22,7 @@ void TraverseController::initialize(Servo* traverseServo) {
 
     TraverseController::_traverseServo = traverseServo;
 
-    TurretState::traverseState = new traverse_state_t();
+    TurretState::traverseState = new TraverseState_t();
     TurretState::traverseState->speed = TraverseSpeed::MED;
     TurretState::traverseState->currentPositionIntRads = 0;
     TurretState::traverseState->targetPositionIntRads = 0;

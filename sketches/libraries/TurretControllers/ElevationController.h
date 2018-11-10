@@ -30,9 +30,7 @@ public:
     static bool initialize();
     static bool canMoveTo(int targetIntRads);
     static bool moveTo(int readingValue);
-    static bool moveToIntRads(int intRads);
     static void functionCheckDemo(void* pvParameters);
-    static bool moveToIntRads(int intRads, int delayMillis);
     static bool moveToIntRads(int intRads);
     static bool setConditionNeutral();
     static void dutyCycle(void* pvParameters);

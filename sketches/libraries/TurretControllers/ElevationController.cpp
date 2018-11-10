@@ -30,7 +30,7 @@ bool ElevationController::initialize() {
 }
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
-    TurretState::tgtElevationIntRads = FUNCTION_CHECK_TGT_INTRADS;
+    TurretState::tgtElevationIntRads = ELEVATION_NEUTRAL_INTRADS;
     ElevationController::setConditionNeutral();
     Taskr::delayMs(800);
     ElevationController::moveToIntRads(ELEVATION_MIN_INTRADS);
@@ -92,20 +92,20 @@ void ElevationController::dutyCycle(void* pvParameters) {
     int receivedValue = 0;
     int targetIntRads = getTargetIntRads();
     int nextStep = 0;
-    for (;;) {
-        receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
-        
-        if (receivedValue != 0) {
-            targetIntRads = getTargetIntRads();
-            receivedValue = 0;
-        }
-        
-        if (targetIntRads != TraverseController::getCurrentIntRads()) {
-            nextStep = TraverseController::getNextMoveToIntRads(targetIntRads, getStepSize());
-                
-            TraverseController::moveToIntRads(nextStep);
-        }
-    }
+//    for (;;) {
+//        receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
+//
+//        if (receivedValue != 0) {
+//            targetIntRads = getTargetIntRads();
+//            receivedValue = 0;
+//        }
+//
+//        if (targetIntRads != ElevationController::getCurrentIntRads()) {
+//            nextStep = ElevationController::getNextMoveToIntRads(targetIntRads, getStepSize());
+//
+//            ElevationController::moveToIntRads(nextStep);
+//        }
+//    }
     
 }
 
@@ -139,9 +139,6 @@ int ElevationController::getStepSize() {
 
 bool ElevationController::canMoveTo(int targetIntRads) {
     return (targetIntRads >= ELEVATION_MIN_INTRADS && targetIntRads <= ELEVATION_MAX_INTRADS);
-}
-
-bool ElevationController::moveToIntRads(int intRads, int delayMillis) {
 }
 
 int ElevationController::getCurrentIntRads() {

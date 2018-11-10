@@ -8,6 +8,7 @@
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 #include <Servo.h>
+#include <TraverseCommand.h>
 
 class TraverseController {
 protected:

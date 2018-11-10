@@ -16,10 +16,10 @@ enum class CommandStatus {
 };
 
 enum class CommandResult {
-    COMPLETED;
-    CANCELED_BY_MCU;
-    CANCELED_BY_REQUEST;
-    ERROR;
+    COMPLETED,
+    CANCELED_BY_MCU,
+    CANCELED_BY_REQUEST,
+    ERROR,
 };
 
 typedef struct COMMAND_RESULT {
@@ -49,7 +49,7 @@ public:
         this->description = desc;
     }
     ~AckMessage() {
-        delete description;
+
     }
     long commandId;
     CommandRxStatus commandRxStatus;

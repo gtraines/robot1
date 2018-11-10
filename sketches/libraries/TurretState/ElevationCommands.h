@@ -5,6 +5,6 @@ typedef struct ELEVATION_COMMAND_TYPE {
     long commandId;
     int commandPositionIntRads;
     int commandSpeed;
-}
+} ElevationCommand_t;
 
 #endif 
