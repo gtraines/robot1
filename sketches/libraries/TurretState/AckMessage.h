@@ -1,36 +1,19 @@
-#ifndef TURRET_STATE__COMMAND_MESSSAGES__H
-#define TURRET_STATE__COMMAND_MESSAGES__H
+//
+// Created by graham on 11/10/18.
+//
 
+#ifndef TURRET_STATE__ACKMESSAGE__H
+#define TURRET_STATE__ACKMESSAGE__H
+
+#include "CommandResult.h"
+#include "CommandStatus.h"
+#include "CommandRxStatus.h"
 #include <Arduino.h>
 
-enum class CommandRxStatus {
-    ACK,
-    NACK
-};
-
-enum class CommandStatus {
-    IN_PROGRESS,
-    UNABLE_TO_COMPLY,
-    ON_HOLD,
-    CANCELED
-};
-
-enum class CommandResult {
-    COMPLETED,
-    CANCELED_BY_MCU,
-    CANCELED_BY_REQUEST,
-    ERROR,
-};
-
-typedef struct COMMAND_RESULT {
-    long commandId;
-    CommandResult commandResult;
-    String description;
-} CommandResultMsg_t;
-
 class AckMessage {
+private:
 public:
-    AckMessage(long cmdId) {
+    explicit AckMessage(long cmdId) {
         this->commandId = cmdId;
         this->commandRxStatus = CommandRxStatus::ACK;
         this->commandStatus = CommandStatus::IN_PROGRESS;
@@ -57,4 +40,10 @@ public:
     String description;
 };
 
-#endif //TURRET_STATE__COMMAND_MESSAGES__H
+typedef struct COMMAND_RESULT_MSG {
+    long commandId;
+    CommandResult commandResult;
+    String description;
+} CommandResultMsg_t;
+
+#endif //TURRET_ACKMESSAGE_H

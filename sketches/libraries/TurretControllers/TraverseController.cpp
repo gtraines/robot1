@@ -16,14 +16,14 @@
 #include <TurretTasks.h>
 
 Servo* TraverseController::_traverseServo = nullptr;
-TaskHandle_t TraverseController::traverseTaskHandle;
+TaskHandle_t TraverseController::traverseTaskHandle = nullptr;
 
 void TraverseController::initialize(Servo* traverseServo) {
 
     TraverseController::_traverseServo = traverseServo;
 
     TurretState::traverseState = new TraverseState_t();
-    TurretState::traverseState->speed = TraverseSpeed::MED;
+    TurretState::traverseState->speed = TraverseSpeed::MEDIUM;
     TurretState::traverseState->currentPositionIntRads = 0;
     TurretState::traverseState->targetPositionIntRads = 0;
 
@@ -195,7 +195,7 @@ TickType_t TraverseController::getTakeDelay() {
 int TraverseController::getCurrentDelayMillis() {
     int delayMillis;
     switch (TurretState::traverseState->speed) {
-        case TraverseSpeed::MED:
+        case TraverseSpeed::MEDIUM:
             delayMillis = TRAVERSE_MOVE_DELAY;
             break;
         case TraverseSpeed::FAST:
@@ -211,7 +211,7 @@ int TraverseController::getCurrentDelayMillis() {
 int TraverseController::getStepSize() {
     int stepSize;
     switch (TurretState::traverseState->speed) {
-        case TraverseSpeed::MED:
+        case TraverseSpeed::MEDIUM:
             stepSize = INTRADS_STEP_SIZE;
             break;
         case TraverseSpeed::FAST:

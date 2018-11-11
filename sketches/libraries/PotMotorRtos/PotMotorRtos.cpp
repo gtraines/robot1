@@ -9,35 +9,39 @@
 
 // moving 
 
-boolean PotMotorRtos::setTargetCommand(int targetPosition, MotorSpeed speed) {
+boolean PotMotorRtos::setTargetCommand(int targetPosition, int speed) {
     this->motorStop();
     if (!this->canMoveToPosition(targetPosition)) {
         return false;
     }
     this->targetPosition = targetPosition;
-    this->commandedSpeed = speed;
-    
+    this->commandedSpeed = (MotorSpeed)speed;
+    this->setMotorDirection(this->getMotorDirectionToTarget());
     return true;
 }
 
 void PotMotorRtos::motorStop() {
-    digitalWrite(_increaseHighPin, LOW);
-    digitalWrite(_decreaseHighPin, LOW);
+    this->setMotorDirection(MotorDirection::NEUTRAL);
     this->commandedSpeed = MotorSpeed::STOP;
     this->adjustedSpeed = MotorSpeed::STOP;
-    this->currentDirection = MotorDirection::NEUTRAL;
     this->targetPosition = -1;
 }
 
 void PotMotorRtos::setMotorDirection(MotorDirection motorDirection) {
     if (motorDirection == MotorDirection::INCREASE) {
-        digitalWrite(_increaseHighPin, HIGH);
-        digitalWrite(_decreaseHighPin, LOW);
+        digitalWrite(this->_increaseHighPin, HIGH);
+        digitalWrite(this->_decreaseHighPin, LOW);
     } 
     if (motorDirection == MotorDirection::DECREASE) {
-        digitalWrite(_increaseHighPin, LOW);
-        digitalWrite(_decreaseHighPin, HIGH);
+        digitalWrite(this->_increaseHighPin, LOW);
+        digitalWrite(this->_decreaseHighPin, HIGH);
     }
+    if (motorDirection == MotorDirection::NEUTRAL) {
+        digitalWrite(this->_increaseHighPin, LOW);
+        digitalWrite(this->_decreaseHighPin, LOW);
+    }
+
+    this->currentDirection = motorDirection;
 }
 
 boolean PotMotorRtos::shouldIncreasePosition(int targetPosition, int currentPosition) {
@@ -49,21 +53,21 @@ boolean PotMotorRtos::shouldDecreasePosition(int targetPosition, int currentPosi
 }
 
 int PotMotorRtos::getCurrentPosition() {
-    return (int)analogRead(_potReadingPin);
+    return (int)analogRead(this->_potReadingPin);
 }
 
 boolean PotMotorRtos::canMoveToPosition(int targetPosition) {
-    return targetPosition >= _minPositionReading && targetPosition <= _maxPositionReading 
-        && (getPositionTargetDeltaInSlices(targetPosition) > 1);    
+    return targetPosition >= this->_minPositionReading && targetPosition <= this->_maxPositionReading
+        && (this->getPositionTargetDeltaInSlices(targetPosition) > 1);
 }
 
 int PotMotorRtos::getPositionTargetDeltaInSlices(int targetPosition)  {
-    int deltaAnalog = abs(targetPosition - getCurrentPosition());
+    int deltaAnalog = abs(targetPosition - this->getCurrentPosition());
 
-    return deltaAnalog/_readingGranularityDelta;
+    return deltaAnalog/this->_readingGranularityDelta;
 }
 
-explicit PotMotorRtos::PotMotorRtos(const PotMotorConfig& motorInstanceConfig) {
+PotMotorRtos::PotMotorRtos(const PotMotorConfig& motorInstanceConfig) {
     this->_enablePin = motorInstanceConfig.MotorEnablePin;
     this->_increaseHighPin = motorInstanceConfig.IncreaseHighPin;
     this->_decreaseHighPin = motorInstanceConfig.DecreaseHighPin;
@@ -78,21 +82,21 @@ explicit PotMotorRtos::PotMotorRtos(const PotMotorConfig& motorInstanceConfig) {
 }
 
 MotorSpeed PotMotorRtos::getAdjustedMotorSpeed() {
-    int deltaSlices = getPositionTargetDeltaInSlices(this->targetPosition);
-    int adjustedSpeed = this->commandedSpeed;
+    int deltaSlices = this->getPositionTargetDeltaInSlices(this->targetPosition);
+    MotorSpeed adjustedSpeed = this->commandedSpeed;
     if (abs(this->getCurrentPosition() - this->_lastPosition) < this->_readingGranularityDelta) {
         // jerk the motor to keep it from stalling and burning everything up
         adjustedSpeed = MotorSpeed::JERK;
     }
     if (deltaSlices < 2) {
-        adjustedSpeed = MotorSpeed::MINIMUM;
+        adjustedSpeed = MotorSpeed::SLOW;
     }
     
     return adjustedSpeed;
 }
 
 MotorDirection PotMotorRtos::getMotorDirectionToTarget() {
-    if (this->shouldDecreasePosition(this->targetPosition, this->getCurrentPosition())) {
+    if (this->shouldIncreasePosition(this->targetPosition, this->getCurrentPosition())) {
         return MotorDirection::INCREASE;
     } else if (this->shouldDecreasePosition(this->targetPosition, this->getCurrentPosition())) {
         return MotorDirection::DECREASE;
@@ -116,7 +120,7 @@ boolean PotMotorRtos::nextStep() {
         && this->getPositionTargetDeltaInSlices(this->targetPosition) > 1) {
         // adjust speed
         this->setMotorSpeed(this->getAdjustedMotorSpeed());
-        this->_lastPosition = getCurrentPosition();
+        this->_lastPosition = this->getCurrentPosition();
         return true;
     }
     this->motorStop();

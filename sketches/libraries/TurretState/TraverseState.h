@@ -15,4 +15,4 @@ typedef struct TRAVERSE_STATE {
     int currentPositionIntRads;
 } TraverseState_t;
 
-#endif //TURRET_TRAVERSESPEED_H
+#endif //TURRET_TRAVERSE_STATE_H

@@ -4,10 +4,10 @@
 #include <Arduino.h>
 
 typedef struct POT_MOTOR_CFG {
-    int MotorEnablePin;
-    int IncreaseHighPin;
-    int DecreaseHighPin;
-    int PotentiometerReadingPin;
+    uint8_t MotorEnablePin;
+    uint8_t IncreaseHighPin;
+    uint8_t DecreaseHighPin;
+    uint8_t PotentiometerReadingPin;
     int MinPotReadingLimit;
     int MaxPotReadingLimit;
     int ReadingGranularity;
@@ -15,7 +15,6 @@ typedef struct POT_MOTOR_CFG {
     int MaxSpeed;
     int MediumSpeed;
     int JerkSpeed;
-    int ReadingDelay;
 } PotMotorConfig;
 
 enum class MotorDirection {
@@ -26,18 +25,18 @@ enum class MotorDirection {
 
 enum class MotorSpeed {
     SLOW,
-    FAST,
     MEDIUM,
+    FAST,
     JERK,
     STOP
 };
 
 class PotMotorRtos {
 private:
-    int _enablePin;
-    int _increaseHighPin;
-    int _decreaseHighPin;
-    int _potReadingPin;
+    uint8_t _enablePin;
+    uint8_t _increaseHighPin;
+    uint8_t _decreaseHighPin;
+    uint8_t _potReadingPin;
     int _minPositionReading;
     int _maxPositionReading;
     int _readingGranularityDelta;
@@ -62,10 +61,10 @@ protected:
 
 public:
     explicit PotMotorRtos(const PotMotorConfig& motorInstanceConfig);
-    PotMotorRtos(int enablePin, 
-        int increaseHighPin, 
-        int decreaseHighPin,
-        int potReadingPin, 
+    PotMotorRtos(uint8_t enablePin,
+                 uint8_t increaseHighPin,
+                 uint8_t decreaseHighPin,
+                 uint8_t potReadingPin,
         int minPositionReading, 
         int maxPositionReading, 
         int readingGranularityDelta,
@@ -85,15 +84,15 @@ public:
             _motorMedSpeed = motorMedSpeed;
             _motorJerkSpeed = motorJerkSpeed;
             this->currentDirection = MotorDirection::NEUTRAL;
-            this->currentSpeed = MotorSpeed::STOP;
+            this->adjustedSpeed = MotorSpeed::STOP;
     }
     ~PotMotorRtos() { }
     MotorDirection currentDirection = MotorDirection::NEUTRAL;
     MotorSpeed commandedSpeed = MotorSpeed::STOP;
     MotorSpeed adjustedSpeed = MotorSpeed::STOP;
     int targetPosition = 0;
-    boolean setTargetCommand(int targetPosition, MotorSpeed speed);
-    bool moveNext();
+    boolean setTargetCommand(int targetPosition, int speed);
+    boolean nextStep();
     void motorStop();
     int getCurrentPosition();
 };

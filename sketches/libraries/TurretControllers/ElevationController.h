@@ -6,7 +6,7 @@
 #include <task.h>
 #include <ElevationConfig.h>
 #include <Indicator.h>
-#include <PotMotor.h>
+#include <PotMotorRtos.h>
 #include <TurretPins.h>
 
 
@@ -21,7 +21,7 @@ protected:
     static TickType_t getTakeDelay();
     static int getCurrentDelayMillis();
     static int getStepSize();
-    static PotMotor* _elevationMotor;
+    static PotMotorRtos* _elevationMotor;
 public:
     ElevationController(/* args */) {
     }

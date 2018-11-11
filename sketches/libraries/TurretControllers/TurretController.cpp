@@ -16,7 +16,7 @@
 #include <TraverseController.h>
 
 
-TaskHandle_t TurretController::indicatorTaskHandle = NULL;
+TaskHandle_t TurretController::indicatorTaskHandle = nullptr;
 
 void TurretController::initialize(Servo* traverseServo) {
     TurretController::setPins();

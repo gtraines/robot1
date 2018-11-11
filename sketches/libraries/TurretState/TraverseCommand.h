@@ -1,16 +1,19 @@
 #ifndef TURRET_STATE__TRAVERSE_COMMAND__H
 #define TURRET_STATE__TRAVERSE_COMMAND__H
 
+#include "CommandStatus.h"
+
 enum class TraverseSpeed {
     SLOW,
-    MED,
+    MEDIUM,
     FAST
 };
 
 typedef struct TRAVERSE_COMMAND {
     long commandId;
     TraverseSpeed commandSpeed;
-    int commandTargetIntRads;
+    int targetIntRads;
+    CommandStatus status;
 } TraverseCommand_t;
 
 #endif

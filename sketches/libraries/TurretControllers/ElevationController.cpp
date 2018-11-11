@@ -4,21 +4,22 @@
 #include <task.h>
 #include <Taskr.h>
 #include <ElevationConfig.h>
+#include <ElevationCommand.h>
 #include <Indicator.h>
-#include <PotMotor.h>
+#include <PotMotorRtos.h>
 #include <TurretPins.h>
 #include <TurretState.h>
 #include <TurretTasks.h>
 
-PotMotor* ElevationController::_elevationMotor = nullptr;
-TaskHandle_t ElevationController::elevationTaskHandle = NULL;
+PotMotorRtos* ElevationController::_elevationMotor = nullptr;
+TaskHandle_t ElevationController::elevationTaskHandle = nullptr;
 
 // Run function check?
 bool ElevationController::initialize() {
-    ElevationController::_elevationMotor = new PotMotor(
-            (int)ELEVATION_MOTOR_ENABLE,
-            (int)ELEVATION_MOTOR_POS,
-            (int)ELEVATION_MOTOR_NEG,
+    ElevationController::_elevationMotor = new PotMotorRtos(
+            (uint8_t)ELEVATION_MOTOR_ENABLE,
+            (uint8_t)ELEVATION_MOTOR_POS,
+            (uint8_t)ELEVATION_MOTOR_NEG,
             ELEVATION_MOTOR_POSITION,
             (int)ELEVATION_MIN,
             (int)ELEVATION_MAX,
@@ -27,24 +28,21 @@ bool ElevationController::initialize() {
             (int)MOTOR_MAX_SPEED,
             (int)MOTOR_MED_SPEED,
             (int)MOTOR_JERK_SPEED);
-    ElevationController::_elevationMotor->setReadingDelay(MOTOR_UPDATE_INTERVAL);
 }
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
     TurretState::tgtElevationIntRads = ELEVATION_NEUTRAL_INTRADS;
     ElevationController::setConditionNeutral();
-    Taskr::delayMs(800);
-    ElevationController::moveToIntRads(ELEVATION_MIN_INTRADS);
-    Taskr::delayMs(500);
-    ElevationController::moveToIntRads(ELEVATION_MAX_INTRADS);
-    Taskr::delayMs(500);
-    ElevationController::moveToIntRads(ELEVATION_MIN_INTRADS);
-    Taskr::delayMs(500);
-    ElevationController::moveToIntRads(ELEVATION_MAX_INTRADS);
-    Taskr::delayMs(500);
+    boolean hasNextStep = true;
+    while (hasNextStep) {
+        hasNextStep = ElevationController::_elevationMotor->nextStep();
+        Taskr::delayMs(45);
+    }
+
     ElevationController::setConditionNeutral();
     Taskr::delayMs(1000);
     ElevationController::moveToIntRads(TurretState::tgtElevationIntRads);
+
     TurretState::tgtElevationIntRads = 0;
     Taskr::delayMs(500);
     
@@ -60,6 +58,15 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
 bool ElevationController::setConditionNeutral() {
 
     bool wasGoodCommand = ElevationController::moveToIntRads(ELEVATION_NEUTRAL_INTRADS);
+
+    if (wasGoodCommand) {
+        boolean inProgress = true;
+
+        while (inProgress) {
+            inProgress = ElevationController::_elevationMotor->nextStep();
+            Taskr::delayMs(30);
+        }
+    }
     return wasGoodCommand;
 }
 void ElevationController::clearIndicators() {
@@ -82,7 +89,7 @@ bool ElevationController::moveTo(int readingValue) {
         readingValue = ELEVATION_MIN;
     }
     
-    ElevationController::_elevationMotor->moveTo(readingValue);
+    ElevationController::_elevationMotor->setTargetCommand(readingValue, (int)MotorSpeed::SLOW);
     ElevationController::clearIndicators();
     
     return isGoodCommand;
@@ -117,25 +124,30 @@ bool ElevationController::moveToIntRads(int intRads) {
 }
 
 int ElevationController::getNextMoveToIntRads(int targetIntRads, int stepSize) {
+    return 0;
 }
 
 bool ElevationController::functionCheckSpeedDemo() {
+    return true;
 }
 
 bool ElevationController::functionCheckMoveToTarget() {
+    return true;
 }
 
 void ElevationController::updateTurretState(int currentIntRads) {
 }
 
 TickType_t ElevationController::getTakeDelay() {
+    return Taskr::getMillis(45);
 }
 
 int ElevationController::getCurrentDelayMillis() {
+    return 0;
 }
 
 int ElevationController::getStepSize() {
-    
+    return 0;
 }
 
 bool ElevationController::canMoveTo(int targetIntRads) {
@@ -146,5 +158,5 @@ int ElevationController::getCurrentIntRads() {
 }
 
 int ElevationController::getTargetIntRads() {
-    
+    return TurretState::tgtElevationIntRads;
 }
