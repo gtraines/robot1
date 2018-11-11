@@ -6,4 +6,5 @@ volatile bool TurretState::allFunctionChecksCompleted = false;
 volatile int TurretState::tgtElevationIntRads = 0;
 TraverseState_t* TurretState::traverseState = nullptr;
 TraverseCommand_t* TurretState::traverseCommand = nullptr;
+ElevationState_t* TurretState::elevationState = nullptr;
 ElevationCommand_t* TurretState::elevationCommand = nullptr;

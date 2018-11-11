@@ -5,6 +5,7 @@
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 #include <ElevationConfig.h>
+#include <ElevationCommand.h>
 #include <Indicator.h>
 #include <PotMotorRtos.h>
 #include <TurretPins.h>
@@ -17,7 +18,8 @@ protected:
     static int getNextMoveToIntRads(int targetIntRads, int stepSize);
     static bool functionCheckSpeedDemo();
     static bool functionCheckMoveToTarget();
-    static void updateTurretState(int currentIntRads);
+    static void updateTurretState(boolean isMoving);
+    static void setElevationStateFromCommand();
     static TickType_t getTakeDelay();
     static int getCurrentDelayMillis();
     static int getStepSize();
@@ -29,9 +31,9 @@ public:
     }
     static bool initialize();
     static bool canMoveTo(int targetIntRads);
-    static bool moveTo(int readingValue);
+    static bool moveTo(int readingValue, ElevationSpeed speed);
     static void functionCheckDemo(void* pvParameters);
-    static bool moveToIntRads(int intRads);
+    static bool moveToIntRads(int intRads, ElevationSpeed speed);
     static bool setConditionNeutral();
     static void dutyCycle(void* pvParameters);
     static int getCurrentIntRads();

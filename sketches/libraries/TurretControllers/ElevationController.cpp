@@ -28,24 +28,29 @@ bool ElevationController::initialize() {
             (int)MOTOR_MAX_SPEED,
             (int)MOTOR_MED_SPEED,
             (int)MOTOR_JERK_SPEED);
+
+    TurretState::elevationState = new ElevationState_t {};
+    TurretState::elevationCommand = new ElevationCommand_t {};
 }
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
-    TurretState::tgtElevationIntRads = ELEVATION_NEUTRAL_INTRADS;
-    ElevationController::setConditionNeutral();
-    boolean hasNextStep = true;
-    while (hasNextStep) {
-        hasNextStep = ElevationController::_elevationMotor->nextStep();
-        Taskr::delayMs(45);
-    }
 
     ElevationController::setConditionNeutral();
-    Taskr::delayMs(1000);
-    ElevationController::moveToIntRads(TurretState::tgtElevationIntRads);
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
+    functionCheckMoveToTarget();
 
-    TurretState::tgtElevationIntRads = 0;
-    Taskr::delayMs(500);
-    
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MIN_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::MEDIUM;
+    functionCheckMoveToTarget();
+    // Update CommandState??
+
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
+    functionCheckMoveToTarget();
+
+    ElevationController::setConditionNeutral();
+
     BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
     if (notifyMonitorSuccess == pdTRUE) {
         vTaskDelete(ElevationController::elevationTaskHandle);
@@ -57,14 +62,17 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
 
 bool ElevationController::setConditionNeutral() {
 
-    bool wasGoodCommand = ElevationController::moveToIntRads(ELEVATION_NEUTRAL_INTRADS);
+    TurretState::elevationState->targetPositionIntRads = ELEVATION_NEUTRAL_INTRADS;
+    TurretState::elevationState->speed = ElevationSpeed::MEDIUM;
+    bool wasGoodCommand = ElevationController::moveToIntRads(ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
 
     if (wasGoodCommand) {
-        boolean inProgress = true;
+        boolean isMoving = true;
 
-        while (inProgress) {
-            inProgress = ElevationController::_elevationMotor->nextStep();
-            Taskr::delayMs(30);
+        while (isMoving) {
+            isMoving = ElevationController::_elevationMotor->nextStep();
+            Taskr::delayMs(getCurrentDelayMillis());
+            updateTurretState(isMoving);
         }
     }
     return wasGoodCommand;
@@ -73,7 +81,7 @@ void ElevationController::clearIndicators() {
     Indicator::turnOffLed(MOVE_LED_GRN);
 }
 
-bool ElevationController::moveTo(int readingValue) {
+bool ElevationController::moveTo(int readingValue, ElevationSpeed speed) {
     bool isGoodCommand = true;
     Indicator::turnOnLed(MOVE_LED_GRN);
     
@@ -89,42 +97,70 @@ bool ElevationController::moveTo(int readingValue) {
         readingValue = ELEVATION_MIN;
     }
     
-    ElevationController::_elevationMotor->setTargetCommand(readingValue, (int)MotorSpeed::SLOW);
-    ElevationController::clearIndicators();
-    
-    return isGoodCommand;
+    bool setTargetSuccess = ElevationController::_elevationMotor->setTargetCommand(readingValue, (int)speed);
+
+    return isGoodCommand && setTargetSuccess;
 }
 
 
 void ElevationController::dutyCycle(void* pvParameters) {
-    int receivedValue = 0;
+    uint32_t receivedValue = 0;
     int targetIntRads = getTargetIntRads();
     int nextStep = 0;
-//    for (;;) {
-//        receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
-//
-//        if (receivedValue != 0) {
-//            targetIntRads = getTargetIntRads();
-//            receivedValue = 0;
-//        }
-//
-//        if (targetIntRads != ElevationController::getCurrentIntRads()) {
-//            nextStep = ElevationController::getNextMoveToIntRads(targetIntRads, getStepSize());
-//
-//            ElevationController::moveToIntRads(nextStep);
-//        }
-//    }
-    
+    boolean success = true;
+    boolean isMoving = false;
+    while (success) {
+        receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
+        isMoving = false;
+
+        if (receivedValue != 0) {
+            setElevationStateFromCommand();
+            targetIntRads = getTargetIntRads();
+            receivedValue = 0;
+            moveToIntRads(targetIntRads, TurretState::elevationState->speed);
+        }
+
+        if (targetIntRads != ElevationController::getCurrentIntRads()) {
+            isMoving = ElevationController::_elevationMotor->nextStep();
+        }
+
+        ElevationController::updateTurretState(isMoving);
+    }
+
+    Indicator::strobeFast(ARD_STATUS_RED, 100);
+    vTaskDelete(ElevationController::elevationTaskHandle);
 }
 
-bool ElevationController::moveToIntRads(int intRads) {
+void ElevationController::updateTurretState(boolean isMoving) {
+
+    if (TurretState::elevationState->isMoving && !isMoving) {
+        clearIndicators();
+        TurretState::elevationState->speed = ElevationSpeed::STOP;
+    }
+
+    TurretState::elevationState->isMoving = isMoving;
+    TurretState::elevationState->currentPositionIntRads = getCurrentIntRads();
+}
+
+bool ElevationController::moveToIntRads(int intRads, ElevationSpeed speed) {
     int potRdg = map(intRads, ELEVATION_MIN_INTRADS, ELEVATION_MAX_INTRADS, ELEVATION_MIN, ELEVATION_MAX);
     
-    return ElevationController::moveTo(potRdg);
+    return ElevationController::moveTo(potRdg, speed);
 }
 
 int ElevationController::getNextMoveToIntRads(int targetIntRads, int stepSize) {
-    return 0;
+    int currentIntRads = getCurrentIntRads();
+    if (abs(targetIntRads - currentIntRads) < stepSize) {
+        return targetIntRads;
+    }
+
+    if (targetIntRads < currentIntRads) {
+        return currentIntRads - stepSize;
+    }
+    if (targetIntRads > currentIntRads) {
+        return currentIntRads + stepSize;
+    }
+    return targetIntRads;
 }
 
 bool ElevationController::functionCheckSpeedDemo() {
@@ -132,18 +168,43 @@ bool ElevationController::functionCheckSpeedDemo() {
 }
 
 bool ElevationController::functionCheckMoveToTarget() {
+    setElevationStateFromCommand();
+    ElevationController::moveToIntRads(getTargetIntRads(), TurretState::elevationState->speed);
+    boolean hasNextStep = true;
+    while (hasNextStep) {
+        hasNextStep = ElevationController::_elevationMotor->nextStep();
+        Taskr::delayMs(getCurrentDelayMillis());
+        updateTurretState(hasNextStep);
+    }
     return true;
 }
 
-void ElevationController::updateTurretState(int currentIntRads) {
-}
-
 TickType_t ElevationController::getTakeDelay() {
-    return Taskr::getMillis(45);
+    return Taskr::getMillis(ElevationController::getCurrentDelayMillis());
 }
 
 int ElevationController::getCurrentDelayMillis() {
-    return 0;
+
+    int delayMillis = MOTOR_UPDATE_INTERVAL;
+
+    switch (TurretState::elevationState->speed) {
+        case ElevationSpeed::SLOW:
+            delayMillis = 90;
+            break;
+        case ElevationSpeed::MEDIUM:
+            delayMillis = 60;
+            break;
+        case ElevationSpeed::FAST:
+            delayMillis = 45;
+            break;
+        case ElevationSpeed::JERK:
+            delayMillis = 30;
+            break;
+        default:
+            delayMillis = MOTOR_UPDATE_INTERVAL;
+    }
+
+    return delayMillis;
 }
 
 int ElevationController::getStepSize() {
@@ -155,8 +216,22 @@ bool ElevationController::canMoveTo(int targetIntRads) {
 }
 
 int ElevationController::getCurrentIntRads() {
+    long potMotorReading = ElevationController::_elevationMotor->getCurrentPosition();
+
+    int intRads = map(potMotorReading, ELEVATION_MIN, ELEVATION_MAX, ELEVATION_MIN_INTRADS, ELEVATION_MAX_INTRADS);
+
+    return intRads;
 }
 
 int ElevationController::getTargetIntRads() {
-    return TurretState::tgtElevationIntRads;
+    if (TurretState::elevationState != nullptr && TurretState::elevationState->targetPositionIntRads != 0) {
+        return TurretState::elevationState->targetPositionIntRads;
+    }
+    return -1;
 }
+
+void ElevationController::setElevationStateFromCommand() {
+    TurretState::elevationState->speed = TurretState::elevationCommand->commandSpeed;
+    TurretState::elevationState->targetPositionIntRads = TurretState::elevationCommand->targetIntRads;
+}
+
