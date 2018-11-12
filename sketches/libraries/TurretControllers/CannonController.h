@@ -11,6 +11,8 @@
 #include <task.h>
 
 class CannonController {
+protected:
+    static TickType_t getTakeDelay();
 public:
     CannonController() {
     }
@@ -19,6 +21,7 @@ public:
     }
     static bool initialize();
     static void functionCheckDemo(void* pvParameters);
+    static void dutyCycle(void* pvParameters);
     static TaskHandle_t cannonTaskHandle;
 };
 

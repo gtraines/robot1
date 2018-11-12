@@ -16,7 +16,8 @@ protected:
     static int getNextMoveToIntRads(int targetIntRads, int stepSize);
     static bool functionCheckSpeedDemo();
     static bool functionCheckMoveToTarget();
-    static void updateTurretState(int currentIntRads);
+    static void updateTurretState(int currentIntRads, bool isMoving);
+	static void setTraverseStateFromCommand();
     static TickType_t getTakeDelay();
     static int getCurrentDelayMillis();
     static int getStepSize();

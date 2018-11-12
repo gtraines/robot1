@@ -27,7 +27,7 @@ class TurretController
     static bool setControlMode(int mode);
     static void functionCheckDemo(void* pvParameters);
     static void indicatorFunctionCheck(void* pvParameters);
-    static TaskHandle_t indicatorTaskHandle;
+    static TaskHandle_t functionCheckTaskHandle;
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H

@@ -10,7 +10,6 @@ class TurretState
 {
 public:
     static volatile bool allFunctionChecksCompleted;
-    static volatile int tgtElevationIntRads;
     static TraverseState_t* traverseState;
     static TraverseCommand_t* traverseCommand;
     static ElevationState_t* elevationState;

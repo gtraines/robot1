@@ -7,7 +7,6 @@
 
 #include "TraverseCommand.h"
 
-
 typedef struct TRAVERSE_STATE {
     bool isMoving;
     TraverseSpeed speed;

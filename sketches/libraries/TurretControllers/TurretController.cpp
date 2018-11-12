@@ -8,13 +8,20 @@
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 #include <Servo.h>
+#include <Taskr.h>
 
 #include <TurretTasks.h>
-#include <Indicator.h>
-#include <CannonController.h>
-#include <ElevationController.h>
-#include <TraverseController.h>
+#include <TurretState.h>
 
+#include <Indicator.h>
+
+#include <CannonController.h>
+
+#include <ElevationCommand.h>
+#include <ElevationController.h>
+
+#include <TraverseController.h>
+#include <TraverseConfig.h>
 
 TaskHandle_t TurretController::indicatorTaskHandle = nullptr;
 
@@ -73,14 +80,7 @@ bool TurretController::setConditionNeutral() {
 }
 
 void TurretController::functionCheckDemo(void* pvParameters) {
-    BaseType_t trvStatus = xTaskCreate(
-        TraverseController::functionCheckDemo,
-        (const portCHAR *) "TraverseTest",
-        128,  // Stack size
-        NULL,
-        2,  // Priority
-        &TraverseController::traverseTaskHandle);
-        
+
     BaseType_t indicatorStatus = xTaskCreate(
         TurretController::indicatorFunctionCheck,
         (const portCHAR *) "IndicatorTest",
@@ -89,22 +89,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         1, // Priority
         &TurretController::indicatorTaskHandle);
 
-    BaseType_t elevationStatus = xTaskCreate(
-        ElevationController::functionCheckDemo,
-        (const portCHAR *) "ElevationTest",
-        128,  // Stack size
-        NULL,
-        2,  // Priority
-        &ElevationController::elevationTaskHandle);
 
-    BaseType_t cannonStatus = xTaskCreate(
-        CannonController::functionCheckDemo,
-        (const portCHAR *) "CannonTest",
-        128,  // Stack size
-        NULL,
-        1,  // Priority
-        &CannonController::cannonTaskHandle);
-         
     BaseType_t functionCheckMonitorStatus = xTaskCreate(
         TurretTasks::functionCheckMonitor,
         (const portCHAR *) "FunctionCheckMonitor",
@@ -113,11 +98,7 @@ void TurretController::functionCheckDemo(void* pvParameters) {
         2,  // Priority
         &TurretTasks::functionCheckMonitorHandle);
 
-    if (
-        trvStatus != pdPASS 
-        || indicatorStatus != pdPASS 
-        || elevationStatus != pdPASS
-        || cannonStatus != pdPASS
+    if (indicatorStatus != pdPASS
         || functionCheckMonitorStatus != pdPASS
         )
     {
@@ -145,13 +126,70 @@ bool TurretController::turnOffAllIndicators() {
 
 void TurretController::indicatorFunctionCheck(void* pvParameters) {
 
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
+
+    TurretState::traverseCommand->commandSpeed = TraverseSpeed::MEDIUM;
+    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_MAX_INTRADS;
+
+    BaseType_t ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
+    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
+
+    Taskr::delayMs(90);
+    while (TurretState::traverseState->isMoving) {
+        Taskr::delayMs(90);
+    }
+
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MIN_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::MEDIUM;
+
+    TurretState::traverseCommand->commandSpeed = TraverseSpeed::MEDIUM;
+    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_MIN_INTRADS;
+
+    ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
+    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
+
+    Taskr::delayMs(90);
+    while (TurretState::traverseState->isMoving) {
+        Taskr::delayMs(90);
+    }
+
+    // Update CommandState??
+
+    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
+
+    TurretState::traverseCommand->commandSpeed = TraverseSpeed::FAST;
+    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_STRAIGHT_INTRADS;
+
+    ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
+    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
+
+    Taskr::delayMs(90);
+    while (TurretState::traverseState->isMoving) {
+        Taskr::delayMs(90);
+    }
+
+    ElevationController::setConditionNeutral();
+
     Indicator::alertBlinkFast(ACTY_LED_1);
     Indicator::alertBlinkFast(ACTY_LED_2);
     Indicator::alertBlinkFast(ACTY_LED_3);
-    
+
+    int successfulNotifications = 0;
     BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    
     if (notifyMonitorSuccess == pdTRUE) {
+        successfulNotifications++;
+    }
+    notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    if (notifyMonitorSuccess == pdTRUE) {
+        successfulNotifications++;
+    }
+    notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
+    if (notifyMonitorSuccess == pdTRUE) {
+        successfulNotifications++;
+    }
+    if (successfulNotifications == 3) {
         vTaskDelete(TurretController::indicatorTaskHandle);
     }
     else {

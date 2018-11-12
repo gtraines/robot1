@@ -6,7 +6,8 @@
 enum class TraverseSpeed {
     SLOW,
     MEDIUM,
-    FAST
+    FAST,
+    STOP
 };
 
 typedef struct TRAVERSE_COMMAND {

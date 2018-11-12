@@ -30,7 +30,24 @@ bool ElevationController::initialize() {
             (int)MOTOR_JERK_SPEED);
 
     TurretState::elevationState = new ElevationState_t {};
+    TurretState::elevationState->isMoving = false;
+    TurretState::elevationState->speed = ElevationSpeed::STOP;
+    TurretState::elevationState->targetPositionIntRads = ELEVATION_NEUTRAL_INTRADS;
+    TurretState::elevationState->currentPositionIntRads = getCurrentIntRads();
+
     TurretState::elevationCommand = new ElevationCommand_t {};
+    TurretState::elevationCommand->commandSpeed = ElevationSpeed::STOP;
+    TurretState::elevationCommand->targetIntRads = ELEVATION_NEUTRAL_INTRADS;
+
+    BaseType_t elevationStatus = xTaskCreate(
+            ElevationController::dutyCycle,
+            (const portCHAR *) "ElevationControllerTask",
+            128,  // Stack size
+            NULL,
+            2,  // Priority
+            &ElevationController::elevationTaskHandle);
+
+    return elevationStatus == pdTRUE;
 }
 
 void ElevationController::functionCheckDemo(void* pvParameters) {
@@ -104,6 +121,7 @@ bool ElevationController::moveTo(int readingValue, ElevationSpeed speed) {
 
 
 void ElevationController::dutyCycle(void* pvParameters) {
+    ElevationController::setConditionNeutral();
     uint32_t receivedValue = 0;
     int targetIntRads = getTargetIntRads();
     int nextStep = 0;
@@ -120,13 +138,14 @@ void ElevationController::dutyCycle(void* pvParameters) {
             moveToIntRads(targetIntRads, TurretState::elevationState->speed);
         }
 
-        if (targetIntRads != ElevationController::getCurrentIntRads()) {
+        if (targetIntRads > 0 && targetIntRads != ElevationController::getCurrentIntRads()) {
             isMoving = ElevationController::_elevationMotor->nextStep();
         }
 
         ElevationController::updateTurretState(isMoving);
     }
 
+    ElevationController::setConditionNeutral();
     Indicator::strobeFast(ARD_STATUS_RED, 100);
     vTaskDelete(ElevationController::elevationTaskHandle);
 }

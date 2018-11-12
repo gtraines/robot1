@@ -44,7 +44,7 @@ void TurretTasks::functionCheckMonitor(void* pvParameters) {
             completedFunctionChecks += receivedValue;
             receivedValue = 0; // might not be necessary
         }
-        if (completedFunctionChecks == 4) {
+        if (completedFunctionChecks > 1) {
             // Notify Executive to start DutyCycle
             TurretState::allFunctionChecksCompleted = true;
             notifyDutyCycleSuccess = xTaskNotifyGive(TurretTasks::dutyCycleMonitorHandle);

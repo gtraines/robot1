@@ -23,13 +23,24 @@ void TraverseController::initialize(Servo* traverseServo) {
     TraverseController::_traverseServo = traverseServo;
 
     TurretState::traverseState = new TraverseState_t();
-    TurretState::traverseState->speed = TraverseSpeed::MEDIUM;
+    TurretState::traverseState->isMoving = false;
+    TurretState::traverseState->speed = TraverseSpeed::STOP;
     TurretState::traverseState->currentPositionIntRads = 0;
     TurretState::traverseState->targetPositionIntRads = 0;
 
+    TurretState::traverseCommand = new TraverseCommand_t{};
+    TurretState::traverseCommand->targetIntRads = 0;
+    TurretState::traverseCommand->commandSpeed = TraverseSpeed::STOP;
+
     TraverseController::setConditionNeutral();
 
-    delay(300);
+    BaseType_t trvStatus = xTaskCreate(
+            TraverseController::dutyCycle,
+            (const portCHAR *) "TraverseControllerTask",
+            256,  // Stack size
+            NULL,
+            2,  // Priority
+            &TraverseController::traverseTaskHandle);
 }
 
 void TraverseController::functionCheckDemo(void* pvParameters) {
@@ -59,9 +70,7 @@ bool TraverseController::moveToIntRads(int intRads, int delayMillis) {
         TRAVERSE_LIMIT_MAX);
         
     bool moveResult = TraverseController::moveTo(servoDegs, delayMillis);
-    if (moveResult) {
-        updateTurretState(intRads);
-    }
+    return moveResult;
 }
 
 bool TraverseController::moveToIntRads(int intRads) {
@@ -70,21 +79,29 @@ bool TraverseController::moveToIntRads(int intRads) {
 
 void TraverseController::dutyCycle(void* pvParameters) {
     int receivedValue = 0;
+    bool isMoving = false;
     int targetIntRads = getTargetIntRads();
     int nextStep = 0;
-    for (;;) {
+    bool success = true;
+    while (success) {
         receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
         
         if (receivedValue != 0) {
+            setTraverseStateFromCommand();
             targetIntRads = getTargetIntRads();
             receivedValue = 0;
         }
         
-        if (targetIntRads != TraverseController::getCurrentIntRads()) {
+        if (targetIntRads > 0 && targetIntRads != TraverseController::getCurrentIntRads()) {
             nextStep = TraverseController::getNextMoveToIntRads(targetIntRads, getStepSize());
                 
-            TraverseController::moveToIntRads(nextStep);
+            isMoving = TraverseController::moveToIntRads(nextStep);
         }
+        else {
+            isMoving = false;
+        }
+
+        updateTurretState(nextStep, isMoving);
     }
 }
 
@@ -135,7 +152,7 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 bool TraverseController::setConditionNeutral(){
     Indicator::turnOnLed(MOVE_LED_BLUE);
     TraverseController::_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
-    updateTurretState(TRAVERSE_LIMIT_STRAIGHT_INTRADS);
+    updateTurretState(TRAVERSE_LIMIT_STRAIGHT_INTRADS, false);
     TraverseController::clearIndicators();
 
     return true;
@@ -176,8 +193,9 @@ bool TraverseController::functionCheckMoveToTarget() {
     return true;
 }
 
-void TraverseController::updateTurretState(int currentIntRads) {
+void TraverseController::updateTurretState(int currentIntRads, bool isMoving) {
     TurretState::traverseState->currentPositionIntRads = currentIntRads;
+    TurretState::traverseState->isMoving = isMoving;
 }
 
 int TraverseController::getCurrentIntRads() {
@@ -193,7 +211,7 @@ TickType_t TraverseController::getTakeDelay() {
 }
 
 int TraverseController::getCurrentDelayMillis() {
-    int delayMillis;
+    int delayMillis = TRAVERSE_MOVE_DELAY;
     switch (TurretState::traverseState->speed) {
         case TraverseSpeed::MEDIUM:
             delayMillis = TRAVERSE_MOVE_DELAY;
@@ -203,6 +221,9 @@ int TraverseController::getCurrentDelayMillis() {
             break;
         case TraverseSpeed::SLOW:
             delayMillis = TRAVERSE_MOVE_DELAY_SLOW;
+            break;
+        default:
+            delayMillis = TRAVERSE_MOVE_DELAY;
             break;
     }
     return delayMillis;
@@ -220,8 +241,20 @@ int TraverseController::getStepSize() {
         case TraverseSpeed::SLOW:
             stepSize = INTRADS_STEP_SIZE_SLOW;
             break;
+        case TraverseSpeed::STOP:
+            stepSize = 0;
+            break;
+        default:
+            stepSize = INTRADS_STEP_SIZE;
+            break;
     }
     return stepSize;
+}
+
+void TraverseController::setTraverseStateFromCommand() {
+    TurretState::traverseState->targetPositionIntRads = TurretState::traverseCommand->targetIntRads;
+    TurretState::traverseState->speed = TurretState::traverseCommand->commandSpeed;
+    TurretState::traverseCommand->status = CommandStatus::IN_PROGRESS;
 }
 
 
