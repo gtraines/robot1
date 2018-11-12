@@ -145,6 +145,119 @@ void TurretController::functionCheckWorker(void* pvParameters) {
         fireCannon();
     }
 
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS + 100, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS + 100, ElevationSpeed::FAST);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS - 100, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 100, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS + 200, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS + 200, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS - 150, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS + 150, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS + 200, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 200, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS - 200, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 200, ElevationSpeed::FAST);
+
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS + 200, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 200, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS - 100, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS + 100, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS + 200, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 200, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS - 200, TraverseSpeed::FAST);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS - 200, ElevationSpeed::FAST);
+
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        Taskr::delayMs(90);
+        while (TurretState::traverseState->isMoving) {
+
+            Taskr::delayMs(90);
+        }
+    }
+
     TurretState::allFunctionChecksCompleted = true;
     BaseType_t monitorNotified = xTaskNotifyGive(TurretController::dutyCycleMonitorTaskHandle);
 
