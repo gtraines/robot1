@@ -113,8 +113,6 @@ void setup() {
     traverseServo->attach(TRAVERSE_SERVO);
 
     TurretController::initialize(traverseServo);
-
-    TurretController::functionCheckDemo(NULL);
 }
 
 void loop() {

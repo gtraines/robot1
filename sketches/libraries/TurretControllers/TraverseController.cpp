@@ -13,7 +13,6 @@
 #include <TraverseCommand.h>
 #include <TraverseState.h>
 #include <TurretState.h>
-#include <TurretTasks.h>
 
 Servo* TraverseController::_traverseServo = nullptr;
 TaskHandle_t TraverseController::traverseTaskHandle = nullptr;
@@ -32,8 +31,6 @@ void TraverseController::initialize(Servo* traverseServo) {
     TurretState::traverseCommand->targetIntRads = 0;
     TurretState::traverseCommand->commandSpeed = TraverseSpeed::STOP;
 
-    TraverseController::setConditionNeutral();
-
     BaseType_t trvStatus = xTaskCreate(
             TraverseController::dutyCycle,
             (const portCHAR *) "TraverseControllerTask",
@@ -51,14 +48,6 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
     TurretState::traverseState->speed = TraverseSpeed::SLOW;
     TraverseController::functionCheckSpeedDemo();
 
-    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    
-    if (notifyMonitorSuccess == pdTRUE) {
-        vTaskDelete(TraverseController::traverseTaskHandle);
-    }
-    else {
-        Indicator::turnOnLed(ARD_STATUS_RED);
-    }
 }
 
 bool TraverseController::moveToIntRads(int intRads, int delayMillis) {

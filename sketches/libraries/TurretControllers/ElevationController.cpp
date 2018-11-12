@@ -9,7 +9,6 @@
 #include <PotMotorRtos.h>
 #include <TurretPins.h>
 #include <TurretState.h>
-#include <TurretTasks.h>
 
 PotMotorRtos* ElevationController::_elevationMotor = nullptr;
 TaskHandle_t ElevationController::elevationTaskHandle = nullptr;
@@ -68,13 +67,6 @@ void ElevationController::functionCheckDemo(void* pvParameters) {
 
     ElevationController::setConditionNeutral();
 
-    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    if (notifyMonitorSuccess == pdTRUE) {
-        vTaskDelete(ElevationController::elevationTaskHandle);
-    }
-    else {
-        Indicator::turnOnLed(ARD_STATUS_RED);
-    }
 }
 
 bool ElevationController::setConditionNeutral() {
@@ -180,10 +172,6 @@ int ElevationController::getNextMoveToIntRads(int targetIntRads, int stepSize) {
         return currentIntRads + stepSize;
     }
     return targetIntRads;
-}
-
-bool ElevationController::functionCheckSpeedDemo() {
-    return true;
 }
 
 bool ElevationController::functionCheckMoveToTarget() {

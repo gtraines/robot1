@@ -12,22 +12,26 @@
 
 class TurretController
 {
+protected:
+    static TickType_t dutyCycleMonitorDelay;
   public:
     static void initialize(Servo* traverseServo);
     ~TurretController() { }
     static void setStatusGood();
     static void setStatusError();
-    static bool setTraverseTargetIntRads(int tgtIntRads);
-    static bool setElevationTargetIntRads(int tgtIntRads);
-    static bool incrementTraverse(int direction, int intRads, int speed);
-    static bool incrementElevation(int direction, int intRads, int speed);
+    static bool setTraverseTargetIntRads(int tgtIntRads, TraverseSpeed speed);
+    static bool setElevationTargetIntRads(int tgtIntRads, ElevationSpeed speed);
+    static bool incrementTraverse(int direction, int intRads, TraverseSpeed speed);
+    static bool incrementElevation(int direction, int intRads, ElevationSpeed speed);
+    static bool fireCannon();
     static bool setPins();
     static bool turnOffAllIndicators();
     static bool setConditionNeutral();
     static bool setControlMode(int mode);
-    static void functionCheckDemo(void* pvParameters);
-    static void indicatorFunctionCheck(void* pvParameters);
-    static TaskHandle_t functionCheckTaskHandle;
+    static void dutyCycleMonitor(void* pvParameters);
+    static void functionCheckWorker(void* pvParameters);
+    static TaskHandle_t functionCheckWorkerTaskHandle;
+    static TaskHandle_t dutyCycleMonitorTaskHandle;
 };
 
 #endif // !ROBOT1_TURRET_CONTROLLER__H

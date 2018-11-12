@@ -9,11 +9,9 @@
 #include <task.h>
 #include <Servo.h>
 #include <Taskr.h>
-
-#include <TurretTasks.h>
-#include <TurretState.h>
-
 #include <Indicator.h>
+
+#include <TurretState.h>
 
 #include <CannonController.h>
 
@@ -23,7 +21,9 @@
 #include <TraverseController.h>
 #include <TraverseConfig.h>
 
-TaskHandle_t TurretController::indicatorTaskHandle = nullptr;
+TaskHandle_t TurretController::functionCheckWorkerTaskHandle = nullptr;
+TaskHandle_t TurretController::dutyCycleMonitorTaskHandle = nullptr;
+TickType_t TurretController::dutyCycleMonitorDelay = Taskr::getMillis(1000);
 
 void TurretController::initialize(Servo* traverseServo) {
     TurretController::setPins();
@@ -32,22 +32,25 @@ void TurretController::initialize(Servo* traverseServo) {
     TraverseController::initialize(traverseServo);
     ElevationController::initialize();
     CannonController::initialize();
-    
-    BaseType_t execCreated = xTaskCreate(
-        TurretTasks::executive,
-        (const portCHAR *) "Executive",
-        128,  // Stack size
-        NULL,
-        2,  // Priority
-        &TurretTasks::executiveHandle);
         
     BaseType_t dutyCycleCreated = xTaskCreate(
-        TurretTasks::dutyCycleMonitor,
+        TurretController::dutyCycleMonitor,
         (const portCHAR *) "DutyCycleMonitor",
         128,  // Stack size
         NULL,
         1, // Priority
-        &TurretTasks::dutyCycleMonitorHandle);
+        &TurretController::dutyCycleMonitorTaskHandle);
+
+    if (dutyCycleCreated == pdTRUE) {
+
+        BaseType_t functionCheckWorkerCreated = xTaskCreate(
+                TurretController::functionCheckWorker,
+                (const portCHAR *) "FunctionCheckWorker",
+                128,  // Stack size
+                NULL,
+                1, // Priority
+                &TurretController::functionCheckWorkerTaskHandle);
+    }
 }
 
 bool TurretController::setPins() {
@@ -76,35 +79,12 @@ bool TurretController::setControlMode(int mode) {
 }
 
 bool TurretController::setConditionNeutral() {
-    return true;
-}
-
-void TurretController::functionCheckDemo(void* pvParameters) {
-
-    BaseType_t indicatorStatus = xTaskCreate(
-        TurretController::indicatorFunctionCheck,
-        (const portCHAR *) "IndicatorTest",
-        128,  // Stack size
-        NULL,
-        1, // Priority
-        &TurretController::indicatorTaskHandle);
-
-
-    BaseType_t functionCheckMonitorStatus = xTaskCreate(
-        TurretTasks::functionCheckMonitor,
-        (const portCHAR *) "FunctionCheckMonitor",
-        256,  // Stack size
-        NULL,
-        2,  // Priority
-        &TurretTasks::functionCheckMonitorHandle);
-
-    if (indicatorStatus != pdPASS
-        || functionCheckMonitorStatus != pdPASS
-        )
-    {
-        TurretController::setStatusError();
+    ElevationController::setConditionNeutral();
+    TraverseController::setConditionNeutral();
+    while (TurretState::traverseState->isMoving) {
+        Taskr::delayMs(90);
     }
-
+    return true;
 }
 
 bool TurretController::turnOffAllIndicators() {
@@ -124,78 +104,77 @@ bool TurretController::turnOffAllIndicators() {
     return true;
 }
 
-void TurretController::indicatorFunctionCheck(void* pvParameters) {
+void TurretController::functionCheckWorker(void* pvParameters) {
 
-    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
-    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
+    bool traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_MIN_INTRADS, TraverseSpeed::MEDIUM);
+    bool elevationSet = setElevationTargetIntRads(ELEVATION_MIN_INTRADS, ElevationSpeed::MEDIUM);
 
-    TurretState::traverseCommand->commandSpeed = TraverseSpeed::MEDIUM;
-    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_MAX_INTRADS;
-
-    BaseType_t ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
-    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
-
+    if (elevationSet && traverseSet) {
+        fireCannon();
+    }
     Taskr::delayMs(90);
+
     while (TurretState::traverseState->isMoving) {
+
         Taskr::delayMs(90);
     }
 
-    TurretState::elevationCommand->targetIntRads = ELEVATION_MIN_INTRADS;
-    TurretState::elevationCommand->commandSpeed = ElevationSpeed::MEDIUM;
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_MAX_INTRADS, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_MAX_INTRADS, ElevationSpeed::MEDIUM);
 
-    TurretState::traverseCommand->commandSpeed = TraverseSpeed::MEDIUM;
-    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_MIN_INTRADS;
-
-    ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
-    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
-
+    if (elevationSet && traverseSet) {
+        fireCannon();
+    }
     Taskr::delayMs(90);
     while (TurretState::traverseState->isMoving) {
+
         Taskr::delayMs(90);
     }
 
-    // Update CommandState??
-
-    TurretState::elevationCommand->targetIntRads = ELEVATION_MAX_INTRADS;
-    TurretState::elevationCommand->commandSpeed = ElevationSpeed::FAST;
-
-    TurretState::traverseCommand->commandSpeed = TraverseSpeed::FAST;
-    TurretState::traverseCommand->targetIntRads = TRAVERSE_LIMIT_STRAIGHT_INTRADS;
-
-    ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
-    ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
-
-    Taskr::delayMs(90);
+    traverseSet = setTraverseTargetIntRads(TRAVERSE_LIMIT_STRAIGHT_INTRADS, TraverseSpeed::MEDIUM);
+    elevationSet = setElevationTargetIntRads(ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
+    if (elevationSet && traverseSet) {
+        fireCannon();
+    }
     while (TurretState::traverseState->isMoving) {
+
         Taskr::delayMs(90);
     }
 
-    ElevationController::setConditionNeutral();
+    if (elevationSet && traverseSet) {
+        fireCannon();
+    }
 
-    Indicator::alertBlinkFast(ACTY_LED_1);
-    Indicator::alertBlinkFast(ACTY_LED_2);
-    Indicator::alertBlinkFast(ACTY_LED_3);
+    TurretState::allFunctionChecksCompleted = true;
+    BaseType_t monitorNotified = xTaskNotifyGive(TurretController::dutyCycleMonitorTaskHandle);
 
-    int successfulNotifications = 0;
-    BaseType_t notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    if (notifyMonitorSuccess == pdTRUE) {
-        successfulNotifications++;
-    }
-    notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    if (notifyMonitorSuccess == pdTRUE) {
-        successfulNotifications++;
-    }
-    notifyMonitorSuccess = xTaskNotifyGive(TurretTasks::functionCheckMonitorHandle);
-    if (notifyMonitorSuccess == pdTRUE) {
-        successfulNotifications++;
-    }
-    if (successfulNotifications == 3) {
-        vTaskDelete(TurretController::indicatorTaskHandle);
+    if (monitorNotified == pdTRUE) {
+        vTaskDelete(TurretController::functionCheckWorkerTaskHandle);
     }
     else {
         TurretController::setStatusError();
     }
 }
+
+void TurretController::dutyCycleMonitor(void* pvParameters) {
+    uint32_t receivedValue = 0;
+
+    while (!receivedValue > 0) {
+        receivedValue = ulTaskNotifyTake(pdTRUE, TurretController::dutyCycleMonitorDelay);
+    }
+    if (!TurretState::allFunctionChecksCompleted) {
+        setStatusError();
+    }
+
+    while (true) {
+
+        Indicator::turnOnLed(ARD_STATUS_GRN);
+        Taskr::delayMs(800);
+        Indicator::turnOffLed(ARD_STATUS_GRN);
+        Taskr::delayMs(300);
+    }
+}
+
 
 void TurretController::setStatusGood() {
     Indicator::turnOffLed(ARD_STATUS_RED);
@@ -206,4 +185,33 @@ void TurretController::setStatusError() {
 
     Indicator::turnOffLed(ARD_STATUS_GRN);
     Indicator::turnOnLed(ARD_STATUS_RED);
+}
+
+bool TurretController::setTraverseTargetIntRads(int tgtIntRads, TraverseSpeed speed) {
+    TurretState::traverseCommand->targetIntRads = tgtIntRads;
+    TurretState::traverseCommand->commandSpeed = speed;
+
+    BaseType_t ackSuccess = xTaskNotifyGive(TraverseController::traverseTaskHandle);
+    return ackSuccess == pdTRUE;
+}
+
+bool TurretController::setElevationTargetIntRads(int tgtIntRads, ElevationSpeed speed) {
+    TurretState::elevationCommand->targetIntRads = tgtIntRads;
+    TurretState::elevationCommand->commandSpeed = speed;
+
+    BaseType_t ackSuccess = xTaskNotifyGive(ElevationController::elevationTaskHandle);
+    return ackSuccess == pdTRUE;
+}
+
+bool TurretController::incrementTraverse(int direction, int intRads, TraverseSpeed speed) {
+    return false;
+}
+
+bool TurretController::incrementElevation(int direction, int intRads, ElevationSpeed speed) {
+    return false;
+}
+
+bool TurretController::fireCannon() {
+    BaseType_t ackSuccess = xTaskNotifyGive(CannonController::cannonTaskHandle);
+    return ackSuccess == pdTRUE;
 }

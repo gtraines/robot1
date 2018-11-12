@@ -16,7 +16,6 @@ class ElevationController
 protected:
     static void clearIndicators();
     static int getNextMoveToIntRads(int targetIntRads, int stepSize);
-    static bool functionCheckSpeedDemo();
     static bool functionCheckMoveToTarget();
     static void updateTurretState(boolean isMoving);
     static void setElevationStateFromCommand();
