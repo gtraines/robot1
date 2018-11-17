@@ -7,7 +7,10 @@
 #include <Taskr.h>
 #include <IrConfig.h>
 #include <Indicator.h>
+#include <CannonCommand.h>
+#include <CannonState.h>
 #include <TurretPins.h>
+#include <TurretState.h>
 
 
 TaskHandle_t CannonController::cannonTaskHandle = NULL;
@@ -22,6 +25,8 @@ void CannonController::functionCheckDemo(void* pvParameters) {
 
 bool CannonController::initialize() {
     Indicator::turnOffLed(CANNON_LED);
+    TurretState::cannonCommand = new CannonCommand_t();
+    TurretState::cannonState = new CannonState_t();
 
     BaseType_t cannonStatus = xTaskCreate(
             CannonController::dutyCycle,
@@ -44,7 +49,7 @@ void CannonController::dutyCycle(void *pvParameters) {
 
         if (receivedValue != 0) {
             receivedValue = 0;
-            Indicator::alertStrobeFast(CANNON_LED);
+            fireCannon(TurretState::cannonCommand->signalId, TurretState::cannonCommand->burstLength);
         }
 
     }
@@ -53,4 +58,8 @@ void CannonController::dutyCycle(void *pvParameters) {
 
 TickType_t CannonController::getTakeDelay() {
     return Taskr::getMillis(90);
+}
+
+void CannonController::fireCannon(int signalId, int burstLength) {
+    Indicator::alertStrobeFast(CANNON_LED);
 }

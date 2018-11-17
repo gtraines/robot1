@@ -22,6 +22,7 @@ public:
     static bool initialize();
     static void functionCheckDemo(void* pvParameters);
     static void dutyCycle(void* pvParameters);
+    static void fireCannon(int signalId, int burstLength);
     static TaskHandle_t cannonTaskHandle;
 };
 

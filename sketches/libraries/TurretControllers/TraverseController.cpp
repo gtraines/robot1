@@ -127,14 +127,12 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
         Indicator::turnOnLed(MOVE_LED_RED);
         targetPosition = TRAVERSE_LIMIT_MAX;
     }
-    
-    Indicator::turnOnLed(MOVE_LED_BLUE);
-    
+
     TraverseController::_traverseServo->write(targetPosition);
     if (delayMillis > 0) {
       Taskr::delayMs(delayMillis);  
     }
-    TraverseController::clearIndicators();
+
     return true;
 }
 
@@ -184,6 +182,12 @@ bool TraverseController::functionCheckMoveToTarget() {
 
 void TraverseController::updateTurretState(int currentIntRads, bool isMoving) {
     TurretState::traverseState->currentPositionIntRads = currentIntRads;
+    if (TurretState::traverseState->isMoving && !isMoving) {
+        Indicator::turnOffLed(MOVE_LED_BLUE);
+    }
+    if (!TurretState::traverseState->isMoving && isMoving) {
+        Indicator::turnOnLed(MOVE_LED_BLUE);
+    }
     TurretState::traverseState->isMoving = isMoving;
 }
 

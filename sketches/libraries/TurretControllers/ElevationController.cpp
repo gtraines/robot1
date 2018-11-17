@@ -148,6 +148,9 @@ void ElevationController::updateTurretState(boolean isMoving) {
         clearIndicators();
         TurretState::elevationState->speed = ElevationSpeed::STOP;
     }
+    if (!TurretState::elevationState->isMoving && isMoving) {
+        Indicator::turnOnLed(MOVE_LED_GRN);
+    }
 
     TurretState::elevationState->isMoving = isMoving;
     TurretState::elevationState->currentPositionIntRads = getCurrentIntRads();
