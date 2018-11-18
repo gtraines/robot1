@@ -20,18 +20,17 @@ protected:
   public:
     static void initialize(Servo* traverseServo);
     ~TurretController() { }
-    static void setStatusGood();
     static void setStatusError();
     static bool setTraverseTargetIntRads(int tgtIntRads, TraverseSpeed speed);
     static bool setElevationTargetIntRads(int tgtIntRads, ElevationSpeed speed);
-    static bool slewToTraverseAndElevation(int traverseTgtIntRads, TraverseSpeed traverseSpeed, int elevationTgtIntRads, ElevationSpeed elevationSpeed);
-    static bool incrementTraverse(int direction, int intRads, TraverseSpeed speed);
-    static bool incrementElevation(int direction, int intRads, ElevationSpeed speed);
+    static bool slewToTraverseAndElevation(int traverseTgtIntRads, TraverseSpeed traverseSpeed,
+                                           int elevationTgtIntRads, ElevationSpeed elevationSpeed);
+    static bool incrementTraverse(TraverseDirection direction, int intRads, TraverseSpeed speed);
+    static bool incrementElevation(ElevationDirection direction, int intRads, ElevationSpeed speed);
     static bool fireCannon();
     static bool fireCannonAreaTarget(int burstLength, int signalId);
     static bool setPins();
     static bool turnOffAllIndicators();
-    static bool setConditionNeutral();
     static bool setControlMode(int mode);
     static void dutyCycleMonitor(void* pvParameters);
     static void functionCheckWorker(void* pvParameters);

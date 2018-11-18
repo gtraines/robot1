@@ -9,9 +9,8 @@
 #include <Arduino_FreeRTOS.h>
 class CommandMonitor {
 public:
-    static void dutyCyle(void* pvParameters);
+    static void dutyCycle(void* pvParameters);
     static TaskHandle_t commandMonitorTaskHandle;
-
 };
 
 

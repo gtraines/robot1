@@ -31,6 +31,8 @@ void TraverseController::initialize(Servo* traverseServo) {
     TurretState::traverseCommand->targetIntRads = 0;
     TurretState::traverseCommand->commandSpeed = TraverseSpeed::STOP;
 
+    setConditionNeutral();
+
     BaseType_t trvStatus = xTaskCreate(
             TraverseController::dutyCycle,
             (const portCHAR *) "TraverseControllerTask",
@@ -53,10 +55,10 @@ void TraverseController::functionCheckDemo(void* pvParameters) {
 bool TraverseController::moveToIntRads(int intRads, int delayMillis) {
 
     int servoDegs = map(intRads, 
-        TRAVERSE_LIMIT_MIN_INTRADS, 
-        TRAVERSE_LIMIT_MAX_INTRADS, 
-        TRAVERSE_LIMIT_MIN, 
-        TRAVERSE_LIMIT_MAX);
+        TRAVERSE_MIN_INTRADS,
+        TRAVERSE_MAX_INTRADS,
+        TRAVERSE_MIN,
+        TRAVERSE_MAX);
         
     bool moveResult = TraverseController::moveTo(servoDegs, delayMillis);
     return moveResult;
@@ -113,19 +115,19 @@ int TraverseController::getNextMoveToIntRads(int targetIntRads, int stepSize) {
 }
 
 bool TraverseController::canMoveTo(int targetIntRads) {
-    return (targetIntRads >= TRAVERSE_LIMIT_MIN_INTRADS && targetIntRads <= TRAVERSE_LIMIT_MAX_INTRADS);
+    return (targetIntRads >= TRAVERSE_MIN_INTRADS && targetIntRads <= TRAVERSE_MAX_INTRADS);
 }
 
 bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 
-    if (targetPosition < TRAVERSE_LIMIT_MIN) {
+    if (targetPosition < TRAVERSE_MIN) {
         Indicator::turnOnLed(MOVE_LED_RED);
-        targetPosition = TRAVERSE_LIMIT_MIN;
+        targetPosition = TRAVERSE_MIN;
     }
 
-    if (targetPosition > TRAVERSE_LIMIT_MAX) {
+    if (targetPosition > TRAVERSE_MAX) {
         Indicator::turnOnLed(MOVE_LED_RED);
-        targetPosition = TRAVERSE_LIMIT_MAX;
+        targetPosition = TRAVERSE_MAX;
     }
 
     TraverseController::_traverseServo->write(targetPosition);
@@ -138,8 +140,8 @@ bool TraverseController::moveTo(int targetPosition, int delayMillis) {
 
 bool TraverseController::setConditionNeutral(){
     Indicator::turnOnLed(MOVE_LED_BLUE);
-    TraverseController::_traverseServo->write(TRAVERSE_LIMIT_STRAIGHT);
-    updateTurretState(TRAVERSE_LIMIT_STRAIGHT_INTRADS, false);
+    TraverseController::_traverseServo->write(TRAVERSE_NEUTRAL);
+    updateTurretState(TRAVERSE_NEUTRAL_INTRADS, false);
     TraverseController::clearIndicators();
 
     return true;
@@ -151,10 +153,10 @@ void TraverseController::clearIndicators() {
 
 bool TraverseController::functionCheckSpeedDemo() {
 
-    TurretState::traverseState->targetPositionIntRads = TRAVERSE_LIMIT_MIN_INTRADS;
+    TurretState::traverseState->targetPositionIntRads = TRAVERSE_MIN_INTRADS;
     functionCheckMoveToTarget();
 
-    TurretState::traverseState->targetPositionIntRads = TRAVERSE_LIMIT_MAX_INTRADS;
+    TurretState::traverseState->targetPositionIntRads = TRAVERSE_MAX_INTRADS;
     functionCheckMoveToTarget();
 
     TurretState::traverseState->targetPositionIntRads = FUNCTION_CHECK_TGT_INTRADS_1;

@@ -12,6 +12,8 @@ file(GLOB sources_ "*.cpp")
 add_library(TurretControllers ${headers_} ${sources_})
 
 target_include_directories(TurretControllers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(TurretControllers LINK_PUBLIC IRremote)
+target_link_libraries(TurretControllers LINK_PUBLIC IRLibProtocols)
 target_link_libraries(TurretControllers LINK_PUBLIC Arduino_FreeRTOS)
 target_link_libraries(TurretControllers LINK_PUBLIC TurretConfig)
 target_link_libraries(TurretControllers LINK_PUBLIC PotMotor)

@@ -8,9 +8,15 @@
 #include <Arduino.h>
 #include "CommandStatus.h"
 
+enum class CannonSignal {
+    BLUE,
+    RED,
+    PURPLE
+};
+
 typedef struct CANNON_COMMAND_TYPE {
     long commandId;
-    uint8_t signalId;
+    CannonSignal signalId;
     uint8_t burstLength;
     CommandStatus status;
 } CannonCommand_t;

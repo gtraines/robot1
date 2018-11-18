@@ -10,6 +10,11 @@ enum class TraverseSpeed {
     STOP
 };
 
+enum class TraverseDirection {
+    RIGHT = -1,
+    LEFT = 1,
+};
+
 typedef struct TRAVERSE_COMMAND {
     long commandId;
     TraverseSpeed commandSpeed;

@@ -8,5 +8,4 @@ enum class CommandResult {
     ERROR
 };
 
-
 #endif //TURRET_STATE__COMMAND_MESSAGE__H

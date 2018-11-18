@@ -11,6 +11,11 @@ enum class ElevationSpeed {
     STOP
 };
 
+enum class ElevationDirection {
+    DOWN = -1,
+    UP = 1
+};
+
 typedef struct ELEVATION_COMMAND_TYPE {
     long commandId;
     ElevationSpeed commandSpeed;

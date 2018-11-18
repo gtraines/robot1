@@ -7,6 +7,7 @@
 
 enum class CommandStatus {
     IN_PROGRESS,
+    COMPLETE,
     UNABLE_TO_COMPLY,
     ON_HOLD,
     CANCELED
