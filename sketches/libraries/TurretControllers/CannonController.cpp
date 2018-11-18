@@ -37,7 +37,7 @@ bool CannonController::initialize() {
             (const portCHAR *) "CannonControllerTask",
             128,  // Stack size
             NULL,
-            1,  // Priority
+            3,  // Priority
             &CannonController::cannonTaskHandle);
 
     return true;
