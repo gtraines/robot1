@@ -7,16 +7,20 @@
 #include <IRLibSendBase.h>
 #include <IRLib_HashRaw.h>
 
-
+#include <TurretPins.h>
 #include <IndicatorConfig.h>
 #include <IrConfig.h>
 #include <Indicator.h>
-#include <TurretPins.h>
+
+#include <CannonState.h>
 #include <CannonCommand.h>
 
 class CannonController {
 protected:
     static TickType_t getTakeDelay();
+    static void updateTurretState();
+    static void setElevationStateFromCommand();
+    static bool shouldFire();
 public:
     CannonController() {
     }
@@ -26,7 +30,7 @@ public:
     static bool initialize();
     static void functionCheckDemo(void* pvParameters);
     static void dutyCycle(void* pvParameters);
-    static bool fireCannon(CannonSignal signal, int burstLength);
+    static bool fireCannon(CannonSignal signal);
     static bool transmitSignal(CannonSignal signal);
     static IRsendRaw* cannon;
     static TaskHandle_t cannonTaskHandle;

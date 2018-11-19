@@ -7,12 +7,7 @@
 
 #include <Arduino.h>
 #include "CommandStatus.h"
-
-enum class CannonSignal {
-    BLUE,
-    RED,
-    PURPLE
-};
+#include "CannonState.h"
 
 typedef struct CANNON_COMMAND_TYPE {
     long commandId;

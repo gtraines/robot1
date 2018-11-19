@@ -11,8 +11,8 @@
 #include <Taskr.h>
 #include <Indicator.h>
 
-#include <TurretState.h>
-
+#include <CannonState.h>
+#include <CannonCommand.h>
 #include <CannonController.h>
 
 #include <ElevationCommand.h>
@@ -20,6 +20,8 @@
 
 #include <TraverseController.h>
 #include <TraverseConfig.h>
+
+#include <TurretState.h>
 
 TaskHandle_t TurretController::functionCheckWorkerTaskHandle = nullptr;
 TaskHandle_t TurretController::dutyCycleMonitorTaskHandle = nullptr;
@@ -100,13 +102,18 @@ void TurretController::functionCheckWorker(void* pvParameters) {
     bool neutralReached1 = slewToWaitForCompletion(
             TRAVERSE_NEUTRAL_INTRADS, TraverseSpeed::MEDIUM, ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
 
-    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 300, ElevationSpeed::MEDIUM);
+    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 150, ElevationSpeed::MEDIUM);
     Taskr::delayMs(135);
     while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
         Taskr::delayMs(135);
     }
 
-    bool areaTargetTestComplete = fireCannonAreaTarget(30, 0);
+
+    bool areaTargetTestComplete = fireCannon(CannonSignal::RED, (uint8_t)300);
+    Taskr::delayMs(135);
+    while (TurretState::cannonState->isFiring) {
+        Taskr::delayMs(135);
+    }
 
     TurretState::allFunctionChecksCompleted = areaTargetTestComplete && elevationIncrement1
             && neutralReached1;
@@ -173,8 +180,9 @@ bool TurretController::incrementElevation(ElevationDirection direction, int intR
     return tgtSuccess;
 }
 
-bool TurretController::fireCannon() {
-    TurretState::cannonCommand->signalId = CannonSignal::BLUE;
+bool TurretController::fireCannon(CannonSignal signal, uint8_t burstLength) {
+    TurretState::cannonCommand->signalId = signal;
+    TurretState::cannonCommand->burstLength = burstLength;
 
     BaseType_t ackSuccess = xTaskNotifyGive(CannonController::cannonTaskHandle);
     return ackSuccess == pdTRUE;
@@ -202,7 +210,7 @@ bool TurretController::slewToWaitForCompletion(int traverseTgtIntRads, TraverseS
     return tgtSet;
 }
 
-bool TurretController::fireCannonAreaTarget(int burstLength, int signalId) {
+bool TurretController::fireCannonAreaTarget(int burstLength, CannonSignal signal) {
     int startingTraverseIntRads = TurretState::traverseState->currentPositionIntRads;
     int startingElevationIntRads = TurretState::elevationState->currentPositionIntRads;
 
@@ -210,7 +218,7 @@ bool TurretController::fireCannonAreaTarget(int burstLength, int signalId) {
     int jitterElevation = 0;
     bool iterationSuccess = false;
     for (int burstIter = 0; burstIter < burstLength; burstIter++) {
-        if (fireCannon()) {
+        if (fireCannon(signal, 1)) {
             jitterTraverse = getJitterPositionIntRads(startingTraverseIntRads, TRAVERSE_JITTER_INTRADS);
             jitterElevation = getJitterPositionIntRads(startingElevationIntRads, ELEVATION_JITTER_INTRADS);
 

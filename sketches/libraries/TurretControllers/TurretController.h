@@ -27,8 +27,8 @@ protected:
                                            int elevationTgtIntRads, ElevationSpeed elevationSpeed);
     static bool incrementTraverse(TraverseDirection direction, int intRads, TraverseSpeed speed);
     static bool incrementElevation(ElevationDirection direction, int intRads, ElevationSpeed speed);
-    static bool fireCannon();
-    static bool fireCannonAreaTarget(int burstLength, int signalId);
+    static bool fireCannon(CannonSignal signal, uint8_t burstLength);
+    static bool fireCannonAreaTarget(int burstLength, CannonSignal signal);
     static bool setPins();
     static bool turnOffAllIndicators();
     static bool setControlMode(int mode);

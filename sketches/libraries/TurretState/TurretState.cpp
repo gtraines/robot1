@@ -1,6 +1,8 @@
 #include "TurretState.h"
 #include "TraverseState.h"
 #include "ElevationCommand.h"
+#include "CannonState.h"
+#include "CannonCommand.h"
 
 volatile bool TurretState::allFunctionChecksCompleted = false;
 CannonState_t* TurretState::cannonState = nullptr;

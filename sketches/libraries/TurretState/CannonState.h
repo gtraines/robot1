@@ -7,10 +7,17 @@
 
 
 #include <Arduino.h>
+#include <CannonConfig.h>
+
+enum class CannonSignal {
+    BLUE,
+    RED,
+    PURPLE
+};
 
 typedef struct CANNON_STATE_TYPE {
     bool isFiring;
-    uint8_t signalId;
+    CannonSignal signalId = CannonSignal::PURPLE;
     uint8_t burstIndex;
     uint8_t burstLength;
 } CannonState_t;

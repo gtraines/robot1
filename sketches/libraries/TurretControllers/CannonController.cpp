@@ -30,7 +30,11 @@ void CannonController::functionCheckDemo(void* pvParameters) {
 bool CannonController::initialize() {
     Indicator::turnOffLed(CANNON_LED);
     TurretState::cannonCommand = new CannonCommand_t();
+    TurretState::cannonCommand->burstLength = 0;
+
     TurretState::cannonState = new CannonState_t();
+    TurretState::cannonState->burstLength = 0;
+    TurretState::cannonState->isFiring = false;
 
     BaseType_t cannonStatus = xTaskCreate(
             CannonController::dutyCycle,
@@ -47,30 +51,27 @@ void CannonController::dutyCycle(void *pvParameters) {
 
     bool success = true;
     uint32_t receivedValue = 0;
-
     while (success) {
         receivedValue = ulTaskNotifyTake(pdTRUE, getTakeDelay());
 
         if (receivedValue != 0) {
             receivedValue = 0;
-            TurretState::cannonState->isFiring = true;
-            bool successfulFire = fireCannon(TurretState::cannonCommand->signalId,
-                    TurretState::cannonCommand->burstLength);
-            if (successfulFire) {
-                TurretState::cannonCommand->status = CommandStatus::COMPLETE;
-                TurretState::cannonState->isFiring = false;
-            }
+            setElevationStateFromCommand();
         }
 
-    }
+        if (shouldFire()) {
+            fireCannon(TurretState::cannonState->signalId);
+        }
 
+        updateTurretState();
+    }
 }
 
 TickType_t CannonController::getTakeDelay() {
     return Taskr::getMillis(90);
 }
 
-bool CannonController::fireCannon(CannonSignal signal, int burstLength) {
+bool CannonController::fireCannon(CannonSignal signal) {
     bool signalSuccess = transmitSignal(signal);
     Indicator::alertStrobeFast(CANNON_LED);
     return signalSuccess;
@@ -89,4 +90,28 @@ bool CannonController::transmitSignal(CannonSignal signal) {
             break;
     }
     return true;
+}
+
+void CannonController::updateTurretState() {
+    if (TurretState::cannonState->burstIndex == (TurretState::cannonState->burstLength - 1)) {
+        TurretState::cannonState->isFiring = false;
+        TurretState::cannonState->burstIndex = 0;
+        TurretState::cannonState->burstLength = 0;
+        TurretState::cannonCommand->status = CommandStatus::COMPLETE;
+    }
+    else if (TurretState::cannonState->burstLength > 0) {
+        TurretState::cannonState->burstIndex++;
+    }
+}
+
+void CannonController::setElevationStateFromCommand() {
+    TurretState::cannonState->burstIndex = 0;
+    TurretState::cannonState->burstLength = TurretState::cannonCommand->burstLength;
+    TurretState::cannonState->signalId = TurretState::cannonCommand->signalId;
+    TurretState::cannonState->isFiring = TurretState::cannonCommand->burstLength > 0;
+    TurretState::cannonCommand->status = CommandStatus::IN_PROGRESS;
+}
+
+bool CannonController::shouldFire() {
+    return TurretState::cannonState->burstIndex < (TurretState::cannonState->burstLength - 1);
 }
