@@ -97,58 +97,19 @@ bool TurretController::turnOffAllIndicators() {
 }
 
 void TurretController::functionCheckWorker(void* pvParameters) {
-    bool firstSuccess = fireCannon();
+    bool neutralReached1 = slewToWaitForCompletion(
+            TRAVERSE_NEUTRAL_INTRADS, TraverseSpeed::MEDIUM, ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
 
-    for (int iter = 0; iter < 40; iter++) {
-        bool success = fireCannon();
-        if (success) {
-            Indicator::turnOnLed(ACTY_LED_1);
-            while (TurretState::cannonState->isFiring) {
-                Taskr::delayMs(1000);
-            }
-            Taskr::delayMs(90);
-            Indicator::turnOffLed(ACTY_LED_1);
-        }
-
+    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 300, ElevationSpeed::MEDIUM);
+    Taskr::delayMs(135);
+    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
+        Taskr::delayMs(135);
     }
 
-//    bool areaTargetTestComplete = fireCannonAreaTarget(15, 0);
-//
-//    bool traverseIncrement1 = incrementTraverse(TraverseDirection::LEFT, 300, TraverseSpeed::MEDIUM);
-//    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 150, ElevationSpeed::MEDIUM);
-//    Taskr::delayMs(135);
-//
-//    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
-//        Taskr::delayMs(135);
-//    }
-//    bool traverseIncrement2 = incrementTraverse(TraverseDirection::LEFT, 300, TraverseSpeed::MEDIUM);
-//    bool elevationIncrement2 = incrementElevation(ElevationDirection::UP, 150, ElevationSpeed::MEDIUM);
-//    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
-//        Taskr::delayMs(135);
-//    }
-//
-//    bool neutralReached = slewToWaitForCompletion(
-//            TRAVERSE_NEUTRAL_INTRADS, TraverseSpeed::MEDIUM, ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
-//
-//    bool traverseIncrement3 = incrementTraverse(TraverseDirection::RIGHT, 150, TraverseSpeed::MEDIUM);
-//    bool elevationIncrement3 = incrementElevation(ElevationDirection::DOWN, 150, ElevationSpeed::MEDIUM);
-//    Taskr::delayMs(135);
-//
-//    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
-//        Taskr::delayMs(135);
-//    }
-//    bool traverseIncrement4 = incrementTraverse(TraverseDirection::RIGHT, 150, TraverseSpeed::MEDIUM);
-//    bool elevationIncrement4 = incrementElevation(ElevationDirection::DOWN, 150, ElevationSpeed::MEDIUM);
-//    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
-//        Taskr::delayMs(135);
-//    }
-//
-//    bool neutralReached2 = slewToWaitForCompletion(
-//            TRAVERSE_NEUTRAL_INTRADS, TraverseSpeed::MEDIUM, ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
-//
-//    TurretState::allFunctionChecksCompleted = areaTargetTestComplete && traverseIncrement1 && traverseIncrement2
-//            && elevationIncrement1 && elevationIncrement2 && traverseIncrement3 && traverseIncrement4
-//            && elevationIncrement3 && elevationIncrement4 && neutralReached && neutralReached2;
+    bool areaTargetTestComplete = fireCannonAreaTarget(30, 0);
+
+    TurretState::allFunctionChecksCompleted = areaTargetTestComplete && elevationIncrement1
+            && neutralReached1;
     BaseType_t monitorNotified = xTaskNotifyGive(TurretController::dutyCycleMonitorTaskHandle);
 
     if (monitorNotified == pdTRUE) {
@@ -213,7 +174,7 @@ bool TurretController::incrementElevation(ElevationDirection direction, int intR
 }
 
 bool TurretController::fireCannon() {
-    TurretState::cannonCommand->signalId = CannonSignal::PURPLE;
+    TurretState::cannonCommand->signalId = CannonSignal::BLUE;
 
     BaseType_t ackSuccess = xTaskNotifyGive(CannonController::cannonTaskHandle);
     return ackSuccess == pdTRUE;
