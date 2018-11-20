@@ -13,7 +13,16 @@ IrSensorCluster* IrSensorMonitor::sxrCluster = nullptr;
 HardwareSerial* IrSensorMonitor::serialConn = nullptr;
 
 void IrSensorMonitor::initialize() {
+
+    pinMode(IR_SXR_HIT, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_REAR, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_RIGHT, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_LEFT, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_FRONT, INPUT_PULLUP);
     IrSensorMonitor::sxrCluster = new IrSensorCluster();
+    Indicator::turnOnLed(ACTY_LED_1);
+    delay(1500);
+    Indicator::turnOffLed(ACTY_LED_1);
 
     BaseType_t taskCreationStatus = xTaskCreate(
             IrSensorMonitor::dutyCycle,
@@ -30,9 +39,10 @@ void IrSensorMonitor::dutyCycle(void *pvParameters) {
 
     while (success) {
         if (IrSensorMonitor::sxrCluster->checkNextSensor()) {
+            sensor_reading_t* thisResult = IrSensorMonitor::sxrCluster->getSensorReading();
             Indicator::strobeFast(ACTY_LED_3, 6);
         }
-        Taskr::delayMs(90);
+        Taskr::delayMs(60);
     }
 }
 

@@ -1,6 +1,8 @@
 #include "IRremoteInt.h"
 #include "IrReceiver.h"
 #include "boarddefs.h"
+#include <Arduino.h>
+#include <avr/io.h>
 #include <avr/interrupt.h>
 #include <CppList.h>
 
