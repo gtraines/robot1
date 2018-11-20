@@ -7,7 +7,6 @@
 
 
 #include <Arduino.h>
-#include <CannonConfig.h>
 
 enum class CannonSignal {
     BLUE,

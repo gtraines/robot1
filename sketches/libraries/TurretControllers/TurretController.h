@@ -1,6 +1,7 @@
 #ifndef ROBOT1__TURRET_CONTROLLER__H
 #define ROBOT1__TURRET_CONTROLLER__H
 
+#include <HardwareSerial.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
 #include <Servo.h>
