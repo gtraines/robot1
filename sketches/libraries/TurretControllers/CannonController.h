@@ -21,6 +21,10 @@ protected:
     static void updateTurretState();
     static void setElevationStateFromCommand();
     static bool shouldFire();
+    const static uint8_t signalDataLength = 18;
+    static uint16_t blueSignal[18];
+    static uint16_t redSignal[18];
+    static uint16_t purpleSignal[18];
 public:
     CannonController() {
     }
