@@ -26,6 +26,7 @@ void setup() {
     TurretController::turnOffAllIndicators();
 
     Serial.begin(115200);
+    Serial.println("Started");
 
     /* Before a semaphore is used it must be explicitly created.  In this example
     a counting semaphore is created.  The semaphore is created to have a maximum
@@ -38,17 +39,16 @@ void setup() {
     //attachInterrupt(IR_SXR_HIT, interruptHandlerHit, RISING);
 
     pinMode(IR_SXR_DIRECTION_REAR, INPUT_PULLUP);
-    attachInterrupt(IR_SXR_DIRECTION_REAR, interruptHandlerRear, RISING);
+    attachInterrupt(INT0, interruptHandlerRear, RISING);
 
     pinMode(IR_SXR_DIRECTION_RIGHT, INPUT_PULLUP);
-    attachInterrupt(IR_SXR_DIRECTION_RIGHT, interruptHandlerRight, RISING);
-
+    attachInterrupt(INT1, interruptHandlerRight, RISING);
 
     pinMode(IR_SXR_DIRECTION_LEFT, INPUT_PULLUP);
-    attachInterrupt(IR_SXR_DIRECTION_LEFT, interruptHandlerLeft, RISING);
+    attachInterrupt(INT2, interruptHandlerLeft, RISING);
 
     pinMode(IR_SXR_DIRECTION_FRONT, INPUT_PULLUP);
-    attachInterrupt(IR_SXR_DIRECTION_FRONT, interruptHandlerFront, RISING);
+    attachInterrupt(INT3, interruptHandlerFront, RISING);
 
     Indicator::turnOffLed(ARD_STATUS_RED);
 
@@ -75,11 +75,6 @@ static void vHandlerTask( void *pvParameters )
     /* As per most tasks, this task is implemented within an infinite loop. */
     Indicator::turnOnLed(ARD_STATUS_GRN);
     while (success) {
-        /* Use the semaphore to wait for the event.  The semaphore was created
-        before the scheduler was started so before this task ran for the first
-        time.  The task blocks indefinitely meaning this function call will only
-        return once the semaphore has been successfully obtained - so there is no
-        need to check the returned value. */
         Indicator::alertStrobeFast(ACTY_LED_1);
         BaseType_t semaphoreTaken = xSemaphoreTakeFromISR(xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
 
