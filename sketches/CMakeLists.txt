@@ -7,7 +7,6 @@ project(${PROJECT_NAME})
 include_directories(~/arduino-1.8.5/libraries/Servo/src)
 include_directories(~/arduino-1.8.5/hardware/arduino/avr/cores/arduino)
 
-include_directories(libraries/IRremote)
 include_directories(libraries/IRLibProtocols)
 
 include_directories(libraries/CppList)
@@ -20,7 +19,6 @@ include_directories(libraries/IrTxRx)
 include_directories(libraries/IrSensorCluster)
 include_directories(libraries/TurretControllers)
 
-add_subdirectory(libraries/IRremote)
 add_subdirectory(libraries/IRLibProtocols)
 
 add_subdirectory(libraries/Arduino_FreeRTOS)
@@ -41,7 +39,6 @@ add_subdirectory(IrRtos)
 set(${CMAKE_PROJECT_NAME}_SKETCH IrRtos/IrRtos.ino)
 
 target_include_directories(Arduino_FreeRTOS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(IRremote PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(IRLibProtocols PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(CppList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Taskr PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

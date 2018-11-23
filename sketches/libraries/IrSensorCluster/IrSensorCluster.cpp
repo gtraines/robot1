@@ -22,7 +22,7 @@ bool IrSensorCluster::checkNextSensor() {
 
     directional_sensor_t* currentSensor = this->_sensorArray[this->_currentSensorIndex];
 
-    return (currentSensor->irSensor->decode(&(*currentSensor->sensorResults)));
+    return (currentSensor->irSensor->decode(&(*currentSensor->sensorResults))) > 0;
 }
 
 IrSensorCluster::~IrSensorCluster() {

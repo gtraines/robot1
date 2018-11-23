@@ -21,6 +21,7 @@
 #include <TraverseController.h>
 #include <TraverseConfig.h>
 
+#include <IrSensorMonitor.h>
 #include <TurretState.h>
 
 TaskHandle_t TurretController::functionCheckWorkerTaskHandle = nullptr;
@@ -32,6 +33,7 @@ void TurretController::initialize(Servo* traverseServo) {
     TurretController::turnOffAllIndicators();
 
     TraverseController::initialize(traverseServo);
+    IrSensorMonitor::initialize();
     ElevationController::initialize();
     CannonController::initialize();
         
@@ -102,11 +104,11 @@ void TurretController::functionCheckWorker(void* pvParameters) {
     bool neutralReached1 = slewToWaitForCompletion(
             TRAVERSE_NEUTRAL_INTRADS, TraverseSpeed::MEDIUM, ELEVATION_NEUTRAL_INTRADS, ElevationSpeed::MEDIUM);
 
-    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 150, ElevationSpeed::MEDIUM);
-    Taskr::delayMs(135);
-    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
-        Taskr::delayMs(135);
-    }
+//    bool elevationIncrement1 = incrementElevation(ElevationDirection::UP, 150, ElevationSpeed::MEDIUM);
+//    Taskr::delayMs(135);
+//    while (TurretState::traverseState->isMoving || TurretState::elevationState->isMoving) {
+//        Taskr::delayMs(135);
+//    }
 
 
     bool areaTargetTestComplete = fireCannon(CannonSignal::RED, (uint8_t)300);
@@ -115,7 +117,7 @@ void TurretController::functionCheckWorker(void* pvParameters) {
         Taskr::delayMs(135);
     }
 
-    TurretState::allFunctionChecksCompleted = areaTargetTestComplete && elevationIncrement1
+    TurretState::allFunctionChecksCompleted = areaTargetTestComplete //&& elevationIncrement1
             && neutralReached1;
     BaseType_t monitorNotified = xTaskNotifyGive(TurretController::dutyCycleMonitorTaskHandle);
 
