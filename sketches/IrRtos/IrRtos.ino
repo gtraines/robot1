@@ -19,7 +19,7 @@ static void interruptHandlerFront( void );
 semaphore that is used to synchronize a task with an interrupt. */
 static SemaphoreHandle_t xCountingSemaphore = NULL;
 
-static String lastHit = "";
+static String lastHit = "INITIAL";
 
 void setup() {
     TurretController::setPins();
