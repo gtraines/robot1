@@ -41,8 +41,9 @@
 #define SONY 2
 #define RC5 3
 #define RC6 4
-#define UNKNOWN -1
-
+#ifndef UNKNOWN
+  #define UNKNOWN 0
+#endif
 // Decoded value for NEC when a repeat code is received
 #define REPEAT 0xffffffff
 

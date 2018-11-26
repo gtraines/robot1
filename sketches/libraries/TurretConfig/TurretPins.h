@@ -2,6 +2,7 @@
 #define TURRET_CONFIG__TURRET_PINS_H
 
 #include <Arduino.h>
+#include <avr/interrupt.h>
 
 #define TRAVERSE_SERVO 3
 
@@ -13,10 +14,14 @@
 #define IR_TRIGGER 2
 
 #define IR_SXR_HIT 17
-#define IR_SXR_DIRECTION_REAR 18
-#define IR_SXR_DIRECTION_RIGHT 19
-#define IR_SXR_DIRECTION_LEFT 20
-#define IR_SXR_DIRECTION_FRONT 21
+#define IR_SXR_REAR_PIN 18
+#define IR_SXR_REAR_INTERRUPT INT3
+#define IR_SXR_RIGHT_PIN 19
+#define IR_SXR_RIGHT_INTERRUPT INT2
+#define IR_SXR_LEFT_PIN 20
+#define IR_SXR_LEFT_INTERRUPT INT1
+#define IR_SXR_FRONT_PIN 21
+#define IR_SXR_FRONT_INTERRUPT INT0
 //
 //#define IR_SXR_HIT 26
 //#define IR_SXR_DIRECTION_REAR 28

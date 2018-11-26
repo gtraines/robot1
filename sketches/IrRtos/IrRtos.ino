@@ -38,17 +38,17 @@ void setup() {
     //pinMode(IR_SXR_HIT, INPUT_PULLUP);
     //attachInterrupt(IR_SXR_HIT, interruptHandlerHit, RISING);
 
-    pinMode(IR_SXR_DIRECTION_REAR, INPUT_PULLUP);
-    attachInterrupt(INT0, interruptHandlerRear, RISING);
+    //pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
+    //attachInterrupt(IR_SXR_REAR_INTERRUPT, interruptHandlerRear, RISING);
 
-    pinMode(IR_SXR_DIRECTION_RIGHT, INPUT_PULLUP);
-    attachInterrupt(INT1, interruptHandlerRight, RISING);
-
-    pinMode(IR_SXR_DIRECTION_LEFT, INPUT_PULLUP);
-    attachInterrupt(INT2, interruptHandlerLeft, RISING);
-
-    pinMode(IR_SXR_DIRECTION_FRONT, INPUT_PULLUP);
-    attachInterrupt(INT3, interruptHandlerFront, RISING);
+    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
+    attachInterrupt(IR_SXR_RIGHT_INTERRUPT, interruptHandlerRight, FALLING);
+//
+//    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
+//    attachInterrupt(IR_SXR_LEFT_INTERRUPT, interruptHandlerLeft, RISING);
+//
+//    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+//    attachInterrupt(IR_SXR_FRONT_INTERRUPT, interruptHandlerFront, RISING);
 
     Indicator::turnOffLed(ARD_STATUS_RED);
 
@@ -75,15 +75,15 @@ static void vHandlerTask( void *pvParameters )
     /* As per most tasks, this task is implemented within an infinite loop. */
     Indicator::turnOnLed(ARD_STATUS_GRN);
     while (success) {
-        Indicator::alertStrobeFast(ACTY_LED_1);
         BaseType_t semaphoreTaken = xSemaphoreTakeFromISR(xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
 
         if (semaphoreTaken == pdTRUE) {
-            Indicator::alertStrobeFast(ACTY_LED_3);
+            Indicator::strobeFast(ACTY_LED_3, 1);
             /* To get here the event must have occurred.  Process the event (in this
             case we just print out a message). */
             Serial.println( "Handler task - Processing event." );
             Serial.println( lastHit );
+            lastHit = "CLEARED";
         }
 
     }

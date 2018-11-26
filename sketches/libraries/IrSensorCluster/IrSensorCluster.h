@@ -5,17 +5,17 @@
 #include <CppList.h>
 #include <IrReceiver.h>
 
-struct directional_sensor_t {
+typedef struct {
     int pinNumber;
     String sensorName;
     IrReceiver* irSensor;
     decode_results* sensorResults;
-};
+} directional_sensor_t;
 
-struct sensor_reading_t {
+typedef struct {
     String sensorName;
     long readingValue;
-};
+} sensor_reading_t;
 
 class IrSensorCluster {
 public:
