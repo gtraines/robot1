@@ -2,7 +2,8 @@
 #define IR_RECEIVER__H
 
 #include <Arduino.h>
-#include "IrInterrupt.h"
+#include "IrInterruptConfig.h"
+#include "IrParams.h"
 #include "IRremote.h"
 
 class IrReceiver {
@@ -13,8 +14,8 @@ public:
     void blink13(int blinkflag);
     int decode(decode_results *results);
     void resume();
+    static IrParams_t irParams;
 private:
-    irparams_t irparams;
     int compare (unsigned int oldval,  unsigned int newval);
     long decodeHash (decode_results *results);
     long decodeSony(decode_results *results);

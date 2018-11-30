@@ -3,7 +3,7 @@
 //
 
 #include "IrRxBase.h"
-#include "IRremoteInt.h"
+#include "IrInterruptConfig.h"
 #include <Arduino.h>
 #include <avr/io.h>
 #include <pins_arduino.h>
@@ -16,7 +16,7 @@ uint16_t *IrRxBase::processSignalsIn(uint8_t interrupt) {
     return nullptr;
 }
 
-void IrRxBase::processSignalsIn(irparams_t &irParams) {
+void IrRxBase::processSignalsIn(IrParams_t &irParams) {
     uint8_t irdata = (uint8_t) digitalRead(irParams.recvpin);
 
     irParams.timer++; // One more 50us tick
@@ -71,7 +71,7 @@ void IrRxBase::processSignalsIn(irparams_t &irParams) {
 }
 
 // SPACE
-void IrRxBase::processRisingInterrupt(irparams_t &irParams) {
+void IrRxBase::processRisingInterrupt(IrParams_t &irParams) {
     irParams.timer++; // One more 50us tick
     if (irParams.rawlen >= RAWBUF) {
         // Buffer overflow
@@ -103,7 +103,7 @@ void IrRxBase::processRisingInterrupt(irparams_t &irParams) {
 }
 
 // MARK
-void IrRxBase::processFallingInterrupt(irparams_t &irParams) {
+void IrRxBase::processFallingInterrupt(IrParams_t &irParams) {
     irParams.timer++; // One more 50us tick
     if (irParams.rawlen >= RAWBUF) {
         // Buffer overflow

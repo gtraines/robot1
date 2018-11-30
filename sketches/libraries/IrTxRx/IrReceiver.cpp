@@ -1,17 +1,21 @@
 #include <Arduino.h>
 #include <avr/portpins.h>
-#include <avr/io.h>
 #include <avr/interrupt.h>
+#include <avr/io.h>
 #include <CppList.h>
-#include "IrInterrupt.h"
+#include "IrInterruptConfig.h"
+#include "IrParams.h"
 #include "IrReceiver.h"
 #include "boarddefs.h"
+#include "IrRxBase.h"
 
+IrParams_t IrReceiver::irParams = IrParams_t();
+IrReceiver::IrReceiver(int recvpin){
 
-
-IrReceiver::IrReceiver(int recvpin): irparams() {
-  irparams.recvpin = recvpin;
-  irparams.blinkflag = 0;
+    irParams.recvpin = (uint8_t)recvpin;
+    irParams.blinkflag = 0;
+    irParams.rawlen = 0;
+    irParams.rcvstate = STATE_IDLE;
 }
 
 IrReceiver::~IrReceiver() {
@@ -36,19 +40,17 @@ void IrReceiver::enableIRIn() {
   sei();  // enable interrupts
 
   // initialize state machine variables
-  irparams.rcvstate = STATE_IDLE;
-  irparams.rawlen = 0;
+  irParams.rcvstate = STATE_IDLE;
+  irParams.rawlen = 0;
 
   // set pin modes
-  pinMode(irparams.recvpin, INPUT);
+  pinMode(irParams.recvpin, INPUT);
 }
 
 // enable/disable blinking of pin 13 on IR processing
 void IrReceiver::blink13(int blinkflag)
 {
-  irparams.blinkflag = (uint8_t)blinkflag;
-  if (blinkflag)
-    pinMode(BLINKLED, OUTPUT);
+  irParams.blinkflag = (uint8_t)blinkflag;
 }
 
 // TIMER2 interrupt code to collect raw data.
@@ -59,81 +61,14 @@ void IrReceiver::blink13(int blinkflag)
 // As soon as a SPACE gets long, ready is set, state switches to IDLE, timing of SPACE continues.
 // As soon as first MARK arrives, gap width is recorded, ready is cleared, and new logging starts
 
-void ProcessOneIRParam(irparams_t &irparams) {
-    uint8_t irdata = (uint8_t) digitalRead(irparams.recvpin);
+void ProcessOneIRParam() {
 
-    irparams.timer++; // One more 50us tick
-    if (irparams.rawlen >= RAWBUF) {
-        // Buffer overflow
-        irparams.rcvstate = STATE_STOP;
-    }
-    switch (irparams.rcvstate) {
-        case STATE_IDLE: // In the middle of a gap
-            if (irdata == MARK) {
-                if (irparams.timer < GAP_TICKS) {
-                    // Not big enough to be a gap.
-                    irparams.timer = 0;
-                } else {
-                    // gap just ended, record duration and start recording transmission
-                    irparams.rawlen = 0;
-                    irparams.rawbuf[irparams.rawlen++] = irparams.timer;
-                    irparams.timer = 0;
-                    irparams.rcvstate = STATE_MARK;
-                }
-            }
-            break;
-        case STATE_MARK: // timing MARK
-            if (irdata == SPACE) {   // MARK ended, record time
-                irparams.rawbuf[irparams.rawlen++] = irparams.timer;
-                irparams.timer = 0;
-                irparams.rcvstate = STATE_SPACE;
-            }
-            break;
-        case STATE_SPACE: // timing SPACE
-            if (irdata == MARK) { // SPACE just ended, record it
-                irparams.rawbuf[irparams.rawlen++] = irparams.timer;
-                irparams.timer = 0;
-                irparams.rcvstate = STATE_MARK;
-            } else { // SPACE
-                if (irparams.timer > GAP_TICKS) {
-                    // big SPACE, indicates gap between codes
-                    // Mark current code as ready for processing
-                    // Switch to STOP
-                    // Don't reset timer; keep counting space width
-                    irparams.rcvstate = STATE_STOP;
-                }
-            }
-            break;
-        case STATE_STOP: // waiting, measuring gap
-            if (irdata == MARK) { // reset gap timer
-                irparams.timer = 0;
-            }
-            break;
-    }
-
-    if (irparams.blinkflag) {
-        if (irdata == MARK) {
-            PORTB |= B00100000;  // turn pin 13 LED on
-        } else {
-            PORTB &= B11011111;  // turn pin 13 LED off
-        }
-    }
+    IrRxBase::processSignalsIn(IrReceiver::irParams);
 }
 
-ISR(TIMER2_OVF_vect) {
-  RESET_TIMER2;
-
-  int count_of_irparams = IrReceiver::irParamsList->GetCount();
-  for (int i=0;i<count_of_irparams;++i){
-	  irparams_t* irparams = (irparams_t*)IrReceiver::irParamsList->GetItem(i);
-	  ProcessOneIRParam(*irparams);
-  }
-  //*/
-};
-
 void IrReceiver::resume() {
-  irparams.rcvstate = STATE_IDLE;
-  irparams.rawlen = 0;
+  irParams.rcvstate = STATE_IDLE;
+  irParams.rawlen = 0;
 }
 
 //+=============================================================================
@@ -164,9 +99,9 @@ int  IrReceiver::compare (unsigned int oldval,  unsigned int newval)
 // Returns 0 if no data ready, 1 if data ready.
 // Results of decoding are stored in results
 int IrReceiver::decode(decode_results *results) {
-	  results->rawbuf = irparams.rawbuf;
-	  results->rawlen = irparams.rawlen;
-	  if (irparams.rcvstate != STATE_STOP) {
+	  results->rawbuf = irParams.rawbuf;
+	  results->rawlen = irParams.rawlen;
+	  if (irParams.rcvstate != STATE_STOP) {
 	    return ERR;
 	  }
 	// decodeHash returns a hash on any input.
@@ -213,7 +148,7 @@ long IrReceiver::decodeHash (decode_results *results)
 
 long IrReceiver::decodeSony(decode_results *results) {
   long data = 0;
-  if (irparams.rawlen < 2 * SONY_BITS + 2) {
+  if (irParams.rawlen < 2 * SONY_BITS + 2) {
     return ERR;
   }
   int offset = 1; // Skip first space
@@ -223,7 +158,7 @@ long IrReceiver::decodeSony(decode_results *results) {
   }
   offset++;
 
-  while (offset + 1 < irparams.rawlen) {
+  while (offset + 1 < irParams.rawlen) {
     if (!MATCH_SPACE(results->rawbuf[offset], SONY_HDR_SPACE)) {
       break;
     }

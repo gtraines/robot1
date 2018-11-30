@@ -10,7 +10,7 @@
  */
 
 #include "IRremote.h"
-#include "IrInterrupt.h"
+#include "IrInterruptConfig.h"
 
 // Provides ISR
 #include <avr/interrupt.h>
