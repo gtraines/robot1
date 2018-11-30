@@ -9,11 +9,13 @@
  * Also influenced by http://zovirl.com/2008/11/12/building-a-universal-remote-with-an-arduino/
  */
 
-#include <Arduino.h>
-#include "boarddefs.h"
+
 
 #ifndef IRremoteInt_h
 #define IRremoteInt_h
+
+#include <Arduino.h>
+#include "boarddefs.h"
 
 #define USECPERTICK 50  // microseconds per clock interrupt tick
 #define RAWBUF 76 // Length of raw duration buffer
@@ -25,7 +27,7 @@
 #define CLKFUDGE 5      // fudge factor for clock interrupt overhead
 #define CLK 256      // max value for clock (timer 2)
 #define PRESCALE 8      // timer2 clock prescale
-#define SYSCLOCK 16000000  // main Arduino clock
+//#define SYSCLOCK 16000000  // main Arduino clock
 #define CLKSPERUSEC (SYSCLOCK/PRESCALE/1000000)   // timer clocks per microsecond
 
 #define ERR 0

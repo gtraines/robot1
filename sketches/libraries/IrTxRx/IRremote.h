@@ -15,6 +15,9 @@
 // =================
 // Neco: moving constants up and add adding reference to IRremoteInt.h
 // Some useful constants
+#include <IRLibProtocols.h>
+#include "IrInterrupt.h"
+#include "decode_results.h"
 
 #define USECPERTICK 50  // microseconds per clock interrupt tick
 #define RAWBUF 76 // Length of raw duration buffer
@@ -23,8 +26,7 @@
 // when received due to sensor lag.
 #define MARK_EXCESS 100
 
-#include "IRremoteInt.h"
-#include "decode_results.h"
+
 // =================
 
 // The following are compile-time library options.
@@ -37,14 +39,14 @@
 
 
 // Values for decode_type
-#define NEC 1
-#define SONY 2
-#define RC5 3
-#define RC6 4
-#define UNKNOWN -1
+// #define NEC 1
+// #define SONY 2
+// #define RC5 3
+// #define RC6 4
+// #define UNKNOWN 0
 
 // Decoded value for NEC when a repeat code is received
-#define REPEAT 0xffffffff
+//#define REPEAT 0xffffffff
 
 // main class for receiving IR
 //class IRrecv {

@@ -10,25 +10,26 @@
 #include <Arduino.h>
 #include <TurretPins.h>
 #include <IrReceiver.h>
+#include <Indicator.h>
 
 #define DEBUG true
 
-#define RED_HIT 33EBDD7B 34EBDF0E D104AF4A
+//#define RED_HIT 33EBDD7B 34EBDF0E D104AF4A
 #define BLUE_HIT A3F34992
 #define PURPLE_HIT1 33EBDD7A
 
 boolean _sxrResultAvail = false;
 boolean _hitSxrResultAvail = false;
-boolean _dir1FrontSxrResultAvail = false;
-boolean _dir2FrontSxrResultAvail = false;
-boolean _dir3FrontSxrResultAvail = false;
-boolean _dir4FrontSxrResultAvail = false;
+boolean _dir1SxrResultAvail = false;
+boolean _dir2SxrResultAvail = false;
+boolean _dir3SxrResultAvail = false;
+boolean _dir4SxrResultAvail = false;
 
 IrReceiver _hitSxr(IR_SXR_HIT);
-IrReceiver _dir1RearSxr(IR_SXR_DIRECTION_REAR);
-IrReceiver _dir2RightSxr(IR_SXR_DIRECTION_RIGHT);
-IrReceiver _dir3LeftSxr(IR_SXR_DIRECTION_LEFT);
-IrReceiver _dir4FrontSxr(IR_SXR_DIRECTION_FRONT);
+IrReceiver _dir1Sxr(IR_SXR_DIRECTION_REAR);
+IrReceiver _dir2Sxr(IR_SXR_DIRECTION_RIGHT);
+IrReceiver _dir3Sxr(IR_SXR_DIRECTION_LEFT);
+IrReceiver _dir4Sxr(IR_SXR_DIRECTION_FRONT);
 
 decode_results _hitResults;
 decode_results _dir1Results;
@@ -43,11 +44,11 @@ void setup()
 
     Serial.begin(115200);
 
-    pinMode(HIT_PIN, INPUT_PULLUP);        
-    pinMode(DIR_1_REAR_PIN, INPUT_PULLUP);
-    pinMode(DIR_2_RIGHT_PIN, INPUT_PULLUP);
-    pinMode(DIR_3_LEFT_PIN, INPUT_PULLUP);
-    pinMode(DIR_4_FRONT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_HIT, INPUT_PULLUP);        
+    pinMode(IR_SXR_DIRECTION_REAR, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_RIGHT, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_LEFT, INPUT_PULLUP);
+    pinMode(IR_SXR_DIRECTION_FRONT, INPUT_PULLUP);
     //pinMode(DIR_5_FLOATING_PIN, INPUT_PULLUP);
     //pinMode(DIR_6_FLOATING_PIN, INPUT_PULLUP);
     

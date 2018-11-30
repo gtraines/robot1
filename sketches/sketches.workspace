@@ -3,19 +3,21 @@
   <Project Name="turret" Path="turret.project" Active="No"/>
   <Project Name="turret" Path="turret.project" Active="No"/>
   <Project Name="turret" Path="turret.project" Active="No"/>
+  <Project Name="turret" Path="turret.project" Active="No"/>
+  <Project Name="turret" Path="turret.project" Active="No"/>
+  <Project Name="turret" Path="turret.project" Active="No"/>
+  <Project Name="turret" Path="turret.project" Active="No"/>
   <Project Name="ardSketches" Path="ardSketches.project" Active="Yes"/>
-  <Project Name="turret" Path="turret.project" Active="No"/>
-  <Project Name="turret" Path="turret.project" Active="No"/>
   <BuildMatrix>
     <WorkspaceConfiguration Name="Debug" Selected="yes">
       <Environment/>
-      <Project Name="ardSketches" ConfigName="Debug"/>
       <Project Name="arduinoLibraries" ConfigName="Debug"/>
+      <Project Name="ardSketches" ConfigName="Debug"/>
     </WorkspaceConfiguration>
     <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
-      <Project Name="ardSketches" ConfigName="Release"/>
       <Project Name="arduinoLibraries" ConfigName="Release"/>
+      <Project Name="ardSketches" ConfigName="Release"/>
     </WorkspaceConfiguration>
   </BuildMatrix>
 </CodeLite_Workspace>

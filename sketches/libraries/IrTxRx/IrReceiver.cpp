@@ -1,10 +1,11 @@
-#include "IRremoteInt.h"
-#include "IrReceiver.h"
-#include "boarddefs.h"
 #include <Arduino.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <CppList.h>
+#include "IrInterrupt.h"
+#include "IrReceiver.h"
+#include "boarddefs.h"
+
 
 CppList lst_of_irparams;
 

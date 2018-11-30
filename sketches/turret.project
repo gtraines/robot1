@@ -1,6 +1,1000 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="arduinoLibraries" InternalType="Library">
   <VirtualDirectory Name="libraries">
+    <VirtualDirectory Name="USB_Host_Shield_Library_2.0">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="Xbox">
+          <VirtualDirectory Name="XBOXUSB">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Xbox/XBOXUSB/XBOXUSB.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="XBOXONE">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Xbox/XBOXONE/XBOXONE.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="XBOXOLD">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Xbox/XBOXOLD/XBOXOLD.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="XBOXRECV">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Xbox/XBOXRECV/XBOXRECV.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Bluetooth">
+          <VirtualDirectory Name="SPP">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/SPP/SPP.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="WiiIRCamera">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/WiiIRCamera/WiiIRCamera.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="BTHID">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/BTHID/MouseParser.h"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/BTHID/BTHID.ino"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/BTHID/KeyboardParser.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="SPPMulti">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/SPPMulti/SPPMulti.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="WiiUProController">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/WiiUProController/WiiUProController.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="PS3Multi">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/PS3Multi/PS3Multi.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="WiiBalanceBoard">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/WiiBalanceBoard/WiiBalanceBoard.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="PS4BT">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/PS4BT/PS4BT.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="PS3BT">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/PS3BT/PS3BT.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="WiiMulti">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/WiiMulti/WiiMulti.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Wii">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/Wii/Wii.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="PS3SPP">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/Bluetooth/PS3SPP/PS3SPP.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="HID">
+          <VirtualDirectory Name="USBHIDJoystick">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDJoystick/hidjoystickrptparser.cpp"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDJoystick/hidjoystickrptparser.h"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDJoystick/USBHIDJoystick.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USBHIDMultimediaKbd">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDMultimediaKbd/USBHIDMultimediaKbd.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="le3dp">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/le3dp/le3dp_rptparser.cpp"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/le3dp/le3dp_rptparser.h"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/le3dp/le3dp.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="SRWS1">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/SRWS1/SRWS1.h"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/SRWS1/SRWS1.cpp"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/SRWS1/SRWS1.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="scale">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/scale/scale_rptparser.cpp"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/scale/scale.ino"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/scale/scale_rptparser.h"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USBHIDBootMouse">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDBootMouse/USBHIDBootMouse.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USBHID_desc">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHID_desc/pgmstrings.h"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHID_desc/USBHID_desc.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USBHIDBootKbd">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDBootKbd/USBHIDBootKbd.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USBHIDBootKbdAndMouse">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/HID/USBHIDBootKbdAndMouse/USBHIDBootKbdAndMouse.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="USBH_MIDI">
+          <VirtualDirectory Name="USBH_MIDI_dump">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USBH_MIDI/USBH_MIDI_dump/USBH_MIDI_dump.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="eVY1_sample">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USBH_MIDI/eVY1_sample/eVY1_sample.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="bidirectional_converter">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USBH_MIDI/bidirectional_converter/bidirectional_converter.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USB_MIDI_converter_multi">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USBH_MIDI/USB_MIDI_converter_multi/USB_MIDI_converter_multi.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="USB_MIDI_converter">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USBH_MIDI/USB_MIDI_converter/USB_MIDI_converter.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="cdc_XR21B1411">
+          <VirtualDirectory Name="XR_terminal">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/cdc_XR21B1411/XR_terminal/XR_terminal.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="pl2303">
+          <VirtualDirectory Name="pl2303_gprs_terminal">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/pl2303/pl2303_gprs_terminal/pl2303_gprs_terminal.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="pl2303_xbee_terminal">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/pl2303/pl2303_xbee_terminal/pl2303_xbee_terminal.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="pl2303_tinygps">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/pl2303/pl2303_tinygps/pl2303_tinygps.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="pl2303_gps">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/pl2303/pl2303_gps/pl2303_gps.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="acm">
+          <VirtualDirectory Name="acm_terminal">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/acm/acm_terminal/acm_terminal.ino"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/acm/acm_terminal/pgmstrings.h"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="ftdi">
+          <VirtualDirectory Name="USBFTDILoopback">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/ftdi/USBFTDILoopback/USBFTDILoopback.ino"/>
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/ftdi/USBFTDILoopback/pgmstrings.h"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="adk">
+          <VirtualDirectory Name="term_test">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/adk/term_test/term_test.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="term_time">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/adk/term_time/term_time.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="adk_barcode">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/adk/adk_barcode/adk_barcode.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="ArduinoBlinkLED">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/adk/ArduinoBlinkLED/ArduinoBlinkLED.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="demokit_20">
+            <File Name="libraries/USB_Host_Shield_Library_2.0/examples/adk/demokit_20/demokit_20.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="PS4USB">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/PS4USB/PS4USB.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="board_qc">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/board_qc/board_qc.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="PSBuzz">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/PSBuzz/PSBuzz.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="max_LCD">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/max_LCD/max_LCD.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="hub_demo">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/hub_demo/hub_demo.ino"/>
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/hub_demo/pgmstrings.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="USB_desc">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USB_desc/pgmstrings.h"/>
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/USB_desc/USB_desc.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="testusbhostFAT">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/testusbhostFAT/testusbhostFAT.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="PS3USB">
+          <File Name="libraries/USB_Host_Shield_Library_2.0/examples/PS3USB/PS3USB.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXRECV.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usb_ch9.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXOLD.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXONE.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidescriptorparser.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/Wii.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/version_helper.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdc_XR21B1411.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbhub.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidusagetitlearrays.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidcomposite.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PSBuzz.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PSBuzz.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/parsetools.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbh_midi.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hexdump.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/SPP.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcacm.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcftdi.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbhid.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/BTHID.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbhub.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcftdi.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/message.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/address.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXUSB.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/avrpins.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbhid.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/xboxEnums.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/masstorage.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/adk.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS3Enums.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdc_XR21B1411.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/printhex.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidescriptorparser.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS3BT.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidboot.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/controllerEnums.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/Wii.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/max_LCD.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcprolific.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXOLD.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/Usb.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/message.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/BTD.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS4Parser.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/confdescparser.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/BTD.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/max_LCD.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/parsetools.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hiduniversal.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS4USB.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/adk.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXONE.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS3USB.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS3USB.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS4Parser.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/macros.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/Usb.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXRECV.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/XBOXUSB.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/keywords.txt"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hiduniversal.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS3BT.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/settings.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/BTHID.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidcomposite.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbh_midi.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/max3421e.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcprolific.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/usbhost.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidusagestr.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/UsbCore.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/cdcacm.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/PS4BT.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/sink_parser.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/hidboot.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/masstorage.h"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/SPP.cpp"/>
+      <File Name="libraries/USB_Host_Shield_Library_2.0/gpl2.txt"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="ros_lib">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="BlinkerWithClass">
+          <File Name="libraries/ros_lib/examples/BlinkerWithClass/BlinkerWithClass.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="TcpBlink">
+          <File Name="libraries/ros_lib/examples/TcpBlink/TcpBlink.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="BlinkM">
+          <File Name="libraries/ros_lib/examples/BlinkM/BlinkM_funcs.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="TcpHelloWorld">
+          <File Name="libraries/ros_lib/examples/TcpHelloWorld/TcpHelloWorld.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Esp8266HelloWorld">
+          <File Name="libraries/ros_lib/examples/Esp8266HelloWorld/Esp8266HelloWorld.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="topic_tools">
+        <File Name="libraries/ros_lib/topic_tools/DemuxList.h"/>
+        <File Name="libraries/ros_lib/topic_tools/DemuxDelete.h"/>
+        <File Name="libraries/ros_lib/topic_tools/MuxDelete.h"/>
+        <File Name="libraries/ros_lib/topic_tools/DemuxAdd.h"/>
+        <File Name="libraries/ros_lib/topic_tools/MuxSelect.h"/>
+        <File Name="libraries/ros_lib/topic_tools/DemuxSelect.h"/>
+        <File Name="libraries/ros_lib/topic_tools/MuxList.h"/>
+        <File Name="libraries/ros_lib/topic_tools/MuxAdd.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="nav_msgs">
+        <File Name="libraries/ros_lib/nav_msgs/Odometry.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMap.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapActionGoal.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetPlan.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/SetMap.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapActionResult.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/Path.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapActionFeedback.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapGoal.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GridCells.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapAction.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapResult.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/OccupancyGrid.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/GetMapFeedback.h"/>
+        <File Name="libraries/ros_lib/nav_msgs/MapMetaData.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tf2_msgs">
+        <File Name="libraries/ros_lib/tf2_msgs/FrameGraph.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformActionGoal.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformActionFeedback.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformGoal.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformAction.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/TFMessage.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/TF2Error.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformActionResult.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformFeedback.h"/>
+        <File Name="libraries/ros_lib/tf2_msgs/LookupTransformResult.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="base_local_planner">
+        <File Name="libraries/ros_lib/base_local_planner/Position2DInt.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="visualization_msgs">
+        <File Name="libraries/ros_lib/visualization_msgs/MarkerArray.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarkerPose.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarker.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarkerInit.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/ImageMarker.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarkerControl.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/MenuEntry.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/Marker.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarkerFeedback.h"/>
+        <File Name="libraries/ros_lib/visualization_msgs/InteractiveMarkerUpdate.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="trajectory_msgs">
+        <File Name="libraries/ros_lib/trajectory_msgs/MultiDOFJointTrajectoryPoint.h"/>
+        <File Name="libraries/ros_lib/trajectory_msgs/JointTrajectoryPoint.h"/>
+        <File Name="libraries/ros_lib/trajectory_msgs/MultiDOFJointTrajectory.h"/>
+        <File Name="libraries/ros_lib/trajectory_msgs/JointTrajectory.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="costmap_2d">
+        <File Name="libraries/ros_lib/costmap_2d/VoxelGrid.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="polled_camera">
+        <File Name="libraries/ros_lib/polled_camera/GetPolledImage.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="turtlesim">
+        <File Name="libraries/ros_lib/turtlesim/Pose.h"/>
+        <File Name="libraries/ros_lib/turtlesim/TeleportRelative.h"/>
+        <File Name="libraries/ros_lib/turtlesim/Spawn.h"/>
+        <File Name="libraries/ros_lib/turtlesim/Kill.h"/>
+        <File Name="libraries/ros_lib/turtlesim/SetPen.h"/>
+        <File Name="libraries/ros_lib/turtlesim/Color.h"/>
+        <File Name="libraries/ros_lib/turtlesim/TeleportAbsolute.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="rospy_tutorials">
+        <File Name="libraries/ros_lib/rospy_tutorials/Floats.h"/>
+        <File Name="libraries/ros_lib/rospy_tutorials/AddTwoInts.h"/>
+        <File Name="libraries/ros_lib/rospy_tutorials/HeaderString.h"/>
+        <File Name="libraries/ros_lib/rospy_tutorials/BadTwoInts.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="diagnostic_msgs">
+        <File Name="libraries/ros_lib/diagnostic_msgs/KeyValue.h"/>
+        <File Name="libraries/ros_lib/diagnostic_msgs/DiagnosticStatus.h"/>
+        <File Name="libraries/ros_lib/diagnostic_msgs/AddDiagnostics.h"/>
+        <File Name="libraries/ros_lib/diagnostic_msgs/SelfTest.h"/>
+        <File Name="libraries/ros_lib/diagnostic_msgs/DiagnosticArray.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="pcl_msgs">
+        <File Name="libraries/ros_lib/pcl_msgs/Vertices.h"/>
+        <File Name="libraries/ros_lib/pcl_msgs/ModelCoefficients.h"/>
+        <File Name="libraries/ros_lib/pcl_msgs/PointIndices.h"/>
+        <File Name="libraries/ros_lib/pcl_msgs/PolygonMesh.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="sensor_msgs">
+        <File Name="libraries/ros_lib/sensor_msgs/Joy.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/RegionOfInterest.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/Range.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/Temperature.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/LaserEcho.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/Illuminance.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/CameraInfo.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/PointField.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/NavSatFix.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/RelativeHumidity.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/JointState.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/TimeReference.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/FluidPressure.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/PointCloud.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/NavSatStatus.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/BatteryState.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/Image.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/CompressedImage.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/MultiEchoLaserScan.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/Imu.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/LaserScan.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/PointCloud2.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/MagneticField.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/JoyFeedbackArray.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/JoyFeedback.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/ChannelFloat32.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/SetCameraInfo.h"/>
+        <File Name="libraries/ros_lib/sensor_msgs/MultiDOFJointState.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ackermann_msgs">
+        <File Name="libraries/ros_lib/ackermann_msgs/AckermannDrive.h"/>
+        <File Name="libraries/ros_lib/ackermann_msgs/AckermannDriveStamped.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="dynamic_reconfigure">
+        <File Name="libraries/ros_lib/dynamic_reconfigure/Config.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/ConfigDescription.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/BoolParameter.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/StrParameter.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/IntParameter.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/Group.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/SensorLevels.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/GroupState.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/ParamDescription.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/Reconfigure.h"/>
+        <File Name="libraries/ros_lib/dynamic_reconfigure/DoubleParameter.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="rosgraph_msgs">
+        <File Name="libraries/ros_lib/rosgraph_msgs/TopicStatistics.h"/>
+        <File Name="libraries/ros_lib/rosgraph_msgs/Log.h"/>
+        <File Name="libraries/ros_lib/rosgraph_msgs/Clock.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="ros">
+        <File Name="libraries/ros_lib/ros/duration.h"/>
+        <File Name="libraries/ros_lib/ros/msg.h"/>
+        <File Name="libraries/ros_lib/ros/publisher.h"/>
+        <File Name="libraries/ros_lib/ros/time.h"/>
+        <File Name="libraries/ros_lib/ros/node_handle.h"/>
+        <File Name="libraries/ros_lib/ros/service_server.h"/>
+        <File Name="libraries/ros_lib/ros/service_client.h"/>
+        <File Name="libraries/ros_lib/ros/subscriber.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="map_msgs">
+        <File Name="libraries/ros_lib/map_msgs/GetPointMap.h"/>
+        <File Name="libraries/ros_lib/map_msgs/SaveMap.h"/>
+        <File Name="libraries/ros_lib/map_msgs/GetMapROI.h"/>
+        <File Name="libraries/ros_lib/map_msgs/OccupancyGridUpdate.h"/>
+        <File Name="libraries/ros_lib/map_msgs/SetMapProjections.h"/>
+        <File Name="libraries/ros_lib/map_msgs/ProjectedMapInfo.h"/>
+        <File Name="libraries/ros_lib/map_msgs/GetPointMapROI.h"/>
+        <File Name="libraries/ros_lib/map_msgs/PointCloud2Update.h"/>
+        <File Name="libraries/ros_lib/map_msgs/ProjectedMapsInfo.h"/>
+        <File Name="libraries/ros_lib/map_msgs/ProjectedMap.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="costmap_converter">
+        <File Name="libraries/ros_lib/costmap_converter/ObstacleMsg.h"/>
+        <File Name="libraries/ros_lib/costmap_converter/ObstacleArrayMsg.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="teb_local_planner">
+        <File Name="libraries/ros_lib/teb_local_planner/FeedbackMsg.h"/>
+        <File Name="libraries/ros_lib/teb_local_planner/TrajectoryPointMsg.h"/>
+        <File Name="libraries/ros_lib/teb_local_planner/TrajectoryMsg.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="roscpp">
+        <File Name="libraries/ros_lib/roscpp/GetLoggers.h"/>
+        <File Name="libraries/ros_lib/roscpp/Logger.h"/>
+        <File Name="libraries/ros_lib/roscpp/SetLoggerLevel.h"/>
+        <File Name="libraries/ros_lib/roscpp/Empty.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="actionlib_tutorials">
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciActionFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciAction.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingActionResult.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingResult.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciResult.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingAction.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingActionGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciActionGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/AveragingActionFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib_tutorials/FibonacciActionResult.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="shape_msgs">
+        <File Name="libraries/ros_lib/shape_msgs/MeshTriangle.h"/>
+        <File Name="libraries/ros_lib/shape_msgs/SolidPrimitive.h"/>
+        <File Name="libraries/ros_lib/shape_msgs/Plane.h"/>
+        <File Name="libraries/ros_lib/shape_msgs/Mesh.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="gazebo_msgs">
+        <File Name="libraries/ros_lib/gazebo_msgs/GetWorldProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ODEPhysics.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetLightProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ContactState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ODEJointProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ModelState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/BodyRequest.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/LinkStates.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetModelState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ApplyBodyWrench.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetLinkState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetPhysicsProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetLinkState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetModelProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetJointProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetLightProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ContactsState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetPhysicsProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetLinkProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetJointProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetJointTrajectory.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/LinkState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/DeleteModel.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetModelConfiguration.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/JointRequest.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/WorldState.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ApplyJointEffort.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/ModelStates.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/DeleteLight.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SetLinkProperties.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/SpawnModel.h"/>
+        <File Name="libraries/ros_lib/gazebo_msgs/GetModelState.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="actionlib">
+        <File Name="libraries/ros_lib/actionlib/TestRequestActionGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsActionGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestAction.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestActionResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestActionGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestActionFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestAction.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestActionFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsActionFeedback.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestActionResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsAction.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsGoal.h"/>
+        <File Name="libraries/ros_lib/actionlib/TwoIntsActionResult.h"/>
+        <File Name="libraries/ros_lib/actionlib/TestRequestGoal.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="std_srvs">
+        <File Name="libraries/ros_lib/std_srvs/SetBool.h"/>
+        <File Name="libraries/ros_lib/std_srvs/Trigger.h"/>
+        <File Name="libraries/ros_lib/std_srvs/Empty.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="nodelet">
+        <File Name="libraries/ros_lib/nodelet/NodeletLoad.h"/>
+        <File Name="libraries/ros_lib/nodelet/NodeletList.h"/>
+        <File Name="libraries/ros_lib/nodelet/NodeletUnload.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="stereo_msgs">
+        <File Name="libraries/ros_lib/stereo_msgs/DisparityImage.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="bond">
+        <File Name="libraries/ros_lib/bond/Status.h"/>
+        <File Name="libraries/ros_lib/bond/Constants.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="rosserial_arduino">
+        <File Name="libraries/ros_lib/rosserial_arduino/Adc.h"/>
+        <File Name="libraries/ros_lib/rosserial_arduino/Test.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="rosserial_msgs">
+        <File Name="libraries/ros_lib/rosserial_msgs/TopicInfo.h"/>
+        <File Name="libraries/ros_lib/rosserial_msgs/RequestParam.h"/>
+        <File Name="libraries/ros_lib/rosserial_msgs/Log.h"/>
+        <File Name="libraries/ros_lib/rosserial_msgs/RequestServiceInfo.h"/>
+        <File Name="libraries/ros_lib/rosserial_msgs/RequestMessageInfo.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="turtle_actionlib">
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeActionFeedback.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeResult.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeActionResult.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeFeedback.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeActionGoal.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeGoal.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/Velocity.h"/>
+        <File Name="libraries/ros_lib/turtle_actionlib/ShapeAction.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="actionlib_msgs">
+        <File Name="libraries/ros_lib/actionlib_msgs/GoalID.h"/>
+        <File Name="libraries/ros_lib/actionlib_msgs/GoalStatusArray.h"/>
+        <File Name="libraries/ros_lib/actionlib_msgs/GoalStatus.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="roscpp_tutorials">
+        <File Name="libraries/ros_lib/roscpp_tutorials/TwoInts.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="std_msgs">
+        <File Name="libraries/ros_lib/std_msgs/Int32.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Byte.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt16MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt16.h"/>
+        <File Name="libraries/ros_lib/std_msgs/MultiArrayLayout.h"/>
+        <File Name="libraries/ros_lib/std_msgs/ByteMultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Float32MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt8.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Time.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int8.h"/>
+        <File Name="libraries/ros_lib/std_msgs/MultiArrayDimension.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int16MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int64MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int8MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Char.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int64.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Float64MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt8MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int16.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Int32MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Duration.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt64MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt32MultiArray.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt32.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Bool.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Header.h"/>
+        <File Name="libraries/ros_lib/std_msgs/String.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Float32.h"/>
+        <File Name="libraries/ros_lib/std_msgs/UInt64.h"/>
+        <File Name="libraries/ros_lib/std_msgs/ColorRGBA.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Float64.h"/>
+        <File Name="libraries/ros_lib/std_msgs/Empty.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="smach_msgs">
+        <File Name="libraries/ros_lib/smach_msgs/SmachContainerStatus.h"/>
+        <File Name="libraries/ros_lib/smach_msgs/SmachContainerInitialStatusCmd.h"/>
+        <File Name="libraries/ros_lib/smach_msgs/SmachContainerStructure.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tf">
+        <File Name="libraries/ros_lib/tf/FrameGraph.h"/>
+        <File Name="libraries/ros_lib/tf/tfMessage.h"/>
+        <File Name="libraries/ros_lib/tf/transform_broadcaster.h"/>
+        <File Name="libraries/ros_lib/tf/tf.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="theora_image_transport">
+        <File Name="libraries/ros_lib/theora_image_transport/Packet.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="geometry_msgs">
+        <File Name="libraries/ros_lib/geometry_msgs/PolygonStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Pose.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/AccelStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/AccelWithCovariance.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Wrench.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Point.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Inertia.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Vector3.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Quaternion.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/TwistWithCovariance.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/TransformStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/PointStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Vector3Stamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/InertiaStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Polygon.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/PoseWithCovarianceStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Pose2D.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Transform.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Point32.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/AccelWithCovarianceStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/TwistWithCovarianceStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/QuaternionStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/PoseStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/TwistStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Accel.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/PoseWithCovariance.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/Twist.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/WrenchStamped.h"/>
+        <File Name="libraries/ros_lib/geometry_msgs/PoseArray.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="laser_assembler">
+        <File Name="libraries/ros_lib/laser_assembler/AssembleScans.h"/>
+        <File Name="libraries/ros_lib/laser_assembler/AssembleScans2.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="control_toolbox">
+        <File Name="libraries/ros_lib/control_toolbox/SetPidGains.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="control_msgs">
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionActionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadActionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryActionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandActionResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryActionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryActionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadActionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionAction.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryActionResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandActionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryActionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/QueryTrajectoryState.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointControllerState.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PidState.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadActionResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionActionResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommand.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionGoal.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryAction.h"/>
+        <File Name="libraries/ros_lib/control_msgs/PointHeadAction.h"/>
+        <File Name="libraries/ros_lib/control_msgs/SingleJointPositionActionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryControllerState.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandAction.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryAction.h"/>
+        <File Name="libraries/ros_lib/control_msgs/FollowJointTrajectoryResult.h"/>
+        <File Name="libraries/ros_lib/control_msgs/GripperCommandActionFeedback.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTolerance.h"/>
+        <File Name="libraries/ros_lib/control_msgs/QueryCalibrationState.h"/>
+        <File Name="libraries/ros_lib/control_msgs/JointTrajectoryActionResult.h"/>
+      </VirtualDirectory>
+      <File Name="libraries/ros_lib/time.cpp"/>
+      <File Name="libraries/ros_lib/ArduinoHardware.h"/>
+      <File Name="libraries/ros_lib/ros.h"/>
+      <File Name="libraries/ros_lib/ArduinoTcpHardware.h"/>
+      <File Name="libraries/ros_lib/duration.cpp"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="IrTxRx">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="IRsendDemo">
+          <File Name="libraries/IrTxRx/examples/IRsendDemo/IRsendDemo.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="JVCPanasonicSendDemo">
+          <File Name="libraries/IrTxRx/examples/JVCPanasonicSendDemo/JVCPanasonicSendDemo.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRrelay">
+          <File Name="libraries/IrTxRx/examples/IRrelay/IRrelay.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRtest2">
+          <File Name="libraries/IrTxRx/examples/IRtest2/IRtest2.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRtest">
+          <File Name="libraries/IrTxRx/examples/IRtest/IRtest.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRrecvDemo">
+          <File Name="libraries/IrTxRx/examples/IRrecvDemo/IRrecvDemo.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRrecvDump">
+          <File Name="libraries/IrTxRx/examples/IRrecvDump/IRrecvDump.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="IRrecord">
+          <File Name="libraries/IrTxRx/examples/IRrecord/IRrecord.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <File Name="libraries/IrTxRx/LICENSE.txt"/>
+      <File Name="libraries/IrTxRx/CMakeLists.txt"/>
+      <File Name="libraries/IrTxRx/decode_results.h"/>
+      <File Name="libraries/IrTxRx/IRremote.cpp"/>
+      <File Name="libraries/IrTxRx/IrReceiver.h"/>
+      <File Name="libraries/IrTxRx/IrReceiver.cpp"/>
+      <File Name="libraries/IrTxRx/IRremote.h"/>
+      <File Name="libraries/IrTxRx/keywords.txt"/>
+      <File Name="libraries/IrTxRx/boarddefs.h"/>
+      <File Name="libraries/IrTxRx/IrInterrupt.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="HCSR04">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="SR04_Example">
+          <File Name="libraries/HCSR04/examples/SR04_Example/SR04_Example.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <File Name="libraries/HCSR04/Readme.txt"/>
+      <File Name="libraries/HCSR04/SR04.cpp"/>
+      <File Name="libraries/HCSR04/keywords.txt"/>
+      <File Name="libraries/HCSR04/SR04.h"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="FreeRTOS_AVR">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="FreeRTOSBook">
+          <VirtualDirectory Name="Example004">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example004/Example004.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example001">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example001/Example001.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example014">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example014/Example014.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example005">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example005/Example005.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example010">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example010/Example010.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example008">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example008/Example008.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example013">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example013/Example013.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example002">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example002/Example002.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example012">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example012/Example012.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example009">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example009/Example009.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example015">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example015/Example015.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example006">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example006/Example006.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example007">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example007/Example007.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example016">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example016/Example016.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example003">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example003/Example003.ino"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Example011">
+            <File Name="libraries/FreeRTOS_AVR/examples/FreeRTOSBook/Example011/Example011.ino"/>
+          </VirtualDirectory>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frLiuLayland">
+          <File Name="libraries/FreeRTOS_AVR/examples/frLiuLayland/frLiuLayland.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frFifoDataLogger">
+          <File Name="libraries/FreeRTOS_AVR/examples/frFifoDataLogger/frFifoDataLogger.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frBlinkPrint">
+          <File Name="libraries/FreeRTOS_AVR/examples/frBlinkPrint/frBlinkPrint.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frContextTime">
+          <File Name="libraries/FreeRTOS_AVR/examples/frContextTime/frContextTime.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frJitter">
+          <File Name="libraries/FreeRTOS_AVR/examples/frJitter/frJitter.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="frBlink">
+          <File Name="libraries/FreeRTOS_AVR/examples/frBlink/frBlink.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="org_files">
+        <File Name="libraries/FreeRTOS_AVR/org_files/timers.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/StackMacros.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/heap_3.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/queue.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/queue.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/task.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/readme.txt"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/tasks.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/FreeRTOS.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/event_groups.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/mpu_wrappers.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/port.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/croutine.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/event_groups.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/portmacro.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/timers.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/FreeRTOSConfig.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/semphr.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/projdefs.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/list.c"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/list.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/deprecated_definitions.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/croutine.h"/>
+        <File Name="libraries/FreeRTOS_AVR/org_files/portable.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="utility">
+        <File Name="libraries/FreeRTOS_AVR/utility/timers.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/StackMacros.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/heap_3.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/queue.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/queue.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/task.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/readme.txt"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/tasks.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/FreeRTOS.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/event_groups.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/mpu_wrappers.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/port.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/croutine.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/event_groups.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/portmacro.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/timers.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/FreeRTOSConfig.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/semphr.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/projdefs.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/list.c"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/list.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/deprecated_definitions.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/croutine.h"/>
+        <File Name="libraries/FreeRTOS_AVR/utility/portable.h"/>
+      </VirtualDirectory>
+      <File Name="libraries/FreeRTOS_AVR/basic_io_avr.cpp"/>
+      <File Name="libraries/FreeRTOS_AVR/basic_io_avr.h"/>
+      <File Name="libraries/FreeRTOS_AVR/FreeRTOS_AVR.h"/>
+      <File Name="libraries/FreeRTOS_AVR/assertMsg.cpp"/>
+      <File Name="libraries/FreeRTOS_AVR/FreeRTOS_AVR.c"/>
+      <File Name="libraries/FreeRTOS_AVR/idlehook.c"/>
+    </VirtualDirectory>
+    <VirtualDirectory Name="AUnit">
+      <VirtualDirectory Name="examples">
+        <VirtualDirectory Name="basic_verbose">
+          <File Name="libraries/AUnit/examples/basic_verbose/basic_verbose.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="fixture">
+          <File Name="libraries/AUnit/examples/fixture/fixture.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="meta_asserts">
+          <File Name="libraries/AUnit/examples/meta_asserts/meta_asserts.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="filter">
+          <File Name="libraries/AUnit/examples/filter/filter.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="continuous">
+          <File Name="libraries/AUnit/examples/continuous/continuous.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="advanced">
+          <File Name="libraries/AUnit/examples/advanced/advanced.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="basic">
+          <File Name="libraries/AUnit/examples/basic/basic.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="tests">
+        <VirtualDirectory Name="AUnitTest">
+          <File Name="libraries/AUnit/tests/AUnitTest/AUnitTest.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="AUnitMetaTest">
+          <File Name="libraries/AUnit/tests/AUnitMetaTest/AUnitMetaTest.h"/>
+          <File Name="libraries/AUnit/tests/AUnitMetaTest/AUnitMetaTest.ino"/>
+          <File Name="libraries/AUnit/tests/AUnitMetaTest/ExternalTests.cpp"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="FailingTest">
+          <File Name="libraries/AUnit/tests/FailingTest/ExternalTests.h"/>
+          <File Name="libraries/AUnit/tests/FailingTest/FailingTest.ino"/>
+          <File Name="libraries/AUnit/tests/FailingTest/ExternalTests.cpp"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="SetupAndTeardownTest">
+          <File Name="libraries/AUnit/tests/SetupAndTeardownTest/SetupAndTeardownTest.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="FilterTest">
+          <File Name="libraries/AUnit/tests/FilterTest/FilterTest.ino"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="AUnitMoreTest">
+          <File Name="libraries/AUnit/tests/AUnitMoreTest/AUnitMoreTest.ino"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="src">
+        <VirtualDirectory Name="aunit">
+          <VirtualDirectory Name="contrib">
+            <File Name="libraries/AUnit/src/aunit/contrib/gtest.h"/>
+          </VirtualDirectory>
+          <File Name="libraries/AUnit/src/aunit/MetaAssertion.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/FCString.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/AssertMacros.h"/>
+          <File Name="libraries/AUnit/src/aunit/Test.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/Compare.h"/>
+          <File Name="libraries/AUnit/src/aunit/MetaAssertMacros.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestOnce.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestOnce.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/Assertion.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/Test.h"/>
+          <File Name="libraries/AUnit/src/aunit/Compare.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/TestMacros.h"/>
+          <File Name="libraries/AUnit/src/aunit/Verbosity.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestRunner.h"/>
+          <File Name="libraries/AUnit/src/aunit/FCString.h"/>
+          <File Name="libraries/AUnit/src/aunit/Assertion.h"/>
+          <File Name="libraries/AUnit/src/aunit/MetaAssertion.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestRunner.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/Flash.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestAgain.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/Printer.cpp"/>
+          <File Name="libraries/AUnit/src/aunit/AssertVerboseMacros.h"/>
+          <File Name="libraries/AUnit/src/aunit/Printer.h"/>
+          <File Name="libraries/AUnit/src/aunit/TestAgain.h"/>
+        </VirtualDirectory>
+        <File Name="libraries/AUnit/src/AUnit.h"/>
+        <File Name="libraries/AUnit/src/AUnitVerbose.h"/>
+      </VirtualDirectory>
+      <VirtualDirectory Name="docs">
+        <File Name="libraries/AUnit/docs/_config.yml"/>
+      </VirtualDirectory>
+      <File Name="libraries/AUnit/keywords.txt"/>
+    </VirtualDirectory>
     <VirtualDirectory Name="IRLibProtocols">
       <VirtualDirectory Name="unsupported">
         <File Name="libraries/IRLibProtocols/unsupported/IRLib_P90_Tutorial.h"/>
@@ -29,6 +1023,9 @@
       <File Name="libraries/IRLibProtocols/IRLib_P07_NECx.h"/>
       <File Name="libraries/IRLibProtocols/IRLib_P09_GICable.h"/>
       <File Name="libraries/IRLibProtocols/IRLibSendBase.h"/>
+      <File Name="libraries/IRLibProtocols/LICENSE.txt"/>
+      <File Name="libraries/IRLibProtocols/CMakeLists.txt"/>
+      <File Name="libraries/IRLibProtocols/COPYRIGHT.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Firmata">
       <VirtualDirectory Name="test">
@@ -40,29 +1037,35 @@
         <VirtualDirectory Name="StandardFirmataEthernet">
           <File Name="libraries/Firmata/examples/StandardFirmataEthernet/ethernetConfig.h"/>
           <File Name="libraries/Firmata/examples/StandardFirmataEthernet/StandardFirmataEthernet.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataEthernet/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataBLE">
           <File Name="libraries/Firmata/examples/StandardFirmataBLE/bleConfig.h"/>
           <File Name="libraries/Firmata/examples/StandardFirmataBLE/StandardFirmataBLE.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataBLE/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataWiFi">
           <File Name="libraries/Firmata/examples/StandardFirmataWiFi/wifiConfig.h"/>
           <File Name="libraries/Firmata/examples/StandardFirmataWiFi/StandardFirmataWiFi.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataWiFi/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataPlus">
           <File Name="libraries/Firmata/examples/StandardFirmataPlus/StandardFirmataPlus.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataPlus/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="AnalogFirmata">
           <File Name="libraries/Firmata/examples/AnalogFirmata/AnalogFirmata.ino"/>
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmata">
           <File Name="libraries/Firmata/examples/StandardFirmata/StandardFirmata.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmata/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="SimpleDigitalFirmata">
           <File Name="libraries/Firmata/examples/SimpleDigitalFirmata/SimpleDigitalFirmata.ino"/>
         </VirtualDirectory>
         <VirtualDirectory Name="OldStandardFirmata">
           <File Name="libraries/Firmata/examples/OldStandardFirmata/OldStandardFirmata.ino"/>
+          <File Name="libraries/Firmata/examples/OldStandardFirmata/LICENSE.txt"/>
         </VirtualDirectory>
         <VirtualDirectory Name="AllInputsFirmata">
           <File Name="libraries/Firmata/examples/AllInputsFirmata/AllInputsFirmata.ino"/>
@@ -78,6 +1081,7 @@
         </VirtualDirectory>
         <VirtualDirectory Name="StandardFirmataChipKIT">
           <File Name="libraries/Firmata/examples/StandardFirmataChipKIT/StandardFirmataChipKIT.ino"/>
+          <File Name="libraries/Firmata/examples/StandardFirmataChipKIT/LICENSE.txt"/>
         </VirtualDirectory>
       </VirtualDirectory>
       <VirtualDirectory Name="utility">
@@ -107,6 +1111,11 @@
       <File Name="libraries/Firmata/FirmataDefines.h"/>
       <File Name="libraries/Firmata/Firmata.cpp"/>
       <File Name="libraries/Firmata/FirmataConstants.h"/>
+      <VirtualDirectory Name="extras">
+        <File Name="libraries/Firmata/extras/revisions.txt"/>
+      </VirtualDirectory>
+      <File Name="libraries/Firmata/LICENSE.txt"/>
+      <File Name="libraries/Firmata/keywords.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="StackArray">
       <VirtualDirectory Name="Examples">
@@ -118,10 +1127,12 @@
         </VirtualDirectory>
       </VirtualDirectory>
       <File Name="libraries/StackArray/StackArray.h"/>
+      <File Name="libraries/StackArray/keywords.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="CppList">
       <File Name="libraries/CppList/CppList.cpp"/>
       <File Name="libraries/CppList/CppList.h"/>
+      <File Name="libraries/CppList/CMakeLists.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="HC-SR04">
       <VirtualDirectory Name="examples">
@@ -135,6 +1146,7 @@
     <VirtualDirectory Name="IrSensorCluster">
       <File Name="libraries/IrSensorCluster/IrSensorCluster.h"/>
       <File Name="libraries/IrSensorCluster/IrSensorCluster.cpp"/>
+      <File Name="libraries/IrSensorCluster/CMakeLists.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="TurretConfig">
       <File Name="libraries/TurretConfig/IrConfig.h"/>
@@ -142,8 +1154,175 @@
       <File Name="libraries/TurretConfig/ElevationConfig.h"/>
       <File Name="libraries/TurretConfig/IndicatorConfig.h"/>
       <File Name="libraries/TurretConfig/TurretPins.h"/>
+      <File Name="libraries/TurretConfig/TurretConfigPlacard.h"/>
+      <File Name="libraries/TurretConfig/CMakeLists.txt"/>
+      <File Name="libraries/TurretConfig/TurretConfigPlacard.cpp"/>
+      <File Name="libraries/TurretConfig/CannonConfig.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Arduino_FreeRTOS">
+      <VirtualDirectory Name="source-code-for-book-examples">
+        <VirtualDirectory Name="Win32-simulator-MSVC">
+          <VirtualDirectory Name="Examples">
+            <VirtualDirectory Name="Example022">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example022/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example022/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example004">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example004/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example004/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example001">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example001/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example001/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example019">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example019/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example019/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example020">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example020/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example020/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example014">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example014/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example014/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example005">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example005/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example005/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example023">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example023/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example023/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example025">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example025/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example025/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example010">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example010/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example010/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example008">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example008/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example008/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example013">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example013/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example013/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example002">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example002/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example002/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example012">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example012/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example012/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example009">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example009/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example009/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example018">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example018/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example018/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example024">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example024/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example024/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example015">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example015/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example015/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example006">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example006/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example006/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example017">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example017/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example017/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example007">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example007/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example007/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example016">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example016/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example016/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example003">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example003/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example003/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example011">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example011/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example011/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="Example021">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example021/main.c"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/Examples/Example021/FreeRTOSConfig.h"/>
+            </VirtualDirectory>
+          </VirtualDirectory>
+          <VirtualDirectory Name="FreeRTOS_Source">
+            <VirtualDirectory Name="portable">
+              <VirtualDirectory Name="MemMang">
+                <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/portable/MemMang/heap_4.c"/>
+              </VirtualDirectory>
+              <VirtualDirectory Name="MSVC-MingW">
+                <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/portable/MSVC-MingW/port.c"/>
+                <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/portable/MSVC-MingW/portmacro.h"/>
+              </VirtualDirectory>
+            </VirtualDirectory>
+            <VirtualDirectory Name="include">
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/StackMacros.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/queue.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/task.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/FreeRTOS.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/mpu_wrappers.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/event_groups.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/timers.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/semphr.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/projdefs.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/list.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/deprecated_definitions.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/croutine.h"/>
+              <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/include/portable.h"/>
+            </VirtualDirectory>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/timers.c"/>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/queue.c"/>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/readme.txt"/>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/tasks.c"/>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/event_groups.c"/>
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/FreeRTOS_Source/list.c"/>
+          </VirtualDirectory>
+          <VirtualDirectory Name="License">
+            <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/License/license.txt"/>
+          </VirtualDirectory>
+          <File Name="libraries/Arduino_FreeRTOS/source-code-for-book-examples/Win32-simulator-MSVC/ReadMe-Instructions.txt"/>
+        </VirtualDirectory>
+      </VirtualDirectory>
+      <VirtualDirectory Name="cmake-build-debug">
+        <VirtualDirectory Name="CMakeFiles">
+          <VirtualDirectory Name="3.10.3">
+            <VirtualDirectory Name="CompilerIdC">
+              <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/3.10.3/CompilerIdC/CMakeCCompilerId.c"/>
+            </VirtualDirectory>
+            <VirtualDirectory Name="CompilerIdCXX">
+              <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/3.10.3/CompilerIdCXX/CMakeCXXCompilerId.cpp"/>
+            </VirtualDirectory>
+          </VirtualDirectory>
+          <VirtualDirectory Name="Arduino_FreeRTOS.dir">
+            <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/Arduino_FreeRTOS.dir/link.txt"/>
+          </VirtualDirectory>
+          <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/clion-environment.txt"/>
+          <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/feature_tests.cxx"/>
+          <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/feature_tests.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/TargetDirectories.txt"/>
+          <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeFiles/clion-log.txt"/>
+        </VirtualDirectory>
+        <File Name="libraries/Arduino_FreeRTOS/cmake-build-debug/CMakeCache.txt"/>
+      </VirtualDirectory>
       <VirtualDirectory Name="examples">
         <VirtualDirectory Name="AnalogRead_DigitalRead">
           <File Name="libraries/Arduino_FreeRTOS/examples/AnalogRead_DigitalRead/AnalogRead_DigitalRead.ino"/>
@@ -151,6 +1330,108 @@
         <VirtualDirectory Name="Blink_AnalogRead">
           <File Name="libraries/Arduino_FreeRTOS/examples/Blink_AnalogRead/Blink_AnalogRead.ino"/>
         </VirtualDirectory>
+        <VirtualDirectory Name="Example022">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example022/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example022/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example004">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example004/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example004/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example001">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example001/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example001/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example019">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example019/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example019/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example020">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example020/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example020/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example014">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example014/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example014/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example005">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example005/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example005/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example023">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example023/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example023/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example025">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example025/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example025/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example010">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example010/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example010/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example008">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example008/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example008/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example013">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example013/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example013/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example002">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example002/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example002/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example012">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example012/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example012/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example009">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example009/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example009/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example018">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example018/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example018/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example024">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example024/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example024/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example015">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example015/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example015/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example006">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example006/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example006/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example017">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example017/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example017/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example007">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example007/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example007/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example016">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example016/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example016/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example003">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example003/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example003/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example011">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example011/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example011/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <VirtualDirectory Name="Example021">
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example021/main.c"/>
+          <File Name="libraries/Arduino_FreeRTOS/examples/Example021/FreeRTOSConfig.h"/>
+        </VirtualDirectory>
+        <File Name="libraries/Arduino_FreeRTOS/examples/supporting_functions.h"/>
+        <File Name="libraries/Arduino_FreeRTOS/examples/supporting_functions.c"/>
       </VirtualDirectory>
       <File Name="libraries/Arduino_FreeRTOS/timers.c"/>
       <File Name="libraries/Arduino_FreeRTOS/heap_3.c"/>
@@ -179,6 +1460,9 @@
       <File Name="libraries/Arduino_FreeRTOS/portable.h"/>
       <File Name="libraries/Arduino_FreeRTOS/message_buffer.h"/>
       <File Name="libraries/Arduino_FreeRTOS/stack_macros.h"/>
+      <File Name="libraries/Arduino_FreeRTOS/license.txt"/>
+      <File Name="libraries/Arduino_FreeRTOS/history.txt"/>
+      <File Name="libraries/Arduino_FreeRTOS/CMakeLists.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Comm">
       <File Name="libraries/Comm/CommWriter.h"/>
@@ -191,6 +1475,7 @@
         </VirtualDirectory>
       </VirtualDirectory>
       <File Name="libraries/QueueList/QueueList.h"/>
+      <File Name="libraries/QueueList/keywords.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="DS3231">
       <VirtualDirectory Name="examples">
@@ -200,23 +1485,18 @@
       </VirtualDirectory>
       <File Name="libraries/DS3231/DS3231.h"/>
       <File Name="libraries/DS3231/DS3231.cpp"/>
+      <File Name="libraries/DS3231/keywords.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Indicator">
       <File Name="libraries/Indicator/Indicator.cpp"/>
       <File Name="libraries/Indicator/Indicator.h"/>
+      <File Name="libraries/Indicator/CMakeLists.txt"/>
+      <File Name="libraries/Indicator/IndicatorConfig.h"/>
     </VirtualDirectory>
     <VirtualDirectory Name="PotMotor">
       <File Name="libraries/PotMotor/PotMotor.h"/>
       <File Name="libraries/PotMotor/PotMotor.cpp"/>
-    </VirtualDirectory>
-    <VirtualDirectory Name="IRremote">
-      <File Name="libraries/IRremote/IRremoteInt.h"/>
-      <File Name="libraries/IRremote/IRremote.cpp"/>
-      <File Name="libraries/IRremote/IrReceiver.h"/>
-      <File Name="libraries/IRremote/IrReceiver.cpp"/>
-      <File Name="libraries/IRremote/IRremote.h"/>
-      <File Name="libraries/IRremote/boarddefs.h"/>
-      <File Name="libraries/IRremote/decode_results.h"/>
+      <File Name="libraries/PotMotor/CMakeLists.txt"/>
     </VirtualDirectory>
     <VirtualDirectory Name="TurretControllers">
       <File Name="libraries/TurretControllers/ElevationController.h"/>
@@ -232,6 +1512,8 @@
       <File Name="libraries/TurretControllers/CannonController.cpp"/>
       <File Name="libraries/TurretControllers/TurretTasks.cpp"/>
       <File Name="libraries/TurretControllers/TurretTasks.h"/>
+      <File Name="libraries/TurretControllers/IrSensorMonitor.cpp"/>
+      <File Name="libraries/TurretControllers/CommandMonitor.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="Taskr">
       <File Name="libraries/Taskr/CMakeLists.txt"/>
@@ -245,12 +1527,24 @@
       <File Name="libraries/TurretState/CommandMessages.h"/>
       <File Name="TraverseCommand.h"/>
       <File Name="libraries/TurretState/ElevationCommands.h"/>
+      <File Name="libraries/TurretState/ElevationState.h"/>
+      <File Name="libraries/TurretState/ElevationCommand.h"/>
+      <File Name="libraries/TurretState/TraverseCommand.h"/>
+      <File Name="libraries/TurretState/CommandStatus.h"/>
+      <File Name="libraries/TurretState/CMakeLists.txt"/>
+      <File Name="libraries/TurretState/CannonState.h"/>
+      <File Name="libraries/TurretState/AckMessage.h"/>
+      <File Name="libraries/TurretState/CommandResult.h"/>
+      <File Name="libraries/TurretState/CommandRxStatus.h"/>
+      <File Name="libraries/TurretState/CannonCommand.h"/>
+      <File Name="libraries/TurretState/AckMessage.cpp"/>
     </VirtualDirectory>
     <VirtualDirectory Name="PotMotorRtos">
       <File Name="libraries/PotMotorRtos/PotMotorRtos.h"/>
       <File Name="libraries/PotMotorRtos/CMakeLists.txt"/>
       <File Name="libraries/PotMotorRtos/PotMotorRtos.cpp"/>
     </VirtualDirectory>
+    <File Name="libraries/readme.txt"/>
   </VirtualDirectory>
   <Description/>
   <Dependencies/>

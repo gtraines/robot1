@@ -1,10 +1,9 @@
-#include <Arduino.h>
-#include "IRremoteInt.h"
-#include "IRremote.h"
-
 #ifndef IR_RECEIVER__H
 #define IR_RECEIVER__H
 
+#include <Arduino.h>
+#include "IrInterrupt.h"
+#include "IRremote.h"
 class IrReceiver {
 public:
     IrReceiver(int recvpin);
