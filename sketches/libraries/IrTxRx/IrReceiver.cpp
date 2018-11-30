@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <avr/portpins.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <CppList.h>
@@ -7,18 +8,13 @@
 #include "boarddefs.h"
 
 
-CppList lst_of_irparams;
 
-IrReceiver::IrReceiver(int recvpin): irparams()
-{
+IrReceiver::IrReceiver(int recvpin): irparams() {
   irparams.recvpin = recvpin;
   irparams.blinkflag = 0;
-  lst_of_irparams.Add(&irparams); 
 }
 
-IrReceiver::~IrReceiver()
-{
-	lst_of_irparams.Delete(&irparams);
+IrReceiver::~IrReceiver() {
 }
 
 void IrReceiver::enableIRIn() {
@@ -43,7 +39,6 @@ void IrReceiver::enableIRIn() {
   irparams.rcvstate = STATE_IDLE;
   irparams.rawlen = 0;
 
-
   // set pin modes
   pinMode(irparams.recvpin, INPUT);
 }
@@ -51,7 +46,7 @@ void IrReceiver::enableIRIn() {
 // enable/disable blinking of pin 13 on IR processing
 void IrReceiver::blink13(int blinkflag)
 {
-  irparams.blinkflag = blinkflag;
+  irparams.blinkflag = (uint8_t)blinkflag;
   if (blinkflag)
     pinMode(BLINKLED, OUTPUT);
 }
@@ -125,14 +120,12 @@ void ProcessOneIRParam(irparams_t &irparams) {
     }
 }
 
-ISR(TIMER2_OVF_vect)
-{
+ISR(TIMER2_OVF_vect) {
   RESET_TIMER2;
 
-  //*
-  int count_of_irparams = lst_of_irparams.GetCount();
+  int count_of_irparams = IrReceiver::irParamsList->GetCount();
   for (int i=0;i<count_of_irparams;++i){
-	  irparams_t *irparams = (irparams_t*)lst_of_irparams.GetItem(i);
+	  irparams_t* irparams = (irparams_t*)IrReceiver::irParamsList->GetItem(i);
 	  ProcessOneIRParam(*irparams);
   }
   //*/

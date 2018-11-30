@@ -19,6 +19,21 @@
 IRsendRaw* CannonController::cannon = new IRsendRaw();
 TaskHandle_t CannonController::cannonTaskHandle = NULL;
 
+uint16_t CannonController::blueSignal[18]={
+        5998, 574, 526, 470, 1550, 470, 486, 562,
+        1498, 470, 442, 582, 526, 470, 526, 498,
+        1526, 1000};
+
+uint16_t CannonController::redSignal[18]={
+6038, 502, 522, 478, 1498, 514, 522, 482,
+1538, 474, 518, 506, 430, 566, 1486, 530,
+486, 1000};
+
+uint16_t CannonController::purpleSignal[18]={
+5982, 562, 518, 486, 1530, 482, 518, 490,
+1530, 482, 482, 538, 486, 538, 1426, 566,
+1510, 1000};
+
 void CannonController::functionCheckDemo(void* pvParameters) {
 
     for (int idx = 0; idx < 6; idx++) {
@@ -80,13 +95,13 @@ bool CannonController::fireCannon(CannonSignal signal) {
 bool CannonController::transmitSignal(CannonSignal signal) {
     switch (signal) {
         case CannonSignal::BLUE:
-            cannon->send(BLUE_SIGNAL, SIGNAL_DATA_LEN, 36);
+            cannon->send(blueSignal, signalDataLength, 36);
             break;
         case CannonSignal::RED:
-            cannon->send(RED_SIGNAL, SIGNAL_DATA_LEN, 36);
+            cannon->send(redSignal, signalDataLength, 36);
             break;
         case CannonSignal::PURPLE:
-            cannon->send(PURPLE_SIGNAL, SIGNAL_DATA_LEN, 36);
+            cannon->send(purpleSignal, signalDataLength, 36);
             break;
     }
     return true;

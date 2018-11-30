@@ -7,6 +7,7 @@
 #include <Taskr.h>
 #include <TurretPins.h>
 #include <Indicator.h>
+#include <WString.h>
 
 TaskHandle_t IrSensorMonitor::irTaskHandle = nullptr;
 IrSensorCluster* IrSensorMonitor::sxrCluster = nullptr;
@@ -15,10 +16,10 @@ HardwareSerial* IrSensorMonitor::serialConn = nullptr;
 void IrSensorMonitor::initialize() {
 
     pinMode(IR_SXR_HIT, INPUT_PULLUP);
-    pinMode(IR_SXR_DIRECTION_REAR, INPUT_PULLUP);
-    pinMode(IR_SXR_DIRECTION_RIGHT, INPUT_PULLUP);
-    pinMode(IR_SXR_DIRECTION_LEFT, INPUT_PULLUP);
-    pinMode(IR_SXR_DIRECTION_FRONT, INPUT_PULLUP);
+    pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
     IrSensorMonitor::sxrCluster = new IrSensorCluster();
     Indicator::turnOnLed(ACTY_LED_1);
     delay(1500);
@@ -51,6 +52,9 @@ TickType_t IrSensorMonitor::getDelay() {
 }
 
 String IrSensorMonitor::getSerialMessage(sensor_reading_t* sensorReading) {
-    String message = "HIT:" + sensorReading->sensorName + "|VAL:" + sensorReading->readingValue;
-    return message;
+    String msg = "HIT:";
+    msg += sensorReading->sensorName;
+    msg += "|VAL:";
+    msg += sensorReading->readingValue;
+    return msg;
 }

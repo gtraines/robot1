@@ -7,10 +7,10 @@ IrSensorCluster::IrSensorCluster() {
     this->_currentSensorIndex = 0;
 
     this->_sensorArray[0] = this->_createSensorEntry(IR_SXR_HIT, "HIT");
-    this->_sensorArray[1] = this->_createSensorEntry(IR_SXR_DIRECTION_REAR, "REAR");
-    this->_sensorArray[2] = this->_createSensorEntry(IR_SXR_DIRECTION_RIGHT, "RIGHT");
-    this->_sensorArray[3] = this->_createSensorEntry(IR_SXR_DIRECTION_LEFT, "LEFT");
-    this->_sensorArray[4] = this->_createSensorEntry(IR_SXR_DIRECTION_FRONT, "FRONT");
+    this->_sensorArray[1] = this->_createSensorEntry(IR_SXR_REAR_PIN, "REAR");
+    this->_sensorArray[2] = this->_createSensorEntry(IR_SXR_RIGHT_PIN, "RIGHT");
+    this->_sensorArray[3] = this->_createSensorEntry(IR_SXR_LEFT_PIN, "LEFT");
+    this->_sensorArray[4] = this->_createSensorEntry(IR_SXR_FRONT_PIN, "FRONT");
 }
 
 bool IrSensorCluster::checkNextSensor() {

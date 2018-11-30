@@ -39,12 +39,22 @@
 
 
 // Values for decode_type
+<<<<<<< HEAD
 // #define NEC 1
 // #define SONY 2
 // #define RC5 3
 // #define RC6 4
 // #define UNKNOWN 0
 
+=======
+#define NEC 1
+#define SONY 2
+#define RC5 3
+#define RC6 4
+#ifndef UNKNOWN
+  #define UNKNOWN 0
+#endif
+>>>>>>> 66c20568d8a02d7f2815a719f7f324d37150f66a
 // Decoded value for NEC when a repeat code is received
 //#define REPEAT 0xffffffff
 
