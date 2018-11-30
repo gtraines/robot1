@@ -16,6 +16,7 @@ public:
     static bool addReceiverInterrupt(uint16_t interrupt, String name);
     static uint16_t* processSignalsIn(uint8_t interrupt);
     static void processSignalsIn(IrParams_t &irParams);
+    static void resume(IrParams_t &irParams);
     static void processFallingInterrupt(IrParams_t &irParams);
     static void processRisingInterrupt(IrParams_t &irParams);
 };

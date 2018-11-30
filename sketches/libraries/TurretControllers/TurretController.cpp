@@ -111,7 +111,7 @@ void TurretController::functionCheckWorker(void* pvParameters) {
 //    }
 
 
-    bool areaTargetTestComplete = fireCannon(CannonSignal::RED, (uint8_t)300);
+    bool areaTargetTestComplete = fireCannon(CannonSignal::RED, (uint8_t)5);
     Taskr::delayMs(135);
     while (TurretState::cannonState->isFiring) {
         Taskr::delayMs(135);

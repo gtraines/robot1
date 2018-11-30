@@ -132,3 +132,8 @@ void IrRxBase::processFallingInterrupt(IrParams_t &irParams) {
     }
 }
 
+void IrRxBase::resume(IrParams_t &irParams) {
+    irParams.rcvstate = STATE_IDLE;
+    irParams.rawlen = 0;
+}
+
