@@ -11,14 +11,19 @@
 #include <IrRxBase.h>
 #include <Taskr.h>
 
+#define TURRET_DEBUG true
+
+
 Servo* traverseServo = new Servo();
 
 static void vHandlerTask( void *pvParameters );
+static void dump(decode_results* hashedResults);
 
 static void configureTimer();
 static void enableTimerInterrupt( void );
 static void disableTimerInterrupt( void );
 
+static void setIrRxPins();
 static void enableIrPinInterrupts( void );
 static void disableIrPinInterrupts( void );
 
@@ -44,6 +49,9 @@ void setup() {
 
     Serial.begin(38400);
     Serial.println("Started");
+    Serial.println("Configuration:");
+    Serial.print("Gap size (50us tics): ");
+    Serial.println(GAP_TICKS);
 
     traverseServo->attach(TRAVERSE_SERVO);
     TurretController::initialize(traverseServo);
@@ -64,11 +72,26 @@ void loop() {
 
 }
 
+// Dumps out the decode_results structure.
+// Call this after IRrecv::decode()
+// void * to work around compiler issue
+//void dump(void *v) {
+//  decode_results *results = (decode_results *)v
+static void dump(decode_results *results) {
+    Serial.print(" Value: ");
+    Serial.print(results->value, HEX);
+    Serial.print(" (");
+    Serial.print(results->bits, DEC);
+    Serial.println(")");
+}
+
+
 static void vHandlerTask( void *pvParameters ) {
     bool success = true;
     static BaseType_t xHigherPriorityTaskWoken;
     xHigherPriorityTaskWoken = pdFALSE;
-
+    uint8_t lastSigCount = 0;
+    decode_results* hashedSignal = nullptr;
     while (success) {
         BaseType_t semaphoreTaken = xSemaphoreTakeFromISR(xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
 
@@ -84,15 +107,37 @@ static void vHandlerTask( void *pvParameters ) {
             /* To get here the event must have occurred.  Process the event (in this
             case we just print out a message). */
             Serial.println(lastHit);
-            int lastSigCount = 1;
+            lastSigCount = RAWBUF + 1;
+            hashedSignal = new decode_results();
 
-            while (testIrParams.rawlen <= RAWBUF && lastSigCount != testIrParams.rawlen) {
+            while (testIrParams.rawlen <= RAWBUF
+                   && lastSigCount != testIrParams.rawlen
+                   && testIrParams.rcvstate != STATE_STOP) {
                 lastSigCount = testIrParams.rawlen;
-                Serial.println(lastSigCount);
-                Taskr::delayMs(45);
+                Taskr::delayMs(90);
             }
 
             disableTimerInterrupt();
+            if (TURRET_DEBUG) {
+                for (int i = 0; i < testIrParams.rawlen; ++i) {
+                    Serial.print(testIrParams.rawbuf[i]);
+                    Serial.print(",");
+                }
+                Serial.println();
+                Serial.print("State:");
+                Serial.println(testIrParams.rcvstate);
+                Serial.print("End timer value: ");
+                Serial.println(testIrParams.timer);
+                if (IrRxBase::decode(testIrParams, hashedSignal) > 0) {
+                    //Serial.println(hashedSignal->value);
+                    dump(hashedSignal);
+                } else {
+                    Serial.print("Finished a loop without a complete signal; code: ");
+                    Serial.println(IrRxBase::decode(testIrParams, hashedSignal));
+                }
+            }
+
+
 
             lastHit = "CLEARED";
             IrRxBase::resume(testIrParams);
@@ -104,21 +149,21 @@ static void vHandlerTask( void *pvParameters ) {
     }
 }
 
+static void setIrRxPins() {
+    pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+}
+
 static void enableIrPinInterrupts( void ) {
     Indicator::turnOffLed(MOVE_LED_RED);
     //pinMode(IR_SXR_HIT, INPUT_PULLUP);
     //attachInterrupt(IR_SXR_HIT, interruptHandlerHit, RISING);
-
-    pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
+    setIrRxPins();
     attachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN), interruptHandlerRear, RISING);
-
-    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN), interruptHandlerRight, RISING);
-
-    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN), interruptHandlerLeft, RISING);
-
-    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
     attachInterrupt(digitalPinToInterrupt(IR_SXR_FRONT_PIN), interruptHandlerFront, RISING);
 }
 
@@ -132,15 +177,24 @@ static void disableIrPinInterrupts( void ) {
 }
 
 static void enableTimerInterrupt( void ) {
-    Indicator::turnOnLed(ARD_STATUS_RED);
 
     //Timer2 Overflow Interrupt Enable
     // Set Bit on Timer Mask 2, Timer Overflow Interrupt Enable
+    // setup pulse clock timer interrupt
+    TCCR2A = 0;  // normal mode
+
+    // Prescale /8 (16M/8 = 0.5 microseconds per tick)
+    // Therefore, the timer interval can range from 0.5 to 128 microseconds
+    // depending on the reset value (255 to 0)
+    cbi(TCCR2B,CS22);
+    sbi(TCCR2B,CS21);
+    cbi(TCCR2B,CS20);
+
+
     sbi(TIMSK2,TOIE2);
 
     RESET_TIMER2;
-
-    sei();  // enable interrupts
+    sei();
 }
 
 static void disableTimerInterrupt( void ) {
@@ -150,14 +204,28 @@ static void disableTimerInterrupt( void ) {
     Indicator::turnOffLed(ARD_STATUS_RED);
 }
 
-static void processTimerInterrupt() {
+static void configureTimer() {
+    // setup pulse clock timer interrupt
+    TCCR2A = 0;  // normal mode
 
+    // Prescale /8 (16M/8 = 0.5 microseconds per tick)
+    // Therefore, the timer interval can range from 0.5 to 128 microseconds
+    // depending on the reset value (255 to 0)
+    cbi(TCCR2B,CS22);
+    sbi(TCCR2B,CS21);
+    cbi(TCCR2B,CS20);
+
+}
+
+static void processTimerInterrupt() {
+    Indicator::turnOnLed(ARD_STATUS_RED);
     IrRxBase::processSignalsIn(testIrParams);
 }
 
 ISR(TIMER2_OVF_vect) {
     RESET_TIMER2;
     processTimerInterrupt();
+
 };
 
 
@@ -186,6 +254,8 @@ static void interruptHandlerHit( void ) {
 }
 
 static void interruptHandlerRear( void ) {
+    disableIrPinInterrupts();
+    testIrParams.recvpin = IR_SXR_REAR_PIN;
     static portBASE_TYPE xHigherPriorityTaskWoken;
 
     xHigherPriorityTaskWoken = pdFALSE;
@@ -243,17 +313,5 @@ static void interruptHandlerFront( void ) {
         // portSWITCH_CONTEXT();
         vPortYield();
     }
-}
-
-void configureTimer() {
-    // setup pulse clock timer interrupt
-    TCCR2A = 0;  // normal mode
-
-    // Prescale /8 (16M/8 = 0.5 microseconds per tick)
-    // Therefore, the timer interval can range from 0.5 to 128 microseconds
-    // depending on the reset value (255 to 0)
-    cbi(TCCR2B,CS22);
-    sbi(TCCR2B,CS21);
-    cbi(TCCR2B,CS20);
 }
 
