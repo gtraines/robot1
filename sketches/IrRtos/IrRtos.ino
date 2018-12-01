@@ -97,6 +97,7 @@ static void vHandlerTask( void *pvParameters ) {
 
         if (semaphoreTaken == pdTRUE && lastHit != "CLEARED") {
 
+            IrRxBase::processSignalsIn(testIrParams);
             enableTimerInterrupt();
 
             /*
@@ -136,8 +137,6 @@ static void vHandlerTask( void *pvParameters ) {
                     Serial.println(IrRxBase::decode(testIrParams, hashedSignal));
                 }
             }
-
-
 
             lastHit = "CLEARED";
             IrRxBase::resume(testIrParams);
@@ -255,7 +254,10 @@ static void interruptHandlerHit( void ) {
 
 static void interruptHandlerRear( void ) {
     disableIrPinInterrupts();
+
     testIrParams.recvpin = IR_SXR_REAR_PIN;
+    IrRxBase::processSignalsIn(testIrParams);
+
     static portBASE_TYPE xHigherPriorityTaskWoken;
 
     xHigherPriorityTaskWoken = pdFALSE;
@@ -271,7 +273,10 @@ static void interruptHandlerRear( void ) {
 
 static void interruptHandlerRight( void ) {
     disableIrPinInterrupts();
+
     testIrParams.recvpin = IR_SXR_RIGHT_PIN;
+    IrRxBase::processSignalsIn(testIrParams);
+
     static portBASE_TYPE xHigherPriorityTaskWoken;
 
     xHigherPriorityTaskWoken = pdFALSE;
@@ -285,7 +290,10 @@ static void interruptHandlerRight( void ) {
 
 static void interruptHandlerLeft( void ) {
     disableIrPinInterrupts();
+
     testIrParams.recvpin = IR_SXR_LEFT_PIN;
+    IrRxBase::processSignalsIn(testIrParams);
+
     static portBASE_TYPE xHigherPriorityTaskWoken;
 
     xHigherPriorityTaskWoken = pdFALSE;
@@ -301,7 +309,10 @@ static void interruptHandlerLeft( void ) {
 
 static void interruptHandlerFront( void ) {
     disableIrPinInterrupts();
+
     testIrParams.recvpin = IR_SXR_FRONT_PIN;
+    IrRxBase::processSignalsIn(testIrParams);
+
     static portBASE_TYPE xHigherPriorityTaskWoken;
 
     xHigherPriorityTaskWoken = pdFALSE;
