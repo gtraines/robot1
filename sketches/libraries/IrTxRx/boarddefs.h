@@ -22,6 +22,9 @@
 #ifndef boarddefs_h
 #define boarddefs_h
 
+#ifndef __AVR_ATmega2560__
+#define __AVR_ATmega2560__
+#endif
 //------------------------------------------------------------------------------
 // Defines for blinking the LED
 //
@@ -62,7 +65,9 @@
 #endif
 
 // microseconds per clock interrupt tick
+#ifndef USECPERTICK
 #define USECPERTICK    50
+#endif
 
 //------------------------------------------------------------------------------
 // Define which timer to use
@@ -81,8 +86,8 @@
 // Arduino Mega
 #elif defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__)
 	//#define IR_USE_TIMER1   // tx = pin 11
-	#define IR_USE_TIMER2     // tx = pin 9
-	//#define IR_USE_TIMER3   // tx = pin 5
+	//#define IR_USE_TIMER2     // tx = pin 9
+	#define IR_USE_TIMER3   // tx = pin 5
 	//#define IR_USE_TIMER4   // tx = pin 6
 	//#define IR_USE_TIMER5   // tx = pin 46
 

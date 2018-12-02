@@ -15,8 +15,8 @@
 #include <Arduino.h>
 #include "boarddefs.h"
 
-#define USECPERTICK 50  // microseconds per clock interrupt tick
-#define RAWBUF 76 // Length of raw duration buffer
+#define USECPERTICK 25  // microseconds per clock interrupt tick
+#define RAWBUF 96 // Length of raw duration buffer
 
 // Marks tend to be 100us too long, and spaces 100us too short
 // when received due to sensor lag.
@@ -75,7 +75,7 @@
 #define LTOL (1.0 - TOLERANCE/100.) 
 #define UTOL (1.0 + TOLERANCE/100.) 
 
-#define _GAP 5000 // Minimum map between transmissions
+#define _GAP 10000 // Minimum map between transmissions
 #define GAP_TICKS (_GAP/USECPERTICK)
 
 #define TICKS_LOW(us) (int) (((us)*LTOL/USECPERTICK))

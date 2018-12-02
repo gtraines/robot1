@@ -7,6 +7,7 @@
 #include <pins_arduino.h>
 #include "IrInterruptConfig.h"
 #include "decode_results.h"
+#include "IrParams.h"
 #include <IRLibProtocols.h>
 
 void IrRxBase::processSignalsIn(IrParams_t &irParams) {
@@ -60,7 +61,6 @@ void IrRxBase::processSignalsIn(IrParams_t &irParams) {
             }
             break;
     }
-
 }
 
 
@@ -97,7 +97,7 @@ int  IrRxBase::compare (unsigned int oldval,  unsigned int newval) {
 #define FNV_BASIS_32 2166136261
 
 long IrRxBase::decodeHash (decode_results *results) {
-    long  hash = (unsigned long)FNV_BASIS_32;
+    long  hash = (long)FNV_BASIS_32;
 
     // Require at least 6 samples to prevent triggering on noise
     if (results->rawlen < 6)  return false ;
@@ -118,6 +118,8 @@ long IrRxBase::decodeHash (decode_results *results) {
 void IrRxBase::resume(IrParams_t &irParams) {
     irParams.rcvstate = STATE_IDLE;
     irParams.rawlen = 0;
+    irParams.timer = 0;
+    irParams.recvpin = 0;
 }
 
 // Decodes the received IR message

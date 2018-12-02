@@ -9,6 +9,8 @@ include_directories(~/arduino-1.8.5/hardware/arduino/avr/cores/arduino)
 include_directories(~/arduino-1.8.5/hardware/arduino/avr/variants/mega)
 
 include_directories(libraries/IRLibProtocols)
+include_directories(libraries/IRLib2)
+include_directories(libraries/IRLibRecvPCI)
 
 include_directories(libraries/CppList)
 include_directories(libraries/Taskr)
@@ -21,6 +23,8 @@ include_directories(libraries/IrSensorCluster)
 include_directories(libraries/TurretControllers)
 
 add_subdirectory(libraries/IRLibProtocols)
+add_subdirectory(libraries/IRLib2)
+add_subdirectory(libraries/IRLibRecvPCI)
 
 add_subdirectory(libraries/Arduino_FreeRTOS)
 add_subdirectory(libraries/Taskr)
@@ -42,6 +46,8 @@ set(${CMAKE_PROJECT_NAME}_SKETCH IrRtos/IrRtos.ino)
 
 target_include_directories(Arduino_FreeRTOS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(IRLibProtocols PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(IRLib2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(IRLibRecvPCI PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(CppList PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Taskr PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(TurretState PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
