@@ -29,8 +29,8 @@
 #include <IRLib_P06_JVC.h>
 #include <IRLib_P07_NECx.h>
 #include <IRLibCombo.h>
-#include <IRLibRecv.h>
+//#include <IRLibRecv.h>
 #include <IRLibRecvLoop.h>
 #include <IRLibRecvPCI.h>
-#include <IRLibFreq.h>
+//#include <IRLibFreq.h>
 #endif //IRLIB2_H

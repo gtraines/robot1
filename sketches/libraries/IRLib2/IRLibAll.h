@@ -35,8 +35,8 @@
 #include <IRLib_P12_CYKM.h>
 //include additional protocols here
 #include <IRLibCombo.h>
-#include <IRLibRecv.h>
+//#include <IRLibRecv.h>
 #include <IRLibRecvLoop.h>
 #include <IRLibRecvPCI.h>
-#include <IRLibFreq.h>
+//#include <IRLibFreq.h>
 #endif //IRLIB_ALL_H

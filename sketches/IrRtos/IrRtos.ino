@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
+#include <IRLibRecvPCI.h>
 //#include <Arduino_FreeRTOS.h>
 //#include <task.h>
 //#include <semphr.h>
 #include <TurretPins.h>
 #include <Indicator.h>
-//#include <TurretController.h>
+#include <TurretController.h>
 #include <IrParams.h>
 #include <IrRxBase.h>
 //#include <Taskr.h>
@@ -14,378 +15,157 @@
 #include <IrInterruptConfig.h>
 #include <decode_results.h>
 #include <IRLibProtocols.h>
+#include <IRLibGlobals.h>
+
+#define USEC_PER_TICK 50  // microseconds per clock interrupt tick
+
+
 #define TURRET_DEBUG true
-
-
-//Servo* traverseServo = new Servo();
-
-//static void vHandlerTask( void *pvParameters );
-static void dump(decode_results& hashedResults);
-static void resetDecodeResults();
-static void processSignalsIn(IrParams_t &irParams);
-static void configureTimer();
-static void enableTimerInterrupt( void );
-static void disableTimerInterrupt( void );
+uint16_t markExcess;
 
 static void setIrRxPins();
+static volatile uint8_t rcvrPin;
+static volatile bool waitingForSignalFinish;
+static volatile bool waitingForIrEnable;
+static volatile bool hitFront;
+
+static void setInterruptNumbers();
+static void dumpInterruptNumbers();
 static void enableIrPinInterrupts( void );
 static void disableIrPinInterrupts( void );
-
-static void interruptHandlerHit( void );
-static void interruptHandlerRear( void );
-static void interruptHandlerRight( void );
-static void interruptHandlerLeft( void );
-static void interruptHandlerFront( void );
-
-//static SemaphoreHandle_t xCountingSemaphore = NULL;
-static IrParams_t testIrParams;
-static volatile uint16_t signalCount = 0;
-static String lastHit = "INITIAL";
-static decode_results decodeResults = decode_results();
-//static portBASE_TYPE xHigherPriorityTaskWoken;
+static void createIrRcvrForPin();
 
 
+static IRrecvPCI* rcvr = nullptr; // PCI = PIN CHANGE Interrupt == Pin Changes from Low to High or High to Low
+static void dump();
+
+static volatile uint8_t irPinInterruptFront;
 void setup() {
-    setIrRxPins();
-    configureTimer();
-    testIrParams = IrParams_t();
-    IrRxBase::resume(testIrParams);
-
-    //xCountingSemaphore = xSemaphoreCreateCounting( 1, 0 ); // maxcount, initial count
-
-    disableTimerInterrupt();
-    enableIrPinInterrupts();
-
+    TurretController::setPins();
+    TurretController::turnOffAllIndicators();
     Serial.begin(38400);
+
+
+    setIrRxPins();
+    setInterruptNumbers();
+    dumpInterruptNumbers();
+    enableIrPinInterrupts();
+    //createIrRcvrForPin();
     Serial.println("Started");
-    Serial.println("Configuration:");
-    Serial.print("Gap size (50us tics): ");
-    Serial.println(GAP_TICKS);
-
-    //traverseServo->attach(TRAVERSE_SERVO);
-    //TurretController::initialize(traverseServo);
-
-//    if( xCountingSemaphore != NULL ) {
-//        /* Create the 'handler' task.  This is the task that will be synchronized
-//        with the interrupt.  The handler task is created with a high priority to
-//        ensure it runs immediately after the interrupt exits.  In this case a
-//        priority of 3 is chosen. */
-//        xTaskCreate(vHandlerTask, "Handler", 512, NULL, 2, NULL);
-//    } else {
-//        Indicator::turnOnLed(ARD_STATUS_RED);
-//    }
-
 }
 
 void loop() {
 
-}
+    //Continue looping until you get a complete signal received
+    if (rcvr != nullptr && rcvr->getResults()) {
 
-// Dumps out the decode_results structure.
-// Call this after IRrecv::decode()
-// void * to work around compiler issue
-//void dump(void *v) {
-//  decode_results *results = (decode_results *)v
-static void dump(decode_results &results) {
-
-    if (TURRET_DEBUG) {
-        Serial.println(lastHit);
-        Serial.print("Signals: ");
-        Serial.println(testIrParams.rawlen);
-        for (int i = 0; i < testIrParams.rawlen; ++i) {
-            Serial.print(testIrParams.rawbuf[i]);
-            Serial.print(",");
-        }
-        Serial.println();
-        Serial.print("State:");
-        Serial.println(testIrParams.rcvstate);
-        Serial.print("End timer value: ");
-        Serial.println(testIrParams.timer);
-
-        if (IrRxBase::decode(testIrParams, &results) > 0) {
-            //Serial.println(hashedSignal->value);
-            Serial.print(" Value: ");
-            Serial.print(results.value, HEX);
-            Serial.print(" (");
-            Serial.print(results.bits, DEC);
-            Serial.println(")");
-        } else {
-            Serial.print("Finished a loop without a complete signal; code: ");
-            Serial.println(IrRxBase::decode(testIrParams, &results));
-        }
-
-        Serial.println();
+        dump();
+        enableIrPinInterrupts();
+        //rcvr->enableIRIn();
+        delay(1);
     }
+    else if (hitFront) {
+        createIrRcvrForPin();
+    }
+    delay(1);
 }
 
+static void dump() {
+    Serial.print(F("\n#define RAW_DATA_LEN "));
+    Serial.println(recvGlobal.recvLength,DEC);
+    Serial.print(F("uint16_t rawData[RAW_DATA_LEN]={\n\t"));
+    for(bufIndex_t i=1;i<recvGlobal.recvLength;i++) {
+        Serial.print(recvGlobal.recvBuffer[i],DEC);
+        Serial.print(F(", "));
+        if( (i % 8)==0) Serial.print(F("\n\t"));
+    }
+    Serial.println(F("1000};"));//Add arbitrary trailing space
+}
 
+static void createIrRcvrForPin() {
+
+    rcvr = new IRrecvPCI(IR_SXR_FRONT_PIN);
+    rcvr->enableIRIn();
+    hitFront = false;
+}
 
 static void setIrRxPins() {
     //pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
-    //pinMode(IR_SXR_RIGHT_PIN, INPUT);
-    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
-    //pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+    //pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
+    //pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+}
+
+static void setInterruptNumbers() {
+    irPinInterruptFront = digitalPinToInterrupt(IR_SXR_FRONT_PIN);
+}
+
+static void dumpInterruptNumbers() {
+    Serial.print("Interrupt Front: ");
+    Serial.println(irPinInterruptFront);
 }
 
 static void enableIrPinInterrupts( void ) {
-    Indicator::turnOffLed(MOVE_LED_RED);
+    //Indicator::turnOffLed(MOVE_LED_RED);
     //pinMode(IR_SXR_HIT, INPUT_PULLUP);
     //attachInterrupt(IR_SXR_HIT, interruptHandlerHit, RISING);
     //setIrRxPins();
     //attachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN), interruptHandlerRear, RISING);
     //attachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN), interruptHandlerRight, FALLING);
-    attachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN), interruptHandlerLeft, FALLING);
-    //attachInterrupt(digitalPinToInterrupt(IR_SXR_FRONT_PIN), interruptHandlerFront, RISING);
+    //attachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN), interruptHandlerLeft, FALLING);
+    attachInterrupt(irPinInterruptFront, interruptHandlerFront, CHANGE);
 }
 
 static void disableIrPinInterrupts( void ) {
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN));
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN));
-    detachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN));
-    //detachInterrupt(digitalPinToInterrupt(IR_SXR_FRONT_PIN));
+    //detachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN));
+    detachInterrupt(irPinInterruptFront);
 
-    Indicator::turnOnLed(MOVE_LED_RED);
+    //Indicator::turnOnLed(MOVE_LED_RED);
 }
 
-static void enableTimerInterrupt( void ) {
+static void initializeRcvr() {
 
-    TIMER_ENABLE_INTR;
-    TIMER_RESET;
-    sei();
-}
-
-static void disableTimerInterrupt( void ) {
-
-    // Clear Bit on Timer Mask 2, Timer Overflow Interrupt Enable
-    TIMER_DISABLE_INTR;
-    Indicator::turnOffLed(ARD_STATUS_RED);
-}
-
-static void configureTimer() {
-    // setup pulse clock timer interrupt
-    TIMER_CONFIG_NORMAL();
-}
-
-static void processTimerInterrupt() {
-    Indicator::turnOnLed(ARD_STATUS_RED);
-    processSignalsIn(testIrParams);
-
-}
-
-ISR(TIMER_INTR_NAME) {
-    TIMER_RESET;
-    processTimerInterrupt();
-};
-
-static void resetDecodeResults() {
-    decodeResults.rawlen = 0;
-    decodeResults.value = 0l;
-    decodeResults.bits = 0;
-    decodeResults.decode_type = 0;
-}
-
-static void interruptHandlerLeft( void ) {
-    disableIrPinInterrupts();
-
-    testIrParams.recvpin = IR_SXR_LEFT_PIN;
-    lastHit = "LEFT";
-
-    enableTimerInterrupt();
-
-    Indicator::turnOnLed(ACTY_LED_3);
-
-    signalCount = RAWBUF + 1;
-
-    while (testIrParams.rawlen <= RAWBUF
-           && signalCount != testIrParams.rawlen
-           && testIrParams.rcvstate != STATE_STOP) {
-        signalCount = testIrParams.rawlen;
-        delay(90);
+//These first two lines would normally be done by the decoder
+//however in rare circumstances there is no decoder.
+        recvGlobal.decoderWantsData=false; //turned on by enableIRIn.
+        recvGlobal.decodeBuffer=recvGlobal.recvBuffer;//default buffer
+        recvGlobal.enableAutoResume=false;
+        recvGlobal.frameTimeout=DEFAULT_FRAME_TIMEOUT;
+        recvGlobal.frameTimeoutTicks=recvGlobal.frameTimeout/USEC_PER_TICK;
+        markExcess=DEFAULT_MARK_EXCESS;
+        recvGlobal.newDataAvailable=false;
+        recvGlobal.enableBlinkLED=false;
+        recvGlobal.currentState=STATE_FINISHED;//i.e. Not running.
     }
-
-    disableTimerInterrupt();
-    dump(decodeResults);
-
-    lastHit = "CLEARED";
-    resetDecodeResults();
-    IrRxBase::resume(testIrParams);
-
-    Indicator::turnOffLed(ACTY_LED_3);
-    enableIrPinInterrupts();
 }
 
-
-static void processSignalsIn(IrParams_t &irParams) {
-    uint8_t irdata = (uint8_t) digitalRead(irParams.recvpin);
-    Serial.print("IrData read: ");
-    Serial.println(irdata);
-    irParams.timer++; // One more 50us tick
-    if (irParams.rawlen >= RAWBUF) {
-        // Buffer overflow
-        irParams.rcvstate = STATE_STOP;
-    }
-    switch (irParams.rcvstate) {
-        case STATE_IDLE: // In the middle of a gap
-            if (irdata == MARK) {
-                if (irParams.timer < GAP_TICKS) {
-                    // Not big enough to be a gap.
-                    irParams.timer = 0;
-                } else {
-                    // gap just ended, record duration and start recording transmission
-                    irParams.rawlen = 0;
-                    irParams.rawbuf[irParams.rawlen++] = irParams.timer;
-                    irParams.timer = 0;
-                    irParams.rcvstate = STATE_MARK;
+static void interruptHandlerFront( void ) {
+    uint32_t volatile changeTime=micros();
+    uint32_t deltaTime=changeTime-recvGlobal.timer;
+    switch(recvGlobal.currentState) {
+        case STATE_FINISHED: return;
+        case STATE_RUNNING:
+            IRLib_doBlink();
+            if( !(recvGlobal.recvLength & 1) ){
+                if (deltaTime>recvGlobal.frameTimeout) {
+                    IRLib_IRrecvComplete(1);//all finished, reset and possibly do auto resume
+                    return;//don't record final space
                 }
             }
             break;
-        case STATE_MARK: // timing MARK
-            if (irdata == SPACE) {   // MARK ended, record time
-                irParams.rawbuf[irParams.rawlen++] = irParams.timer;
-                irParams.timer = 0;
-                irParams.rcvstate = STATE_SPACE;
+        case STATE_READY_TO_BEGIN:
+            if(digitalRead(recvGlobal.recvPin)) {//pin high means SPACE
+                return;//don't start until we get a MARK
+            } else {
+                recvGlobal.currentState=STATE_RUNNING;
             }
             break;
-        case STATE_SPACE: // timing SPACE
-            if (irdata == MARK) { // SPACE just ended, record it
-                irParams.rawbuf[irParams.rawlen++] = irParams.timer;
-                irParams.timer = 0;
-                irParams.rcvstate = STATE_MARK;
-            } else { // SPACE
-                if (irParams.timer > GAP_TICKS) {
-                    // big SPACE, indicates gap between codes
-                    // Mark current code as ready for processing
-                    // Switch to STOP
-                    // Don't reset timer; keep counting space width
-                    irParams.rcvstate = STATE_STOP;
-                }
-            }
-            break;
-        case STATE_STOP: // waiting, measuring gap
-            if (irdata == MARK) { // reset gap timer
-                irParams.timer = 0;
-            }
-            break;
-        default:break;
-
+    };
+    recvGlobal.recvBuffer[recvGlobal.recvLength]=deltaTime;
+    recvGlobal.timer=changeTime;
+    if(++recvGlobal.recvLength>=RECV_BUF_LENGTH) {//buffer overflows so we quit
+        IRLib_IRrecvComplete(2);
     }
-    Serial.print("Current Rx State: ");
-    Serial.println(irParams.rcvstate);
-    Serial.print("Timer value: ");
-    Serial.println(irParams.timer);
 }
-
-//static void interruptHandlerFront( void ) {
-//    disableIrPinInterrupts();
-//
-//    testIrParams.recvpin = IR_SXR_FRONT_PIN;
-//    IrRxBase::processSignalsIn(testIrParams);
-//
-//    static portBASE_TYPE xHigherPriorityTaskWoken;
-//
-//    xHigherPriorityTaskWoken = pdFALSE;
-//    lastHit = "FRONT";
-//
-//    xSemaphoreGiveFromISR( xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken );
-//
-//    if( xHigherPriorityTaskWoken == pdTRUE ) {
-//        // portSWITCH_CONTEXT();
-//        vPortYield();
-//    }
-//}
-
-//
-//static void vHandlerTask( void *pvParameters ) {
-//    bool success = true;
-//    xHigherPriorityTaskWoken = pdFALSE;
-//
-//    while (success) {
-//        BaseType_t semaphoreTaken = xSemaphoreTakeFromISR(xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
-//
-//        if (semaphoreTaken == pdTRUE && lastHit != "CLEARED") {
-//
-//
-//
-//            /*
-//             * PROCESS EACH SIGNAL!!!
-//             */
-//
-//            Indicator::turnOnLed(ACTY_LED_3);
-//
-//            signalCount = RAWBUF + 1;
-//
-//            while (testIrParams.rawlen <= RAWBUF
-//                   && signalCount != testIrParams.rawlen
-//                   && testIrParams.rcvstate != STATE_STOP) {
-//                signalCount = testIrParams.rawlen;
-//                Taskr::delayMs(135);
-//            }
-//
-//            disableTimerInterrupt();
-//            dump(decodeResults);
-//
-//            lastHit = "CLEARED";
-//            resetDecodeResults();
-//            IrRxBase::resume(testIrParams);
-//
-//            Indicator::turnOffLed(ACTY_LED_3);
-//            enableIrPinInterrupts();
-//        }
-//
-//        Taskr::delayMs(45);
-//    }
-//}
-
-
-//static void interruptHandlerHit( void ) {
-//    xHigherPriorityTaskWoken = pdFALSE;
-//
-//    /* 'Give' the semaphore multiple times.  The first will unblock the handler
-//    task, the following 'gives' are to demonstrate that the semaphore latches
-//    the events to allow the handler task to process them in turn without any
-//    events getting lost.  This simulates multiple interrupts being taken by the
-//    processor, even though in this case the events are simulated within a single
-//    interrupt occurrence.*/
-//    lastHit = "HIT";
-//    xSemaphoreGiveFromISR( xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken );
-//
-//    if( xHigherPriorityTaskWoken == pdTRUE ) {
-//        /*
-//        NOTE: The syntax for forcing a context switch is different depending
-//        on the port being used.  Refer to the examples for the port you are
-//        using for the correct method to use! */
-//        // portSWITCH_CONTEXT();
-//        vPortYield();
-//    }
-//}
-
-//static void interruptHandlerRear( void ) {
-//    disableIrPinInterrupts();
-//
-//    testIrParams.recvpin = IR_SXR_REAR_PIN;
-//    IrRxBase::processSignalsIn(testIrParams);
-//
-//    xHigherPriorityTaskWoken = pdFALSE;
-//
-//    lastHit = "REAR";
-//    xSemaphoreGiveFromISR( xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken );
-//
-//    if( xHigherPriorityTaskWoken == pdTRUE ) {
-//        vPortYield();
-//    }
-//}
-
-//static void interruptHandlerRight( void ) {
-//    disableIrPinInterrupts();
-//
-//    testIrParams.recvpin = IR_SXR_RIGHT_PIN;
-//    enableTimerInterrupt();
-//
-//    xHigherPriorityTaskWoken = pdFALSE;
-//    lastHit = "RIGHT";
-//    xSemaphoreGiveFromISR( xCountingSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken );
-//
-//    if( xHigherPriorityTaskWoken == pdTRUE ) {
-//        vPortYield();
-//    }
-//}

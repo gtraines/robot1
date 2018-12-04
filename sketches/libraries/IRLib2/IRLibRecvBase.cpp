@@ -16,7 +16,7 @@
  */
 
 #include "IRLibRecvBase.h"
-#include "IRLibHardware.h"
+#include <IRLibHardware.h>
 
 /* This structure contains all of the global variables used by the ISRs to communicate
  * with the receiver and decoder objects. You cannot pass parameters to an ISR so

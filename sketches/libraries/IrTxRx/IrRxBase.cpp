@@ -10,8 +10,8 @@
 #include "IrParams.h"
 #include <IRLibProtocols.h>
 
-void IrRxBase::processSignalsIn(IrParams_t &irParams) {
-    uint8_t irdata = (uint8_t) digitalRead(irParams.recvpin);
+void IrRxBase::processSignalsIn(volatile IrParams_t &irParams) {
+    volatile uint8_t irdata = (uint8_t) digitalRead(irParams.recvpin);
     
     irParams.timer++; // One more 50us tick
     if (irParams.rawlen >= RAWBUF) {
@@ -96,7 +96,7 @@ int  IrRxBase::compare (unsigned int oldval,  unsigned int newval) {
 #define FNV_PRIME_32 16777619
 #define FNV_BASIS_32 2166136261
 
-long IrRxBase::decodeHash (decode_results *results) {
+long IrRxBase::decodeHash (volatile decode_results *results) {
     long  hash = (long)FNV_BASIS_32;
 
     // Require at least 6 samples to prevent triggering on noise
@@ -115,20 +115,20 @@ long IrRxBase::decodeHash (decode_results *results) {
     return true;
 }
 
-void IrRxBase::resume(IrParams_t &irParams) {
-    irParams.rcvstate = STATE_IDLE;
-    irParams.rawlen = 0;
-    irParams.timer = 0;
-    irParams.recvpin = 0;
+void IrRxBase::resume(volatile IrParams_t* irParams) {
+    irParams->rcvstate = STATE_IDLE;
+    irParams->rawlen = 0;
+    irParams->timer = 0;
+    irParams->recvpin = 0;
 }
 
 // Decodes the received IR message
 // Returns 0 if no data ready, 1 if data ready.
 // Results of decoding are stored in results
-int IrRxBase::decode(IrParams_t &irParams, decode_results *results) {
-    results->rawbuf = irParams.rawbuf;
-    results->rawlen = irParams.rawlen;
-    if (irParams.rcvstate != STATE_STOP) {
+int IrRxBase::decode(volatile IrParams_t* irParams, volatile decode_results* results) {
+    results->rawbuf = irParams->rawbuf;
+    results->rawlen = irParams->rawlen;
+    if (irParams->rcvstate != STATE_STOP) {
         return ERR;
     }
     // decodeHash returns a hash on any input.

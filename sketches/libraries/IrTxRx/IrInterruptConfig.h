@@ -15,7 +15,7 @@
 #include <Arduino.h>
 #include "boarddefs.h"
 
-#define USECPERTICK 25  // microseconds per clock interrupt tick
+#define USECPERTICK 50  // microseconds per clock interrupt tick
 #define RAWBUF 96 // Length of raw duration buffer
 
 // Marks tend to be 100us too long, and spaces 100us too short

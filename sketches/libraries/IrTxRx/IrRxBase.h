@@ -14,11 +14,12 @@ class IrRxBase {
 public:
     IrRxBase()= default;
     ~IrRxBase()= default;
-    static void processSignalsIn(IrParams_t &irParams);
-    static void resume(IrParams_t &irParams);
-    static long decodeHash(decode_results *results);
-    static int decode(IrParams_t &irParams, decode_results *results);
+    static void processSignalsIn(volatile IrParams_t &irParams);
+    static void resume(volatile IrParams_t* irParams);
+    static long decodeHash(volatile decode_results *results);
+    static int decode(volatile IrParams_t* irParams, volatile decode_results* results);
     static int compare(unsigned int oldval, unsigned int newval);
+
 };
 
 
