@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "defines": [
+                "ARDUINO=10800"
+            ],
+            "includePath": [
+                "${workspaceRoot}",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/**",
+                "/home/graham/arduino-1.8.5/hardware/tools/avr/include/**",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
+                "/home/graham/arduino-1.8.5/libraries/Servo/src"
+            ],
+            "forcedInclude": [
+                "${workspaceRoot}",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/avr"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
+}

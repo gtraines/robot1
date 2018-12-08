@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "defines": [
+                "ARDUINO=10800"
+            ],
+            "includePath": [
+                "${workspaceRoot}",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                "/home/graham/arduino-1.8.5/hardware/tools/**",
+                "/home/graham/arduino-1.8.5/libraries/**",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/standard",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
+                "/usr/include/linux"
+            ],
+            "forcedInclude": [
+                
+            ],
+            "intelliSenseMode": "clang-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++11"
+        }
+    ],
+    "version": 4
+}
