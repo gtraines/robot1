@@ -7,11 +7,12 @@
             ],
             "includePath": [
                 "${workspaceRoot}",
-                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
+                "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino/**",
                 "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/**",
                 "/home/graham/arduino-1.8.5/hardware/tools/avr/include/**",
                 "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
-                "/home/graham/arduino-1.8.5/libraries/Servo/src"
+                "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                "/home/graham/Source/robot1/sketches/libraries/Indicator"
             ],
             "forcedInclude": [
                 "${workspaceRoot}",
@@ -24,8 +25,12 @@
                 "path": [
                     "${workspaceFolder}",
                     "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
-                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
-                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/avr"
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/avr",
+                    "${workspaceRoot}",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include/**",
+                    "/home/graham/arduino-1.8.5/hardware/tools/avr/include/**",
+                    "/home/graham/arduino-1.8.5/hardware/arduino/avr/variants/mega",
+                    "/home/graham/arduino-1.8.5/libraries/Servo/src"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

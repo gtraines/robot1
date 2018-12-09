@@ -1,21 +1,23 @@
 #include <Arduino.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
-#include <IRLibRecvPCI.h>
-//#include <Arduino_FreeRTOS.h>
-//#include <task.h>
-//#include <semphr.h>
+
+#include <Arduino_FreeRTOS.h>
+#include <task.h>
+#include <semphr.h>
+
 #include <TurretPins.h>
 #include <Indicator.h>
 #include <TurretController.h>
+
 #include <IrParams.h>
-#include <IrRxBase.h>
-//#include <Taskr.h>
+#include <Taskr.h>
 #include <pins_arduino.h>
 #include <IrInterruptConfig.h>
 #include <decode_results.h>
 #include <IRLibProtocols.h>
 #include <IRLibGlobals.h>
+#include <IRLibRecvPCI.h>
 
 #define USEC_PER_TICK 50  // microseconds per clock interrupt tick
 
@@ -31,6 +33,7 @@ static volatile bool hitFront;
 
 static void setInterruptNumbers();
 static void dumpInterruptNumbers();
+static void interruptHandlerFront( void );
 static void enableIrPinInterrupts( void );
 static void disableIrPinInterrupts( void );
 static void createIrRcvrForPin();
@@ -72,10 +75,11 @@ void loop() {
 
 static void dump() {
     Serial.print(F("\n#define RAW_DATA_LEN "));
-    Serial.println(recvGlobal.recvLength,DEC);
+    Serial.println(recvGlobal.recvLength, DEC);
     Serial.print(F("uint16_t rawData[RAW_DATA_LEN]={\n\t"));
-    for(bufIndex_t i=1;i<recvGlobal.recvLength;i++) {
-        Serial.print(recvGlobal.recvBuffer[i],DEC);
+
+    for(bufIndex_t i=1; i<recvGlobal.recvLength; i++) {
+        Serial.print(recvGlobal.recvBuffer[i], DEC);
         Serial.print(F(", "));
         if( (i % 8)==0) Serial.print(F("\n\t"));
     }
@@ -137,18 +141,20 @@ static void initializeRcvr() {
         markExcess=DEFAULT_MARK_EXCESS;
         recvGlobal.newDataAvailable=false;
         recvGlobal.enableBlinkLED=false;
-        recvGlobal.currentState=STATE_FINISHED;//i.e. Not running.
-    }
+        recvGlobal.currentState=STATE_FINISHED;//i.e. Not running
 }
 
 static void interruptHandlerFront( void ) {
-    uint32_t volatile changeTime=micros();
-    uint32_t deltaTime=changeTime-recvGlobal.timer;
-    switch(recvGlobal.currentState) {
+    Serial.println(".");
+    uint32_t volatile changeTime = micros();
+    uint32_t deltaTime = changeTime - recvGlobal.timer;
+
+    switch (recvGlobal.currentState) {
         case STATE_FINISHED: return;
         case STATE_RUNNING:
+            Serial.println("B");
             IRLib_doBlink();
-            if( !(recvGlobal.recvLength & 1) ){
+            if (!(recvGlobal.recvLength & 1)) {
                 if (deltaTime>recvGlobal.frameTimeout) {
                     IRLib_IRrecvComplete(1);//all finished, reset and possibly do auto resume
                     return;//don't record final space
@@ -156,16 +162,18 @@ static void interruptHandlerFront( void ) {
             }
             break;
         case STATE_READY_TO_BEGIN:
-            if(digitalRead(recvGlobal.recvPin)) {//pin high means SPACE
+            if (digitalRead(recvGlobal.recvPin)) {//pin high means SPACE
                 return;//don't start until we get a MARK
             } else {
                 recvGlobal.currentState=STATE_RUNNING;
             }
             break;
+        default: break;
     };
-    recvGlobal.recvBuffer[recvGlobal.recvLength]=deltaTime;
-    recvGlobal.timer=changeTime;
-    if(++recvGlobal.recvLength>=RECV_BUF_LENGTH) {//buffer overflows so we quit
+
+    recvGlobal.recvBuffer[recvGlobal.recvLength] = deltaTime;
+    recvGlobal.timer = changeTime;
+    if(++recvGlobal.recvLength >= RECV_BUF_LENGTH) {//buffer overflows so we quit
         IRLib_IRrecvComplete(2);
     }
 }
