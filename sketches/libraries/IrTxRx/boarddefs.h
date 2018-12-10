@@ -65,8 +65,8 @@
 #endif
 
 // microseconds per clock interrupt tick
-#ifndef USECPERTICK
-#define USECPERTICK    50
+#ifndef USEC_PER_TICK
+#define USEC_PER_TICK 50
 #endif
 
 //------------------------------------------------------------------------------

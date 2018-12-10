@@ -19,7 +19,6 @@ include_directories(libraries/TurretState)
 include_directories(libraries/Indicator)
 include_directories(libraries/PotMotorRtos)
 include_directories(libraries/IrTxRx)
-include_directories(libraries/IrSensorCluster)
 include_directories(libraries/TurretControllers)
 
 add_subdirectory(libraries/IRLibProtocols)
@@ -34,7 +33,6 @@ add_subdirectory(libraries/TurretState)
 add_subdirectory(libraries/Indicator)
 add_subdirectory(libraries/PotMotorRtos)
 add_subdirectory(libraries/IrTxRx)
-add_subdirectory(libraries/IrSensorCluster)
 add_subdirectory(libraries/TurretControllers)
 
 #add_subdirectory(turretRtos)
@@ -55,7 +53,6 @@ target_include_directories(TurretConfig PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(Indicator PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(PotMotorRtos PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(IrTxRx PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(IrSensorCluster PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_include_directories(TurretControllers PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #### Uncomment below additional settings as needed.

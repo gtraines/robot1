@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <HardwareSerial.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
@@ -10,106 +11,89 @@
 #include <Indicator.h>
 #include <TurretController.h>
 
-#include <IrParams.h>
 #include <Taskr.h>
 #include <pins_arduino.h>
 #include <IrInterruptConfig.h>
-#include <decode_results.h>
 #include <IRLibProtocols.h>
 #include <IRLibGlobals.h>
-#include <IRLibRecvPCI.h>
+#include <IrRxInterrupt.h>
 
 #define USEC_PER_TICK 50  // microseconds per clock interrupt tick
 
 
 #define TURRET_DEBUG true
-uint16_t markExcess;
 
-static void setIrRxPins();
-static volatile uint8_t rcvrPin;
-static volatile bool waitingForSignalFinish;
-static volatile bool waitingForIrEnable;
-static volatile bool hitFront;
+recvGlobal_t frontRxData;
+volatile uint8_t irPinInterruptFront;
+volatile bool hitFront;
 
-static void setInterruptNumbers();
-static void dumpInterruptNumbers();
-static void interruptHandlerFront( void );
-static void enableIrPinInterrupts( void );
-static void disableIrPinInterrupts( void );
-static void createIrRcvrForPin();
+void setIrRxPins();
+void setInterruptNumbers();
+void dumpInterruptNumbers();
+void interruptHandlerFront( void );
+void enableIrPinInterrupts( void );
+void disableIrPinInterrupts( void );
+
+void dump(recvGlobal_t* rcvrData);
 
 
-static IRrecvPCI* rcvr = nullptr; // PCI = PIN CHANGE Interrupt == Pin Changes from Low to High or High to Low
-static void dump();
-
-static volatile uint8_t irPinInterruptFront;
 void setup() {
     TurretController::setPins();
     TurretController::turnOffAllIndicators();
     Serial.begin(38400);
 
-
     setIrRxPins();
     setInterruptNumbers();
     dumpInterruptNumbers();
+    IrRxInterrupt::resetReceiverData(&frontRxData);
     enableIrPinInterrupts();
-    //createIrRcvrForPin();
     Serial.println("Started");
 }
 
 void loop() {
 
     //Continue looping until you get a complete signal received
-    if (rcvr != nullptr && rcvr->getResults()) {
-
-        dump();
+    if (frontRxData.currentState==STATE_FINISHED) {
+        IR_RX_LED_ON();
+        dump(&frontRxData);
+        IrRxInterrupt::resetReceiverData(&frontRxData);
         enableIrPinInterrupts();
-        //rcvr->enableIRIn();
-        delay(1);
+        IR_RX_LED_OFF();
+        delay(10);
     }
-    else if (hitFront) {
-        createIrRcvrForPin();
-    }
-    delay(1);
+    delay(10);
 }
 
-static void dump() {
+void dump(recvGlobal_t* rcvrData) {
     Serial.print(F("\n#define RAW_DATA_LEN "));
-    Serial.println(recvGlobal.recvLength, DEC);
+    Serial.println(rcvrData->recvLength, DEC);
     Serial.print(F("uint16_t rawData[RAW_DATA_LEN]={\n\t"));
 
-    for(bufIndex_t i=1; i<recvGlobal.recvLength; i++) {
-        Serial.print(recvGlobal.recvBuffer[i], DEC);
+    for(bufIndex_t i = 1; i < rcvrData->recvLength; i++) {
+        Serial.print(rcvrData->recvBuffer[i], DEC);
         Serial.print(F(", "));
         if( (i % 8)==0) Serial.print(F("\n\t"));
     }
     Serial.println(F("1000};"));//Add arbitrary trailing space
 }
 
-static void createIrRcvrForPin() {
-
-    rcvr = new IRrecvPCI(IR_SXR_FRONT_PIN);
-    rcvr->enableIRIn();
-    hitFront = false;
-}
-
-static void setIrRxPins() {
+void setIrRxPins() {
     //pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
     //pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
     //pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
     pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
 }
 
-static void setInterruptNumbers() {
+void setInterruptNumbers() {
     irPinInterruptFront = digitalPinToInterrupt(IR_SXR_FRONT_PIN);
 }
 
-static void dumpInterruptNumbers() {
+void dumpInterruptNumbers() {
     Serial.print("Interrupt Front: ");
     Serial.println(irPinInterruptFront);
 }
 
-static void enableIrPinInterrupts( void ) {
+void enableIrPinInterrupts( void ) {
     //Indicator::turnOffLed(MOVE_LED_RED);
     //pinMode(IR_SXR_HIT, INPUT_PULLUP);
     //attachInterrupt(IR_SXR_HIT, interruptHandlerHit, RISING);
@@ -120,7 +104,7 @@ static void enableIrPinInterrupts( void ) {
     attachInterrupt(irPinInterruptFront, interruptHandlerFront, CHANGE);
 }
 
-static void disableIrPinInterrupts( void ) {
+void disableIrPinInterrupts( void ) {
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN));
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN));
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN));
@@ -129,51 +113,7 @@ static void disableIrPinInterrupts( void ) {
     //Indicator::turnOnLed(MOVE_LED_RED);
 }
 
-static void initializeRcvr() {
-
-//These first two lines would normally be done by the decoder
-//however in rare circumstances there is no decoder.
-        recvGlobal.decoderWantsData=false; //turned on by enableIRIn.
-        recvGlobal.decodeBuffer=recvGlobal.recvBuffer;//default buffer
-        recvGlobal.enableAutoResume=false;
-        recvGlobal.frameTimeout=DEFAULT_FRAME_TIMEOUT;
-        recvGlobal.frameTimeoutTicks=recvGlobal.frameTimeout/USEC_PER_TICK;
-        markExcess=DEFAULT_MARK_EXCESS;
-        recvGlobal.newDataAvailable=false;
-        recvGlobal.enableBlinkLED=false;
-        recvGlobal.currentState=STATE_FINISHED;//i.e. Not running
-}
-
-static void interruptHandlerFront( void ) {
-    Serial.println(".");
-    uint32_t volatile changeTime = micros();
-    uint32_t deltaTime = changeTime - recvGlobal.timer;
-
-    switch (recvGlobal.currentState) {
-        case STATE_FINISHED: return;
-        case STATE_RUNNING:
-            Serial.println("B");
-            IRLib_doBlink();
-            if (!(recvGlobal.recvLength & 1)) {
-                if (deltaTime>recvGlobal.frameTimeout) {
-                    IRLib_IRrecvComplete(1);//all finished, reset and possibly do auto resume
-                    return;//don't record final space
-                }
-            }
-            break;
-        case STATE_READY_TO_BEGIN:
-            if (digitalRead(recvGlobal.recvPin)) {//pin high means SPACE
-                return;//don't start until we get a MARK
-            } else {
-                recvGlobal.currentState=STATE_RUNNING;
-            }
-            break;
-        default: break;
-    };
-
-    recvGlobal.recvBuffer[recvGlobal.recvLength] = deltaTime;
-    recvGlobal.timer = changeTime;
-    if(++recvGlobal.recvLength >= RECV_BUF_LENGTH) {//buffer overflows so we quit
-        IRLib_IRrecvComplete(2);
-    }
+void interruptHandlerFront( void ) {
+    cli();
+    IrRxInterrupt::handleInterrupt(IR_SXR_FRONT_PIN, &frontRxData);
 }

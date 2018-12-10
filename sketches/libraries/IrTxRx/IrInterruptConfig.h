@@ -1,26 +1,29 @@
-/*
- * IRremote
- * Version 0.1 July, 2009
- * Copyright 2009 Ken Shirriff
- * For details, see http://arcfn.com/2009/08/multi-protocol-infrared-remote-library.html
- *
- * Interrupt code based on NECIRrcv by Joe Knapp
- * http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1210243556
- * Also influenced by http://zovirl.com/2008/11/12/building-a-universal-remote-with-an-arduino/
- */
-
 #ifndef IrInterruptConfig_h
 #define IrInterruptConfig_h
 
 #include <Arduino.h>
-#include "boarddefs.h"
 
-#define USECPERTICK 50  // microseconds per clock interrupt tick
-#define RAWBUF 96 // Length of raw duration buffer
+#ifndef DEFAULT_BLINK_PIN
+#define DEFAULT_BLINK_PIN LED_BUILTIN  //NOTE: LED_BUILTIN is an Arduino constant
+#endif
 
-// Marks tend to be 100us too long, and spaces 100us too short
-// when received due to sensor lag.
-#define MARK_EXCESS 100
+#ifndef DEFAULT_BLINK_ENABLED
+#define DEFAULT_BLINK_ENABLED false
+#endif
+
+#ifndef DEFAULT_MARK_EXCESS
+#define DEFAULT_MARK_EXCESS 50
+#endif
+
+#ifndef DEFAULT_FRAME_TIMEOUT
+#define DEFAULT_FRAME_TIMEOUT 7800 //maximum length of SPACE Sbefore we assume frame ended
+#endif
+//DEFAULT_TIMEOUT should be 1.25*the_largest_space_any_valid_IR_protocol_might_have.
+//In IRremote library ir_Dish.cpp space they use DISH_RPT_SPACE 6200 while referenced says
+//about 6000. If we take 6200*1.25= 7750 rounded up we will use 7800. Previous IRLib
+//value was 10000 was probably too large. Thanks to Gabriel Staples for this note.
+
+
 
 #define CLKFUDGE 5      // fudge factor for clock interrupt overhead
 #define CLK 256      // max value for clock (timer 2)
@@ -46,7 +49,7 @@
 #endif
 
 // clock timer reset value
-#define INIT_TIMER_COUNT2 (CLK - USECPERTICK*CLKSPERUSEC + CLKFUDGE)
+#define INIT_TIMER_COUNT2 (CLK - USEC_PER_TICK*CLKSPERUSEC + CLKFUDGE)
 #define RESET_TIMER2 TCNT2 = INIT_TIMER_COUNT2
 
 // pulse parameters in usec
@@ -87,16 +90,6 @@
 #define MATCH_SPACE(measured_ticks, desired_us) MATCH((measured_ticks), (desired_us) - MARK_EXCESS)
 // Debugging versions are in IRremote.cpp
 #endif
-
-// receiver states
-#define STATE_IDLE     2
-#define STATE_MARK     3
-#define STATE_SPACE    4
-#define STATE_STOP     5
-
-// Neco: no this global variable
-// Defined in IRremote.cpp
-//extern volatile irparams_t irparams;
 
 // IR detector output is active low
 #define MARK  0
