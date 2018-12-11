@@ -16,22 +16,6 @@ void IrRxInterrupt::initialize() {
 
 }
 
-void IrRxInterrupt::setInterruptNumbers() {
-
-}
-
-void IrRxInterrupt::dumpInterruptNumbers() {
-
-}
-
-void IrRxInterrupt::enableIrPinInterrupts() {
-
-}
-
-void IrRxInterrupt::disableIrPinInterrupts() {
-
-}
-
 void IrRxInterrupt::initializeReceiverData(recvGlobal_t* rcvrData) {
     //These first two lines would normally be done by the decoder
     //however in rare circumstances there is no decoder.

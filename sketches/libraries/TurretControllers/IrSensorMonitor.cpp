@@ -15,6 +15,7 @@
 #include <TurretPins.h>
 #include <Indicator.h>
 #include <IrRxInterrupt.h>
+#include <IRLibGlobals.h>
 
 TaskHandle_t IrSensorMonitor::irTaskHandle = NULL;
 SemaphoreHandle_t IrSensorMonitor::irSemaphore = NULL;
@@ -26,13 +27,13 @@ uint8_t IrSensorMonitor::irPinInterruptRight = 0;
 uint8_t IrSensorMonitor::irPinInterruptRear = 0;
 uint8_t IrSensorMonitor::irPinInterruptHit = 0;
 
-void IrSensorMonitor::initialize() {
+recvGlobal_t IrSensorMonitor::rcvrDataFront;
 
-    pinMode(IR_SXR_HIT, INPUT_PULLUP);
-    pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
-    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
-    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
-    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+void IrSensorMonitor::initialize(HardwareSerial* serial) {
+
+    serialConn = serial;
+    setPins();
+    initializeRcvrData();
 
     irSemaphore = xSemaphoreCreateCounting(1, 0); // maxcount, initial count
 
@@ -52,6 +53,21 @@ void IrSensorMonitor::initialize() {
     enableIrPinInterrupts();
 }
 
+void IrSensorMonitor::initializeRcvrData() {
+    rcvrDataFront = recvGlobal_t();
+
+    IrRxInterrupt::resetReceiverData(&rcvrDataFront);
+}
+
+void IrSensorMonitor::setPins() {
+    pinMode(IR_SXR_HIT, INPUT_PULLUP);
+    pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
+    pinMode(IR_SXR_FRONT_PIN, INPUT_PULLUP);
+}
+
+
 void IrSensorMonitor::dutyCycle(void *pvParameters) {
 
     boolean success = true;
@@ -63,7 +79,9 @@ void IrSensorMonitor::dutyCycle(void *pvParameters) {
         semaphoreTaken = xSemaphoreTakeFromISR(irSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
 
         if (semaphoreTaken == pdTRUE) {
-
+            Indicator::strobeFast(ACTY_LED_2, 2);
+            dumpRcvrData(&rcvrDataFront);
+            IrRxInterrupt::resetReceiverData(&rcvrDataFront);
         }
         Taskr::delayMs(60);
     }
@@ -83,11 +101,6 @@ void IrSensorMonitor::enableIrPinInterrupts() {
     attachInterrupt(irPinInterruptFront, interruptHandlerFront, CHANGE);
 }
 
-void IrSensorMonitor::interruptHandlerFront() {
-    cli();
-    IrRxInterrupt::handleInterrupt(IR_SXR_FRONT_PIN, &frontRcvrData);
-}
-
 void IrSensorMonitor::disableIrPinInterrupts() {
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN));
     //detachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN));
@@ -95,4 +108,40 @@ void IrSensorMonitor::disableIrPinInterrupts() {
     detachInterrupt(irPinInterruptFront);
 }
 
+void IrSensorMonitor::interruptHandlerFront() {
+    //cli();
+    interruptHandlerBase(IR_SXR_FRONT_PIN, &rcvrDataFront);
+}
+
+void IrSensorMonitor::interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrData) {
+    IrRxInterrupt::handleInterrupt(rcvrPin, rcvrData);
+
+    if (rcvrData->currentState == STATE_FINISHED) {
+        static portBASE_TYPE xHigherPriorityTaskWoken;
+
+        xHigherPriorityTaskWoken = pdFALSE;
+
+        xSemaphoreGiveFromISR(irSemaphore, (BaseType_t*)&xHigherPriorityTaskWoken);
+
+        if (xHigherPriorityTaskWoken == pdTRUE) {
+            // portSWITCH_CONTEXT();
+            vPortYield();
+        }
+    }
+}
+
+void IrSensorMonitor::dumpRcvrData(recvGlobal_t *rcvrData) {
+    serialConn->print(F("\n#define RAW_DATA_LEN "));
+    serialConn->println(rcvrData->recvLength, DEC);
+    serialConn->print(F("uint16_t rawData[RAW_DATA_LEN]={\n\t"));
+
+    for(bufIndex_t i = 1; i < rcvrData->recvLength; i++) {
+        serialConn->print(rcvrData->recvBuffer[i], DEC);
+        serialConn->print(F(", "));
+
+        if( (i % 8)==0) serialConn->print(F("\n\t"));
+    }
+
+    serialConn->println(F("1000};"));//Add arbitrary trailing space
+}
 

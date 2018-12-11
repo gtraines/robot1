@@ -7,6 +7,9 @@
 #include <Arduino.h>
 #include <Arduino_FreeRTOS.h>
 #include <task.h>
+#include <HardwareSerial.h>
+#include <Print.h>
+
 #include <Servo.h>
 #include <Taskr.h>
 #include <Indicator.h>
@@ -33,7 +36,7 @@ void TurretController::initialize(Servo* traverseServo) {
     TurretController::turnOffAllIndicators();
 
     TraverseController::initialize(traverseServo);
-    IrSensorMonitor::initialize();
+
     ElevationController::initialize();
     CannonController::initialize();
         
@@ -56,6 +59,12 @@ void TurretController::initialize(Servo* traverseServo) {
                 &TurretController::functionCheckWorkerTaskHandle);
     }
 
+}
+
+void TurretController::initialize(Servo *traverseServo, HardwareSerial *serial) {
+    initialize(traverseServo);
+    serial->println("Cat and also cat");
+    IrSensorMonitor::initialize(serial);
 }
 
 bool TurretController::setPins() {
@@ -245,3 +254,4 @@ int TurretController::getJitterPositionIntRads(int originalPositionIntRads, int 
     int jitterResult = originalPositionIntRads + (directionMultiplier * jitterIntRads);
     return jitterResult;
 }
+

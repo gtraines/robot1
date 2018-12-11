@@ -35,11 +35,11 @@ add_subdirectory(libraries/PotMotorRtos)
 add_subdirectory(libraries/IrTxRx)
 add_subdirectory(libraries/TurretControllers)
 
-#add_subdirectory(turretRtos)
-add_subdirectory(IrRtos)
+add_subdirectory(turretRtos)
+#add_subdirectory(IrRtos)
 
-#set(${CMAKE_PROJECT_NAME}_SKETCH turretRtos/turretRtos.ino)
-set(${CMAKE_PROJECT_NAME}_SKETCH IrRtos/IrRtos.ino)
+set(${CMAKE_PROJECT_NAME}_SKETCH turretRtos/turretRtos.ino)
+#set(${CMAKE_PROJECT_NAME}_SKETCH IrRtos/IrRtos.ino)
 #set(${CMAKE_PROJECT_NAME}_SKETCH IrClusterRtos/IrClusterRtos.ino)
 
 target_include_directories(Arduino_FreeRTOS PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

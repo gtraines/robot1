@@ -25,11 +25,11 @@ Servo* traverseServo = new Servo();
  */
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(38400);
 
     traverseServo->attach(TRAVERSE_SERVO);
 
-    TurretController::initialize(traverseServo);
+    TurretController::initialize(traverseServo, &Serial);
 }
 
 void loop() {

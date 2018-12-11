@@ -20,6 +20,7 @@ protected:
     static int getJitterPositionIntRads(int originalPositionIntRads, int jitterIntRads);
   public:
     static void initialize(Servo* traverseServo);
+    static void initialize(Servo* traverseServo, HardwareSerial* serial);
     ~TurretController() { }
     static void setStatusError();
     static bool setTraverseTargetIntRads(int tgtIntRads, TraverseSpeed speed);

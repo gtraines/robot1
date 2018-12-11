@@ -18,27 +18,31 @@ protected:
 public:
     IrSensorMonitor(/* args */) { }
     ~IrSensorMonitor() { }
-    static void initialize();
+    static void initialize(HardwareSerial* serial);
+    static void initializeRcvrData();
+    static void setPins();
     static void dutyCycle(void* pvParameters);
-    static TaskHandle_t irTaskHandle;
-    static SemaphoreHandle_t irSemaphore;
+
     static void setInterruptNumbers();
     static void dumpInterruptNumbers();
     static void enableIrPinInterrupts();
     static void disableIrPinInterrupts();
-    static HardwareSerial* serialConn;
+    static void dumpRcvrData(recvGlobal_t* rcvrData);
 
     static void interruptHandlerHit();
     static void interruptHandlerRear();
     static void interruptHandlerRight();
-    static void interruptHandlerBase();
+    static void interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrData);
     static void interruptHandlerFront();
 
-    static recvGlobal_t frontRcvrData;
-    static recvGlobal_t leftRcvrData;
-    static recvGlobal_t rightRcvrData;
-    static recvGlobal_t rearRcvrData;
-    static recvGlobal_t hitRcvrData;
+    static HardwareSerial* serialConn;
+    static TaskHandle_t irTaskHandle;
+    static SemaphoreHandle_t irSemaphore;
+    static recvGlobal_t rcvrDataFront;
+    static recvGlobal_t rcvrDataLeft;
+    static recvGlobal_t rcvrDataRight;
+    static recvGlobal_t rcvrDataRear;
+    static recvGlobal_t rcvrDataHit;
 };
 
 #endif // !TURRET_CONTROLLERS__IR_SENSOR_MONITOR_H
