@@ -33,6 +33,8 @@
         {
             "name": "Linux",
             "includePath": [
+                "/home/graham/.arduino15/packages/arduino/tools/**",
+                "/home/graham/.arduino15/packages/arduino/hardware/avr/1.6.21/**",
                 "/usr/include/newlib/c++/4.9.3",
                 "/usr/include/c++/5",
                 "/usr/include/x86_64-linux-gnu/c++/5",
@@ -79,7 +81,10 @@
             },
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c11",
-            "cppStandard": "c++11"
+            "cppStandard": "c++11",
+            "forcedInclude": [
+                "/home/graham/.arduino15/packages/arduino/hardware/avr/1.6.21/cores/arduino/Arduino.h"
+            ]
         },
         {
             "name": "Win32",

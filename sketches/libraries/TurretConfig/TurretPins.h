@@ -13,7 +13,7 @@
 
 #define IR_TRIGGER 2
 
-#define IR_SXR_HIT 17
+#define IR_SXR_HIT_PIN 12
 #define IR_SXR_REAR_PIN 18
 #define IR_SXR_RIGHT_PIN 19
 #define IR_SXR_LEFT_PIN 20

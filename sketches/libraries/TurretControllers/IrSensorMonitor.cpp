@@ -28,6 +28,10 @@ uint8_t IrSensorMonitor::irPinInterruptRear = 0;
 uint8_t IrSensorMonitor::irPinInterruptHit = 0;
 
 recvGlobal_t IrSensorMonitor::rcvrDataFront;
+recvGlobal_t IrSensorMonitor::rcvrDataRear;
+recvGlobal_t IrSensorMonitor::rcvrDataLeft;
+recvGlobal_t IrSensorMonitor::rcvrDataRight;
+recvGlobal_t IrSensorMonitor::rcvrDataHit;
 
 void IrSensorMonitor::initialize(HardwareSerial* serial) {
 
@@ -60,7 +64,7 @@ void IrSensorMonitor::initializeRcvrData() {
 }
 
 void IrSensorMonitor::setPins() {
-    pinMode(IR_SXR_HIT, INPUT_PULLUP);
+    pinMode(IR_SXR_HIT_PIN, INPUT_PULLUP);
     pinMode(IR_SXR_REAR_PIN, INPUT_PULLUP);
     pinMode(IR_SXR_RIGHT_PIN, INPUT_PULLUP);
     pinMode(IR_SXR_LEFT_PIN, INPUT_PULLUP);
@@ -92,13 +96,15 @@ void IrSensorMonitor::setInterruptNumbers() {
     irPinInterruptLeft = digitalPinToInterrupt(IR_SXR_LEFT_PIN);
     irPinInterruptRight = digitalPinToInterrupt(IR_SXR_RIGHT_PIN);
     irPinInterruptRear = digitalPinToInterrupt(IR_SXR_REAR_PIN);
+    irPinInterruptHit = digitalPinToInterrupt(IR_SXR_HIT_PIN);
 }
 
 void IrSensorMonitor::enableIrPinInterrupts() {
-    //attachInterrupt(digitalPinToInterrupt(IR_SXR_REAR_PIN), interruptHandlerRear, RISING);
-    //attachInterrupt(digitalPinToInterrupt(IR_SXR_RIGHT_PIN), interruptHandlerRight, FALLING);
-    //attachInterrupt(digitalPinToInterrupt(IR_SXR_LEFT_PIN), interruptHandlerLeft, FALLING);
+    attachInterrupt(irPinInterruptRear, interruptHandlerRear, CHANGE);
+    attachInterrupt(irPinInterruptRight, interruptHandlerRight, CHANGE);
+    attachInterrupt(irPinInterruptLeft, interruptHandlerLeft, CHANGE);
     attachInterrupt(irPinInterruptFront, interruptHandlerFront, CHANGE);
+    attachInterrupt(irPinInterruptHit, interruptHandlerHit, CHANGE);
 }
 
 void IrSensorMonitor::disableIrPinInterrupts() {
@@ -111,6 +117,23 @@ void IrSensorMonitor::disableIrPinInterrupts() {
 void IrSensorMonitor::interruptHandlerFront() {
     //cli();
     interruptHandlerBase(IR_SXR_FRONT_PIN, &rcvrDataFront);
+}
+
+void IrSensorMonitor::interruptHandlerHit() {
+    interruptHandlerBase(IR_SXR_HIT_PIN, &rcvrDataHit);
+}
+
+void IrSensorMonitor::interruptHandlerRear() {
+    interruptHandlerBase(IR_SXR_REAR_PIN, &rcvrDataRear);
+}
+
+
+void IrSensorMonitor::interruptHandlerLeft() {
+    interruptHandlerBase(IR_SXR_LEFT_PIN, &rcvrDataLeft);
+}
+
+void IrSensorMonitor::interruptHandlerRight() {
+    interruptHandlerBase(IR_SXR_RIGHT_PIN, &rcvrDataRight);
 }
 
 void IrSensorMonitor::interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrData) {
@@ -144,4 +167,6 @@ void IrSensorMonitor::dumpRcvrData(recvGlobal_t *rcvrData) {
 
     serialConn->println(F("1000};"));//Add arbitrary trailing space
 }
+
+
 

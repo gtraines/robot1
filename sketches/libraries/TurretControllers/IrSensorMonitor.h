@@ -32,6 +32,7 @@ public:
     static void interruptHandlerHit();
     static void interruptHandlerRear();
     static void interruptHandlerRight();
+    static void interruptHandlerLeft();
     static void interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrData);
     static void interruptHandlerFront();
 

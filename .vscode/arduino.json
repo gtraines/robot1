@@ -1,6 +1,5 @@
 {
-    "board": "arduino:avr:mega",
-    "sketch": "sketches/turretFreeRtos/turretFreeRtos.ino",
-    "port": "/dev/ttyUSB0",
-    "configuration": "cpu=atmega2560"
+    "board": "arduino:avr:uno",
+    "sketch": "sketches/generated_examples/StateChangeDetection/StateChangeDetection.ino",
+    "port": "/dev/ttyACM0"
 }
