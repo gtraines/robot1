@@ -15,6 +15,8 @@ protected:
     static uint8_t irPinInterruptRight;
     static uint8_t irPinInterruptRear;
     static uint8_t irPinInterruptHit;
+    static void resetRcvrData();
+    static void logRcvrData();
 public:
     IrSensorMonitor(/* args */) { }
     ~IrSensorMonitor() { }
@@ -27,7 +29,7 @@ public:
     static void dumpInterruptNumbers();
     static void enableIrPinInterrupts();
     static void disableIrPinInterrupts();
-    static void dumpRcvrData(recvGlobal_t* rcvrData);
+    static void dumpRcvrData(uint8_t rcvrDirection, recvGlobal_t* rcvrData);
 
     static void interruptHandlerHit();
     static void interruptHandlerRear();

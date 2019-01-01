@@ -16,6 +16,7 @@
 #include <Indicator.h>
 #include <IrRxInterrupt.h>
 #include <IRLibGlobals.h>
+#include <IrConfig.h>
 
 TaskHandle_t IrSensorMonitor::irTaskHandle = NULL;
 SemaphoreHandle_t IrSensorMonitor::irSemaphore = NULL;
@@ -84,8 +85,8 @@ void IrSensorMonitor::dutyCycle(void *pvParameters) {
 
         if (semaphoreTaken == pdTRUE) {
             Indicator::strobeFast(ACTY_LED_2, 2);
-            dumpRcvrData(&rcvrDataFront);
-            IrRxInterrupt::resetReceiverData(&rcvrDataFront);
+            logRcvrData();
+            resetRcvrData();
         }
         Taskr::delayMs(60);
     }
@@ -119,14 +120,9 @@ void IrSensorMonitor::interruptHandlerFront() {
     interruptHandlerBase(IR_SXR_FRONT_PIN, &rcvrDataFront);
 }
 
-void IrSensorMonitor::interruptHandlerHit() {
-    interruptHandlerBase(IR_SXR_HIT_PIN, &rcvrDataHit);
-}
-
 void IrSensorMonitor::interruptHandlerRear() {
     interruptHandlerBase(IR_SXR_REAR_PIN, &rcvrDataRear);
 }
-
 
 void IrSensorMonitor::interruptHandlerLeft() {
     interruptHandlerBase(IR_SXR_LEFT_PIN, &rcvrDataLeft);
@@ -136,7 +132,12 @@ void IrSensorMonitor::interruptHandlerRight() {
     interruptHandlerBase(IR_SXR_RIGHT_PIN, &rcvrDataRight);
 }
 
+void IrSensorMonitor::interruptHandlerHit() {
+    interruptHandlerBase(IR_SXR_HIT_PIN, &rcvrDataHit);
+}
+
 void IrSensorMonitor::interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrData) {
+    cli();
     IrRxInterrupt::handleInterrupt(rcvrPin, rcvrData);
 
     if (rcvrData->currentState == STATE_FINISHED) {
@@ -151,21 +152,58 @@ void IrSensorMonitor::interruptHandlerBase(uint8_t rcvrPin, recvGlobal_t* rcvrDa
             vPortYield();
         }
     }
+    interrupts();
 }
 
-void IrSensorMonitor::dumpRcvrData(recvGlobal_t *rcvrData) {
-    serialConn->print(F("\n#define RAW_DATA_LEN "));
-    serialConn->println(rcvrData->recvLength, DEC);
-    serialConn->print(F("uint16_t rawData[RAW_DATA_LEN]={\n\t"));
+void IrSensorMonitor::dumpRcvrData(uint8_t rcvrDirection, recvGlobal_t *rcvrData) {
+    if (rcvrData->recvLength >= MIN_SIGNAL_PULSE_LENGTH
+        && rcvrData->recvLength <= MAX_SIGNAL_PULSE_LENGTH) {
 
-    for(bufIndex_t i = 1; i < rcvrData->recvLength; i++) {
-        serialConn->print(rcvrData->recvBuffer[i], DEC);
-        serialConn->print(F(", "));
+        serialConn->print("\nDIRECTION: ");
+        serialConn->println(rcvrDirection, DEC);
+        serialConn->print(F("RAW_DATA_LEN "));
+        serialConn->println(rcvrData->recvLength, DEC);
+        serialConn->print(F("[\n\t"));
 
-        if( (i % 8)==0) serialConn->print(F("\n\t"));
+        for(bufIndex_t i = 1; i < rcvrData->recvLength; i++) {
+            serialConn->print(rcvrData->recvBuffer[i], DEC);
+            serialConn->print(F(", "));
+
+            if( (i % 8)==0) serialConn->print(F("\n\t"));
+        }
+
+        serialConn->println(F("1000 \n]"));//Add arbitrary trailing space
+    }
+}
+
+void IrSensorMonitor::logRcvrData() {
+    if (rcvrDataFront.currentState == STATE_FINISHED) {
+        dumpRcvrData(IR_SXR_FRONT_PIN, &rcvrDataFront);
     }
 
-    serialConn->println(F("1000};"));//Add arbitrary trailing space
+    if (rcvrDataRear.currentState == STATE_FINISHED) {
+        dumpRcvrData(IR_SXR_REAR_PIN, &rcvrDataRear);
+    }
+
+    if (rcvrDataLeft.currentState == STATE_FINISHED) {
+        dumpRcvrData(IR_SXR_LEFT_PIN, &rcvrDataLeft);
+    }
+
+    if (rcvrDataRight.currentState == STATE_FINISHED) {
+        dumpRcvrData(IR_SXR_RIGHT_PIN, &rcvrDataRight);
+    }
+
+    if (rcvrDataHit.currentState == STATE_FINISHED) {
+        dumpRcvrData(IR_SXR_HIT_PIN, &rcvrDataHit);
+    }
+}
+
+void IrSensorMonitor::resetRcvrData() {
+    IrRxInterrupt::resetReceiverData(&rcvrDataFront);
+    IrRxInterrupt::resetReceiverData(&rcvrDataRear);
+    IrRxInterrupt::resetReceiverData(&rcvrDataLeft);
+    IrRxInterrupt::resetReceiverData(&rcvrDataRight);
+    IrRxInterrupt::resetReceiverData(&rcvrDataHit);
 }
 
 
