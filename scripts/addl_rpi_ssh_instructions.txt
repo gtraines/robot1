@@ -1,0 +1,3 @@
+1. Open that /etc/ssh/sshd_config file and add "AllowUsers pi" at the end of it?
+2. do a sudo apt-get install ufw (or is it already installed)?
+3. Run the command "sudo ufw allow proto tcp from 192.168.x.x to any port 22"
