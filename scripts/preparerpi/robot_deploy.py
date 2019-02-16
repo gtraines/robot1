@@ -23,7 +23,7 @@ class CmdResult:
         return self._run_result.stdout
 
 
-class RobotConnection:
+class RemoteCxn:
     PASSWORD_KEY = 'ROBOT_SUDO_PASSWORD'
 
     def __init__(self, remote_host, username, port=22, password=None):
@@ -72,6 +72,9 @@ class RobotConnection:
         result = CmdResult(command)
         return result
 
+    def sudo_try_do(self, command_text):
+        return self.try_do(self._conn.sudo(command_text))
+
     def apt_update(self):
         result = self._conn.sudo('apt-get update')
         return result
@@ -92,7 +95,31 @@ class RobotConnection:
         return self.create_dir(directory)
 
 
+def prep_vic20():
+    vic20_cxn = connect_vic20(os.environ.get('ROBOT_SUDO_PASSWORD'))
+    vic20_cxn.apt_update()
+    vic20_cxn.apt_get_install('openjdk-8-jdk')
+    vic20_cxn.install_git()
+
+    vic20_cxn.go_to_directory('Source')
+    vic20_cxn.git_clone('https://github.com/gtraines/robot1.git')
+    vic20_cxn.git_clone('https://github.com/gtraines/robot1-ros.git')
+    vic20_cxn.go_to_directory('~/Source/robot1-ros')
+    vic20_cxn._conn.run('chmod +x configure_helpers.sh')
+    vic20_cxn._conn.run('./configure_helpers.sh')
+    vic20_cxn.go_to_directory('~/Source/robot1-ros/install_ros/')
+    vic20_cxn._conn.run('./install_ros_complete.sh')
+
+    vic20_cxn.create_dir_in_user_home('arduino-1.8.5')
+    vic20_cxn._conn.run('wget -O arduino-1.8.5.tar.xz https://github.com/arduino/Arduino/releases/download/1.8.5/Arduino-1.8.5.tar.xz')
+    vic20_cxn._conn.run('unxz arduino-1.8.5.tar.xz')
+
+
 def connect_vic20(password=None):
-    rcxn = RobotConnection('192.168.1.10', 'robot1v', password=password)
+    rcxn = RemoteCxn('192.168.1.10', 'robot1v', password=password)
 
     return rcxn
+
+
+if __name__ == '__main__':
+    vic20cxn = connect_vic20(os.environ.get('ROBOT_SUDO_PASSWORD'))
