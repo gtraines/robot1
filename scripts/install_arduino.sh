@@ -15,5 +15,5 @@ cd Arduino-1.8.5/build/linux
 cp ~/Source/robot1/scripts/build_arduino_arm.sh .
 cd ~/Source/Arduino-1.8.5/build/linux
 chmod +x build_arduino_arm.sh
-./build_arduino_arm.sh
+bash ~/Source/Arduino-1.8.5/build/linux/build_arduino_arm.sh
 

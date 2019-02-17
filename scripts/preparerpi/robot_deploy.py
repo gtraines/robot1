@@ -1,5 +1,6 @@
 import os
 import contextlib
+import time
 from fabric import Connection, Config
 from invoke import Responder
 
@@ -80,11 +81,13 @@ class RemoteCxn:
         self.list_running_jobs()
         try:
             self.sudo_try_do('pkill apt-get')
+            time.sleep(15)
         except:
             pass
 
         try:
             self.sudo_try_do('pkill dpkg')
+            time.sleep(15)
         except:
             pass
 
@@ -102,7 +105,12 @@ class RemoteCxn:
         return result
 
     def apt_update(self):
-        result = self.sudo_try_do('apt-get update')
+        result = None
+        try:
+            result = self.sudo_try_do('apt-get update')
+        except Exception as ex:
+            pass
+        time.sleep(15)
         return result
 
     def get_installed_packages(self, package_name_filter):
@@ -183,11 +191,10 @@ class RobotCxn(RemoteCxn):
         return self.execute_in_directory('~/Source/', command)
 
     def exec_robot1_script(self, filename):
-        def command(self):
-            self.set_file_as_executable()
-            self.set_file_as_executable(filename)
-            self.run('./'.format(filename))
-        return self.exec_in_robot1_directory(command, subdir='scripts')
+        def command(slf):
+            slf.set_file_as_executable(filename)
+            slf.run('bash {0}'.format(filename))
+        return self.exec_in_robot1_directory(lambda slf: command, subdir='scripts')
 
     def clone_my_repo(self, repo_name):
         return self.git_clone('https://github.com/gtraines/{0}.git'.format(repo_name))
@@ -198,7 +205,9 @@ class RobotDeploy(RobotCxn):
     def one_time_setup(self):
         self.apt_update()
         self.remove_preinstalled_ros_packages()
+        self.install_git()
         self.get_source_repos_first_time()
+        self.install_ros()
         self.exec_robot1_script('install_arduino.sh')
 
     def get_source_repos_first_time(self):
@@ -293,9 +302,12 @@ def connect_rpi2():
     return rcxn
 
 
+def connect_rpi1():
+    rcxn = RobotDeploy('192.168.1.14', 'robot1')
+    return rcxn
+
+
 if __name__ == '__main__':
-    rcxn = connect_rpi2()
-    rcxn.update_sources()
-    rcxn.sudo_try_do('rosdep fix-permissions')
-    rcxn.run('rosdep update')
+    pi_rcxn = connect_rpi1()
+    pi_rcxn.one_time_setup()
 
