@@ -208,11 +208,17 @@ class RobotDeploy(RobotCxn):
                                       slf.clone_my_repo('robot1'))
         self.exec_in_source_directory(lambda slf:
                                       slf.clone_my_repo('robot1-ros'))
+
+    def install_ros(self):
         self.exec_in_robot1_ros_directory(lambda slf:
                                           slf.execute_script_current_folder('configure_helpers.sh'))
-        self.exec_in_robot1_ros_directory(lambda slf:
-                                          slf.execute_script_current_folder('install_ros_complete.sh'),
-                                          subdir='install_ros')
+        self.sudo_try_do('bash ~/Source/robot1-ros/install_ros/install_ros_complete.sh')
+        self.sudo_try_do('rosdep fix-permissions')
+        self.run('rosdep update')
+
+    def update_sources(self):
+        self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())
+        self.exec_in_robot1_ros_directory(lambda slf: slf.git_update_current_dir())
 
     def remove_preinstalled_ros_packages(self):
         self.kill_existing_dpkg_lock()
@@ -289,4 +295,7 @@ def connect_rpi2():
 
 if __name__ == '__main__':
     rcxn = connect_rpi2()
-    rcxn.get_source_repos_first_time()
+    rcxn.update_sources()
+    rcxn.sudo_try_do('rosdep fix-permissions')
+    rcxn.run('rosdep update')
+
