@@ -12,5 +12,8 @@ cd ~/Source
 wget https://github.com/arduino/Arduino/releases/download/1.8.5/Arduino-1.8.5.tar.xz
 tar --xz -xf Arduino-1.8.5.tar.xz 
 cd Arduino-1.8.5/build/linux
-
+cp ~/Source/robot1/scripts/build_arduino_arm.sh .
+cd ~/Source/Arduino-1.8.5/build/linux
+chmod +x build_arduino_arm.sh
+./build_arduino_arm.sh
 
