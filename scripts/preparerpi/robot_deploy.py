@@ -190,12 +190,6 @@ class RobotCxn(RemoteCxn):
     def exec_in_source_directory(self, command):
         return self.execute_in_directory('~/Source/', command)
 
-    def exec_robot1_script(self, filename):
-        def command(slf):
-            slf.set_file_as_executable(filename)
-            slf.run('bash {0}'.format(filename))
-        return self.exec_in_robot1_directory(lambda slf: command, subdir='scripts')
-
     def clone_my_repo(self, repo_name):
         return self.git_clone('https://github.com/gtraines/{0}.git'.format(repo_name))
 
@@ -225,7 +219,8 @@ class RobotDeploy(RobotCxn):
         self.run('rosdep update')
 
     def install_arduino(self):
-        self.exec_robot1_script('install_arduino.sh')
+        self.exec_in_robot1_directory(lambda slf:
+                                      slf.sudo_try_do('install_arduino.sh'), subdir='scripts')
 
     def update_sources(self):
         self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())
