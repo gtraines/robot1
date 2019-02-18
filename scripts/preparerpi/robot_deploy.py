@@ -208,7 +208,6 @@ class RobotDeploy(RobotCxn):
         self.install_git()
         self.get_source_repos_first_time()
         self.install_ros()
-        self.exec_robot1_script('install_arduino.sh')
 
     def get_source_repos_first_time(self):
         self.create_dir_in_user_home('Source')
@@ -224,6 +223,9 @@ class RobotDeploy(RobotCxn):
         self.sudo_try_do('bash ~/Source/robot1-ros/install_ros/install_ros_complete.sh')
         self.sudo_try_do('rosdep fix-permissions')
         self.run('rosdep update')
+
+    def install_arduino(self):
+        self.exec_robot1_script('install_arduino.sh')
 
     def update_sources(self):
         self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())
@@ -309,5 +311,6 @@ def connect_rpi1():
 
 if __name__ == '__main__':
     pi_rcxn = connect_rpi1()
-    pi_rcxn.one_time_setup()
+    pi_rcxn.update_sources()
+    pi_rcxn.install_arduino()
 
