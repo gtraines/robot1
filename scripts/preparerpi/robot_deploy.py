@@ -151,7 +151,7 @@ class RemoteCxn:
 
     def git_update_current_dir(self):
         self.try_do(self.run('git fetch'))
-        self.try_do(self.run('git checkout master'))
+        #self.try_do(self.run('git checkout master'))
         return self.try_do(self.run('git pull'))
 
     def create_dir(self, directory):
@@ -219,8 +219,7 @@ class RobotDeploy(RobotCxn):
         self.run('rosdep update')
 
     def install_arduino(self):
-        self.exec_in_robot1_directory(lambda slf:
-                                      slf.sudo_try_do('install_arduino.sh'), subdir='scripts')
+        self.sudo_try_do('bash ~/Source/robot1/scripts/install_arduino.sh')
 
     def update_sources(self):
         self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())
