@@ -12,6 +12,8 @@ cd Arduino-1.8.5/build/
 cp ~/Source/robot1/scripts/build_arduino_arm.sh .
 wget https://downloads.arduino.cc/libastylej-2.05.1-3.zip
 wget https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.0.zip
+wget https://downloads.arduino.cc/tools/arduino-builder-linuxarm-1.3.25.tar.bz2
+
 cd shared/
 wget https://downloads.arduino.cc/reference-1.6.6-3.zip
 wget https://downloads.arduino.cc/Galileo_help_files-1.6.2.zip
