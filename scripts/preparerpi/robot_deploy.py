@@ -226,7 +226,7 @@ class RobotDeploy(RobotCxn):
         self.apt_get_install('avrdude')
         self.apt_get_install('gcc-avr')
 
-        self.try_do('bash ~/Source/robot1/scripts/install_arduino.sh')
+        self.try_do(lambda slf: slf.run_with_password('bash ~/Source/robot1/scripts/install_arduino.sh'))
 
     def update_sources(self):
         self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())
