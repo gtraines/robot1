@@ -219,7 +219,14 @@ class RobotDeploy(RobotCxn):
         self.run('rosdep update')
 
     def install_arduino(self):
-        self.sudo_try_do('bash ~/Source/robot1/scripts/install_arduino.sh')
+        self.apt_get_install('openjdk-8-jdk')
+        self.apt_get_install('ant')
+        self.apt_get_install('avr-libc')
+        self.apt_get_install('binutils-avr')
+        self.apt_get_install('avrdude')
+        self.apt_get_install('gcc-avr')
+
+        self.try_do('bash ~/Source/robot1/scripts/install_arduino.sh')
 
     def update_sources(self):
         self.exec_in_robot1_directory(lambda slf: slf.git_update_current_dir())

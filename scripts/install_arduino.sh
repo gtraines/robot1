@@ -1,9 +1,6 @@
 #! /usr/bin/env bash
  
-sudo apt-get install openjdk-8-jdk -y
-sudo apt-get install ant -y
-sudo apt-get install avr-libc binutils-avr avrdude gcc-avr -y
- 
+
 echo "/*========================*/"
 echo "Downloading Arduino 1.8.5"
 echo "/*========================*/"
