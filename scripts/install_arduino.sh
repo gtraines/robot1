@@ -22,6 +22,7 @@ wget https://downloads.arduino.cc/Edison_help_files-1.6.2.zip
 
 cd ~/Source/Arduino-1.8.5/build/linux/
 wget https://downloads.arduino.cc/tools/avr-gcc-4.9.2-atmel3.5.4-arduino2-armhf-pc-linux-gnu.tar.bz2
+wget https://downloads.arduino.cc/tools/avrdude-6.3.0-arduino9-armhf-pc-linux-gnu.tar.bz2
 
 cd ~/Source/Arduino-1.8.5/build/
 chmod +x ~/Source/Arduino-1.8.5/build/build_arduino_arm.sh
