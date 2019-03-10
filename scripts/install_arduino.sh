@@ -10,7 +10,7 @@ wget https://github.com/arduino/Arduino/releases/download/1.8.5/Arduino-1.8.5.ta
 tar --xz -xf Arduino-1.8.5.tar.xz
 
 cd Arduino-1.8.5/build/
-cp ~/Source/robot1/scripts/build_arduino_arm.sh .
+cp ~/Source/configure-it-oot/build_arduino_arm.sh .
 wget https://downloads.arduino.cc/libastylej-2.05.1-3.zip
 wget https://downloads.arduino.cc/liblistSerials/liblistSerials-1.4.0.zip
 wget https://downloads.arduino.cc/tools/arduino-builder-linuxarm-1.3.25.tar.bz2

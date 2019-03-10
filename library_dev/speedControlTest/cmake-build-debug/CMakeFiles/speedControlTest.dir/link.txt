@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/speedControlTest.dir/InternalOperation.cpp.o CMakeFiles/speedControlTest.dir/SpeedControlCommand.cpp.o CMakeFiles/speedControlTest.dir/SpeedControl.cpp.o CMakeFiles/speedControlTest.dir/main.cpp.o  -o speedControlTest 

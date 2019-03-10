@@ -1,3 +1,0 @@
-/home/graham/CLionProjects/speedControlTest/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/graham/CLionProjects/speedControlTest/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/graham/CLionProjects/speedControlTest/cmake-build-debug/CMakeFiles/speedControlTest.dir
