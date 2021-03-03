@@ -6,6 +6,8 @@
                 "/usr/include",
                 "/usr/local/include",
                 "/usr/share/arduino/hardware/arduino/cores/arduino",
+                "/snap/arduino/current/hardware/arduino/avr/cores/arduino",
+                "/snap/arduino/current/libraries/Servo/src",
                 "/home/graham/arduino-1.8.5/libraries/Servo/src",
                 "${workspaceRoot}"
             ],
@@ -16,6 +18,7 @@
                     "/usr/include",
                     "/usr/local/include",
                     "/usr/share/arduino/hardware/arduino/cores/arduino",
+                    "/snap/arduino/current/hardware/arduino/avr/cores/arduino",
                     "/home/graham/arduino-1.8.5/libraries/Servo/src",
                     "${workspaceRoot}"
                 ],
@@ -25,11 +28,19 @@
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
                 "/Library/Frameworks"
-            ]
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14"
         },
         {
             "name": "Linux",
             "includePath": [
+                "/snap/arduino/current/tools/**",
+                "/home/graham/Arduino/libraries/**",
+                "/snap/arduino/current/libraries/**",
+                "/snap/arduino/current/hardware/tools/**",
+                "/snap/arduino/current/hardware/arduino/avr/**",
                 "/usr/include/newlib/c++/4.9.3",
                 "/usr/include/c++/5",
                 "/usr/include/x86_64-linux-gnu/c++/5",
@@ -42,7 +53,10 @@
                 "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
                 "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
                 "/home/graham/arduino-1.8.5/libraries/Servo/src",
+                "/snap/arduino/current/hardware/arduino/avr/cores/arduino",
+                "/snap/arduino/current/libraries/Servo/src",
                 "${workspaceRoot}",
+                "${workspaceRoot}/libraries/**",
                 "/usr/include/linux"
             ],
             "defines": [
@@ -63,11 +77,20 @@
                     "/home/graham/arduino-1.8.5/hardware/tools/avr/avr/include",
                     "/home/graham/arduino-1.8.5/hardware/arduino/avr/cores/arduino",
                     "/home/graham/arduino-1.8.5/libraries/Servo/src",
-                    "${workspaceRoot}"
+                    "/snap/arduino/current/hardware/arduino/avr/cores/arduino",
+                    "/snap/arduino/current/libraries/Servo/src",
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/libraries/**"
                 ],
                 "limitSymbolsToIncludedHeaders": false,
                 "databaseFilename": ""
-            }
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14",
+            "forcedInclude": [
+                "/snap/arduino/current/hardware/arduino/avr/cores/arduino/Arduino.h"
+            ]
         },
         {
             "name": "Win32",
@@ -87,8 +110,11 @@
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
-            }
+            },
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++14"
         }
     ],
-    "version": 3
+    "version": 4
 }

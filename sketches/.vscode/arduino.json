@@ -1,6 +1,7 @@
 {
-    "board": "arduino:avr:mega",
+    "board": "arduino:avr:nano",
     "sketch": "InfraredLearner/InfraredLearner.ino",
     "port": "/dev/ttyUSB0",
-    "configuration": "cpu=atmega2560"
+    "configuration": "cpu=atmega328",
+    "programmer": "ArduinoISP"
 }
